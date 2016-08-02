@@ -1,0 +1,14 @@
+language: objective-c
+osx_image: xcode8
+xcode_project: CasperSplash.xcodeproj
+xcode_scheme: CasperSplash
+xcode_sdk: macosx10.11
+
+# https://sipb.mit.edu/doc/safe-shell/
+
+script:
+- set -o pipefail
+- xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash | xcpretty
+
+notifications:
+slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W

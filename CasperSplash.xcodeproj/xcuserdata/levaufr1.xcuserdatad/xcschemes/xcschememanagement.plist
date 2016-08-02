@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CasperSplash.xcscheme</key>
+		<key>CasperSplash.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -23,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>089D29361D50D12200E58C6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>08DAA4851D54A62B0027E650</key>
 		<dict>
 			<key>primary</key>
 			<true/>
