@@ -26,10 +26,7 @@ class CasperSplashTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         XCTAssert(true, "just testing")
     }
-    
-    func testFail() {
-        XCTFail()
-    }
+
     
 
     
