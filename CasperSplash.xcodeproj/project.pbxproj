@@ -12,6 +12,8 @@
 		089D29261D50D12200E58C6D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089D29241D50D12200E58C6D /* MainMenu.xib */; };
 		089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29301D50D12200E58C6D /* CasperSplashTests.swift */; };
 		089D294A1D50D14C00E58C6D /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 089D29491D50D14C00E58C6D /* .travis.yml */; };
+		089D294D1D50F04900E58C6D /* Regexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294C1D50F04900E58C6D /* Regexes.swift */; };
+		089D294F1D50F1D800E58C6D /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294E1D50F1D800E58C6D /* Software.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashUITests.swift; sourceTree = "<group>"; };
 		089D293D1D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		089D29491D50D14C00E58C6D /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
+		089D294C1D50F04900E58C6D /* Regexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Regexes.swift; path = Controller/Regexes.swift; sourceTree = "<group>"; };
+		089D294E1D50F1D800E58C6D /* Software.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +82,12 @@
 		089D291F1D50D12200E58C6D /* CasperSplash */ = {
 			isa = PBXGroup;
 			children = (
+				089D294B1D50F02E00E58C6D /* Controller */,
 				089D29201D50D12200E58C6D /* AppDelegate.swift */,
 				089D29221D50D12200E58C6D /* Assets.xcassets */,
 				089D29241D50D12200E58C6D /* MainMenu.xib */,
 				089D29271D50D12200E58C6D /* Info.plist */,
+				089D294E1D50F1D800E58C6D /* Software.swift */,
 			);
 			path = CasperSplash;
 			sourceTree = "<group>";
@@ -103,6 +109,14 @@
 				089D293D1D50D12200E58C6D /* Info.plist */,
 			);
 			path = CasperSplashUITests;
+			sourceTree = "<group>";
+		};
+		089D294B1D50F02E00E58C6D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				089D294C1D50F04900E58C6D /* Regexes.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,7 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089D294F1D50F1D800E58C6D /* Software.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
+				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +407,7 @@
 				089D29421D50D12200E58C6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		089D29431D50D12200E58C6D /* Build configuration list for PBXNativeTarget "CasperSplashTests" */ = {
 			isa = XCConfigurationList;
@@ -399,6 +416,7 @@
 				089D29451D50D12200E58C6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
