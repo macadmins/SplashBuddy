@@ -38,16 +38,6 @@
                ReferencedContainer = "container:CasperSplash.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "089D29361D50D12200E58C6D"
-               BuildableName = "CasperSplashUITests.xctest"
-               BlueprintName = "CasperSplashUITests"
-               ReferencedContainer = "container:CasperSplash.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

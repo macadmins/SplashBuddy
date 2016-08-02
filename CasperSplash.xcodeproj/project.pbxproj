@@ -11,19 +11,11 @@
 		089D29231D50D12200E58C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 089D29221D50D12200E58C6D /* Assets.xcassets */; };
 		089D29261D50D12200E58C6D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089D29241D50D12200E58C6D /* MainMenu.xib */; };
 		089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29301D50D12200E58C6D /* CasperSplashTests.swift */; };
-		089D293C1D50D12200E58C6D /* CasperSplashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */; };
 		089D294A1D50D14C00E58C6D /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 089D29491D50D14C00E58C6D /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		089D292D1D50D12200E58C6D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089D29151D50D12200E58C6D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 089D291C1D50D12200E58C6D;
-			remoteInfo = CasperSplash;
-		};
-		089D29381D50D12200E58C6D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089D29151D50D12200E58C6D /* Project object */;
 			proxyType = 1;
@@ -41,7 +33,6 @@
 		089D292C1D50D12200E58C6D /* CasperSplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CasperSplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		089D29301D50D12200E58C6D /* CasperSplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashTests.swift; sourceTree = "<group>"; };
 		089D29321D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		089D29371D50D12200E58C6D /* CasperSplashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CasperSplashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashUITests.swift; sourceTree = "<group>"; };
 		089D293D1D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		089D29491D50D14C00E58C6D /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
@@ -56,13 +47,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		089D29291D50D12200E58C6D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		089D29341D50D12200E58C6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,7 +71,6 @@
 			children = (
 				089D291D1D50D12200E58C6D /* CasperSplash.app */,
 				089D292C1D50D12200E58C6D /* CasperSplashTests.xctest */,
-				089D29371D50D12200E58C6D /* CasperSplashUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,24 +143,6 @@
 			productReference = 089D292C1D50D12200E58C6D /* CasperSplashTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		089D29361D50D12200E58C6D /* CasperSplashUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 089D29461D50D12200E58C6D /* Build configuration list for PBXNativeTarget "CasperSplashUITests" */;
-			buildPhases = (
-				089D29331D50D12200E58C6D /* Sources */,
-				089D29341D50D12200E58C6D /* Frameworks */,
-				089D29351D50D12200E58C6D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				089D29391D50D12200E58C6D /* PBXTargetDependency */,
-			);
-			name = CasperSplashUITests;
-			productName = CasperSplashUITests;
-			productReference = 089D29371D50D12200E58C6D /* CasperSplashUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -192,10 +157,6 @@
 						CreatedOnToolsVersion = 7.3.1;
 					};
 					089D292B1D50D12200E58C6D = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 089D291C1D50D12200E58C6D;
-					};
-					089D29361D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 089D291C1D50D12200E58C6D;
 					};
@@ -216,7 +177,6 @@
 			targets = (
 				089D291C1D50D12200E58C6D /* CasperSplash */,
 				089D292B1D50D12200E58C6D /* CasperSplashTests */,
-				089D29361D50D12200E58C6D /* CasperSplashUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -239,13 +199,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		089D29351D50D12200E58C6D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -265,14 +218,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		089D29331D50D12200E58C6D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				089D293C1D50D12200E58C6D /* CasperSplashUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -280,11 +225,6 @@
 			isa = PBXTargetDependency;
 			target = 089D291C1D50D12200E58C6D /* CasperSplash */;
 			targetProxy = 089D292D1D50D12200E58C6D /* PBXContainerItemProxy */;
-		};
-		089D29391D50D12200E58C6D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 089D291C1D50D12200E58C6D /* CasperSplash */;
-			targetProxy = 089D29381D50D12200E58C6D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -432,30 +372,6 @@
 			};
 			name = Release;
 		};
-		089D29471D50D12200E58C6D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = CasperSplashUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = CasperSplash;
-			};
-			name = Debug;
-		};
-		089D29481D50D12200E58C6D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = CasperSplashUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = CasperSplash;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -481,14 +397,6 @@
 			buildConfigurations = (
 				089D29441D50D12200E58C6D /* Debug */,
 				089D29451D50D12200E58C6D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		089D29461D50D12200E58C6D /* Build configuration list for PBXNativeTarget "CasperSplashUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				089D29471D50D12200E58C6D /* Debug */,
-				089D29481D50D12200E58C6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
