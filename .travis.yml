@@ -8,7 +8,7 @@ xcode_sdk: macosx10.11
 # https://github.com/travis-ci/travis-ci/issues/3986
 # https://github.com/antitypical/Result/blob/master/.travis.yml
 
-#script: set -o pipefail && xcodebuild test -project TDDch1-1.xcodeproj -scheme CasperSplash -sdk macosx10.11 | xcpretty
+script: set -o pipefail && xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash -sdk macosx10.11 | xcpretty
 
 # https://github.com/codecov/example-swift/blob/master/test.sh
 
