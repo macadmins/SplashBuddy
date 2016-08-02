@@ -4,5 +4,8 @@ xcode_project: CasperSplash.xcodeproj
 xcode_scheme: CasperSplash
 xcode_sdk: macosx10.11
 
+# https://sipb.mit.edu/doc/safe-shell/
+
 script:
-- xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash
+- set -o pipefail
+- xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash | xcpretty
