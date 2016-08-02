@@ -12,6 +12,7 @@
 		089D29261D50D12200E58C6D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089D29241D50D12200E58C6D /* MainMenu.xib */; };
 		089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29301D50D12200E58C6D /* CasperSplashTests.swift */; };
 		089D293C1D50D12200E58C6D /* CasperSplashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */; };
+		089D294A1D50D14C00E58C6D /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 089D29491D50D14C00E58C6D /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		089D29371D50D12200E58C6D /* CasperSplashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CasperSplashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashUITests.swift; sourceTree = "<group>"; };
 		089D293D1D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		089D29491D50D14C00E58C6D /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				089D29301D50D12200E58C6D /* CasperSplashTests.swift */,
 				089D29321D50D12200E58C6D /* Info.plist */,
+				089D29491D50D14C00E58C6D /* .travis.yml */,
 			);
 			path = CasperSplashTests;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089D294A1D50D14C00E58C6D /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
