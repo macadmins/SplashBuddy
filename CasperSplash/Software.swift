@@ -9,17 +9,17 @@
 import Cocoa
 
 
-class Software: NSObject {
+class Software: Equatable {
 
     enum SoftwareStatus: String {
-        
         case Installing, Success, Failed
-        
     }
 
+    
     let name: String
     let version: String
     var status: SoftwareStatus
+    var icon: NSImage?
     
     init(name: String, version: String, status: SoftwareStatus) {
         self.name = name
@@ -27,4 +27,12 @@ class Software: NSObject {
         self.status = status
     }
     
+    
+    func isEqual(rhs: Software) -> Bool {
+        return self == rhs
+    }
+}
+
+func == (lhs: Software, rhs: Software) -> Bool {
+    return lhs.name == rhs.name && lhs.version == rhs.version && lhs.status == rhs.status
 }

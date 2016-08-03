@@ -14,6 +14,7 @@
 		089D294A1D50D14C00E58C6D /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 089D29491D50D14C00E58C6D /* .travis.yml */; };
 		089D294D1D50F04900E58C6D /* Regexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294C1D50F04900E58C6D /* Regexes.swift */; };
 		089D294F1D50F1D800E58C6D /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294E1D50F1D800E58C6D /* Software.swift */; };
+		089D29531D51D50700E58C6D /* jamf_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 089D29521D51D50700E58C6D /* jamf_1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		089D29491D50D14C00E58C6D /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		089D294C1D50F04900E58C6D /* Regexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Regexes.swift; path = Controller/Regexes.swift; sourceTree = "<group>"; };
 		089D294E1D50F1D800E58C6D /* Software.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
+		089D29521D51D50700E58C6D /* jamf_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jamf_1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				089D29301D50D12200E58C6D /* CasperSplashTests.swift */,
 				089D29321D50D12200E58C6D /* Info.plist */,
 				089D29491D50D14C00E58C6D /* .travis.yml */,
+				089D29521D51D50700E58C6D /* jamf_1.txt */,
 			);
 			path = CasperSplashTests;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				089D29531D51D50700E58C6D /* jamf_1.txt in Resources */,
 				089D294A1D50D14C00E58C6D /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
