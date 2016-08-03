@@ -15,6 +15,8 @@
 		089D294D1D50F04900E58C6D /* Regexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294C1D50F04900E58C6D /* Regexes.swift */; };
 		089D294F1D50F1D800E58C6D /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294E1D50F1D800E58C6D /* Software.swift */; };
 		089D29531D51D50700E58C6D /* jamf_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 089D29521D51D50700E58C6D /* jamf_1.txt */; };
+		08AC4F791D520A3200CAB019 /* ec_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 08AC4F761D520A3200CAB019 /* ec_32x32.png */; };
+		08AC4F7B1D520A3200CAB019 /* ec_32x32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		089D294C1D50F04900E58C6D /* Regexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Regexes.swift; path = Controller/Regexes.swift; sourceTree = "<group>"; };
 		089D294E1D50F1D800E58C6D /* Software.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
 		089D29521D51D50700E58C6D /* jamf_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jamf_1.txt; sourceTree = "<group>"; };
+		08AC4F761D520A3200CAB019 /* ec_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ec_32x32.png; sourceTree = "<group>"; };
+		08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ec_32x32@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		089D29141D50D12200E58C6D = {
 			isa = PBXGroup;
 			children = (
+				08AC4F751D520A3200CAB019 /* CasperSplashTestAssets */,
 				089D291F1D50D12200E58C6D /* CasperSplash */,
 				089D292F1D50D12200E58C6D /* CasperSplashTests */,
 				089D293A1D50D12200E58C6D /* CasperSplashUITests */,
@@ -84,12 +89,12 @@
 		089D291F1D50D12200E58C6D /* CasperSplash */ = {
 			isa = PBXGroup;
 			children = (
-				089D294B1D50F02E00E58C6D /* Controller */,
 				089D29201D50D12200E58C6D /* AppDelegate.swift */,
 				089D29221D50D12200E58C6D /* Assets.xcassets */,
 				089D29241D50D12200E58C6D /* MainMenu.xib */,
 				089D29271D50D12200E58C6D /* Info.plist */,
 				089D294E1D50F1D800E58C6D /* Software.swift */,
+				089D294C1D50F04900E58C6D /* Regexes.swift */,
 			);
 			path = CasperSplash;
 			sourceTree = "<group>";
@@ -114,12 +119,13 @@
 			path = CasperSplashUITests;
 			sourceTree = "<group>";
 		};
-		089D294B1D50F02E00E58C6D /* Controller */ = {
+		08AC4F751D520A3200CAB019 /* CasperSplashTestAssets */ = {
 			isa = PBXGroup;
 			children = (
-				089D294C1D50F04900E58C6D /* Regexes.swift */,
+				08AC4F761D520A3200CAB019 /* ec_32x32.png */,
+				08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */,
 			);
-			name = Controller;
+			path = CasperSplashTestAssets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +218,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08AC4F791D520A3200CAB019 /* ec_32x32.png in Resources */,
+				08AC4F7B1D520A3200CAB019 /* ec_32x32@2x.png in Resources */,
 				089D29531D51D50700E58C6D /* jamf_1.txt in Resources */,
 				089D294A1D50D14C00E58C6D /* .travis.yml in Resources */,
 			);
@@ -349,6 +357,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CasperSplash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

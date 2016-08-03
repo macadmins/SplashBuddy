@@ -32,21 +32,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = "EnterpriseConnect"
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.name, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.name, output)
     }
     
     func testRegexInstallingPackage_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = "1.5.3"
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.version, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.version, output)
     }
     
     func testRegexInstallingPackage_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = Software.SoftwareStatus.Installing.rawValue
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.status.rawValue, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.status.rawValue, output)
     }
     
     
@@ -57,21 +57,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = "EnterpriseConnect"
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.name, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.name, output)
     }
     
     func testRegexSuccessfullyInstalledPackage_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = "1.5.3"
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.version, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.version, output)
     }
     
     func testRegexSuccessfullyInstalledPackage_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = Software.SoftwareStatus.Success.rawValue
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.status.rawValue, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.status.rawValue, output)
     }
     
     
@@ -82,26 +82,26 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = "EnterpriseConnect"
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.name, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.name, output)
     }
     
     func testRegexFailedInstall_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = "1.5.3"
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.version, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.version, output)
     }
 
     func testRegexFailedInstall_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = Software.SoftwareStatus.Failed.rawValue
         
-        XCTAssertEqual(appDelegate.getSoftwareFromRegex(input)!.status.rawValue, output)
+        XCTAssertEqual(getSoftwareFromRegex(input)!.status.rawValue, output)
     }
     
     
     
-    func testReadFromFile_1() {
+    func testReadFromFile_CanReadFile() {
         let path = NSBundle(forClass: self.dynamicType).pathForResource("jamf_1", ofType: "txt")
         let output = [
         "Wed Mar 16 13:31:11 François's Mac mini jamf[2874]: Installing Success021-0.21.pkg...",
@@ -111,18 +111,37 @@ class CasperSplashTests: XCTestCase {
         "Wed Mar 16 13:31:11 François's Mac mini jamf[2874]: Installing Installing022-0.22.pkg...",
         ]
 
-        XCTAssertEqual(appDelegate.readLinesFromFile(path!)!, output)
+        XCTAssertEqual(readLinesFromFile(path!)!, output)
     }
     
-    func testReadFromFile_2() {
+    func testReadFromFile_CanParseSoftwareFromFile() {
         let path = NSBundle(forClass: self.dynamicType).pathForResource("jamf_1", ofType: "txt")
         let output = [
             Software(name: "Success021", version: "0.21", status: .Success),
             Software(name: "Failed153", version: "1.5.3", status: .Failed),
             Software(name: "Installing022", version: "0.22", status: .Installing)
         ]
-        let results = appDelegate.fileToSoftware(path!)
+        let results = fileToSoftware(path!)
 
         XCTAssertEqual(results, output)
+    }
+    
+    func testReadFromFile_NonExistentFile() {
+        let path = "/nonexistent"
+        XCTAssertNil(readLinesFromFile(path))
+    }
+    
+    func testAddIcon_CheckIfNSImage() {
+        let path = NSBundle(forClass: self.dynamicType).pathForImageResource("ec_32x32")
+        //let output = NSImage(byReferencingFile: path!)
+
+        XCTAssert(Software(name: "EC", version: "1.6.2", status: .Installing, iconPath: path).icon!.dynamicType == NSImage().dynamicType)
+    }
+    
+    func testAddIcon_WithIncorrectResource() {
+        let path = NSBundle(forClass: self.dynamicType).pathForImageResource("nonexistent")
+        //let output = NSImage(byReferencingFile: path!)
+        
+        XCTAssertNil(Software(name: "EC", version: "1.6.2", status: .Installing, iconPath: path).icon)
     }
 }
