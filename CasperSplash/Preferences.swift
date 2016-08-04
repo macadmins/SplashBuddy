@@ -8,9 +8,11 @@
 
 import Cocoa
 
+var prefs: Preferences?
 
 class Preferences {
     var assetPath: String?
+    var postInstallPath: String?
     var userDefaults: NSUserDefaults?
     
     init(nsUserDefaults: NSUserDefaults) {
@@ -19,11 +21,30 @@ class Preferences {
         if let assetPath = getPreferencesAssetPath() {
             self.assetPath = assetPath
         }
+        
+        if let postInstallPath = getPreferencesPostInstallPath() {
+            self.postInstallPath = postInstallPath
+        }
     }
     
     func getPreferencesAssetPath() -> String? {
         return self.userDefaults?.stringForKey("assetPath")
     }
+    
+    func getPreferencesPostInstallPath() -> String? {
+        return self.userDefaults?.stringForKey("postInstallAssetPath")
+    }
+    
+    var postInstallAbsolutePath: String {
+        get {
+            if let assetPath = self.assetPath, postInstallPath = self.postInstallPath {
+                return "\(assetPath)/\(postInstallPath)"
+            } else {
+                return ""
+            }
+        }
+    }
+    
     
     
     func getPreferencesApplications() {

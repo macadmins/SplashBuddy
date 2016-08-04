@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		086F87AC1D532143002AA791 /* ec_32x32.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F761D520A3200CAB019 /* ec_32x32.png */; };
 		086F87AD1D532143002AA791 /* ec_32x32@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */; };
+		086F87B21D536F2B002AA791 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B11D536F2B002AA791 /* Script.swift */; };
 		089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29201D50D12200E58C6D /* AppDelegate.swift */; };
 		089D29231D50D12200E58C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 089D29221D50D12200E58C6D /* Assets.xcassets */; };
 		089D29261D50D12200E58C6D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089D29241D50D12200E58C6D /* MainMenu.xib */; };
@@ -45,6 +46,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		086F87AE1D536A0B002AA791 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		086F87B01D536EDF002AA791 /* test_postinstall_successful.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_successful.sh; sourceTree = "<group>"; };
+		086F87B11D536F2B002AA791 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		086F87B31D53784C002AA791 /* test_postinstall_failed.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_failed.sh; sourceTree = "<group>"; };
 		089D291D1D50D12200E58C6D /* CasperSplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CasperSplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		089D29201D50D12200E58C6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		089D29221D50D12200E58C6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +90,7 @@
 		089D29141D50D12200E58C6D = {
 			isa = PBXGroup;
 			children = (
+				086F87AE1D536A0B002AA791 /* README.md */,
 				089D291F1D50D12200E58C6D /* CasperSplash */,
 				08AC4F751D520A3200CAB019 /* CasperSplashTestAssets */,
 				089D292F1D50D12200E58C6D /* CasperSplashTests */,
@@ -112,6 +118,7 @@
 				089D294E1D50F1D800E58C6D /* Software.swift */,
 				089D294C1D50F04900E58C6D /* Regexes.swift */,
 				08AC4F7C1D5222BD00CAB019 /* Preferences.swift */,
+				086F87B11D536F2B002AA791 /* Script.swift */,
 			);
 			path = CasperSplash;
 			sourceTree = "<group>";
@@ -141,6 +148,8 @@
 			children = (
 				08AC4F761D520A3200CAB019 /* ec_32x32.png */,
 				08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */,
+				086F87B01D536EDF002AA791 /* test_postinstall_successful.sh */,
+				086F87B31D53784C002AA791 /* test_postinstall_failed.sh */,
 			);
 			path = CasperSplashTestAssets;
 			sourceTree = "<group>";
@@ -251,6 +260,7 @@
 				089D294F1D50F1D800E58C6D /* Software.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
+				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

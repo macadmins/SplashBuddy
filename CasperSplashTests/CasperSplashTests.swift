@@ -15,7 +15,7 @@ class CasperSplashTests: XCTestCase {
     
     var appDelegate: AppDelegate!
     var testUserDefaults: NSUserDefaults!
-    var testPrefs = Preferences!(nil)
+    //var testPrefs = Preferences!(nil)
     
     override func setUp() {
         super.setUp()
@@ -27,7 +27,7 @@ class CasperSplashTests: XCTestCase {
         let path = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources"
         testUserDefaults!.setObject(path, forKey: "assetPath")
         
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -37,6 +37,9 @@ class CasperSplashTests: XCTestCase {
         super.tearDown()
         
         softwareArray.removeAll()
+        
+        testUserDefaults.removeSuiteNamed("testing")
+        testUserDefaults = nil
     }
     
     
@@ -144,7 +147,6 @@ class CasperSplashTests: XCTestCase {
         ]
         let results = fileToSoftware(path!)
 
-        dump(results)
         for (index, item) in output.enumerate() {
             XCTAssertEqual(results[index].packageName, item.name)
             XCTAssertEqual(results[index].packageVersion, item.version)
@@ -177,8 +179,9 @@ class CasperSplashTests: XCTestCase {
     func testUserDefaults_assetPath() {
         
         let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources"
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        XCTAssertEqual(testPrefs!.assetPath, output)
+        XCTAssertEqual(testPrefs.assetPath, output)
     }
     
     func testUserDefaults_assetPathEmptyUserDefaults() {
@@ -201,6 +204,7 @@ class CasperSplashTests: XCTestCase {
         // Setup user defaults
         
         testUserDefaults!.setObject(input, forKey: "applicationsArray")
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
         testPrefs.getPreferencesApplications()
         
@@ -211,6 +215,9 @@ class CasperSplashTests: XCTestCase {
         XCTAssertEqual(softwareArray.first!.description, "SSO")
         XCTAssertEqual(softwareArray.first!.canContinue, true)
         XCTAssertEqual(softwareArray.first!.displayToUser, true)
+        
+        testUserDefaults.removeObjectForKey("applicationsArray")
+        XCTAssertNil(testUserDefaults.objectForKey("applicationsArray"))
     }
 
     func testUserDefaults_ApplicationMultiple() {
@@ -232,8 +239,9 @@ class CasperSplashTests: XCTestCase {
         // Setup user defaults
         
         testUserDefaults!.setObject(input, forKey: "applicationsArray")
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs!.getPreferencesApplications()
+        testPrefs.getPreferencesApplications()
         
         XCTAssertEqual(softwareArray.first!.packageName, "Enterprise Connect")
         XCTAssertEqual(softwareArray.first!.status, Software.SoftwareStatus.Pending)
@@ -250,6 +258,9 @@ class CasperSplashTests: XCTestCase {
         XCTAssertEqual(softwareArray.last!.canContinue, true)
         XCTAssertEqual(softwareArray.last!.status, Software.SoftwareStatus.Pending)
         XCTAssertEqual(softwareArray.last!.displayToUser, true)
+        
+        testUserDefaults.removeObjectForKey("applicationsArray")
+        XCTAssertNil(testUserDefaults.objectForKey("applicationsArray"))
     }
     
     func testUserDefaults_ApplicationEmptyUserDefaults() {
@@ -275,7 +286,8 @@ class CasperSplashTests: XCTestCase {
         
         testUserDefaults!.setObject(input, forKey: "applicationsArray")
         
-        testPrefs!.getPreferencesApplications()
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs.getPreferencesApplications()
         
         modifyGlobalSoftwareFromFile(path!)
         
@@ -287,5 +299,63 @@ class CasperSplashTests: XCTestCase {
         XCTAssertEqual(softwareArray.first!.description, "test")
         XCTAssertEqual(softwareArray.first!.canContinue, true)
         XCTAssertEqual(softwareArray.first!.displayToUser, true)
+        
+        testUserDefaults.removeObjectForKey("applicationsArray")
+        XCTAssertNil(testUserDefaults.objectForKey("applicationsArray"))
     }
+    
+    func testUserDefaults_PostInstallScriptFullPath() {
+        
+        let input = "test_postinstall_successful.sh"
+        testUserDefaults.setObject(input, forKey: "postInstallAssetPath")
+        let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources/" + input
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        
+        XCTAssertEqual(testPrefs.postInstallAbsolutePath, output)
+        
+        testUserDefaults.removeObjectForKey("postInstallAssetPath")
+        XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
+    }
+    
+    func testUserDefaults_PostInstallScriptFullPathEmpty() {
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        
+        XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
+        XCTAssertEqual(testPrefs.postInstallAbsolutePath, "")
+    }
+    
+    func testUserDefaults_PostInstallSuccessful() {
+        
+        let input = "test_postinstall_successful.sh"
+        testUserDefaults.setObject(input, forKey: "postInstallAssetPath")
+        
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        
+        let script = Script(postInstallAbsolutePath: testPrefs.postInstallAbsolutePath)
+        
+        script.executePostInstallScript { (isSuccessful) in
+            XCTAssertTrue(isSuccessful)
+        }
+        
+        testUserDefaults.removeObjectForKey("postInstallAssetPath")
+        XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
+    }
+    
+    func testUserDefaults_PostInstallFailed() {
+        
+        let input = "test_postinstall_failed.sh"
+        testUserDefaults.setObject(input, forKey: "postInstallAssetPath")
+        
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        
+        let script = Script(postInstallAbsolutePath: testPrefs.postInstallAbsolutePath)
+        script.executePostInstallScript { (isSuccessful) in
+            XCTAssertFalse(isSuccessful)
+        }
+        
+        testUserDefaults.removeObjectForKey("postInstallAssetPath")
+        XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
+    }
+    
+
 }
