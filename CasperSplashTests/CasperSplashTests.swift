@@ -357,5 +357,25 @@ class CasperSplashTests: XCTestCase {
         XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
     }
     
+    
+    func testUserDefaults_HTMLFullPath() {
+        
+        let input = "index.html"
+        testUserDefaults.setObject(input, forKey: "htmlPath")
+        let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources/" + input
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        
+        XCTAssertEqual(testPrefs.htmlAbsolutePath!, output)
+        
+        testUserDefaults.removeObjectForKey("postInstallAssetPath")
+        XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
+    }
+    
+    func testUserDefaults_HTMLFullPathEmpty() {
+        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources/index.html"
+        
+        XCTAssertEqual(testPrefs.htmlAbsolutePath!, output)
+    }
 
 }

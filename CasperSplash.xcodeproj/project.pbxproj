@@ -10,6 +10,11 @@
 		086F87AC1D532143002AA791 /* ec_32x32.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F761D520A3200CAB019 /* ec_32x32.png */; };
 		086F87AD1D532143002AA791 /* ec_32x32@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */; };
 		086F87B21D536F2B002AA791 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B11D536F2B002AA791 /* Script.swift */; };
+		086F87B81D5391FD002AA791 /* CasperSplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B61D5391FD002AA791 /* CasperSplashController.swift */; };
+		086F87B91D5391FD002AA791 /* CasperSplashController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086F87B71D5391FD002AA791 /* CasperSplashController.xib */; };
+		086F87BB1D5397AE002AA791 /* CasperSplashWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */; };
+		086F87BD1D53A018002AA791 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 086F87BC1D53A018002AA791 /* index.html */; };
+		086F87BF1D53A96B002AA791 /* dummy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 086F87BE1D53A96B002AA791 /* dummy.jpg */; };
 		089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29201D50D12200E58C6D /* AppDelegate.swift */; };
 		089D29231D50D12200E58C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 089D29221D50D12200E58C6D /* Assets.xcassets */; };
 		089D29261D50D12200E58C6D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 089D29241D50D12200E58C6D /* MainMenu.xib */; };
@@ -50,6 +55,11 @@
 		086F87B01D536EDF002AA791 /* test_postinstall_successful.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_successful.sh; sourceTree = "<group>"; };
 		086F87B11D536F2B002AA791 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
 		086F87B31D53784C002AA791 /* test_postinstall_failed.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_failed.sh; sourceTree = "<group>"; };
+		086F87B61D5391FD002AA791 /* CasperSplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashController.swift; sourceTree = "<group>"; };
+		086F87B71D5391FD002AA791 /* CasperSplashController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CasperSplashController.xib; sourceTree = "<group>"; };
+		086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashWebView.swift; sourceTree = "<group>"; };
+		086F87BC1D53A018002AA791 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		086F87BE1D53A96B002AA791 /* dummy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dummy.jpg; sourceTree = "<group>"; };
 		089D291D1D50D12200E58C6D /* CasperSplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CasperSplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		089D29201D50D12200E58C6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		089D29221D50D12200E58C6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,6 +129,9 @@
 				089D294C1D50F04900E58C6D /* Regexes.swift */,
 				08AC4F7C1D5222BD00CAB019 /* Preferences.swift */,
 				086F87B11D536F2B002AA791 /* Script.swift */,
+				086F87B61D5391FD002AA791 /* CasperSplashController.swift */,
+				086F87B71D5391FD002AA791 /* CasperSplashController.xib */,
+				086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */,
 			);
 			path = CasperSplash;
 			sourceTree = "<group>";
@@ -150,6 +163,8 @@
 				08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */,
 				086F87B01D536EDF002AA791 /* test_postinstall_successful.sh */,
 				086F87B31D53784C002AA791 /* test_postinstall_failed.sh */,
+				086F87BC1D53A018002AA791 /* index.html */,
+				086F87BE1D53A96B002AA791 /* dummy.jpg */,
 			);
 			path = CasperSplashTestAssets;
 			sourceTree = "<group>";
@@ -236,6 +251,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				086F87BF1D53A96B002AA791 /* dummy.jpg in Resources */,
+				086F87B91D5391FD002AA791 /* CasperSplashController.xib in Resources */,
+				086F87BD1D53A018002AA791 /* index.html in Resources */,
 				089D29231D50D12200E58C6D /* Assets.xcassets in Resources */,
 				089D29261D50D12200E58C6D /* MainMenu.xib in Resources */,
 			);
@@ -257,9 +275,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				086F87B81D5391FD002AA791 /* CasperSplashController.swift in Sources */,
 				089D294F1D50F1D800E58C6D /* Software.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
+				086F87BB1D5397AE002AA791 /* CasperSplashWebView.swift in Sources */,
 				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 			);

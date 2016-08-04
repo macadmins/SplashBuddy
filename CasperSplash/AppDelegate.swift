@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
+    var casperSplashController: CasperSplashController?
     
     let jamfLog: String = "/var/log/jamf.log"
     
@@ -19,10 +19,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         
-        let prefs = Preferences(nsUserDefaults: NSUserDefaults.standardUserDefaults())
-        prefs.getPreferencesAssetPath()
+        casperSplashController = CasperSplashController(windowNibName: "CasperSplashController")
+        casperSplashController?.showWindow(self)
         
-        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
+
+        
+        #if DEBUG
+            //NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
+        #else
+            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
+        #endif
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

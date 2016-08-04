@@ -8,11 +8,13 @@
 
 import Cocoa
 
-var prefs: Preferences?
+let prefs = Preferences(nsUserDefaults: NSUserDefaults.standardUserDefaults())
+
 
 class Preferences {
     var assetPath: String?
     var postInstallPath: String?
+    var htmlPath: String?
     var userDefaults: NSUserDefaults?
     
     init(nsUserDefaults: NSUserDefaults) {
@@ -25,6 +27,12 @@ class Preferences {
         if let postInstallPath = getPreferencesPostInstallPath() {
             self.postInstallPath = postInstallPath
         }
+        
+        if let htmlPath = getPreferencesHtmlPath() {
+            self.htmlPath = htmlPath
+        }
+        
+        
     }
     
     func getPreferencesAssetPath() -> String? {
@@ -35,12 +43,26 @@ class Preferences {
         return self.userDefaults?.stringForKey("postInstallAssetPath")
     }
     
+    func getPreferencesHtmlPath() -> String? {
+        return self.userDefaults?.stringForKey("htmlPath")
+    }
+    
     var postInstallAbsolutePath: String {
         get {
             if let assetPath = self.assetPath, postInstallPath = self.postInstallPath {
                 return "\(assetPath)/\(postInstallPath)"
             } else {
                 return ""
+            }
+        }
+    }
+    
+    var htmlAbsolutePath: String? {
+        get {
+            if let assetPath = self.assetPath, htmlPath = self.htmlPath {
+                return "\(assetPath)/\(htmlPath)"
+            } else {
+                return NSBundle.mainBundle().pathForResource("index", ofType: "html")
             }
         }
     }
