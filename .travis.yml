@@ -9,3 +9,6 @@ xcode_sdk: macosx10.11
 script:
 - set -o pipefail
 - xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash | xcpretty
+
+notifications:
+slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W

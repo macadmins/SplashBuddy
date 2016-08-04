@@ -18,6 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
+        
+        let prefs = Preferences(nsUserDefaults: NSUserDefaults.standardUserDefaults())
+        prefs.getPreferencesAssetPath()
+        
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
     }
 

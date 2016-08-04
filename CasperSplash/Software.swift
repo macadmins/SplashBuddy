@@ -13,29 +13,52 @@ var softwareArray = [Software]()
 class Software: Equatable {
 
     enum SoftwareStatus: String {
-        case Installing, Success, Failed
+        case Installing, Success, Failed, Pending
     }
 
     
-    let name: String
-    let version: String
+    let packageName: String
+    var packageVersion: String?
     var status: SoftwareStatus
     var icon: NSImage?
     var displayName: String?
     var description: String?
     var canContinue: Bool
+    var displayToUser: Bool
     
-    init(name: String, version: String, status: SoftwareStatus, iconPath: String?=nil, canContinue: Bool=true) {
-        self.name = name
-        self.version = version
+    init(name: String,
+         version: String? = nil,
+         status: SoftwareStatus = .Pending,
+         iconPath: String? = nil,
+         displayName: String? = nil,
+         description: String? = nil,
+         canContinue: Bool = true,
+         displayToUser: Bool = false) {
+        
+        self.packageName = name
+        self.packageVersion = version
         self.status = status
         self.canContinue = canContinue
+        self.displayToUser = displayToUser
         
         if iconPath != nil {
-            self.icon = NSImage.init(contentsOfFile: iconPath!)
+            setIcon(iconPath!)
         }
+        
+        if displayName != nil {
+            self.displayName = displayName
+        }
+        
+        if description != nil {
+            self.description = description
+        }
+
     }
     
+    func setIcon(iconPath: String) {
+        let image = NSImage(contentsOfFile: iconPath)
+        self.icon = image
+    }
     
     func isEqual(rhs: Software) -> Bool {
         return self == rhs
@@ -45,7 +68,15 @@ class Software: Equatable {
 }
 
 func == (lhs: Software, rhs: Software) -> Bool {
-    return lhs.name == rhs.name && lhs.version == rhs.version && lhs.status == rhs.status
+    return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
+}
+
+func modifyGlobalSoftwareFromFile(path: String) -> Void {
+    if let lines = readLinesFromFile(path) {
+        for line in lines {
+            modifySoftwareFromLine(line, softwareArray: &softwareArray)
+        }
+    }
 }
 
 func fileToSoftware(path: String) -> [Software] {
@@ -73,11 +104,13 @@ func readLinesFromFile(path: String) -> [String]? {
 func modifySoftwareFromLine(line: String, inout softwareArray: [Software]) {
     if let software = getSoftwareFromRegex(line) {
         
-        // If Software already exists, replace it
-        if let index = softwareArray.indexOf({$0.name == software.name}) {
-            softwareArray.removeAtIndex(index)
+        // If Software already exists, replace status and package version
+        if let index = softwareArray.indexOf({$0.packageName == software.packageName}) {
+            softwareArray[index].status = software.status
+            softwareArray[index].packageVersion = software.packageVersion
+        } else {
+            softwareArray.append(software)
         }
-        softwareArray.append(software)
     }
 }
 
