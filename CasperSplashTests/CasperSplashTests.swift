@@ -15,6 +15,9 @@ class CasperSplashTests: XCTestCase {
     
     var appDelegate: AppDelegate!
     var testUserDefaults: NSUserDefaults!
+    var testPrefs: Preferences!
+    var casperSplashController: CasperSplashController!
+    var softwareArray = [Software]()
     //var testPrefs = Preferences!(nil)
     
     override func setUp() {
@@ -28,7 +31,6 @@ class CasperSplashTests: XCTestCase {
         testUserDefaults!.setObject(path, forKey: "assetPath")
         
         
-        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -36,10 +38,10 @@ class CasperSplashTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         
-        softwareArray.removeAll()
         
         testUserDefaults.removeSuiteNamed("testing")
         testUserDefaults = nil
+        
     }
     
     
@@ -128,7 +130,8 @@ class CasperSplashTests: XCTestCase {
         "Wed Mar 16 13:31:11 François's Mac mini jamf[2874]: Installing Installing022-0.22.pkg...",
         ]
 
-        XCTAssertEqual(readLinesFromFile(path!)!, output)
+        let fileHandle = NSFileHandle(forReadingAtPath: path!)
+        XCTAssertEqual(readLinesFromFile(fileHandle!)!, output)
     }
     
     func testReadFromFile_CanParseSoftwareFromFile() {
@@ -145,15 +148,16 @@ class CasperSplashTests: XCTestCase {
             software.init(name: "Failed153", version: "1.5.3", status: .Failed),
             software.init(name: "Installing022", version: "0.22", status: .Installing)
         ]
-        let results = fileToSoftware(path!)
+        let fileHandle = NSFileHandle(forReadingAtPath: path!)
+        let results = fileToSoftware(fileHandle!)
 
         for (index, item) in output.enumerate() {
             XCTAssertEqual(results[index].packageName, item.name)
             XCTAssertEqual(results[index].packageVersion, item.version)
             XCTAssertEqual(results[index].status, item.status)
-            XCTAssertNil(results[index].icon?.dynamicType)
+            XCTAssertEqual(results[index].icon, NSImage(imageLiteral: NSImageNameFolder))
             XCTAssertNil(results[index].displayName)
-            XCTAssertNil(results[index].description)
+            XCTAssertNil(results[index].desc)
             XCTAssertEqual(results[index].canContinue, true)
         }
 
@@ -161,7 +165,8 @@ class CasperSplashTests: XCTestCase {
     
     func testReadFromFile_NonExistentFile() {
         let path = "/nonexistent"
-        XCTAssertNil(readLinesFromFile(path))
+        let fileHandle = NSFileHandle(forReadingAtPath: path)
+        XCTAssertNil(readLinesFromFile(fileHandle))
     }
     
     func testAddIcon_CheckIfNSImage() {
@@ -173,13 +178,13 @@ class CasperSplashTests: XCTestCase {
     func testAddIcon_WithIncorrectResource() {
         let path = NSBundle(forClass: self.dynamicType).pathForImageResource("nonexistent")
         
-        XCTAssertNil(Software(name: "EC", version: "1.6.2", status: .Installing, iconPath: path).icon)
+        XCTAssertEqual(Software(name: "EC", version: "1.6.2", status: .Installing, iconPath: path).icon, NSImage(imageLiteral: NSImageNameFolder))
     }
     
     func testUserDefaults_assetPath() {
         
         let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources"
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
         XCTAssertEqual(testPrefs.assetPath, output)
     }
@@ -199,22 +204,22 @@ class CasperSplashTests: XCTestCase {
             "description": "SSO",
             "packageName": "Enterprise Connect",
             "iconRelativePath": "ec_32x32.png",
-            "canContinue": true
+            "canContinue": "1"
             ]]
         // Setup user defaults
         
         testUserDefaults!.setObject(input, forKey: "applicationsArray")
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications()
+        testPrefs.getPreferencesApplications(&softwareArray)
         
-        XCTAssertEqual(softwareArray.first!.packageName, "Enterprise Connect")
-        XCTAssertEqual(softwareArray.first!.status, Software.SoftwareStatus.Pending)
-        XCTAssert(softwareArray.first!.icon?.dynamicType == NSImage().dynamicType)
-        XCTAssertEqual(softwareArray.first!.displayName, "Enterprise Connect")
-        XCTAssertEqual(softwareArray.first!.description, "SSO")
-        XCTAssertEqual(softwareArray.first!.canContinue, true)
-        XCTAssertEqual(softwareArray.first!.displayToUser, true)
+        XCTAssertEqual(self.softwareArray.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(self.softwareArray.first!.status, Software.SoftwareStatus.Pending)
+        XCTAssert(self.softwareArray.first!.icon?.dynamicType == NSImage().dynamicType)
+        XCTAssertEqual(self.softwareArray.first!.displayName, "Enterprise Connect")
+        XCTAssertEqual(self.softwareArray.first!.desc, "SSO")
+        XCTAssertEqual(self.softwareArray.first!.canContinue, true)
+        XCTAssertEqual(self.softwareArray.first!.displayToUser, true)
         
         testUserDefaults.removeObjectForKey("applicationsArray")
         XCTAssertNil(testUserDefaults.objectForKey("applicationsArray"))
@@ -227,37 +232,37 @@ class CasperSplashTests: XCTestCase {
                 "description": "SSO",
                 "packageName": "Enterprise Connect",
                 "iconRelativePath": "ec_32x32.png",
-                "canContinue": true
+                "canContinue": "1"
             ],[
                 "displayName": "Druva",
                 "description": "Backup",
                 "packageName": "DruvaEndPoint",
                 "iconRelativePath": "ec_32x32.png",
-                "canContinue": true
+                "canContinue": "1"
             ]
                      ]
         // Setup user defaults
         
         testUserDefaults!.setObject(input, forKey: "applicationsArray")
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications()
+        testPrefs.getPreferencesApplications(&softwareArray)
         
-        XCTAssertEqual(softwareArray.first!.packageName, "Enterprise Connect")
-        XCTAssertEqual(softwareArray.first!.status, Software.SoftwareStatus.Pending)
-        XCTAssert(softwareArray.first!.icon?.dynamicType == NSImage().dynamicType)
-        XCTAssertEqual(softwareArray.first!.displayName, "Enterprise Connect")
-        XCTAssertEqual(softwareArray.first!.description, "SSO")
-        XCTAssertEqual(softwareArray.first!.canContinue, true)
-        XCTAssertEqual(softwareArray.first!.displayToUser, true)
+        XCTAssertEqual(self.softwareArray.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(self.softwareArray.first!.status, Software.SoftwareStatus.Pending)
+        XCTAssert(self.softwareArray.first!.icon?.dynamicType == NSImage().dynamicType)
+        XCTAssertEqual(self.softwareArray.first!.displayName, "Enterprise Connect")
+        XCTAssertEqual(self.softwareArray.first!.desc, "SSO")
+        XCTAssertEqual(self.softwareArray.first!.canContinue, true)
+        XCTAssertEqual(self.softwareArray.first!.displayToUser, true)
         
-        XCTAssertEqual(softwareArray.last!.displayName, "Druva")
-        XCTAssertEqual(softwareArray.last!.description, "Backup")
-        XCTAssertEqual(softwareArray.last!.packageName, "DruvaEndPoint")
-        XCTAssert(softwareArray.last!.icon?.dynamicType == NSImage().dynamicType)
-        XCTAssertEqual(softwareArray.last!.canContinue, true)
-        XCTAssertEqual(softwareArray.last!.status, Software.SoftwareStatus.Pending)
-        XCTAssertEqual(softwareArray.last!.displayToUser, true)
+        XCTAssertEqual(self.softwareArray.last!.displayName, "Druva")
+        XCTAssertEqual(self.softwareArray.last!.desc, "Backup")
+        XCTAssertEqual(self.softwareArray.last!.packageName, "DruvaEndPoint")
+        XCTAssert(self.softwareArray.last!.icon?.dynamicType == NSImage().dynamicType)
+        XCTAssertEqual(self.softwareArray.last!.canContinue, true)
+        XCTAssertEqual(self.softwareArray.last!.status, Software.SoftwareStatus.Pending)
+        XCTAssertEqual(self.softwareArray.last!.displayToUser, true)
         
         testUserDefaults.removeObjectForKey("applicationsArray")
         XCTAssertNil(testUserDefaults.objectForKey("applicationsArray"))
@@ -266,10 +271,10 @@ class CasperSplashTests: XCTestCase {
     func testUserDefaults_ApplicationEmptyUserDefaults() {
         
         testUserDefaults = NSUserDefaults.init(suiteName: "none")
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        testPrefs.getPreferencesApplications()
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs.getPreferencesApplications(&softwareArray)
         
-        XCTAssertTrue(softwareArray.isEmpty)
+        XCTAssertTrue(self.softwareArray.isEmpty)
     }
     
     func testUserDefaults_CanParseSoftwareFromFile() {
@@ -280,25 +285,26 @@ class CasperSplashTests: XCTestCase {
             "description": "test",
             "packageName": "Success021",
             "iconRelativePath": "ec_32x32.png",
-            "canContinue": true
+            "canContinue": "1"
             ]]
         // Setup user defaults
         
         testUserDefaults!.setObject(input, forKey: "applicationsArray")
         
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        testPrefs.getPreferencesApplications()
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs.getPreferencesApplications(&softwareArray)
         
-        modifyGlobalSoftwareFromFile(path!)
+        let fileHandle = NSFileHandle(forReadingAtPath: path!)
+        modifySoftwareArrayFromFile(fileHandle, softwareArray: &self.softwareArray)
         
-        XCTAssertEqual(softwareArray.first!.packageName, "Success021")
-        XCTAssertEqual(softwareArray.first!.packageVersion, "0.21")
-        XCTAssertEqual(softwareArray.first!.status, Software.SoftwareStatus.Success)
-        XCTAssert(softwareArray.first!.icon?.dynamicType == NSImage().dynamicType)
-        XCTAssertEqual(softwareArray.first!.displayName, "Suceeded")
-        XCTAssertEqual(softwareArray.first!.description, "test")
-        XCTAssertEqual(softwareArray.first!.canContinue, true)
-        XCTAssertEqual(softwareArray.first!.displayToUser, true)
+        XCTAssertEqual(self.softwareArray.first!.packageName, "Success021")
+        XCTAssertEqual(self.softwareArray.first!.packageVersion, "0.21")
+        XCTAssertEqual(self.softwareArray.first!.status, Software.SoftwareStatus.Success)
+        XCTAssert(self.softwareArray.first!.icon?.dynamicType == NSImage().dynamicType)
+        XCTAssertEqual(self.softwareArray.first!.displayName, "Suceeded")
+        XCTAssertEqual(self.softwareArray.first!.desc, "test")
+        XCTAssertEqual(self.softwareArray.first!.canContinue, true)
+        XCTAssertEqual(self.softwareArray.first!.displayToUser, true)
         
         testUserDefaults.removeObjectForKey("applicationsArray")
         XCTAssertNil(testUserDefaults.objectForKey("applicationsArray"))
@@ -309,19 +315,19 @@ class CasperSplashTests: XCTestCase {
         let input = "test_postinstall_successful.sh"
         testUserDefaults.setObject(input, forKey: "postInstallAssetPath")
         let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources/" + input
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        XCTAssertEqual(testPrefs.postInstallAbsolutePath, output)
+        XCTAssertEqual(testPrefs.postInstallScript?.absolutePath, output)
         
         testUserDefaults.removeObjectForKey("postInstallAssetPath")
         XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
     }
     
     func testUserDefaults_PostInstallScriptFullPathEmpty() {
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
         XCTAssertNil(testUserDefaults.objectForKey("postInstallAssetPath"))
-        XCTAssertEqual(testPrefs.postInstallAbsolutePath, "")
+        XCTAssertNil(testPrefs.postInstallScript?.absolutePath, "")
     }
     
     func testUserDefaults_PostInstallSuccessful() {
@@ -329,11 +335,11 @@ class CasperSplashTests: XCTestCase {
         let input = "test_postinstall_successful.sh"
         testUserDefaults.setObject(input, forKey: "postInstallAssetPath")
         
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        let script = Script(postInstallAbsolutePath: testPrefs.postInstallAbsolutePath)
+        let script = Script(absolutePath: testPrefs.postInstallScript!.absolutePath)
         
-        script.executePostInstallScript { (isSuccessful) in
+        script.execute { (isSuccessful) in
             XCTAssertTrue(isSuccessful)
         }
         
@@ -346,10 +352,10 @@ class CasperSplashTests: XCTestCase {
         let input = "test_postinstall_failed.sh"
         testUserDefaults.setObject(input, forKey: "postInstallAssetPath")
         
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        let script = Script(postInstallAbsolutePath: testPrefs.postInstallAbsolutePath)
-        script.executePostInstallScript { (isSuccessful) in
+        let script = Script(absolutePath: testPrefs.postInstallScript!.absolutePath)
+        script.execute { (isSuccessful) in
             XCTAssertFalse(isSuccessful)
         }
         
@@ -363,7 +369,7 @@ class CasperSplashTests: XCTestCase {
         let input = "index.html"
         testUserDefaults.setObject(input, forKey: "htmlPath")
         let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources/" + input
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
         XCTAssertEqual(testPrefs.htmlAbsolutePath!, output)
         
@@ -372,10 +378,11 @@ class CasperSplashTests: XCTestCase {
     }
     
     func testUserDefaults_HTMLFullPathEmpty() {
-        let testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         let output = NSBundle(forClass: self.dynamicType).bundlePath + "/Contents/Resources/index.html"
         
         XCTAssertEqual(testPrefs.htmlAbsolutePath!, output)
     }
+
 
 }

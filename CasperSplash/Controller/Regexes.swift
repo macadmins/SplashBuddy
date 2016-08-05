@@ -8,7 +8,11 @@
 
 import Foundation
 
-// Initialize Regexes
+/** 
+ Initialize Regexes
+ 
+ - returns: A Dictionary of status: regex
+ */
 func initRegex() -> Dictionary<Software.SoftwareStatus, NSRegularExpression?> {
     let re_options = NSRegularExpressionOptions.AnchorsMatchLines
     let re_installing: NSRegularExpression?
@@ -17,7 +21,7 @@ func initRegex() -> Dictionary<Software.SoftwareStatus, NSRegularExpression?> {
     } catch {
         re_installing = nil
     }
-    
+
     let re_failure: NSRegularExpression?
     do {
         try re_failure = NSRegularExpression(pattern: "(?<=Installation failed. The installer reported: installer: Package name is )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*)$", options: re_options)

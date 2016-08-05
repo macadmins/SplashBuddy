@@ -1,0 +1,10 @@
+module: CasperSplash
+author: François Levaux-Tiffreau
+author_url: https://maclovin.org
+github_url: https://github.com/ftiff/CasperSplash
+copyright: 'GPLv3'
+xcodebuild_arguments: [-target, CasperSplash]
+clean: true
+min_acl: private
+skip_undocumented: true
+

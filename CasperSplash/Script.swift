@@ -9,20 +9,20 @@
 import Cocoa
 
 class Script {
-    let postInstallAbsolutePath: String
+    let absolutePath: String
     
-    init(postInstallAbsolutePath: String) {
-        self.postInstallAbsolutePath = postInstallAbsolutePath
+    init(absolutePath: String) {
+        self.absolutePath = absolutePath
     }
     
-    func executePostInstallScript(completionHandler: (isSuccessful: Bool) -> ()) {
+    func execute(completionHandler: (isSuccessful: Bool) -> ()) {
         
         let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
         
         dispatch_async(taskQueue) {
             let task: NSTask = NSTask()
             task.launchPath = "/bin/bash"
-            task.arguments = [self.postInstallAbsolutePath]
+            task.arguments = [self.absolutePath]
             task.terminationHandler = { task in dispatch_async(dispatch_get_main_queue(), {
                 if task.terminationStatus == 0 {
                     completionHandler(isSuccessful: true)

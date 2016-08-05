@@ -26,7 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,6 +36,16 @@
                BlueprintIdentifier = "089D292B1D50D12200E58C6D"
                BuildableName = "CasperSplashTests.xctest"
                BlueprintName = "CasperSplashTests"
+               ReferencedContainer = "container:CasperSplash.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "08DAA4851D54A62B0027E650"
+               BuildableName = "CasperSplashUITests.xctest"
+               BlueprintName = "CasperSplashUITests"
                ReferencedContainer = "container:CasperSplash.xcodeproj">
             </BuildableReference>
          </TestableReference>

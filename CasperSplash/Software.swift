@@ -8,23 +8,50 @@
 
 import Cocoa
 
-var softwareArray = [Software]()
+/**
+ My new class
+ 
+*/
+class Software: NSObject {
 
-class Software: Equatable {
 
-    enum SoftwareStatus: String {
-        case Installing, Success, Failed, Pending
+    /**
+     Status of the software.
+     Default is .Pending, other cases will be set while parsing the log
+    */
+    @objc enum SoftwareStatus: Int {
+        // test Installing
+        case Installing = 0
+        
+        // test Success
+        case Success = 1
+        case Failed = 2
+        case Pending = 3
     }
-
     
-    let packageName: String
-    var packageVersion: String?
-    var status: SoftwareStatus
-    var icon: NSImage?
-    var displayName: String?
-    var description: String?
-    var canContinue: Bool
-    var displayToUser: Bool
+
+    dynamic let packageName: String
+    dynamic var packageVersion: String?
+    dynamic var status: SoftwareStatus
+    dynamic var icon: NSImage?
+    dynamic var displayName: String?
+    dynamic var desc: String?
+    dynamic var canContinue: Bool
+    dynamic var displayToUser: Bool
+    
+    /// MARK: Initializers
+    
+    /**
+     Initializes a Software Object
+     
+     - note: Only packageName is required to parse, displayName, description and displayToUser will have to be set later to properly show it on the GUI.
+     
+     - todo: rename "name" to "packageName"
+     
+     - parameters:
+        - packageName: name of the package (packageName-packageVersion.pkg)
+     */
+
     
     init(name: String,
          version: String? = nil,
@@ -41,28 +68,26 @@ class Software: Equatable {
         self.canContinue = canContinue
         self.displayToUser = displayToUser
         
-        if iconPath != nil {
-            setIcon(iconPath!)
+        if let iconPath = iconPath {
+            self.icon = NSImage(contentsOfFile: iconPath)
+        } else {
+            self.icon = NSImage(imageLiteral: NSImageNameFolder)
         }
         
-        if displayName != nil {
+        if let displayName = displayName {
             self.displayName = displayName
         }
         
-        if description != nil {
-            self.description = description
+        if let description = description {
+            self.desc = description
         }
 
     }
     
-    func setIcon(iconPath: String) {
-        let image = NSImage(contentsOfFile: iconPath)
-        self.icon = image
-    }
-    
-    func isEqual(rhs: Software) -> Bool {
-        return self == rhs
-    }
+//    /// Compare two Software objects
+//    func isEqual(rhs: Software) -> Bool {
+//        return self == rhs
+//    }
     
     
 }
@@ -71,19 +96,19 @@ func == (lhs: Software, rhs: Software) -> Bool {
     return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
 }
 
-func modifyGlobalSoftwareFromFile(path: String) -> Void {
-    if let lines = readLinesFromFile(path) {
+func modifySoftwareArrayFromFile(fileHandle: NSFileHandle?, inout softwareArray: [Software]) -> Void {
+    if let lines = readLinesFromFile(fileHandle) {
         for line in lines {
             modifySoftwareFromLine(line, softwareArray: &softwareArray)
         }
     }
 }
 
-func fileToSoftware(path: String) -> [Software] {
+func fileToSoftware(fileHandle: NSFileHandle?) -> [Software] {
     var result = [Software]()
     
     // Create an array of lines
-    if let lines = readLinesFromFile(path) {
+    if let lines = readLinesFromFile(fileHandle) {
         for line in lines {
             modifySoftwareFromLine(line, softwareArray: &result)
         }
@@ -91,11 +116,11 @@ func fileToSoftware(path: String) -> [Software] {
     return result
 }
 
-func readLinesFromFile(path: String) -> [String]? {
-    if let log = NSFileHandle(forReadingAtPath: path) {
+func readLinesFromFile(fileHandle: NSFileHandle?) -> [String]? {
+    if let log = fileHandle {
         return String(data: log.readDataToEndOfFile(), encoding: NSUTF8StringEncoding)?.componentsSeparatedByString("\n")
     } else {
-        NSLog("Non-existent path: \(path)")
+        NSLog("Error reading file.")
         return nil
     }
     
@@ -111,6 +136,8 @@ func modifySoftwareFromLine(line: String, inout softwareArray: [Software]) {
         } else {
             softwareArray.append(software)
         }
+        
+        
     }
 }
 

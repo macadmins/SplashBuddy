@@ -24,10 +24,20 @@
 		089D294F1D50F1D800E58C6D /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294E1D50F1D800E58C6D /* Software.swift */; };
 		089D29531D51D50700E58C6D /* jamf_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 089D29521D51D50700E58C6D /* jamf_1.txt */; };
 		08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC4F7C1D5222BD00CAB019 /* Preferences.swift */; };
+		08DAA4901D54A67A0027E650 /* CasperSplashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */; };
+		08DAA4911D54A67E0027E650 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 089D293D1D50D12200E58C6D /* Info.plist */; };
+		08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		089D292D1D50D12200E58C6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089D29151D50D12200E58C6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 089D291C1D50D12200E58C6D;
+			remoteInfo = CasperSplash;
+		};
+		08DAA48B1D54A62B0027E650 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089D29151D50D12200E58C6D /* Project object */;
 			proxyType = 1;
@@ -77,6 +87,8 @@
 		08AC4F761D520A3200CAB019 /* ec_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ec_32x32.png; sourceTree = "<group>"; };
 		08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ec_32x32@2x.png"; sourceTree = "<group>"; };
 		08AC4F7C1D5222BD00CAB019 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = CasperSplash/Preferences.swift; sourceTree = SOURCE_ROOT; };
+		08DAA4861D54A62B0027E650 /* CasperSplashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CasperSplashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareStatusValueTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		089D29291D50D12200E58C6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08DAA4831D54A62B0027E650 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -114,6 +133,7 @@
 			children = (
 				089D291D1D50D12200E58C6D /* CasperSplash.app */,
 				089D292C1D50D12200E58C6D /* CasperSplashTests.xctest */,
+				08DAA4861D54A62B0027E650 /* CasperSplashUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +151,7 @@
 				086F87B11D536F2B002AA791 /* Script.swift */,
 				086F87B61D5391FD002AA791 /* CasperSplashController.swift */,
 				086F87B71D5391FD002AA791 /* CasperSplashController.xib */,
+				08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */,
 				086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */,
 			);
 			path = CasperSplash;
@@ -208,6 +229,24 @@
 			productReference = 089D292C1D50D12200E58C6D /* CasperSplashTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		08DAA4851D54A62B0027E650 /* CasperSplashUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08DAA48F1D54A62B0027E650 /* Build configuration list for PBXNativeTarget "CasperSplashUITests" */;
+			buildPhases = (
+				08DAA4821D54A62B0027E650 /* Sources */,
+				08DAA4831D54A62B0027E650 /* Frameworks */,
+				08DAA4841D54A62B0027E650 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08DAA48C1D54A62B0027E650 /* PBXTargetDependency */,
+			);
+			name = CasperSplashUITests;
+			productName = CasperSplashUITests;
+			productReference = 08DAA4861D54A62B0027E650 /* CasperSplashUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -222,6 +261,10 @@
 						CreatedOnToolsVersion = 7.3.1;
 					};
 					089D292B1D50D12200E58C6D = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 089D291C1D50D12200E58C6D;
+					};
+					08DAA4851D54A62B0027E650 = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 089D291C1D50D12200E58C6D;
 					};
@@ -242,6 +285,7 @@
 			targets = (
 				089D291C1D50D12200E58C6D /* CasperSplash */,
 				089D292B1D50D12200E58C6D /* CasperSplashTests */,
+				08DAA4851D54A62B0027E650 /* CasperSplashUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -268,6 +312,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		08DAA4841D54A62B0027E650 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08DAA4911D54A67E0027E650 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -281,6 +333,7 @@
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* CasperSplashWebView.swift in Sources */,
 				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
+				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +346,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		08DAA4821D54A62B0027E650 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08DAA4901D54A67A0027E650 /* CasperSplashUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -300,6 +361,11 @@
 			isa = PBXTargetDependency;
 			target = 089D291C1D50D12200E58C6D /* CasperSplash */;
 			targetProxy = 089D292D1D50D12200E58C6D /* PBXContainerItemProxy */;
+		};
+		08DAA48C1D54A62B0027E650 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 089D291C1D50D12200E58C6D /* CasperSplash */;
+			targetProxy = 08DAA48B1D54A62B0027E650 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -448,6 +514,30 @@
 			};
 			name = Release;
 		};
+		08DAA48D1D54A62B0027E650 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CasperSplashUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CasperSplash;
+			};
+			name = Debug;
+		};
+		08DAA48E1D54A62B0027E650 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CasperSplashUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CasperSplash;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -477,6 +567,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		08DAA48F1D54A62B0027E650 /* Build configuration list for PBXNativeTarget "CasperSplashUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08DAA48D1D54A62B0027E650 /* Debug */,
+				08DAA48E1D54A62B0027E650 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
