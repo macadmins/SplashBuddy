@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SoftwareStatusValueTransformer: NSValueTransformer {
+class SoftwareStatusValueTransformer: ValueTransformer {
 
     override class func transformedValueClass() -> AnyClass {
         return NSImage.self
@@ -18,20 +18,20 @@ class SoftwareStatusValueTransformer: NSValueTransformer {
         return false
     }
     
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
+    override func transformedValue(_ value: AnyObject?) -> AnyObject? {
 
-        if let value: Int = value?.integerValue {
+        if let value: Int = value?.intValue {
             switch value {
-            case Software.SoftwareStatus.Failed.rawValue:
-                return NSImage(imageLiteral: "NSStatusUnavailable")
-            case Software.SoftwareStatus.Installing.rawValue:
-                return NSImage(imageLiteral: "NSStatusPartiallyAvailable")
-            case Software.SoftwareStatus.Pending.rawValue:
-                return NSImage(imageLiteral: "NSStatusNone")
-            case Software.SoftwareStatus.Success.rawValue:
-                return NSImage(imageLiteral: "NSStatusAvailable")
+            case Software.SoftwareStatus.failed.rawValue:
+                return NSImage(named: "NSStatusUnavailable")
+            case Software.SoftwareStatus.installing.rawValue:
+                return NSImage(named: "NSStatusPartiallyAvailable")
+            case Software.SoftwareStatus.pending.rawValue:
+                return NSImage(named: "NSStatusNone")
+            case Software.SoftwareStatus.success.rawValue:
+                return NSImage(named: "NSStatusAvailable")
             default:
-                return NSImage(imageLiteral: "NSStatusNone")
+                return NSImage(named: "NSStatusNone")
             }
         } else {
             return nil

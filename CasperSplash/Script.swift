@@ -15,15 +15,15 @@ class Script {
         self.absolutePath = absolutePath
     }
     
-    func execute(completionHandler: (isSuccessful: Bool) -> ()) {
+    func execute(_ completionHandler: (isSuccessful: Bool) -> ()) {
         
-        let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
+        let queue = DispatchQueue(label: "io.fti.CasperSplash.Script", attributes: .qosUserInitiated, target: nil)
         
-        dispatch_async(taskQueue) {
-            let task: NSTask = NSTask()
+        queue.async {
+            let task: Task = Task()
             task.launchPath = "/bin/bash"
             task.arguments = [self.absolutePath]
-            task.terminationHandler = { task in dispatch_async(dispatch_get_main_queue(), {
+            task.terminationHandler = { task in DispatchQueue.main.async(execute: {
                 if task.terminationStatus == 0 {
                     completionHandler(isSuccessful: true)
                 } else {
@@ -31,7 +31,8 @@ class Script {
                 }
             })
             }
+            
+            task.launch()
         }
     }
-    
 }

@@ -20,51 +20,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let jamfLog: String = "/var/log/jamf.log"
     
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
         softwareStatusValueTransformer = SoftwareStatusValueTransformer()
-        NSValueTransformer.setValueTransformer(softwareStatusValueTransformer, forName: "SoftwareStatusValueTransformer")
+        ValueTransformer.setValueTransformer(softwareStatusValueTransformer, forName: "SoftwareStatusValueTransformer" as ValueTransformerName)
         
         casperSplashController = CasperSplashController(windowNibName: "CasperSplashController")
         casperSplashController?.showWindow(self)
         
-        prefs.logFileHandle = NSFileHandle(forReadingAtPath: jamfLog)
+        Preferences.sharedInstance.logFileHandle = FileHandle(forReadingAtPath: jamfLog)
 
-        prefs.getPreferencesApplications(&casperSplashController.softwareArray)
+        Preferences.sharedInstance.getPreferencesApplications(&casperSplashController.softwareArray)
         
         #if DEBUG
-            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
         #else
-            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
         #endif
         
-        
-        //dump(prefs.userDefaults)
+
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
     
     
     func readTimer() -> Void {
-        let readQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
-        dispatch_async(readQueue) { 
-            if let lines = readLinesFromFile(prefs.logFileHandle) {
+        NSLog("readTimercalled")
+        let readQueue = DispatchQueue(label: "io.fti.CasperSplash.readQueue", attributes: .qosBackground, target: nil)
+        
+        if let lines = readLinesFromFile(Preferences.sharedInstance.logFileHandle) {
+            readQueue.async {
                 for line in lines {
-                    dispatch_async(dispatch_get_main_queue(), { 
-                        modifySoftwareFromLine(line, softwareArray: &self.casperSplashController.softwareArray)
-                    })
                     
+                    // Testing in background if lines should be changed before calling modifySoftwareFromLine
+                    // greatly improves user experience
+                    if let software = getSoftwareFromRegex(line) {
+                        DispatchQueue.main.sync(execute: {
+                            modifySoftwareArray(fromSoftware: software, softwareArray: &self.casperSplashController.softwareArray)
+                            self.casperSplashController.checkContinue()
+                            
+                            
+                        })
+                    }
                 }
             }
         }
-        #if DEBUG
-            //dump(prefs.softwareArray)
-        #endif
     }
-
-
 }
 

@@ -25,7 +25,6 @@
 		089D29531D51D50700E58C6D /* jamf_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 089D29521D51D50700E58C6D /* jamf_1.txt */; };
 		08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC4F7C1D5222BD00CAB019 /* Preferences.swift */; };
 		08DAA4901D54A67A0027E650 /* CasperSplashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */; };
-		08DAA4911D54A67E0027E650 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 089D293D1D50D12200E58C6D /* Info.plist */; };
 		08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */; };
 /* End PBXBuildFile section */
 
@@ -254,18 +253,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "François Levaux-Tiffreau";
 				TargetAttributes = {
 					089D291C1D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					089D292B1D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 089D291C1D50D12200E58C6D;
 					};
 					08DAA4851D54A62B0027E650 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 089D291C1D50D12200E58C6D;
 					};
 				};
@@ -316,7 +318,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08DAA4911D54A67E0027E650 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,8 +396,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -440,8 +443,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -473,6 +478,7 @@
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -485,6 +491,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -497,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CasperSplash.app/Contents/MacOS/CasperSplash";
 			};
 			name = Debug;
@@ -510,6 +519,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CasperSplash.app/Contents/MacOS/CasperSplash";
 			};
 			name = Release;
@@ -522,6 +533,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CasperSplash;
 			};
 			name = Debug;
@@ -534,6 +546,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CasperSplash;
 			};
 			name = Release;
@@ -575,6 +589,7 @@
 				08DAA48E1D54A62B0027E650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

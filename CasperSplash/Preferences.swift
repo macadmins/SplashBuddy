@@ -8,12 +8,15 @@
 
 import Cocoa
 
-let prefs = Preferences()
+//let prefs = Preferences()
 
 /**
  Preferences() keeps the relevant preferences
  */
 class Preferences {
+    
+    static let sharedInstance = Preferences()
+    
     /// Absolute Path to assets. Relative paths will be appended.
     var assetPath: String?
     
@@ -28,26 +31,22 @@ class Preferences {
     var htmlPath: String?
     
     /// User defaults. Should always use standardUserDefaults() if not testing.
-    var userDefaults: NSUserDefaults?
+    var userDefaults: UserDefaults?
     
-    var logFileHandle: NSFileHandle?
+    var logFileHandle: FileHandle?
     /// if nsUserDefaults defaults to NSUserDefaults.standardUserDefaults()
     
-    init(nsUserDefaults: NSUserDefaults?=nil) {
+    init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
         
         //softwareArray = [Software]()
         
-        if nsUserDefaults == nil {
-            self.userDefaults = NSUserDefaults.standardUserDefaults()
-        } else {
-            self.userDefaults = nsUserDefaults
-        }
+        self.userDefaults = nsUserDefaults
         
         if let assetPath = getPreferencesAssetPath() {
             self.assetPath = assetPath
         }
         
-        if let assetPath = self.assetPath, postInstallPath = getPreferencesPostInstallPath() {
+        if let assetPath = self.assetPath, let postInstallPath = getPreferencesPostInstallPath() {
             self.postInstallScript = Script(absolutePath: assetPath + "/" + postInstallPath)
         }
         
@@ -59,15 +58,15 @@ class Preferences {
     }
     
     func getPreferencesAssetPath() -> String? {
-        return self.userDefaults?.stringForKey("assetPath")
+        return self.userDefaults?.string(forKey: "assetPath")
     }
     
     func getPreferencesPostInstallPath() -> String? {
-        return self.userDefaults?.stringForKey("postInstallAssetPath")
+        return self.userDefaults?.string(forKey: "postInstallAssetPath")
     }
     
     func getPreferencesHtmlPath() -> String? {
-        return self.userDefaults?.stringForKey("htmlPath")
+        return self.userDefaults?.string(forKey: "htmlPath")
     }
 
     /**
@@ -76,10 +75,10 @@ class Preferences {
      */
     var htmlAbsolutePath: String? {
         get {
-            if let assetPath = self.assetPath, htmlPath = self.htmlPath {
+            if let assetPath = self.assetPath, let htmlPath = self.htmlPath {
                 return "\(assetPath)/\(htmlPath)"
             } else {
-                return NSBundle.mainBundle().pathForResource("index", ofType: "html")
+                return Bundle.main.pathForResource("index", ofType: "html")
             }
         }
     }
@@ -93,27 +92,41 @@ class Preferences {
 //    }])
     
     /// Generates Software objects from Preferences
-    func getPreferencesApplications(inout _softwareArray: [Software]) {
-        if let applicationsArray = self.userDefaults?.arrayForKey("applicationsArray"){
+    func getPreferencesApplications(_ _softwareArray: inout [Software]) {
+        if let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray"){
             for application in applicationsArray {
                 if let application = application as? NSDictionary {
-                    if let
-                        displayName: String = application["displayName"] as? String,
-                        description = application["description"] as? String,
-                        name = application["packageName"] as? String,
-                        assetPath = self.assetPath,
-                        iconPath = application["iconRelativePath"] as? String,
-                        canContinue = application["canContinue"] as? String{
+                    if let displayName: String = application["displayName"] as? String,
+                        let description = application["description"] as? String,
+                        let name = application["packageName"] as? String,
+                        let assetPath = self.assetPath,
+                        let iconPath = application["iconRelativePath"] as? String {
                         
+                        
+                        // In practice, canContinue is sometimes seen as int, sometimes as String
+                        // This workaround helps to be more flexible
                         var canContinueBool: Bool
-                        if canContinue == "1" {
-                            canContinueBool = true
+                        
+                        if let canContinue = application["canContinue"] as? Int {
+                            
+                            if canContinue == 1 {
+                                canContinueBool = true
+                            } else {
+                                canContinueBool = false
+                            }
+                        } else if let canContinue = application["canContinue"] as? String {
+                            
+                            if canContinue == "1" {
+                                canContinueBool = true
+                            } else {
+                                canContinueBool = false
+                            }
                         } else {
-                            canContinueBool = false
+                            break
                         }
                         
                         
-                        let software = Software(name: name, version: nil, status: .Pending, iconPath: "\(assetPath)/\(iconPath)", displayName: displayName, description: description, canContinue: canContinueBool, displayToUser: true)
+                        let software = Software(name: name, version: nil, status: .pending, iconPath: "\(assetPath)/\(iconPath)", displayName: displayName, description: description, canContinue: canContinueBool, displayToUser: true)
                         //dump(software)
                         
                         // FIXME: Can I work without a global array?
@@ -121,9 +134,6 @@ class Preferences {
                     } else {
                         // FIXME
                        NSLog("applicationsArray: application item is malformed or assetPath is missing")
-                        #if DEBUG
-                        dump(application)
-                        #endif
                     }
                 } else {
                     NSLog("applicationsArray: application is malformed")

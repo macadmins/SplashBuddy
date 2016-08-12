@@ -11,25 +11,26 @@ import Cocoa
 /**
  My new class
  
-*/
+ */
 class Software: NSObject {
-
-
+    
+    
     /**
      Status of the software.
      Default is .Pending, other cases will be set while parsing the log
-    */
+     */
     @objc enum SoftwareStatus: Int {
         // test Installing
-        case Installing = 0
+        case installing = 0
         
         // test Success
-        case Success = 1
-        case Failed = 2
-        case Pending = 3
+        case success = 1
+        case failed = 2
+        case pending = 3
     }
     
-
+    
+    
     dynamic let packageName: String
     dynamic var packageVersion: String?
     dynamic var status: SoftwareStatus
@@ -49,13 +50,13 @@ class Software: NSObject {
      - todo: rename "name" to "packageName"
      
      - parameters:
-        - packageName: name of the package (packageName-packageVersion.pkg)
+     - packageName: name of the package (packageName-packageVersion.pkg)
      */
-
+    
     
     init(name: String,
          version: String? = nil,
-         status: SoftwareStatus = .Pending,
+         status: SoftwareStatus = .pending,
          iconPath: String? = nil,
          displayName: String? = nil,
          description: String? = nil,
@@ -71,7 +72,7 @@ class Software: NSObject {
         if let iconPath = iconPath {
             self.icon = NSImage(contentsOfFile: iconPath)
         } else {
-            self.icon = NSImage(imageLiteral: NSImageNameFolder)
+            self.icon = NSImage(named: NSImageNameFolder) //NSImage (literal: NSImageNameFolder)
         }
         
         if let displayName = displayName {
@@ -81,13 +82,13 @@ class Software: NSObject {
         if let description = description {
             self.desc = description
         }
-
+        
     }
     
-//    /// Compare two Software objects
-//    func isEqual(rhs: Software) -> Bool {
-//        return self == rhs
-//    }
+    //    /// Compare two Software objects
+    //    func isEqual(rhs: Software) -> Bool {
+    //        return self == rhs
+    //    }
     
     
 }
@@ -96,7 +97,7 @@ func == (lhs: Software, rhs: Software) -> Bool {
     return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
 }
 
-func modifySoftwareArrayFromFile(fileHandle: NSFileHandle?, inout softwareArray: [Software]) -> Void {
+func modifySoftwareArrayFromFile(_ fileHandle: FileHandle?, softwareArray: inout [Software]) -> Void {
     if let lines = readLinesFromFile(fileHandle) {
         for line in lines {
             modifySoftwareFromLine(line, softwareArray: &softwareArray)
@@ -104,7 +105,7 @@ func modifySoftwareArrayFromFile(fileHandle: NSFileHandle?, inout softwareArray:
     }
 }
 
-func fileToSoftware(fileHandle: NSFileHandle?) -> [Software] {
+func fileToSoftware(_ fileHandle: FileHandle?) -> [Software] {
     var result = [Software]()
     
     // Create an array of lines
@@ -116,9 +117,9 @@ func fileToSoftware(fileHandle: NSFileHandle?) -> [Software] {
     return result
 }
 
-func readLinesFromFile(fileHandle: NSFileHandle?) -> [String]? {
+func readLinesFromFile(_ fileHandle: FileHandle?) -> [String]? {
     if let log = fileHandle {
-        return String(data: log.readDataToEndOfFile(), encoding: NSUTF8StringEncoding)?.componentsSeparatedByString("\n")
+        return String(data: log.readDataToEndOfFile(), encoding: String.Encoding.utf8)?.components(separatedBy: "\n")
     } else {
         NSLog("Error reading file.")
         return nil
@@ -126,29 +127,42 @@ func readLinesFromFile(fileHandle: NSFileHandle?) -> [String]? {
     
 }
 
-func modifySoftwareFromLine(line: String, inout softwareArray: [Software]) {
+func modifySoftwareFromLine(_ line: String, softwareArray: inout [Software]) {
+    
     if let software = getSoftwareFromRegex(line) {
-        
         // If Software already exists, replace status and package version
-        if let index = softwareArray.indexOf({$0.packageName == software.packageName}) {
+        if let index = softwareArray.index(where: {$0.packageName == software.packageName}) {
             softwareArray[index].status = software.status
             softwareArray[index].packageVersion = software.packageVersion
         } else {
             softwareArray.append(software)
         }
-        
-        
     }
+    
+    
+}
+func modifySoftwareArray(fromSoftware software: Software, softwareArray: inout [Software]) {
+    
+    // If Software already exists, replace status and package version
+    if let index = softwareArray.index(where: {$0.packageName == software.packageName}) {
+        softwareArray[index].status = software.status
+        softwareArray[index].packageVersion = software.packageVersion
+    } else {
+        softwareArray.append(software)
+    }
+    
+    
 }
 
-func getSoftwareFromRegex(line: String) -> Software? {
+
+func getSoftwareFromRegex(_ line: String) -> Software? {
     for (status, regex) in initRegex() {
         
-        let matches = regex!.matchesInString(line, options: [], range: NSMakeRange(0, line.characters.count))
+        let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.characters.count))
         
         if !matches.isEmpty {
-            let name = (line as NSString).substringWithRange(matches[0].rangeAtIndex(1))
-            let version = (line as NSString).substringWithRange(matches[0].rangeAtIndex(2))
+            let name = (line as NSString).substring(with: matches[0].range(at: 1))
+            let version = (line as NSString).substring(with: matches[0].range(at: 2))
             return Software(name: name, version: version, status: status)
         }
     }
