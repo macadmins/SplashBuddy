@@ -23,15 +23,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
+        
+        // Value Transformer for Software Status
         softwareStatusValueTransformer = SoftwareStatusValueTransformer()
         ValueTransformer.setValueTransformer(softwareStatusValueTransformer, forName: "SoftwareStatusValueTransformer" as ValueTransformerName)
         
         casperSplashController = CasperSplashController(windowNibName: "CasperSplashController")
-        casperSplashController?.showWindow(self)
         
         Preferences.sharedInstance.logFileHandle = FileHandle(forReadingAtPath: jamfLog)
-
         Preferences.sharedInstance.getPreferencesApplications(&casperSplashController.softwareArray)
+
+        casperSplashController?.showWindow(self)
         
         #if DEBUG
             Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
@@ -48,7 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func readTimer() -> Void {
-        NSLog("readTimercalled")
         let readQueue = DispatchQueue(label: "io.fti.CasperSplash.readQueue", attributes: .qosBackground, target: nil)
         
         if let lines = readLinesFromFile(Preferences.sharedInstance.logFileHandle) {

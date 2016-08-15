@@ -17,6 +17,10 @@ domain is io.fti.CasperSplash
     <dict>
         <key>assetPath</key>
         <string>/Library/CasperSplash</string>
+        <key>postInstallAssetPath</key>
+        <string>postInstall.sh</string>
+        <key>htmlPath</key>
+        <string>presentation.html</string>
         <key>applicationsArray</key>
         <array>
             <dict>

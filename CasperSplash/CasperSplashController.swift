@@ -12,7 +12,7 @@ import WebKit
 
 
 class CasperSplashController: NSWindowController, NSTableViewDataSource {
-
+    
     @IBOutlet var theWindow: NSWindow!
     @IBOutlet var webView: CasperSplashWebView!
     @IBOutlet var softwareTableView: NSTableView!
@@ -27,12 +27,13 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-
+        
         theWindow.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
         theWindow.toggleFullScreen(self)
+        //theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
         
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-       
+        
         //dump(prefs)
         if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
             webView.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
@@ -43,7 +44,7 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         self.webView.layer?.isOpaque = true
         self.webView.layer?.backgroundColor = NSColor.clear().cgColor
         
-
+        
         indeterminateProgressIndicator.startAnimation(self)
         statusLabel.stringValue = ""
         continueButton?.isEnabled = false
@@ -51,16 +52,16 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
     }
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
-
+        
         Preferences.sharedInstance.postInstallScript?.execute({ (isSuccessful) in
             if !isSuccessful {
                 NSLog("Couldn't execute postInstall Script")
             }
             NSApplication.shared().terminate(self)
         })
-
+        
     }
-   
+    
     func doneInstalling() {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
@@ -68,7 +69,7 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         statusLabel.stringValue = "All applications were installed. Please click continue."
     }
     func checkContinue() {
-
+        
         if Set(softwareArray.filter({ $0.canContinue == false && $0.status == .success}).map({ $0.status.rawValue })).count == 1 {
             doneInstalling()
             
