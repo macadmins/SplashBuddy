@@ -412,6 +412,36 @@ class CasperSplashTests: XCTestCase {
         
         XCTAssertEqual(testPrefs.htmlAbsolutePath!, output)
     }
+    
+    func testCanContinue_yes() {
+        
+        casperSplashController = CasperSplashController()
+        let input: [Software] = [
+            Software(name: "test1", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
+            Software(name: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
+        ]
+        XCTAssertTrue(casperSplashController.canContinue(input))
+    }
+    
+    func testCanContinue_yesNoCritical() {
+        
+        casperSplashController = CasperSplashController()
+        let input: [Software] = [
+            Software(name: "test1", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true),
+            Software(name: "test2", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true)
+        ]
+        XCTAssertTrue(casperSplashController.canContinue(input))
+    }
 
-
+    func testCanContinue_no() {
+        
+        casperSplashController = CasperSplashController()
+        let input = [
+            Software(name: "test1", version: nil, status: .pending, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
+            Software(name: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
+        ]
+        XCTAssertFalse(casperSplashController.canContinue(input))
+    }
+    
+    
 }

@@ -17,28 +17,22 @@ class Preferences {
     
     static let sharedInstance = Preferences()
     
+    let jamfLog = "/var/log/jamf.log"
+    
     /// Absolute Path to assets. Relative paths will be appended.
     var assetPath: String?
     
-    /**  
-     Post Install Script
-     
-     - precondition: `assetPath` and `postInstallAssetPath` need to be set in User Defaults
-     */
+    // Relative Paths
     var postInstallScript: Script?
-    
-    /// Relative path to index.html
     var htmlPath: String?
     
     /// User defaults. Should always use standardUserDefaults() if not testing.
     var userDefaults: UserDefaults?
     
     var logFileHandle: FileHandle?
-    /// if nsUserDefaults defaults to NSUserDefaults.standardUserDefaults()
+    
     
     init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
-        
-        //softwareArray = [Software]()
         
         self.userDefaults = nsUserDefaults
         
@@ -83,13 +77,6 @@ class Preferences {
         }
     }
     
-//    Optional([{
-//    canContinue = 0;
-//    description = SSO;
-//    displayName = "Enterprise Connect";
-//    iconRelativePath = "ec_32x32.png";
-//    packageName = "Enterprise Connect";
-//    }])
     
     /// Generates Software objects from Preferences
     func getPreferencesApplications(_ _softwareArray: inout [Software]) {

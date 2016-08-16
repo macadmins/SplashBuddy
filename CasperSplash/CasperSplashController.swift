@@ -30,11 +30,10 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         
         theWindow.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
         theWindow.toggleFullScreen(self)
-        //theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
+        theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
+
         
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        
-        //dump(prefs)
+        // Setup Web View
         if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
             webView.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
         }
@@ -42,13 +41,10 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         self.webView.layer?.borderWidth = 1.0
         self.webView.layer?.borderColor = NSColor.lightGray().cgColor
         self.webView.layer?.isOpaque = true
-        self.webView.layer?.backgroundColor = NSColor.clear().cgColor
         
         
-        indeterminateProgressIndicator.startAnimation(self)
-        statusLabel.stringValue = ""
-        continueButton?.isEnabled = false
-        
+        SetupInstalling()
+
     }
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
@@ -62,20 +58,62 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         
     }
     
-    func doneInstalling() {
+    func SetupInstalling() {
+        indeterminateProgressIndicator.startAnimation(self)
+        statusLabel.stringValue = ""
+        continueButton?.isEnabled = false
+    }
+    
+    func errorWhileInstalling(_failedSoftwareArray: [Software]) {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
         continueButton?.isEnabled = true
+        statusLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+        
+        if _failedSoftwareArray.count == 1 {
+            statusLabel.stringValue = "\(_failedSoftwareArray[0].displayName!) failed to install. Support has been notified."
+        } else {
+            statusLabel.stringValue = "Some applications failed to install. Support has been notified."
+        }
+        
+    }
+    
+    func doneInstallingCriticalSoftware() {
+        continueButton?.isEnabled = true
+    }
+    func doneInstalling() {
+        indeterminateProgressIndicator.isHidden = true
+        installingLabel.stringValue = ""
+        statusLabel.textColor = #colorLiteral(red: 0.2818343937, green: 0.5693024397, blue: 0.1281824261, alpha: 1)
         statusLabel.stringValue = "All applications were installed. Please click continue."
     }
-    func checkContinue() {
-        
-        if Set(softwareArray.filter({ $0.canContinue == false && $0.status == .success}).map({ $0.status.rawValue })).count == 1 {
-            doneInstalling()
-            
+    
+    
+    func failedSoftwareArray(_ _softwareArray: [Software]) -> [Software] {
+        return _softwareArray.filter({ $0.status == .failed })
+    }
+    
+    func canContinue(_ _softwareArray: [Software]) -> Bool {
+        let criticalSoftwareArray = _softwareArray.filter({ $0.canContinue == false })
+        return criticalSoftwareArray.filter({ $0.status == .success }).count == criticalSoftwareArray.count
+    }
+    
+    func allInstalled(_ _softwareArray: [Software]) -> Bool {
+        let displayedSoftwareArray = _softwareArray.filter({ $0.displayToUser == true })
+        return displayedSoftwareArray.filter({ $0.status == .success }).count == displayedSoftwareArray.count
+    }
+    
+    func checkSoftwareStatus() {
+        if failedSoftwareArray(softwareArray).count > 0 {
+            errorWhileInstalling(_failedSoftwareArray: failedSoftwareArray(softwareArray))
+        } else if canContinue(softwareArray) {
+            doneInstallingCriticalSoftware()
         } else {
-            continueButton?.isEnabled = false
-            statusLabel.stringValue = ""
+            SetupInstalling()
+        }
+        
+        if allInstalled(softwareArray) {
+            doneInstalling()
         }
     }
 }

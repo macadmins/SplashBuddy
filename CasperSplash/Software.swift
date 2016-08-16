@@ -40,6 +40,9 @@ class Software: NSObject {
     dynamic var canContinue: Bool
     dynamic var displayToUser: Bool
     
+    dynamic var packageInfo: String {
+        return "\(self.packageName) (\(self.packageVersion))"
+    }
     /// MARK: Initializers
     
     /**
@@ -168,3 +171,5 @@ func getSoftwareFromRegex(_ line: String) -> Software? {
     }
     return nil
 }
+
+
