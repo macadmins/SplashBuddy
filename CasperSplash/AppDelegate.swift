@@ -24,9 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
         
         // Value Transformer for Software Status
         softwareStatusValueTransformer = SoftwareStatusValueTransformer()
-        ValueTransformer.setValueTransformer(softwareStatusValueTransformer, forName: "SoftwareStatusValueTransformer" as ValueTransformerName)
-        
-        
+        ValueTransformer.setValueTransformer(softwareStatusValueTransformer, forName: NSValueTransformerName(rawValue: "SoftwareStatusValueTransformer"))
         
         // Create controller and Initialize Preferences
         casperSplashController = CasperSplashController(windowNibName: "CasperSplashController")
@@ -45,8 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
     }
 
     func readTimer() -> Void {
-        let readQueue = DispatchQueue(label: "io.fti.CasperSplash.readQueue", attributes: .qosBackground, target: nil)
-        readQueue.async {
+        //let readQueue = DispatchQueue(label: "io.fti.CasperSplash.readQueue", attributes: .qosBackground, target: nil)
+        DispatchQueue.global(qos: .background).async {
             for line in readLinesFromFile(Preferences.sharedInstance.logFileHandle)! {
                 if let software = getSoftwareFromRegex(line) {
                     DispatchQueue.main.async {

@@ -164,8 +164,8 @@ func getSoftwareFromRegex(_ line: String) -> Software? {
         let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.characters.count))
         
         if !matches.isEmpty {
-            let name = (line as NSString).substring(with: matches[0].range(at: 1))
-            let version = (line as NSString).substring(with: matches[0].range(at: 2))
+            let name = (line as NSString).substring(with: matches[0].rangeAt(1))
+            let version = (line as NSString).substring(with: matches[0].rangeAt(2))
             return Software(name: name, version: version, status: status)
         }
     }

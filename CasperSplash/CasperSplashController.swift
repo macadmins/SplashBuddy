@@ -14,6 +14,7 @@ import WebKit
 class CasperSplashController: NSWindowController, NSTableViewDataSource {
     
     @IBOutlet var theWindow: NSWindow!
+    @IBOutlet weak var theWindowView: NSView!
     @IBOutlet var webView: CasperSplashWebView!
     @IBOutlet var softwareTableView: NSTableView!
     @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
@@ -22,34 +23,42 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
     @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet weak var installingLabel: NSTextField!
     
+    @IBOutlet var backgroundWindow: NSWindow!
+    
     dynamic var softwareArray = [Software]()
-    let predicate = Predicate.init(format: "displayToUser = true")
+    let predicate = NSPredicate.init(format: "displayToUser = true")
     
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        theWindow.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
-        theWindow.toggleFullScreen(self)
-        theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
+        // Create Background Window
+        let mainDisplayRect = NSScreen.main()?.frame
+        backgroundWindow.contentRect(forFrameRect: mainDisplayRect!)
+        backgroundWindow.setFrame((NSScreen.main()?.frame)!, display: true)
+        backgroundWindow.setFrameOrigin((NSScreen.main()?.frame.origin)!)
+        backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow) - 1 )
 
+        // Display Front Window
+        theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
+        theWindowView.layer?.cornerRadius = 10.00
         
         // Setup Web View
+        self.webView.layer?.borderWidth = 1.0
+        self.webView.layer?.borderColor = NSColor.lightGray.cgColor
+        self.webView.layer?.isOpaque = true
+        
         if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
             webView.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
         }
-        
-        self.webView.layer?.borderWidth = 1.0
-        self.webView.layer?.borderColor = NSColor.lightGray().cgColor
-        self.webView.layer?.isOpaque = true
-        
-        
+
         SetupInstalling()
 
     }
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
-        Preferences.sharedInstance.postInstallScript?.execute({ (isSuccessful) in
+        let prefs2 = Preferences.sharedInstance.postInstallScript
+        prefs2?.execute({ (isSuccessful) in
             if !isSuccessful {
                 NSLog("Couldn't execute postInstall Script")
             }
@@ -71,7 +80,12 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         statusLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         
         if _failedSoftwareArray.count == 1 {
-            statusLabel.stringValue = "\(_failedSoftwareArray[0].displayName!) failed to install. Support has been notified."
+            if let failedDisplayName = _failedSoftwareArray[0].displayName {
+                statusLabel.stringValue = "\(failedDisplayName) failed to install. Support has been notified."
+            } else {
+                statusLabel.stringValue = "An application failed to install. Support has been notified."
+            }
+            
         } else {
             statusLabel.stringValue = "Some applications failed to install. Support has been notified."
         }

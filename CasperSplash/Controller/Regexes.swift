@@ -13,26 +13,26 @@ import Foundation
  
  - returns: A Dictionary of status: regex
  */
-func initRegex() -> Dictionary<Software.SoftwareStatus, RegularExpression?> {
-    let re_options = RegularExpression.Options.anchorsMatchLines
-    let re_installing: RegularExpression?
+func initRegex() -> Dictionary<Software.SoftwareStatus, NSRegularExpression?> {
+    let re_options = NSRegularExpression.Options.anchorsMatchLines
+    let re_installing: NSRegularExpression?
     do {
-        try re_installing = RegularExpression(pattern: "(?<=Installing )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg...$", options: re_options)
+        try re_installing = NSRegularExpression(pattern: "(?<=Installing )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg...$", options: re_options)
     } catch {
         re_installing = nil
     }
 
-    let re_failure: RegularExpression?
+    let re_failure: NSRegularExpression?
     do {
-        try re_failure = RegularExpression(pattern: "(?<=Installation failed. The installer reported: installer: Package name is )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*)$", options: re_options)
+        try re_failure = NSRegularExpression(pattern: "(?<=Installation failed. The installer reported: installer: Package name is )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*)$", options: re_options)
         
     } catch {
         re_failure = nil
     }
     
-    let re_success: RegularExpression?
+    let re_success: NSRegularExpression?
     do {
-        try re_success = RegularExpression(pattern: "(?<=Successfully installed )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg", options: re_options)
+        try re_success = NSRegularExpression(pattern: "(?<=Successfully installed )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg", options: re_options)
     } catch {
         re_success = nil
     }
