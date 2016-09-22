@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11173.2" systemVersion="16A294a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11198.2" systemVersion="16A304a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11173.2"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="11173.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11198.2"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11198.2"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -239,10 +239,10 @@
                                         <buttonCell key="cell" type="smallSquare" title="Continue" bezelStyle="smallSquare" image="NSRightFacingTriangleTemplate" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qZ5-Kz-kZ7">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <connections>
-                                                <action selector="pressedContinueButton:" target="-2" id="7FS-KG-xTz"/>
-                                            </connections>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="pressedContinueButton:" target="-2" id="e4e-K6-gmz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -310,15 +310,14 @@
         </window>
         <arrayController objectClassName="CasperSplash.Software" id="UCh-3B-E8x">
             <connections>
+                <binding destination="-2" name="filterPredicate" keyPath="self.predicate" id="6gN-Jd-fuu"/>
                 <binding destination="-2" name="contentArray" keyPath="softwareArray" id="wIZ-Kw-wTC">
                     <dictionary key="options">
                         <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                     </dictionary>
                 </binding>
-                <binding destination="-2" name="filterPredicate" keyPath="self.predicate" id="6gN-Jd-fuu"/>
             </connections>
         </arrayController>
-        <userDefaultsController representsSharedInstance="YES" id="3f8-F0-J5b"/>
     </objects>
     <resources>
         <image name="NSAdvanced" width="32" height="32"/>

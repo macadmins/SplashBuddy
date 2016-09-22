@@ -18,23 +18,24 @@ class SoftwareStatusValueTransformer: ValueTransformer {
         return false
     }
     
-    override func transformedValue(_ value: AnyObject?) -> AnyObject? {
-
-        if let value: Int = value?.intValue {
-            switch value {
-            case Software.SoftwareStatus.failed.rawValue:
-                return NSImage(named: "NSStatusUnavailable")
-            case Software.SoftwareStatus.installing.rawValue:
-                return NSImage(named: "NSStatusPartiallyAvailable")
-            case Software.SoftwareStatus.pending.rawValue:
-                return NSImage(named: "NSStatusNone")
-            case Software.SoftwareStatus.success.rawValue:
-                return NSImage(named: "NSStatusAvailable")
-            default:
-                return NSImage(named: "NSStatusNone")
-            }
-        } else {
-            return nil
-        }
+    override func transformedValue(_ value: Any?) -> Any? {
+        
+                if let value = value as? Int {
+                    switch value {
+                    case Software.SoftwareStatus.failed.rawValue:
+                        return NSImage(named: "NSStatusUnavailable")
+                    case Software.SoftwareStatus.installing.rawValue:
+                        return NSImage(named: "NSStatusPartiallyAvailable")
+                    case Software.SoftwareStatus.pending.rawValue:
+                        return NSImage(named: "NSStatusNone")
+                    case Software.SoftwareStatus.success.rawValue:
+                        return NSImage(named: "NSStatusAvailable")
+                    default:
+                        return NSImage(named: "NSStatusNone")
+                    }
+                } else {
+                    return nil
+                }
     }
+
 }

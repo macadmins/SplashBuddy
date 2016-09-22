@@ -72,7 +72,7 @@ class Preferences {
             if let assetPath = self.assetPath, let htmlPath = self.htmlPath {
                 return "\(assetPath)/\(htmlPath)"
             } else {
-                return Bundle.main.pathForResource("index", ofType: "html")
+                return Bundle.main.path(forResource: "index", ofType: "html")
             }
         }
     }

@@ -23,7 +23,7 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
     @IBOutlet weak var installingLabel: NSTextField!
     
     dynamic var softwareArray = [Software]()
-    let predicate = Predicate.init(format: "displayToUser = true")
+    let predicate = NSPredicate.init(format: "displayToUser = true")
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -39,7 +39,7 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         }
         
         self.webView.layer?.borderWidth = 1.0
-        self.webView.layer?.borderColor = NSColor.lightGray().cgColor
+        self.webView.layer?.borderColor = NSColor.lightGray.cgColor
         self.webView.layer?.isOpaque = true
         
         
@@ -49,7 +49,8 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
-        Preferences.sharedInstance.postInstallScript?.execute({ (isSuccessful) in
+        let prefs2 = Preferences.sharedInstance.postInstallScript
+        prefs2?.execute({ (isSuccessful) in
             if !isSuccessful {
                 NSLog("Couldn't execute postInstall Script")
             }
@@ -71,7 +72,12 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         statusLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         
         if _failedSoftwareArray.count == 1 {
-            statusLabel.stringValue = "\(_failedSoftwareArray[0].displayName!) failed to install. Support has been notified."
+            if let failedDisplayName = _failedSoftwareArray[0].displayName {
+                statusLabel.stringValue = "\(failedDisplayName) failed to install. Support has been notified."
+            } else {
+                statusLabel.stringValue = "An application failed to install. Support has been notified."
+            }
+            
         } else {
             statusLabel.stringValue = "Some applications failed to install. Support has been notified."
         }
