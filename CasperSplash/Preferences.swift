@@ -108,6 +108,9 @@ class Preferences {
                             } else {
                                 canContinueBool = false
                             }
+                        } else if let canContinue = application["canContinue"] as? Bool {
+                            
+                            canContinueBool = canContinue
                         } else {
                             break
                         }
