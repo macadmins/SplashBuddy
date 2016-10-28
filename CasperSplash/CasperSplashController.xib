@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11198.2" systemVersion="16A304a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11198.2"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="11198.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11542"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CasperSplashController" customModule="CasperSplash" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundWindow" destination="T8l-af-nIF" id="568-sF-gwS"/>
                 <outlet property="continueButton" destination="7yD-fp-pMg" id="iOg-e4-jqE"/>
                 <outlet property="indeterminateProgressIndicator" destination="g61-Ec-XA1" id="rHh-5s-PJk"/>
                 <outlet property="installingLabel" destination="Yma-ih-J7l" id="pN6-ew-sl1"/>
@@ -17,24 +19,22 @@
                 <outlet property="softwareTableView" destination="oVb-HD-d9e" id="hg1-kn-wVV"/>
                 <outlet property="statusLabel" destination="VBe-dd-lGd" id="L9i-lV-TiX"/>
                 <outlet property="theWindow" destination="F0z-JX-Cv5" id="cga-g2-vcB"/>
+                <outlet property="theWindowView" destination="se5-gp-TjO" id="4bN-XU-IAn"/>
                 <outlet property="webView" destination="cJY-Ib-jsI" id="a3w-7X-Yyb"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" closable="YES"/>
             <rect key="contentRect" x="196" y="240" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="RNc-B3-dYP">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                    </visualEffectView>
-                    <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgR-Zk-Jow">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="cgR-Zk-Jow">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V5q-OT-F1l">
@@ -296,11 +296,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="cgR-Zk-Jow" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="3fi-p2-v5w"/>
-                    <constraint firstItem="RNc-B3-dYP" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="D2f-1L-TIm"/>
                     <constraint firstItem="cgR-Zk-Jow" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Ens-Hb-qpd"/>
-                    <constraint firstAttribute="trailing" secondItem="RNc-B3-dYP" secondAttribute="trailing" id="Ybt-63-nPQ"/>
-                    <constraint firstAttribute="bottom" secondItem="RNc-B3-dYP" secondAttribute="bottom" id="iqi-3S-ZJo"/>
-                    <constraint firstItem="RNc-B3-dYP" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="uef-KO-PEb"/>
                 </constraints>
             </view>
             <connections>
@@ -318,6 +314,27 @@
                 </binding>
             </connections>
         </arrayController>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="T8l-af-nIF">
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="490" y="434" width="552" height="697"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="vGb-4Z-OtC">
+                <rect key="frame" x="0.0" y="0.0" width="552" height="697"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-g6-pot">
+                        <rect key="frame" x="0.0" y="0.0" width="552" height="697"/>
+                    </visualEffectView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="RWP-g6-pot" secondAttribute="bottom" id="74B-7R-7R3"/>
+                    <constraint firstAttribute="trailing" secondItem="RWP-g6-pot" secondAttribute="trailing" id="CVl-EE-rzh"/>
+                    <constraint firstItem="RWP-g6-pot" firstAttribute="leading" secondItem="vGb-4Z-OtC" secondAttribute="leading" id="KkQ-ms-0qS"/>
+                    <constraint firstItem="RWP-g6-pot" firstAttribute="top" secondItem="vGb-4Z-OtC" secondAttribute="top" id="btV-sO-kp5"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="183" y="92"/>
+        </window>
     </objects>
     <resources>
         <image name="NSAdvanced" width="32" height="32"/>
