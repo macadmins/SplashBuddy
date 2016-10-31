@@ -10,6 +10,9 @@ Watch for an announcement at http://maclovin.org
 
 domain is io.fti.CasperSplash
 
+I recommend installing a plist in /Library/Preferences/io.fti.CasperSplash.plist
+Unfortunately, the timing a profile will be pushed is not guaranteed.
+
 The following example will:
 - Set the base path to `/Library/CasperSplash`
 - Will run the script `/Library/CasperSplash/postInstall.sh` when user click on "Continue"

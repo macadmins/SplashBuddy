@@ -26,20 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
         softwareStatusValueTransformer = SoftwareStatusValueTransformer()
         ValueTransformer.setValueTransformer(softwareStatusValueTransformer, forName: NSValueTransformerName(rawValue: "SoftwareStatusValueTransformer"))
         
-//        
-//        let mainDisplayRect = NSScreen.main()?.frame
-//        let fullScreenWindow = NSWindow.init(contentRect: mainDisplayRect!, styleMask: NSBorderlessWindowMask, backing: NSBackingStoreType.buffered, defer: true)
-//        fullScreenWindow.backgroundColor = NSColor.blue
-//        
-//        fullScreenWindow.isOpaque = false
-//        
-////        let myRect = NSMakeRect(0.0, 0.0, (mainDisplayRect?.size.width)!, (mainDisplayRect?.size.height)!)
-////        let fullScreenView = NSVisualEffectView.init(frame: myRect)
-////        fullScreenWindow.contentView = fullScreenView
-//        
-//        //fullScreenWindow.level = Int(CGWindowLevelForKey(.normalWindow))
-//        fullScreenWindow.makeKeyAndOrderFront(self)
-        
         // Create controller and Initialize Preferences
         casperSplashController = CasperSplashController(windowNibName: "CasperSplashController")
         

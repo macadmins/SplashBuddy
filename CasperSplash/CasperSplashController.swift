@@ -31,49 +31,26 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        //
-        
+        // Create Background Window
         let mainDisplayRect = NSScreen.main()?.frame
         backgroundWindow.contentRect(forFrameRect: mainDisplayRect!)
-        //        let fullScreenWindow = NSWindow.init(contentRect: mainDisplayRect!, styleMask: NSBorderlessWindowMask, backing: NSBackingStoreType.buffered, defer: true)
-        //        fullScreenWindow.backgroundColor = NSColor.blue
-        //
-        //        fullScreenWindow.isOpaque = false
-        //
-        ////        let myRect = NSMakeRect(0.0, 0.0, (mainDisplayRect?.size.width)!, (mainDisplayRect?.size.height)!)
-        ////        let fullScreenView = NSVisualEffectView.init(frame: myRect)
-        ////        fullScreenWindow.contentView = fullScreenView
-        //
-        //        //fullScreenWindow.level = Int(CGWindowLevelForKey(.normalWindow))
-        //        fullScreenWindow.makeKeyAndOrderFront(self)
-
-        
-        
         backgroundWindow.setFrame((NSScreen.main()?.frame)!, display: true)
         backgroundWindow.setFrameOrigin((NSScreen.main()?.frame.origin)!)
-//        backgroundWindow.isMovableByWindowBackground = true
-//        backgroundWindow.makeKeyAndOrderFront(self)
         backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow) - 1 )
-        
-//        
-//        backgroundWindow.toggleFullScreen(self)
-//        
-//        theWindow.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
-//        //theWindow.toggleFullScreen(self)
-        theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
 
+        // Display Front Window
+        theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
         theWindowView.layer?.cornerRadius = 10.00
         
         // Setup Web View
-        if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
-            webView.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
-        }
-        
         self.webView.layer?.borderWidth = 1.0
         self.webView.layer?.borderColor = NSColor.lightGray.cgColor
         self.webView.layer?.isOpaque = true
         
-        
+        if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
+            webView.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
+        }
+
         SetupInstalling()
 
     }

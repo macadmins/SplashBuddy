@@ -318,7 +318,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="490" y="434" width="552" height="697"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <view key="contentView" id="vGb-4Z-OtC">
+            <view key="contentView" wantsLayer="YES" id="vGb-4Z-OtC">
                 <rect key="frame" x="0.0" y="0.0" width="552" height="697"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
