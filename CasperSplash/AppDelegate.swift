@@ -46,8 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
         //let readQueue = DispatchQueue(label: "io.fti.CasperSplash.readQueue", attributes: .qosBackground, target: nil)
         DispatchQueue.global(qos: .background).async {
             
+            // I doubt this would ever happen in production.
             guard Preferences.sharedInstance.logFileHandle != nil else {
-                NSLog("No /var/log/jamf.log present!")
                 
                 DispatchQueue.main.async {
                     self.casperSplashController.statusLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
