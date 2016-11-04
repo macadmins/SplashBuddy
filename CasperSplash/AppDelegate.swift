@@ -45,6 +45,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
     func readTimer() -> Void {
         //let readQueue = DispatchQueue(label: "io.fti.CasperSplash.readQueue", attributes: .qosBackground, target: nil)
         DispatchQueue.global(qos: .background).async {
+            
+            guard Preferences.sharedInstance.logFileHandle != nil else {
+                NSLog("No /var/log/jamf.log present!")
+                exit(EXIT_FAILURE)
+            }
+            
             for line in readLinesFromFile(Preferences.sharedInstance.logFileHandle)! {
                 if let software = getSoftwareFromRegex(line) {
                     DispatchQueue.main.async {
