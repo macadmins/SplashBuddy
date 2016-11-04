@@ -48,7 +48,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
             
             guard Preferences.sharedInstance.logFileHandle != nil else {
                 NSLog("No /var/log/jamf.log present!")
-                exit(EXIT_FAILURE)
+                
+                DispatchQueue.main.async {
+                    self.casperSplashController.statusLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+                    self.casperSplashController.statusLabel.stringValue = "/var/log/jamf.log is not present!"
+                }
+                
+                return
             }
             
             for line in readLinesFromFile(Preferences.sharedInstance.logFileHandle)! {
