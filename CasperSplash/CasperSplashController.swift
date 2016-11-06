@@ -37,9 +37,11 @@ class CasperSplashController: NSWindowController, NSTableViewDataSource {
         backgroundWindow.setFrame((NSScreen.main()?.frame)!, display: true)
         backgroundWindow.setFrameOrigin((NSScreen.main()?.frame.origin)!)
         backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow) - 1 )
+        backgroundWindow.canBecomeVisibleWithoutLogin = true
 
         // Display Front Window
         theWindow.level = Int(CGWindowLevelForKey(.maximumWindow))
+        theWindow.canBecomeVisibleWithoutLogin = true
         theWindowView.layer?.cornerRadius = 10.00
         
         // Setup Web View
