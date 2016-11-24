@@ -11,6 +11,5 @@ import WebKit
 
 class CasperSplashWebView: WebView {
 
-    
 
 }

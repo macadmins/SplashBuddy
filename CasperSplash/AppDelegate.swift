@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
     
     var softwareStatusValueTransformer: SoftwareStatusValueTransformer?
     var casperSplashController: CasperSplashController!
+    var casperSplashBackgroundController: CasperSplashBackgroundController!
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -27,34 +28,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
         ValueTransformer.setValueTransformer(softwareStatusValueTransformer, forName: NSValueTransformerName(rawValue: "SoftwareStatusValueTransformer"))
         
         // Create controller and Initialize Preferences
-        casperSplashController = CasperSplashController(windowNibName: "CasperSplashController")
+        let storyboard = NSStoryboard(name: "CasperSplashController", bundle: nil)
+        casperSplashController = storyboard.instantiateController(withIdentifier: "mainWindow") as! CasperSplashController
+        casperSplashController.showWindow(self)
         
-        Preferences.sharedInstance.logFileHandle = FileHandle(forReadingAtPath: Preferences.sharedInstance.jamfLog)
-        Preferences.sharedInstance.getPreferencesApplications(&self.casperSplashController.softwareArray)
+        // Create background controller
+        #if !DEBUG
+        casperSplashBackgroundController = storyboard.instantiateController(withIdentifier: "backgroundWindow") as! CasperSplashBackgroundController
+        casperSplashBackgroundController.showWindow(self)
+        #endif
 
-        casperSplashController?.showWindow(self)
-        
-        
-        
-        // We use a timer to parse jamf.log
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
 
 
     }
 
-    func readTimer() -> Void {
-        //let readQueue = DispatchQueue(label: "io.fti.CasperSplash.readQueue", attributes: .qosBackground, target: nil)
-        DispatchQueue.global(qos: .background).async {
-            for line in readLinesFromFile(Preferences.sharedInstance.logFileHandle)! {
-                if let software = getSoftwareFromRegex(line) {
-                    DispatchQueue.main.async {
-                        modifySoftwareArray(fromSoftware: software, softwareArray: &self.casperSplashController.softwareArray)
-                        
-                        self.casperSplashController.checkSoftwareStatus()
-                    }
-                }
-            }
-        }
-    }
-}
+ }
 

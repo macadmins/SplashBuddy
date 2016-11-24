@@ -100,7 +100,7 @@ func == (lhs: Software, rhs: Software) -> Bool {
     return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
 }
 
-func modifySoftwareArrayFromFile(_ fileHandle: FileHandle?, softwareArray: inout [Software]) -> Void {
+func modifySoftwareArrayFromFile(_ fileHandle: FileHandle, softwareArray: inout [Software]) -> Void {
     if let lines = readLinesFromFile(fileHandle) {
         for line in lines {
             modifySoftwareFromLine(line, softwareArray: &softwareArray)
@@ -108,25 +108,8 @@ func modifySoftwareArrayFromFile(_ fileHandle: FileHandle?, softwareArray: inout
     }
 }
 
-func fileToSoftware(_ fileHandle: FileHandle?) -> [Software] {
-    var result = [Software]()
-    
-    // Create an array of lines
-    if let lines = readLinesFromFile(fileHandle) {
-        for line in lines {
-            modifySoftwareFromLine(line, softwareArray: &result)
-        }
-    }
-    return result
-}
-
-func readLinesFromFile(_ fileHandle: FileHandle?) -> [String]? {
-    if let log = fileHandle {
-        return String(data: log.readDataToEndOfFile(), encoding: String.Encoding.utf8)?.components(separatedBy: "\n")
-    } else {
-        NSLog("Error reading file.")
-        return nil
-    }
+func readLinesFromFile(_ fileHandle: FileHandle) -> [String]? {
+    return String(data: fileHandle.readDataToEndOfFile(), encoding: String.Encoding.utf8)?.components(separatedBy: "\n")
     
 }
 

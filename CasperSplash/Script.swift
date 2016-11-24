@@ -17,8 +17,6 @@ class Script {
     
     func execute(_ completionHandler: @escaping (_ isSuccessful: Bool) -> ()) {
         
-        //let queue = DispatchQueue(label: "io.fti.CasperSplash.Script", attributes: .concurrent, target: nil)
-        
         DispatchQueue.global(qos: .userInitiated).async {
             let task: Process = Process()
             task.launchPath = "/bin/bash"

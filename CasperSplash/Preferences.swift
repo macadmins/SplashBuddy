@@ -29,7 +29,7 @@ class Preferences {
     /// User defaults. Should always use standardUserDefaults() if not testing.
     var userDefaults: UserDefaults?
     
-    var logFileHandle: FileHandle?
+    lazy var logFileHandle: FileHandle? = FileHandle(forReadingAtPath: Preferences.sharedInstance.jamfLog)
     
     
     init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
