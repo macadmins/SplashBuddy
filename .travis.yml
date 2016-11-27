@@ -1,25 +1,14 @@
 language: objective-c
-osx_image: xcode8.1
+osx_image: xcode8.2
 xcode_project: CasperSplash.xcodeproj
 xcode_scheme: CasperSplash
 xcode_sdk: macosx10.12
-
-# https://docs.travis-ci.com/user/multi-os/
-matrix:
-  include:
-    - xcode_sdk: macosx10.11
-
-# http://stackoverflow.com/questions/34231587/xcode-ui-testing-on-travis-for-osx-with-xcode-helper-accessibility
-# Not compatible with 10.12 
-# Instead, disable the UI tests http://cleanswifter.com/disable-tests-xcode/
-#install:
-#- sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "INSERT INTO access VALUES ('kTCCServiceAccessibility','com.apple.dt.Xcode-Helper',0,1,1,NULL,NULL);"
 
 # https://sipb.mit.edu/doc/safe-shell/
 
 script:
 - set -o pipefail
-- xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" -skip-testing:CasperSplashUITests | xcpretty
+- xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" | xcpretty
 
 notifications:
 slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W
