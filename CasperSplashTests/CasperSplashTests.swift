@@ -52,21 +52,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = "EnterpriseConnect"
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.packageName, output)
+        XCTAssertEqual(Software(from: input)!.packageName, output)
     }
     
     func testRegexInstallingPackage_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = "1.5.3"
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.packageVersion, output)
+        XCTAssertEqual(Software(from: input)!.packageVersion, output)
     }
     
     func testRegexInstallingPackage_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = Software.SoftwareStatus.installing.rawValue
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.status.rawValue, output)
+        XCTAssertEqual(Software(from: input)!.status.rawValue, output)
     }
     
     
@@ -77,21 +77,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = "EnterpriseConnect"
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.packageName, output)
+        XCTAssertEqual(Software(from: input)!.packageName, output)
     }
     
     func testRegexSuccessfullyInstalledPackage_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = "1.5.3"
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.packageVersion, output)
+        XCTAssertEqual(Software(from: input)!.packageVersion, output)
     }
     
     func testRegexSuccessfullyInstalledPackage_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = Software.SoftwareStatus.success.rawValue
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.status.rawValue, output)
+        XCTAssertEqual(Software(from: input)!.status.rawValue, output)
     }
     
     
@@ -102,21 +102,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = "EnterpriseConnect"
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.packageName, output)
+        XCTAssertEqual(Software(from: input)!.packageName, output)
     }
     
     func testRegexFailedInstall_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = "1.5.3"
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.packageVersion, output)
+        XCTAssertEqual(Software(from: input)!.packageVersion, output)
     }
 
     func testRegexFailedInstall_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = Software.SoftwareStatus.failed.rawValue
         
-        XCTAssertEqual(getSoftwareFromRegex(input)!.status.rawValue, output)
+        XCTAssertEqual(Software(from: input)!.status.rawValue, output)
     }
     
     
@@ -132,7 +132,7 @@ class CasperSplashTests: XCTestCase {
         ]
 
         let fileHandle = FileHandle(forReadingAtPath: path!)
-        XCTAssertEqual(readLinesFromFile(fileHandle!)!, output)
+        XCTAssertEqual(readLines(from: fileHandle!)!, output)
     }
     
 //    func testReadFromFile_CanParseSoftwareFromFile() {
@@ -326,7 +326,7 @@ class CasperSplashTests: XCTestCase {
         testPrefs.getPreferencesApplications(&softwareArray)
         
         let fileHandle = FileHandle(forReadingAtPath: path!)
-        modifySoftwareArrayFromFile(fileHandle!, softwareArray: &self.softwareArray)
+        softwareArray.modify(from: fileHandle!)
         
         XCTAssertEqual(self.softwareArray.first!.packageName, "Success021")
         XCTAssertEqual(self.softwareArray.first!.packageVersion, "0.21")

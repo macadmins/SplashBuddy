@@ -31,7 +31,7 @@ class Software: NSObject {
     
     
     
-    dynamic let packageName: String
+    dynamic var packageName: String
     dynamic var packageVersion: String?
     dynamic var status: SoftwareStatus
     dynamic var icon: NSImage?
@@ -88,71 +88,74 @@ class Software: NSObject {
         
     }
     
-    //    /// Compare two Software objects
-    //    func isEqual(rhs: Software) -> Bool {
-    //        return self == rhs
-    //    }
-    
-    
+    convenience init?(from line: String) {
+        
+        var name: String?
+        var version: String?
+        var status: SoftwareStatus?
+        
+        for (regexStatus, regex) in initRegex() {
+            
+            status = regexStatus
+            
+            let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.characters.count))
+            
+            if !matches.isEmpty {
+                name = (line as NSString).substring(with: matches[0].rangeAt(1))
+                version = (line as NSString).substring(with: matches[0].rangeAt(2))
+                break
+            }
+        }
+        
+        if let packageName = name, let packageVersion = version, let packageStatus = status {
+            self.init(name: packageName, version: packageVersion, status: packageStatus)
+        } else {
+            return nil
+        }
+    }
+
 }
 
 func == (lhs: Software, rhs: Software) -> Bool {
     return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
 }
 
-func modifySoftwareArrayFromFile(_ fileHandle: FileHandle, softwareArray: inout [Software]) -> Void {
-    if let lines = readLinesFromFile(fileHandle) {
-        for line in lines {
-            modifySoftwareFromLine(line, softwareArray: &softwareArray)
-        }
-    }
-}
-
-func readLinesFromFile(_ fileHandle: FileHandle) -> [String]? {
+func readLines(from fileHandle: FileHandle) -> [String]? {
     return String(data: fileHandle.readDataToEndOfFile(), encoding: String.Encoding.utf8)?.components(separatedBy: "\n")
     
 }
 
-func modifySoftwareFromLine(_ line: String, softwareArray: inout [Software]) {
+
+
+extension Array where Element:Software {
     
-    if let software = getSoftwareFromRegex(line) {
+    mutating func modify(with software: Software) {
+        
         // If Software already exists, replace status and package version
-        if let index = softwareArray.index(where: {$0.packageName == software.packageName}) {
-            softwareArray[index].status = software.status
-            softwareArray[index].packageVersion = software.packageVersion
+        if let index = self.index(where: {$0.packageName == software.packageName}) {
+            self[index].status = software.status
+            self[index].packageVersion = software.packageVersion
         } else {
-            softwareArray.append(software)
+            self.append(software as! Element)
         }
     }
     
-    
-}
-func modifySoftwareArray(fromSoftware software: Software, softwareArray: inout [Software]) {
-    
-    // If Software already exists, replace status and package version
-    if let index = softwareArray.index(where: {$0.packageName == software.packageName}) {
-        softwareArray[index].status = software.status
-        softwareArray[index].packageVersion = software.packageVersion
-    } else {
-        softwareArray.append(software)
-    }
-    
-    
-}
-
-
-func getSoftwareFromRegex(_ line: String) -> Software? {
-    for (status, regex) in initRegex() {
-        
-        let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.characters.count))
-        
-        if !matches.isEmpty {
-            let name = (line as NSString).substring(with: matches[0].rangeAt(1))
-            let version = (line as NSString).substring(with: matches[0].rangeAt(2))
-            return Software(name: name, version: version, status: status)
+    mutating func modify(from line: String) {
+        if let software = Software(from: line) {
+            // If Software already exists, replace status and package version
+            if let index = self.index(where: {$0.packageName == software.packageName}) {
+                self[index].status = software.status
+                self[index].packageVersion = software.packageVersion
+            } else {
+                self.append(software as! Element)
+            }
         }
     }
-    return nil
+    mutating func modify(from file: FileHandle) {
+        if let lines = readLines(from: file) {
+            for line in lines {
+                self.modify(from: line)
+            }
+        }
+    }
 }
-
-

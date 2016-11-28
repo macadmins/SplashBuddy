@@ -28,7 +28,6 @@
 		08EC78811DE71DD5007960A4 /* CasperSplashController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */; };
 		08EC78AA1DE7210E007960A4 /* CasperSplashBackgroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */; };
 		08EC78AC1DE72326007960A4 /* CasperSplashMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* CasperSplashMainViewController.swift */; };
-		08EC78AE1DE72EB0007960A4 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AD1DE72EB0007960A4 /* SoftwareArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +92,6 @@
 		08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CasperSplashController.storyboard; sourceTree = "<group>"; };
 		08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashBackgroundController.swift; sourceTree = "<group>"; };
 		08EC78AB1DE72326007960A4 /* CasperSplashMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashMainViewController.swift; sourceTree = "<group>"; };
-		08EC78AD1DE72EB0007960A4 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +152,6 @@
 				089D29241D50D12200E58C6D /* MainMenu.xib */,
 				089D29271D50D12200E58C6D /* Info.plist */,
 				089D294E1D50F1D800E58C6D /* Software.swift */,
-				08EC78AD1DE72EB0007960A4 /* SoftwareArray.swift */,
 				089D294C1D50F04900E58C6D /* Regexes.swift */,
 				08AC4F7C1D5222BD00CAB019 /* Preferences.swift */,
 				086F87B11D536F2B002AA791 /* Script.swift */,
@@ -339,7 +336,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08EC78AE1DE72EB0007960A4 /* SoftwareArray.swift in Sources */,
 				086F87B81D5391FD002AA791 /* CasperSplashController.swift in Sources */,
 				089D294F1D50F1D800E58C6D /* Software.swift in Sources */,
 				08EC78AA1DE7210E007960A4 /* CasperSplashBackgroundController.swift in Sources */,
