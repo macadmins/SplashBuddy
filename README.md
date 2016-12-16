@@ -4,6 +4,15 @@ Onboarding splash screen for Casper Suite DEP
 Caution: This repo is not ready.
 Watch for an announcement at http://maclovin.org
 
+#Quick Start
+
+- Install CasperSplash.app in /Library/CasperSplash
+- Generate a CasperSplash Demo Assets package and install it
+```
+DemoAssets/build_pkg.sh
+sudo install -target / -pkg DemoAssets/CasperSplashDemoAssets-0.7.pkg
+```
+
 # Setting Preferences
 
 ## CasperSplash.plist
@@ -49,4 +58,5 @@ The following example will:
     </dict>
 </plist>
 ```
+
 
