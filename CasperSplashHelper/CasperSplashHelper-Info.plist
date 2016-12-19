@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>io.fti.CasperSplash.helper</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>io.fti.CasperSplash.helper</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.0</string>
+	<key>SMAuthorizedClients</key>
+	<array>
+		<string>identifier &quot;io.fti.CasperSplash&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Mac Developer: tmorgan@morganrepair.com (SM8UP534NU)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+	</array>
+</dict>
+</plist>
