@@ -56,11 +56,18 @@ class Helper: NSObject, HelperProtocol, NSXPCListenerDelegate{
     }
     
     //  Edit: Add helper's functions below.
-    func setAssetTag(asset_tag: String) {
+    func setAssetTag(asset_tag: String,reply: @escaping (NSNumber) -> Void) {
         let command = "/usr/bin/sudo"
         var args = ["/usr/sbin/nvram","asset-tag=\(asset_tag)"]
         runTask(command: command, arguments: args,reply: { (exitStatus) in
-            //self.textViewOutput.appendText(line: "Command exit status: \(exitStatus)")
+            let remoteObject = self.connection().remoteObjectProxy as? ProcessProtocol
+            remoteObject?.log(stdOut: "Exit code: \(exitStatus)")
+        })
+        
+        args = ["/usr/local/bin/jamf","recon","-assetTag",asset_tag]
+        runTask(command: command, arguments: args,reply: { (exitStatus) in
+            let remoteObject = self.connection().remoteObjectProxy as? ProcessProtocol
+            remoteObject?.log(stdOut: "Exit code: \(exitStatus)")
         })
     }
     
@@ -81,6 +88,7 @@ class Helper: NSObject, HelperProtocol, NSXPCListenerDelegate{
                 else {return}
             
             let remoteObject = self.connection().remoteObjectProxy as? ProcessProtocol
+            remoteObject?.log(stdOut: output as String)
         }
         
         stdOut.fileHandleForReading.readabilityHandler = stdOutHandler
@@ -91,6 +99,7 @@ class Helper: NSObject, HelperProtocol, NSXPCListenerDelegate{
             guard let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
                 else{return}
             let remoteObject = self.connection().remoteObjectProxy as? ProcessProtocol
+            remoteObject?.log(stdErr: output as String)
         }
         
         stdErr.fileHandleForReading.readabilityHandler = stdErrHandler

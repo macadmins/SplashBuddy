@@ -19,7 +19,7 @@ class CasperSplashController: NSWindowController {
         // Display Front Window
         
         #if !DEBUG
-        self.window?.level = Int(CGWindowLevelForKey(.maximumWindow))
+        self.window?.level = Int(CGWindowLevelForKey(.maximumWindow) - 1)
         #endif
         
         self.window?.isOpaque = false

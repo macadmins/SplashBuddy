@@ -18,7 +18,7 @@ class CasperSplashBackgroundController: NSWindowController {
             backgroundWindow.contentRect(forFrameRect: mainDisplayRect!)
             backgroundWindow.setFrame((NSScreen.main()?.frame)!, display: true)
             backgroundWindow.setFrameOrigin((NSScreen.main()?.frame.origin)!)
-            backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow) - 1 )
+            backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow) - 2)
         }
     }
 

@@ -11,7 +11,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>1.0.4</string>
 	<key>SMAuthorizedClients</key>
 	<array>
 		<string>identifier &quot;io.fti.CasperSplash&quot; and anchor apple generic and certificate leaf[subject.CN] = &quot;Mac Developer: tmorgan@morganrepair.com (SM8UP534NU)&quot; and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>

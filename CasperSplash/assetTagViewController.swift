@@ -39,7 +39,9 @@ class assetTagViewController: NSViewController, ProcessProtocol {
             })
             
             let xpcService = self.helperConnection.remoteObjectProxyWithErrorHandler() { error -> Void in print("XPCService error: %@", error)} as? HelperProtocol
-            xpcService?.setAssetTag(asset_tag: assetField.stringValue)
+            xpcService?.setAssetTag(asset_tag: assetField.stringValue,reply: { (exitStatus) in
+                print("Command exit status: \(exitStatus)")
+            })
             
         }else{
             warningText.stringValue = "Please enter the asset tag located on your device."
@@ -136,6 +138,14 @@ class assetTagViewController: NSViewController, ProcessProtocol {
             str in
             print("Helper: Current Version => \(str)")
         })
+    }
+    
+    func log(stdOut: String) -> Void {
+        print(stdOut)
+    }
+    
+    func log(stdErr: String) -> Void {
+        print(stdErr)
     }
 
 }

@@ -31,7 +31,7 @@ class HelperAuthorization: NSObject {
         let adminRights = kAuthorizationRuleAuthenticateAsAdmin
         let sCommandInfo: [String:Dictionary<String,Any>] =
             [
-                NSStringFromSelector(#selector(HelperProtocol.setAssetTag(asset_tag:)))  :
+                NSStringFromSelector(#selector(HelperProtocol.setAssetTag(asset_tag:reply:)))  :
                     [CommandKeyAuth.commandName : "io.fti.CasperSplash.helper.setAssetTag", CommandKeyAuth.commandDefault : adminRights, CommandKeyAuth.commandDescription: "TheDescription"]
         ]
         return sCommandInfo

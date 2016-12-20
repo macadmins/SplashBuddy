@@ -10,4 +10,6 @@ import Foundation
 
 @objc(ProcessProtocol)
 protocol ProcessProtocol {
+    func log(stdOut: String) -> Void
+    func log(stdErr: String) -> Void
 }

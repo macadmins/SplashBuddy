@@ -16,5 +16,5 @@ struct HelperConstants {
 protocol HelperProtocol {
     func getVersion(reply: (String) -> Void)
     //  Edit: Add Helper's functions here
-    func setAssetTag(asset_tag: String)
+    func setAssetTag(asset_tag: String,reply: @escaping (NSNumber) -> Void)
 }
