@@ -59,4 +59,12 @@ The following example will:
 </plist>
 ```
 
+## Requiring Asset Tag to be entered
+Add `<key>requireAssetTag</key` with the value of `<true/>` to require asset tag during execution of CasperSplash. Requires the end user to input the asset tag for the machine, and enters it into NVRAM and updates it in the JSS.
+**Current Issue:** Privileged Helper requires users to enter their passwords to allow the installation of the helper. This prompt is displayed behind the CasperSplash Screen. The current fix is to type the password in blindly, and hit enter to continue.
 
+I recommend using the [SMJobBlessUtil.py](https://developer.apple.com/library/content/samplecode/SMJobBless/Introduction/Intro.html) to reduce complications during signing.
+
+Need to update certificate leaf in:
+- `CasperSplash/CasperSplashHelper/CasperSplashHelper-Info.plist`
+- `CasperSplash/Info.plist`

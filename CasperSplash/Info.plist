@@ -26,6 +26,11 @@
 	<string>Copyright © 2016 François Levaux-Tiffreau. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SMPrivilegedExecutables</key>
+	<dict>
+		<key>io.fti.CasperSplash.helper</key>
+		<string>identifier "io.fti.CasperSplash.helper" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tmorgan@morganrepair.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>CasperSplashController</string>
 </dict>

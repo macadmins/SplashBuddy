@@ -26,6 +26,10 @@ class Preferences {
     var postInstallScript: Script?
     var htmlPath: String?
     
+    
+    //  Asset Values
+    var assetTagRequire: Bool?
+    
     /// User defaults. Should always use standardUserDefaults() if not testing.
     var userDefaults: UserDefaults?
     
@@ -48,6 +52,10 @@ class Preferences {
             self.htmlPath = htmlPath
         }
         
+        if let assetTagRequire = getAssetTagRequired(){
+            self.assetTagRequire = assetTagRequire
+        }
+        
         
     }
     
@@ -63,6 +71,10 @@ class Preferences {
         return self.userDefaults?.string(forKey: "htmlPath")
     }
 
+    func getAssetTagRequired() -> Bool? {
+        return self.userDefaults?.bool(forKey: "requireAssetTag")
+    }
+    
     /**
      Absolute path to html index
      - returns: Absolute Path if set in preferences, otherwise the placeholder.

@@ -29,6 +29,16 @@
 		08EC78AA1DE7210E007960A4 /* CasperSplashBackgroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */; };
 		08EC78AC1DE72326007960A4 /* CasperSplashMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* CasperSplashMainViewController.swift */; };
 		08EC78AE1DE72EB0007960A4 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AD1DE72EB0007960A4 /* SoftwareArray.swift */; };
+		8132B6941E086B3B00AB3F14 /* assetTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B6931E086B3B00AB3F14 /* assetTagViewController.swift */; };
+		8132B6AF1E08790500AB3F14 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B6961E0875D400AB3F14 /* main.swift */; };
+		8132B6B01E08790500AB3F14 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B6981E08760500AB3F14 /* Helper.swift */; };
+		8132B6B11E08790500AB3F14 /* HelperAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B69A1E08762C00AB3F14 /* HelperAuthorization.swift */; };
+		8132B6B21E08790500AB3F14 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B69C1E08764200AB3F14 /* HelperProtocol.swift */; };
+		8132B6B31E08790500AB3F14 /* ProcessProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B69E1E08766100AB3F14 /* ProcessProtocol.swift */; };
+		8132B6B71E08794300AB3F14 /* HelperAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B69A1E08762C00AB3F14 /* HelperAuthorization.swift */; };
+		8132B6B81E08794300AB3F14 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B69C1E08764200AB3F14 /* HelperProtocol.swift */; };
+		8132B6B91E08794300AB3F14 /* ProcessProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132B69E1E08766100AB3F14 /* ProcessProtocol.swift */; };
+		8132B6BB1E087BBC00AB3F14 /* io.fti.CasperSplash.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8132B6A81E0878D000AB3F14 /* io.fti.CasperSplash.helper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +56,13 @@
 			remoteGlobalIDString = 089D291C1D50D12200E58C6D;
 			remoteInfo = CasperSplash;
 		};
+		8132B6B51E08793200AB3F14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089D29151D50D12200E58C6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8132B6A71E0878D000AB3F14;
+			remoteInfo = io.fti.CasperSplash.helper;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +74,25 @@
 			files = (
 				086F87AC1D532143002AA791 /* ec_32x32.png in CopyFiles */,
 				086F87AD1D532143002AA791 /* ec_32x32@2x.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8132B6A61E0878D000AB3F14 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		8132B6BA1E087B9B00AB3F14 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				8132B6BB1E087BBC00AB3F14 /* io.fti.CasperSplash.helper in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +130,15 @@
 		08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashBackgroundController.swift; sourceTree = "<group>"; };
 		08EC78AB1DE72326007960A4 /* CasperSplashMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashMainViewController.swift; sourceTree = "<group>"; };
 		08EC78AD1DE72EB0007960A4 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
+		8132B6931E086B3B00AB3F14 /* assetTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = assetTagViewController.swift; sourceTree = "<group>"; };
+		8132B6961E0875D400AB3F14 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = CasperSplashHelper/main.swift; sourceTree = SOURCE_ROOT; };
+		8132B6981E08760500AB3F14 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Helper.swift; path = CasperSplashHelper/Helper.swift; sourceTree = SOURCE_ROOT; };
+		8132B69A1E08762C00AB3F14 /* HelperAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelperAuthorization.swift; path = CasperSplashHelper/HelperAuthorization.swift; sourceTree = SOURCE_ROOT; };
+		8132B69C1E08764200AB3F14 /* HelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelperProtocol.swift; path = CasperSplashHelper/HelperProtocol.swift; sourceTree = SOURCE_ROOT; };
+		8132B69E1E08766100AB3F14 /* ProcessProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessProtocol.swift; path = CasperSplashHelper/ProcessProtocol.swift; sourceTree = SOURCE_ROOT; };
+		8132B6A01E08768900AB3F14 /* CasperSplashHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "CasperSplashHelper-Info.plist"; path = "CasperSplashHelper/CasperSplashHelper-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8132B6A21E0876A700AB3F14 /* CasperSplashHelper-launchD.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "CasperSplashHelper-launchD.plist"; path = "CasperSplashHelper/CasperSplashHelper-launchD.plist"; sourceTree = SOURCE_ROOT; };
+		8132B6A81E0878D000AB3F14 /* io.fti.CasperSplash.helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = io.fti.CasperSplash.helper; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +157,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		08DAA4831D54A62B0027E650 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8132B6A51E0878D000AB3F14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -139,6 +191,7 @@
 				089D291D1D50D12200E58C6D /* CasperSplash.app */,
 				089D292C1D50D12200E58C6D /* CasperSplashTests.xctest */,
 				08DAA4861D54A62B0027E650 /* CasperSplashUITests.xctest */,
+				8132B6A81E0878D000AB3F14 /* io.fti.CasperSplash.helper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +199,7 @@
 		089D291F1D50D12200E58C6D /* CasperSplash */ = {
 			isa = PBXGroup;
 			children = (
+				8132B6951E08708C00AB3F14 /* CasperSplashHelper */,
 				089D29201D50D12200E58C6D /* AppDelegate.swift */,
 				08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */,
 				086F87B61D5391FD002AA791 /* CasperSplashController.swift */,
@@ -161,6 +215,7 @@
 				08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */,
 				08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */,
 				086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */,
+				8132B6931E086B3B00AB3F14 /* assetTagViewController.swift */,
 			);
 			path = CasperSplash;
 			sourceTree = "<group>";
@@ -198,6 +253,21 @@
 			path = CasperSplashTestAssets;
 			sourceTree = "<group>";
 		};
+		8132B6951E08708C00AB3F14 /* CasperSplashHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8132B6961E0875D400AB3F14 /* main.swift */,
+				8132B6981E08760500AB3F14 /* Helper.swift */,
+				8132B69A1E08762C00AB3F14 /* HelperAuthorization.swift */,
+				8132B69C1E08764200AB3F14 /* HelperProtocol.swift */,
+				8132B69E1E08766100AB3F14 /* ProcessProtocol.swift */,
+				8132B6A01E08768900AB3F14 /* CasperSplashHelper-Info.plist */,
+				8132B6A21E0876A700AB3F14 /* CasperSplashHelper-launchD.plist */,
+			);
+			name = CasperSplashHelper;
+			path = CasperSplashUITests;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,10 +278,12 @@
 				089D29191D50D12200E58C6D /* Sources */,
 				089D291A1D50D12200E58C6D /* Frameworks */,
 				089D291B1D50D12200E58C6D /* Resources */,
+				8132B6BA1E087B9B00AB3F14 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8132B6B61E08793200AB3F14 /* PBXTargetDependency */,
 			);
 			name = CasperSplash;
 			productName = CasperSplash;
@@ -255,31 +327,57 @@
 			productReference = 08DAA4861D54A62B0027E650 /* CasperSplashUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8132B6A71E0878D000AB3F14 /* io.fti.CasperSplash.helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8132B6AC1E0878D000AB3F14 /* Build configuration list for PBXNativeTarget "io.fti.CasperSplash.helper" */;
+			buildPhases = (
+				8132B6A41E0878D000AB3F14 /* Sources */,
+				8132B6A51E0878D000AB3F14 /* Frameworks */,
+				8132B6A61E0878D000AB3F14 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = io.fti.CasperSplash.helper;
+			productName = io.fti.CasperSplash.helper;
+			productReference = 8132B6A81E0878D000AB3F14 /* io.fti.CasperSplash.helper */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		089D29151D50D12200E58C6D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "François Levaux-Tiffreau";
 				TargetAttributes = {
 					089D291C1D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = EM3ER8T33A;
+						DevelopmentTeam = 55JHL22EU7;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					089D292B1D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 55JHL22EU7;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 089D291C1D50D12200E58C6D;
 					};
 					08DAA4851D54A62B0027E650 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 55JHL22EU7;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 089D291C1D50D12200E58C6D;
+					};
+					8132B6A71E0878D000AB3F14 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 55JHL22EU7;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -299,6 +397,7 @@
 				089D291C1D50D12200E58C6D /* CasperSplash */,
 				089D292B1D50D12200E58C6D /* CasperSplashTests */,
 				08DAA4851D54A62B0027E650 /* CasperSplashUITests */,
+				8132B6A71E0878D000AB3F14 /* io.fti.CasperSplash.helper */,
 			);
 		};
 /* End PBXProject section */
@@ -341,13 +440,17 @@
 			files = (
 				08EC78AE1DE72EB0007960A4 /* SoftwareArray.swift in Sources */,
 				086F87B81D5391FD002AA791 /* CasperSplashController.swift in Sources */,
+				8132B6B91E08794300AB3F14 /* ProcessProtocol.swift in Sources */,
 				089D294F1D50F1D800E58C6D /* Software.swift in Sources */,
 				08EC78AA1DE7210E007960A4 /* CasperSplashBackgroundController.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
+				8132B6B81E08794300AB3F14 /* HelperProtocol.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
+				8132B6941E086B3B00AB3F14 /* assetTagViewController.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* CasperSplashWebView.swift in Sources */,
 				08EC78AC1DE72326007960A4 /* CasperSplashMainViewController.swift in Sources */,
 				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
+				8132B6B71E08794300AB3F14 /* HelperAuthorization.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 			);
@@ -369,6 +472,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8132B6A41E0878D000AB3F14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8132B6AF1E08790500AB3F14 /* main.swift in Sources */,
+				8132B6B11E08790500AB3F14 /* HelperAuthorization.swift in Sources */,
+				8132B6B01E08790500AB3F14 /* Helper.swift in Sources */,
+				8132B6B21E08790500AB3F14 /* HelperProtocol.swift in Sources */,
+				8132B6B31E08790500AB3F14 /* ProcessProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -381,6 +496,11 @@
 			isa = PBXTargetDependency;
 			target = 089D291C1D50D12200E58C6D /* CasperSplash */;
 			targetProxy = 08DAA48B1D54A62B0027E650 /* PBXContainerItemProxy */;
+		};
+		8132B6B61E08793200AB3F14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8132B6A71E0878D000AB3F14 /* io.fti.CasperSplash.helper */;
+			targetProxy = 8132B6B51E08793200AB3F14 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -440,6 +560,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -479,6 +600,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -488,13 +610,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EM3ER8T33A;
+				DEVELOPMENT_TEAM = 55JHL22EU7;
 				INFOPLIST_FILE = CasperSplash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -504,13 +626,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EM3ER8T33A;
+				DEVELOPMENT_TEAM = 55JHL22EU7;
 				INFOPLIST_FILE = CasperSplash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0.1;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -518,7 +640,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 55JHL22EU7;
 				INFOPLIST_FILE = CasperSplashTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashTests;
@@ -532,7 +656,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 55JHL22EU7;
 				INFOPLIST_FILE = CasperSplashTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashTests;
@@ -546,7 +672,9 @@
 		08DAA48D1D54A62B0027E650 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 55JHL22EU7;
 				INFOPLIST_FILE = CasperSplashUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
@@ -559,7 +687,9 @@
 		08DAA48E1D54A62B0027E650 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 55JHL22EU7;
 				INFOPLIST_FILE = CasperSplashUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplashUITests;
@@ -567,6 +697,54 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CasperSplash;
+			};
+			name = Release;
+		};
+		8132B6AD1E0878D000AB3F14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 55JHL22EU7;
+				INFOPLIST_FILE = "$(SRCROOT)/CasperSplashHelper/CasperSplashHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"\"$(SRCROOT)/CasperSplashHelper/CasperSplashHelper-Info.plist\"",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"\"$(SRCROOT)/CasperSplashHelper/CasperSplashHelper-Launchd.plist\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplash.helper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8132B6AE1E0878D000AB3F14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 55JHL22EU7;
+				INFOPLIST_FILE = "$(SRCROOT)/CasperSplashHelper/CasperSplashHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"\"$(SRCROOT)/CasperSplashHelper/CasperSplashHelper-Info.plist\"",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"\"$(SRCROOT)/CasperSplashHelper/CasperSplashHelper-Launchd.plist\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.fti.CasperSplash.helper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -608,6 +786,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8132B6AC1E0878D000AB3F14 /* Build configuration list for PBXNativeTarget "io.fti.CasperSplash.helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8132B6AD1E0878D000AB3F14 /* Debug */,
+				8132B6AE1E0878D000AB3F14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

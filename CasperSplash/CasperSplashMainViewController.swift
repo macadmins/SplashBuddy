@@ -9,7 +9,6 @@
 import Cocoa
 
 class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
-
 //    @IBOutlet var theWindow: NSWindow!
 //    @IBOutlet weak var theWindowView: NSView!
     @IBOutlet var webView: CasperSplashWebView!
@@ -51,6 +50,14 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
         
         if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
             webView.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
+        }
+        
+    //  Setup AssetTag Requirements
+        if let require_asset = Preferences.sharedInstance.assetTagRequire {
+            if require_asset {
+                let assetTagViewController: NSViewController = storyboard?.instantiateController(withIdentifier: "assetTagViewController") as! NSViewController
+                self.presentViewControllerAsSheet(assetTagViewController)
+            }
         }
     
     SetupInstalling()
