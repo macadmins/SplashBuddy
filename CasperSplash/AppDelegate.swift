@@ -34,8 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, StreamDelegate {
         
         // Create background controller
         #if !DEBUG
-            // casperSplashBackgroundController = storyboard.instantiateController(withIdentifier: "backgroundWindow") as! CasperSplashBackgroundController
-            //casperSplashBackgroundController.showWindow(self)
+             casperSplashBackgroundController = storyboard.instantiateController(withIdentifier: "backgroundWindow") as! CasperSplashBackgroundController
+            casperSplashBackgroundController.showWindow(self)
         #endif
 
 
