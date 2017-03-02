@@ -42,12 +42,27 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         self.mainView.layer?.shadowRadius = 2
         self.mainView.layer?.borderWidth = 0.2
         
-        // Setup the initial state of objects
-        SetupInstalling()
         
+        // Setup the initial state of objects
+        self.setupInstalling()
+        
+        // Setup the Notifications
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(MainViewController.errorWhileInstalling),
+                                               name: NSNotification.Name(rawValue: "errorWhileInstalling"),
+                                               object: nil)
 
-        // Setup Timer to parse log
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(MainViewController.canContinue),
+                                               name: NSNotification.Name(rawValue: "canContinue"),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(MainViewController.doneInstalling),
+                                               name: NSNotification.Name(rawValue: "doneInstalling"),
+                                               object: nil)
+        
+        
         
 
  
@@ -74,43 +89,12 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     
     
     
-    func failedSoftwareArray(_ _softwareArray: [Software]) -> [Software] {
-        return _softwareArray.filter({ $0.status == .failed })
-    }
-    
-    func canContinue(_ _softwareArray: [Software]) -> Bool {
-        let criticalSoftwareArray = _softwareArray.filter({ $0.canContinue == false })
-        return criticalSoftwareArray.filter({ $0.status == .success }).count == criticalSoftwareArray.count
-    }
-    
-    func allInstalled(_ _softwareArray: [Software]) -> Bool {
-        let displayedSoftwareArray = _softwareArray.filter({ $0.displayToUser == true })
-        return displayedSoftwareArray.filter({ $0.status == .success }).count == displayedSoftwareArray.count
-    }
     
     
 
     
     
-    func readTimer() -> Void {
-        
-        DispatchQueue.global(qos: .background).async {
-            if let logFileHandle = Preferences.sharedInstance.logFileHandle {
-                if let lines = logFileHandle.readLines() {
-                    for line in lines {
-                        if let software = Software(from: line) {
-                            DispatchQueue.main.async {
-                                SoftwareArray.sharedInstance.array.modify(with: software)
-                                
-                                self.checkSoftwareStatus()
-                            }
-                        }
-                    }
-                }
-                
-            }
-        }
-    }
+
 
     
     

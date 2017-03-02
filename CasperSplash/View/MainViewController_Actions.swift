@@ -10,7 +10,7 @@ import Foundation
 
 extension MainViewController {
     
-    func SetupInstalling() {
+    func setupInstalling() {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
         
@@ -23,11 +23,13 @@ extension MainViewController {
     
     
     
-    func errorWhileInstalling(_failedSoftwareArray: [Software]) {
+    func errorWhileInstalling() {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
         continueButton?.isEnabled = true
         statusLabel.textColor = .red
+        
+        let _failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
         
         if _failedSoftwareArray.count == 1 {
             
@@ -43,7 +45,7 @@ extension MainViewController {
 
     
     
-    func doneInstallingCriticalSoftware() {
+    func canContinue() {
         continueButton?.isEnabled = true
     }
     
@@ -58,19 +60,6 @@ extension MainViewController {
     
 
     
-    func checkSoftwareStatus() {
-        if failedSoftwareArray(SoftwareArray.sharedInstance.array).count > 0 {
-            errorWhileInstalling(_failedSoftwareArray: failedSoftwareArray(SoftwareArray.sharedInstance.array))
-        } else if canContinue(SoftwareArray.sharedInstance.array) {
-            doneInstallingCriticalSoftware()
-        } else {
-            SetupInstalling()
-        }
-        
-        if allInstalled(SoftwareArray.sharedInstance.array) {
-            doneInstalling()
-        }
-    }
     
     
 }

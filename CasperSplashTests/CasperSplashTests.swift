@@ -420,7 +420,7 @@ class CasperSplashTests: XCTestCase {
             Software(packageName: "test1", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
             Software(packageName: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
         ]
-        XCTAssertTrue(casperSplashMainController.canContinue(input))
+        XCTAssertTrue(SoftwareArray.sharedInstance.canContinue(input))
     }
     
     func testCanContinue_yesNoCritical() {
@@ -430,7 +430,7 @@ class CasperSplashTests: XCTestCase {
             Software(packageName: "test1", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true),
             Software(packageName: "test2", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true)
         ]
-        XCTAssertTrue(casperSplashMainController.canContinue(input))
+        XCTAssertTrue(SoftwareArray.sharedInstance.canContinue(input))
     }
 
     func testCanContinue_no() {
@@ -440,7 +440,7 @@ class CasperSplashTests: XCTestCase {
             Software(packageName: "test1", version: nil, status: .pending, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
             Software(packageName: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
         ]
-        XCTAssertFalse(casperSplashMainController.canContinue(input))
+        XCTAssertFalse(SoftwareArray.sharedInstance.canContinue(input))
     }
     
     
