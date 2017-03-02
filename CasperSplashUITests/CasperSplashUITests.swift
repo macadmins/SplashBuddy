@@ -2,7 +2,7 @@
 //  CasperSplashUITests.swift
 //  CasperSplashUITests
 //
-//  Created by testpilotfinal on 02/08/16.
+//  Created by ftiff on 02/08/16.
 //  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
 //
 

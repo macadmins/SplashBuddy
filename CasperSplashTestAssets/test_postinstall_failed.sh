@@ -3,7 +3,7 @@
 #  test_postinstall_failed.sh
 #  CasperSplash
 #
-#  Created by testpilotfinal on 04/08/16.
+#  Created by ftiff on 04/08/16.
 #  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
 
 echo "Failed..."

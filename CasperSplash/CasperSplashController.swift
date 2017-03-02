@@ -2,7 +2,7 @@
 //  CasperSplashController.swift
 //  CasperSplash
 //
-//  Created by testpilotfinal on 04/08/16.
+//  Created by ftiff on 04/08/16.
 //  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
 //
 
@@ -18,12 +18,17 @@ class CasperSplashController: NSWindowController {
         
         // Display Front Window
         
+        guard let window = self.window else {
+            NSLog("Cannot get main window")
+            return
+        }
+        
         #if !DEBUG
-        self.window?.level = Int(CGWindowLevelForKey(.maximumWindow))
+        window.level = Int(CGWindowLevelForKey(.maximumWindow))
         #endif
         
-        self.window?.isOpaque = false
-        self.window?.backgroundColor = NSColor.clear
+        window.isOpaque = false
+        window.backgroundColor = NSColor.clear
     }
     
 

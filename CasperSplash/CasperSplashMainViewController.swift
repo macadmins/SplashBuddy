@@ -20,14 +20,15 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet var mainView: NSView!
     @IBOutlet weak var statusView: NSView!
     
-    var mainWindowController: CasperSplashController!
-    
     dynamic var softwareArray = [Software]()
     
+    
+    // Predicate used by Storyboard to filter which software to display
     let predicate = NSPredicate.init(format: "displayToUser = true")
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
         
         
         // Setup the view
@@ -37,79 +38,38 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
         self.mainView.layer?.shadowRadius = 2
         self.mainView.layer?.borderWidth = 0.2
         
-        
-        // Setup Web View
-        self.webView.layer?.borderWidth = 1.0
-        self.webView.layer?.borderColor = NSColor.lightGray.cgColor
-        self.webView.layer?.isOpaque = true
-        
-        if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
-            webView.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
-        }
-        
-        
         // Setup the initial state of objects
         SetupInstalling()
         
-        
         // Get preferences from UserDefaults
         Preferences.sharedInstance.getPreferencesApplications(&softwareArray)
-        
+
         // Setup Timer to parse log
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
         
+
+ 
     }
-    func SetupInstalling() {
-        indeterminateProgressIndicator.startAnimation(self)
-        indeterminateProgressIndicator.isHidden = false
-        
-        installingLabel.stringValue = "Installing…"
-        
-        statusLabel.stringValue = ""
-        
-        continueButton?.isEnabled = false
-    }
+
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
-        let prefs2 = Preferences.sharedInstance.postInstallScript
-        prefs2?.execute({ (isSuccessful) in
-            if !isSuccessful {
-                NSLog("Couldn't execute postInstall Script")
-            }
+        guard let postInstallScript = Preferences.sharedInstance.postInstallScript else {
+            NSLog("Couldn't get postInstall Script")
             NSApplication.shared().terminate(self)
+            return
+        }
+        
+        postInstallScript.execute({ (isSuccessful) in
+            
+            if !isSuccessful { NSLog("Couldn't execute postInstall Script") }
+            
+            NSApplication.shared().terminate(self)
+            
         })
         
     }
     
-    func errorWhileInstalling(_failedSoftwareArray: [Software]) {
-        indeterminateProgressIndicator.isHidden = true
-        installingLabel.stringValue = ""
-        continueButton?.isEnabled = true
-        statusLabel.textColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
-        
-        if _failedSoftwareArray.count == 1 {
-            if let failedDisplayName = _failedSoftwareArray[0].displayName {
-                statusLabel.stringValue = "\(failedDisplayName) failed to install. Support has been notified."
-            } else {
-                statusLabel.stringValue = "An application failed to install. Support has been notified."
-            }
-            
-        } else {
-            statusLabel.stringValue = "Some applications failed to install. Support has been notified."
-        }
-        
-    }
-    
-    func doneInstallingCriticalSoftware() {
-        continueButton?.isEnabled = true
-    }
-    func doneInstalling() {
-        indeterminateProgressIndicator.isHidden = true
-        installingLabel.stringValue = ""
-        statusLabel.textColor = #colorLiteral(red: 0.2818343937, green: 0.5693024397, blue: 0.1281824261, alpha: 1)
-        statusLabel.stringValue = "All applications were installed. Please click continue."
-    }
     
     
     func failedSoftwareArray(_ _softwareArray: [Software]) -> [Software] {
@@ -127,27 +87,14 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
     }
     
     
-    func checkSoftwareStatus() {
-        if failedSoftwareArray(softwareArray).count > 0 {
-            errorWhileInstalling(_failedSoftwareArray: failedSoftwareArray(softwareArray))
-        } else if canContinue(softwareArray) {
-            doneInstallingCriticalSoftware()
-        } else {
-            SetupInstalling()
-        }
-        
-        if allInstalled(softwareArray) {
-            doneInstalling()
-        }
-    }
-    
+
     
     
     func readTimer() -> Void {
         
         DispatchQueue.global(qos: .background).async {
             if let logFileHandle = Preferences.sharedInstance.logFileHandle {
-                if let lines = readLines(from: logFileHandle) {
+                if let lines = logFileHandle.readLines() {
                     for line in lines {
                         if let software = Software(from: line) {
                             DispatchQueue.main.async {
@@ -162,6 +109,7 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
             }
         }
     }
+
     
     
 }

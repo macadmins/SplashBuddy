@@ -2,7 +2,7 @@
 //  CasperSplashTests.swift
 //  CasperSplashTests
 //
-//  Created by testpilotfinal on 02/08/16.
+//  Created by ftiff on 02/08/16.
 //  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
 //
 
@@ -132,7 +132,7 @@ class CasperSplashTests: XCTestCase {
         ]
 
         let fileHandle = FileHandle(forReadingAtPath: path!)
-        XCTAssertEqual(readLines(from: fileHandle!)!, output)
+        XCTAssertEqual((fileHandle?.readLines()!)!, output)
     }
     
 //    func testReadFromFile_CanParseSoftwareFromFile() {
@@ -173,14 +173,14 @@ class CasperSplashTests: XCTestCase {
     
     func testAddIcon_CheckIfNSImage() {
         let path = Bundle(for: type(of: self)).pathForImageResource("ec_32x32.png")
-        let icon = Software(name: "EC", version: "1.6.2", status: .installing, iconPath: path).icon
+        let icon = Software(packageName: "EC", version: "1.6.2", status: .installing, iconPath: path).icon
         XCTAssert(type(of: icon!) == type(of: NSImage()))
     }
     
     func testAddIcon_WithIncorrectResource() {
         let path = Bundle(for: type(of: self)).pathForImageResource("nonexistent")
         
-        XCTAssertEqual(Software(name: "EC", version: "1.6.2", status: .installing, iconPath: path).icon, NSImage(named: NSImageNameFolder))
+        XCTAssertEqual(Software(packageName: "EC", version: "1.6.2", status: .installing, iconPath: path).icon, NSImage(named: NSImageNameFolder))
     }
     
     func testUserDefaults_assetPath() {
@@ -419,8 +419,8 @@ class CasperSplashTests: XCTestCase {
         
         casperSplashMainController = CasperSplashMainViewController()
         let input: [Software] = [
-            Software(name: "test1", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
-            Software(name: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
+            Software(packageName: "test1", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
+            Software(packageName: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
         ]
         XCTAssertTrue(casperSplashMainController.canContinue(input))
     }
@@ -429,8 +429,8 @@ class CasperSplashTests: XCTestCase {
         
         casperSplashMainController = CasperSplashMainViewController()
         let input: [Software] = [
-            Software(name: "test1", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true),
-            Software(name: "test2", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true)
+            Software(packageName: "test1", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true),
+            Software(packageName: "test2", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true)
         ]
         XCTAssertTrue(casperSplashMainController.canContinue(input))
     }
@@ -439,8 +439,8 @@ class CasperSplashTests: XCTestCase {
         
         casperSplashMainController = CasperSplashMainViewController()
         let input = [
-            Software(name: "test1", version: nil, status: .pending, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
-            Software(name: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
+            Software(packageName: "test1", version: nil, status: .pending, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
+            Software(packageName: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
         ]
         XCTAssertFalse(casperSplashMainController.canContinue(input))
     }

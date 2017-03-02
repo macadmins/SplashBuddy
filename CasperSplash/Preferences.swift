@@ -2,7 +2,7 @@
 //  Preferences.swift
 //  CasperSplash
 //
-//  Created by testpilotfinal on 03/08/16.
+//  Created by ftiff on 03/08/16.
 //  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
 //
 
@@ -15,37 +15,54 @@ import Cocoa
  */
 class Preferences {
     
+    
+    
     static let sharedInstance = Preferences()
     
+    
+    
     let jamfLog = "/var/log/jamf.log"
+    lazy var logFileHandle: FileHandle? = FileHandle(forReadingAtPath: Preferences.sharedInstance.jamfLog)
+    
     
     /// Absolute Path to assets. Relative paths will be appended.
     var assetPath: String?
+    
     
     // Relative Paths
     var postInstallScript: Script?
     var htmlPath: String?
     
+    
     /// User defaults. Should always use standardUserDefaults() if not testing.
     var userDefaults: UserDefaults?
     
-    lazy var logFileHandle: FileHandle? = FileHandle(forReadingAtPath: Preferences.sharedInstance.jamfLog)
+    
     
     
     init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
         
         self.userDefaults = nsUserDefaults
         
+        
         if let assetPath = getPreferencesAssetPath() {
             self.assetPath = assetPath
+        } else {
+            NSLog("Cannot get assetPath from io.fti.CasperSplash.plist")
         }
+        
         
         if let assetPath = self.assetPath, let postInstallPath = getPreferencesPostInstallPath() {
             self.postInstallScript = Script(absolutePath: assetPath + "/" + postInstallPath)
+        } else {
+            NSLog("Cannot get postInstallAssetPath from io.fti.CasperSplash.plist")
         }
+        
         
         if let htmlPath = getPreferencesHtmlPath() {
             self.htmlPath = htmlPath
+        } else {
+            NSLog("Cannot get htmlPath from io.fti.CasperSplash.plist")
         }
         
         
@@ -63,6 +80,7 @@ class Preferences {
         return self.userDefaults?.string(forKey: "htmlPath")
     }
 
+    
     /**
      Absolute path to html index
      - returns: Absolute Path if set in preferences, otherwise the placeholder.
@@ -76,6 +94,7 @@ class Preferences {
             }
         }
     }
+    
     
     
     /// Generates Software objects from Preferences
@@ -116,7 +135,7 @@ class Preferences {
                         }
                         
                         
-                        let software = Software(name: name, version: nil, status: .pending, iconPath: "\(assetPath)/\(iconPath)", displayName: displayName, description: description, canContinue: canContinueBool, displayToUser: true)
+                        let software = Software(packageName: name, version: nil, status: .pending, iconPath: "\(assetPath)/\(iconPath)", displayName: displayName, description: description, canContinue: canContinueBool, displayToUser: true)
                         //dump(software)
                         
                         // FIXME: Can I work without a global array?

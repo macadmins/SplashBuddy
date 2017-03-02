@@ -2,28 +2,32 @@
 //  Software.swift
 //  CasperSplash
 //
-//  Created by testpilotfinal on 02/08/16.
+//  Created by ftiff on 02/08/16.
 //  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
 //
 
 import Cocoa
 
 /**
- My new class
+ Object that will hold the definition of a software.
+ 
+ The goal here is to:
+ 1. Create a Software object from the plist (MacAdmin supplied Software)
+ 2. Parse the log and either:
+    - Modify the Software object (if it already exists)
+    - Create a new Software object.
  
  */
+
 class Software: NSObject {
-    
-    
+
     /**
      Status of the software.
-     Default is .Pending, other cases will be set while parsing the log
+     Default is .pending, other cases will be set while parsing the log
      */
     @objc enum SoftwareStatus: Int {
-        // test Installing
-        case installing = 0
         
-        // test Success
+        case installing = 0
         case success = 1
         case failed = 2
         case pending = 3
@@ -39,25 +43,24 @@ class Software: NSObject {
     dynamic var desc: String?
     dynamic var canContinue: Bool
     dynamic var displayToUser: Bool
-    
-    dynamic var packageInfo: String {
-        return "\(self.packageName) (\(self.packageVersion))"
-    }
-    /// MARK: Initializers
+
     
     /**
      Initializes a Software Object
      
      - note: Only packageName is required to parse, displayName, description and displayToUser will have to be set later to properly show it on the GUI.
-     
-     - todo: rename "name" to "packageName"
-     
-     - parameters:
-     - packageName: name of the package (packageName-packageVersion.pkg)
+
+     - parameter packageName: *packageName*-packageVersion.pkg
+     - parameter version: Optional
+     - parameter iconPath: Optional
+     - parameter displayName: Name displayed to user
+     - parameter description: Second line underneath name
+     - parameter canContinue: if set to false, the Software will block the "Continue" button until installed
+     - parameter displayToUser: set to True to display in GUI
      */
     
     
-    init(name: String,
+    init(packageName: String,
          version: String? = nil,
          status: SoftwareStatus = .pending,
          iconPath: String? = nil,
@@ -66,25 +69,21 @@ class Software: NSObject {
          canContinue: Bool = true,
          displayToUser: Bool = false) {
         
-        self.packageName = name
+        self.packageName = packageName
         self.packageVersion = version
         self.status = status
         self.canContinue = canContinue
         self.displayToUser = displayToUser
+        self.displayName = displayName
+        self.desc = description
         
         if let iconPath = iconPath {
             self.icon = NSImage(contentsOfFile: iconPath)
         } else {
-            self.icon = NSImage(named: NSImageNameFolder) //NSImage (literal: NSImageNameFolder)
+            self.icon = NSImage(named: NSImageNameFolder)
         }
         
-        if let displayName = displayName {
-            self.displayName = displayName
-        }
-        
-        if let description = description {
-            self.desc = description
-        }
+
         
     }
     
@@ -108,7 +107,7 @@ class Software: NSObject {
         }
         
         if let packageName = name, let packageVersion = version, let packageStatus = status {
-            self.init(name: packageName, version: packageVersion, status: packageStatus)
+            self.init(packageName: packageName, version: packageVersion, status: packageStatus)
         } else {
             return nil
         }
@@ -120,42 +119,7 @@ func == (lhs: Software, rhs: Software) -> Bool {
     return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
 }
 
-func readLines(from fileHandle: FileHandle) -> [String]? {
-    return String(data: fileHandle.readDataToEndOfFile(), encoding: String.Encoding.utf8)?.components(separatedBy: "\n")
-    
-}
 
 
 
-extension Array where Element:Software {
-    
-    mutating func modify(with software: Software) {
-        
-        // If Software already exists, replace status and package version
-        if let index = self.index(where: {$0.packageName == software.packageName}) {
-            self[index].status = software.status
-            self[index].packageVersion = software.packageVersion
-        } else {
-            self.append(software as! Element)
-        }
-    }
-    
-    mutating func modify(from line: String) {
-        if let software = Software(from: line) {
-            // If Software already exists, replace status and package version
-            if let index = self.index(where: {$0.packageName == software.packageName}) {
-                self[index].status = software.status
-                self[index].packageVersion = software.packageVersion
-            } else {
-                self.append(software as! Element)
-            }
-        }
-    }
-    mutating func modify(from file: FileHandle) {
-        if let lines = readLines(from: file) {
-            for line in lines {
-                self.modify(from: line)
-            }
-        }
-    }
-}
+
