@@ -33,12 +33,15 @@ extension MainViewController {
         
         if _failedSoftwareArray.count == 1 {
             
-            let failedDisplayName = _failedSoftwareArray[0].displayName ?? "An application"
-            statusLabel.stringValue = "\(failedDisplayName) failed to install. Support has been notified."
+            if let failedDisplayName = _failedSoftwareArray[0].displayName {
+            statusLabel.stringValue = String.localizedStringWithFormat(NSLocalizedString("%@ failed to install. Support has been notified.", comment: "A specific application failed to install"), failedDisplayName)
+            } else {
+                statusLabel.stringValue = NSLocalizedString("An application failed to install. Support has been notified.", comment: "One (unnamed) application failed to install")
+            }
             
             
         } else {
-            statusLabel.stringValue = "Some applications failed to install. Support has been notified."
+            statusLabel.stringValue = NSLocalizedString("Some applications failed to install. Support has been notified.", comment: "More than one application failed to install")
         }
         
     }
@@ -55,7 +58,7 @@ extension MainViewController {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
         statusLabel.textColor = .green
-        statusLabel.stringValue = "All applications were installed. Please click continue."
+        statusLabel.stringValue = NSLocalizedString("All applications were installed. Please click continue.", comment: "All applications were installed. Please click continue.")
     }
     
 

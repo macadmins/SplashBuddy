@@ -25,9 +25,10 @@
 		08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC4F7C1D5222BD00CAB019 /* Preferences.swift */; };
 		08DAA4901D54A67A0027E650 /* CasperSplashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */; };
 		08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */; };
-		08EC78811DE71DD5007960A4 /* CasperSplashController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */; };
 		08EC78AA1DE7210E007960A4 /* BackgroundWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */; };
 		08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* MainViewController.swift */; };
+		47684F141E68B16C00D422EC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47684F161E68B16C00D422EC /* Localizable.strings */; };
+		47AA7B141E68AD8E005BBF48 /* CasperSplashController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47AA7B161E68AD8E005BBF48 /* CasperSplashController.storyboard */; };
 		47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198A91E6561AB0055CC85 /* Software Array Extension.swift */; };
 		47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */; };
 		47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */; };
@@ -80,7 +81,6 @@
 		089D29201D50D12200E58C6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		089D29221D50D12200E58C6D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		089D29251D50D12200E58C6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		089D29271D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		089D292C1D50D12200E58C6D /* CasperSplashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CasperSplashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		089D29301D50D12200E58C6D /* CasperSplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashTests.swift; sourceTree = "<group>"; };
 		089D29321D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,9 +95,19 @@
 		08AC4F7C1D5222BD00CAB019 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = CasperSplash/Preferences.swift; sourceTree = SOURCE_ROOT; };
 		08DAA4861D54A62B0027E650 /* CasperSplashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CasperSplashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareStatusValueTransformer.swift; sourceTree = "<group>"; };
-		08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CasperSplashController.storyboard; sourceTree = "<group>"; };
 		08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWindowController.swift; sourceTree = "<group>"; };
 		08EC78AB1DE72326007960A4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		475D9DB01E68C4020035B443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		475D9DB71E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		475D9DB81E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47684F151E68B16C00D422EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47684F171E68B16D00D422EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47684F2B1E68C0E300D422EC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/CasperSplashController.strings; sourceTree = "<group>"; };
+		47684F2D1E68C0E300D422EC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47684F311E68C39900D422EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47684F331E68C39D00D422EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CasperSplashController.strings; sourceTree = "<group>"; };
+		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CasperSplashController.storyboard; sourceTree = "<group>"; };
 		47B198A91E6561AB0055CC85 /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
 		47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileHandle Extension.swift"; sourceTree = "<group>"; };
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -157,7 +167,8 @@
 		089D291F1D50D12200E58C6D /* CasperSplash */ = {
 			isa = PBXGroup;
 			children = (
-				089D29271D50D12200E58C6D /* Info.plist */,
+				475D9DB01E68C4020035B443 /* Info.plist */,
+				47684F321E68C39900D422EC /* infoPlist.strings */,
 				089D29201D50D12200E58C6D /* AppDelegate.swift */,
 				47CFADE91E68049600356D11 /* Views */,
 				089D29221D50D12200E58C6D /* Assets.xcassets */,
@@ -210,7 +221,7 @@
 				47CFADEF1E681E7400356D11 /* Background */,
 				47CFADF01E681E8D00356D11 /* Main */,
 				089D29241D50D12200E58C6D /* MainMenu.xib */,
-				08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */,
+				47AA7B161E68AD8E005BBF48 /* CasperSplashController.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -240,6 +251,7 @@
 				086F87B61D5391FD002AA791 /* MainWindowController.swift */,
 				08EC78AB1DE72326007960A4 /* MainViewController.swift */,
 				47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */,
+				47684F161E68B16C00D422EC /* Localizable.strings */,
 				086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */,
 			);
 			name = Main;
@@ -309,7 +321,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "François Levaux-Tiffreau";
 				TargetAttributes = {
 					089D291C1D50D12200E58C6D = {
@@ -337,6 +349,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				nl,
 			);
 			mainGroup = 089D29141D50D12200E58C6D;
 			productRefGroup = 089D291E1D50D12200E58C6D /* Products */;
@@ -356,10 +370,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F87BF1D53A96B002AA791 /* dummy.jpg in Resources */,
-				08EC78811DE71DD5007960A4 /* CasperSplashController.storyboard in Resources */,
+				47AA7B141E68AD8E005BBF48 /* CasperSplashController.storyboard in Resources */,
 				086F87BD1D53A018002AA791 /* index.html in Resources */,
 				089D29231D50D12200E58C6D /* Assets.xcassets in Resources */,
 				089D29261D50D12200E58C6D /* MainMenu.xib in Resources */,
+				47684F141E68B16C00D422EC /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,8 +456,39 @@
 			isa = PBXVariantGroup;
 			children = (
 				089D29251D50D12200E58C6D /* Base */,
+				475D9DB71E68CBC00035B443 /* nl */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		47684F161E68B16C00D422EC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47684F151E68B16C00D422EC /* Base */,
+				47684F171E68B16D00D422EC /* fr */,
+				47684F2D1E68C0E300D422EC /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		47684F321E68C39900D422EC /* infoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47684F311E68C39900D422EC /* fr */,
+				47684F331E68C39D00D422EC /* Base */,
+				475D9DB81E68CBC00035B443 /* nl */,
+			);
+			name = infoPlist.strings;
+			sourceTree = "<group>";
+		};
+		47AA7B161E68AD8E005BBF48 /* CasperSplashController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47AA7B191E68AE3C005BBF48 /* fr */,
+				47AA7B1A1E68AF46005BBF48 /* Base */,
+				47684F2B1E68C0E300D422EC /* nl */,
+			);
+			name = CasperSplashController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -452,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -500,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
