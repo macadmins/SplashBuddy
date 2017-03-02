@@ -18,7 +18,6 @@ class CasperSplashTests: XCTestCase {
     var testPrefs: Preferences!
     var casperSplashController: CasperSplashController!
     var casperSplashMainController: CasperSplashMainViewController!
-    var softwareArray = [Software]()
     //var testPrefs = Preferences!(nil)
     
     override func setUp() {
@@ -42,6 +41,7 @@ class CasperSplashTests: XCTestCase {
         
         testUserDefaults.removeSuite(named: "testing")
         testUserDefaults = nil
+        SoftwareArray.sharedInstance.array.removeAll()
         
     }
     
@@ -213,15 +213,15 @@ class CasperSplashTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications(&softwareArray)
+        testPrefs.getPreferencesApplications()
         
-        XCTAssertEqual(self.softwareArray.first!.packageName, "Enterprise Connect")
-        XCTAssertEqual(self.softwareArray.first!.status, Software.SoftwareStatus.pending)
-        XCTAssert(type(of: self.softwareArray.first!.icon!) == type(of: NSImage()))
-        XCTAssertEqual(self.softwareArray.first!.displayName, "Enterprise Connect")
-        XCTAssertEqual(self.softwareArray.first!.desc, "SSO")
-        XCTAssertEqual(self.softwareArray.first!.canContinue, true)
-        XCTAssertEqual(self.softwareArray.first!.displayToUser, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
+        XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.desc, "SSO")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.canContinue, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayToUser, true)
         
         testUserDefaults.removeObject(forKey: "applicationsArray")
         XCTAssertNil(testUserDefaults.object(forKey: "applicationsArray"))
@@ -241,15 +241,15 @@ class CasperSplashTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications(&softwareArray)
+        testPrefs.getPreferencesApplications()
         
-        XCTAssertEqual(self.softwareArray.first!.packageName, "Enterprise Connect")
-        XCTAssertEqual(self.softwareArray.first!.status, Software.SoftwareStatus.pending)
-        XCTAssert(type(of: self.softwareArray.first!.icon!) == type(of: NSImage()))
-        XCTAssertEqual(self.softwareArray.first!.displayName, "Enterprise Connect")
-        XCTAssertEqual(self.softwareArray.first!.desc, "SSO")
-        XCTAssertEqual(self.softwareArray.first!.canContinue, true)
-        XCTAssertEqual(self.softwareArray.first!.displayToUser, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
+        XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.desc, "SSO")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.canContinue, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayToUser, true)
         
         testUserDefaults.removeObject(forKey: "applicationsArray")
         XCTAssertNil(testUserDefaults.object(forKey: "applicationsArray"))
@@ -277,23 +277,23 @@ class CasperSplashTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications(&softwareArray)
+        testPrefs.getPreferencesApplications()
         
-        XCTAssertEqual(self.softwareArray.first!.packageName, "Enterprise Connect")
-        XCTAssertEqual(self.softwareArray.first!.status, Software.SoftwareStatus.pending)
-        XCTAssert(type(of: self.softwareArray.first!.icon!) == type(of: NSImage()))
-        XCTAssertEqual(self.softwareArray.first!.displayName, "Enterprise Connect")
-        XCTAssertEqual(self.softwareArray.first!.desc, "SSO")
-        XCTAssertEqual(self.softwareArray.first!.canContinue, true)
-        XCTAssertEqual(self.softwareArray.first!.displayToUser, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
+        XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.desc, "SSO")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.canContinue, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayToUser, true)
         
-        XCTAssertEqual(self.softwareArray.last!.displayName, "Druva")
-        XCTAssertEqual(self.softwareArray.last!.desc, "Backup")
-        XCTAssertEqual(self.softwareArray.last!.packageName, "DruvaEndPoint")
-        XCTAssert(type(of: self.softwareArray.last!.icon!) == type(of: NSImage()))
-        XCTAssertEqual(self.softwareArray.last!.canContinue, true)
-        XCTAssertEqual(self.softwareArray.last!.status, Software.SoftwareStatus.pending)
-        XCTAssertEqual(self.softwareArray.last!.displayToUser, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.displayName, "Druva")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.desc, "Backup")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.packageName, "DruvaEndPoint")
+        XCTAssert(type(of: SoftwareArray.sharedInstance.array.last!.icon!) == type(of: NSImage()))
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.canContinue, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.status, Software.SoftwareStatus.pending)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.displayToUser, true)
         
         testUserDefaults.removeObject(forKey: "applicationsArray")
         XCTAssertNil(testUserDefaults.object(forKey: "applicationsArray"))
@@ -303,9 +303,9 @@ class CasperSplashTests: XCTestCase {
         
         testUserDefaults = UserDefaults.init(suiteName: "none")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        testPrefs.getPreferencesApplications(&softwareArray)
+        testPrefs.getPreferencesApplications()
         
-        XCTAssertTrue(self.softwareArray.isEmpty)
+        XCTAssertTrue(SoftwareArray.sharedInstance.array.isEmpty)
     }
     
     func testUserDefaults_CanParseSoftwareFromFile() {
@@ -323,19 +323,19 @@ class CasperSplashTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        testPrefs.getPreferencesApplications(&softwareArray)
+        testPrefs.getPreferencesApplications()
         
         let fileHandle = FileHandle(forReadingAtPath: path!)
-        softwareArray.modify(from: fileHandle!)
+        SoftwareArray.sharedInstance.array.modify(from: fileHandle!)
         
-        XCTAssertEqual(self.softwareArray.first!.packageName, "Success021")
-        XCTAssertEqual(self.softwareArray.first!.packageVersion, "0.21")
-        XCTAssertEqual(self.softwareArray.first!.status, Software.SoftwareStatus.success)
-        XCTAssert(type(of: self.softwareArray.first!.icon!) == NSImage.self)
-        XCTAssertEqual(self.softwareArray.first!.displayName, "Suceeded")
-        XCTAssertEqual(self.softwareArray.first!.desc, "test")
-        XCTAssertEqual(self.softwareArray.first!.canContinue, true)
-        XCTAssertEqual(self.softwareArray.first!.displayToUser, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Success021")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageVersion, "0.21")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.success)
+        XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == NSImage.self)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Suceeded")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.desc, "test")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.canContinue, true)
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayToUser, true)
         
         testUserDefaults.removeObject(forKey: "applicationsArray")
         XCTAssertNil(testUserDefaults.object(forKey: "applicationsArray"))

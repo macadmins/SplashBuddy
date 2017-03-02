@@ -1,7 +1,7 @@
 # Todo for 1.0
 
 [*] Refactor the code
-[ ] Move SoftwareArray outside of CasperSplashMainViewController
+[*] Move SoftwareArray outside of CasperSplashMainViewController
 [ ] Rename CasperSplash* Views to Main* & Background*
 [ ] Refactor & Move ReadTimer out of CasperSplashMainViewController
 [ ] Localize application

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11762"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -147,7 +147,7 @@
                                                                                         </connections>
                                                                                     </imageCell>
                                                                                     <connections>
-                                                                                        <binding destination="WAE-ba-3Iy" name="value" keyPath="objectValue.status" id="O1V-Rm-2Ac">
+                                                                                        <binding destination="WAE-ba-3Iy" name="value" keyPath="objectValue.status" id="iWw-lV-U6P">
                                                                                             <dictionary key="options">
                                                                                                 <string key="NSValueTransformerName">SoftwareStatusValueTransformer</string>
                                                                                             </dictionary>
@@ -161,11 +161,7 @@
                                                                                     </constraints>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAdvanced" id="kqs-8R-FGc"/>
                                                                                     <connections>
-                                                                                        <binding destination="WAE-ba-3Iy" name="value" keyPath="objectValue.icon" id="Ws9-6p-fYO">
-                                                                                            <dictionary key="options">
-                                                                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                                                                            </dictionary>
-                                                                                        </binding>
+                                                                                        <binding destination="WAE-ba-3Iy" name="value" keyPath="objectValue.icon" id="5Zg-Yo-Dzu"/>
                                                                                     </connections>
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YTt-EX-sNP">
@@ -210,7 +206,7 @@
                                                                 </tableColumn>
                                                             </tableColumns>
                                                             <connections>
-                                                                <binding destination="2Ke-EH-2Jq" name="content" keyPath="arrangedObjects" id="zfu-Ic-pPm"/>
+                                                                <binding destination="HxW-Oc-swF" name="content" keyPath="arrangedObjects" id="Vqr-kI-MQK"/>
                                                             </connections>
                                                         </tableView>
                                                     </subviews>
@@ -289,7 +285,6 @@
                         <outlet property="indeterminateProgressIndicator" destination="7jp-Ob-web" id="pNS-tc-4HU"/>
                         <outlet property="installingLabel" destination="Pvw-wq-IjD" id="Vw9-kM-Wyg"/>
                         <outlet property="mainView" destination="VI7-LS-rJR" id="kli-bF-0SB"/>
-                        <outlet property="softwareArrayController" destination="2Ke-EH-2Jq" id="Gve-hU-MPD"/>
                         <outlet property="softwareTableView" destination="8zI-tR-GNs" id="W4d-jB-ndx"/>
                         <outlet property="statusLabel" destination="huH-bF-pmn" id="iYg-8d-2PX"/>
                         <outlet property="statusView" destination="9z5-8K-Bsy" id="Dvb-uX-9FO"/>
@@ -297,15 +292,14 @@
                     </connections>
                 </viewController>
                 <customObject id="bhw-Fr-Cnv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController id="2Ke-EH-2Jq">
+                <arrayController id="HxW-Oc-swF">
                     <connections>
-                        <binding destination="qDQ-T9-zeE" name="contentArray" keyPath="softwareArray" id="JwF-B7-BT8"/>
-                        <binding destination="qDQ-T9-zeE" name="filterPredicate" keyPath="predicate" id="gsv-LA-RMR"/>
+                        <binding destination="qDQ-T9-zeE" name="filterPredicate" keyPath="self.predicate" id="oDZ-ff-hTT"/>
+                        <binding destination="qDQ-T9-zeE" name="contentArray" keyPath="self.representedObject.array" id="pwd-6t-ra7"/>
                     </connections>
                 </arrayController>
-                <userDefaultsController representsSharedInstance="YES" id="35J-Bh-dMs"/>
             </objects>
-            <point key="canvasLocation" x="760" y="-110.5"/>
+            <point key="canvasLocation" x="760" y="-111"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="MHn-J6-Mpz">

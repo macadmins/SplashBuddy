@@ -51,6 +51,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
         
+        // Get preferences from UserDefaults
+        Preferences.sharedInstance.getPreferencesApplications()
+        
         
 
     }

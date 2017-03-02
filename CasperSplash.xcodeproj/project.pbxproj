@@ -32,6 +32,7 @@
 		47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */; };
 		47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */; };
 		47CFADF21E681FB600356D11 /* FileHandle Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */; };
+		47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADF31E682C9200356D11 /* SoftwareArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileHandle Extension.swift"; sourceTree = "<group>"; };
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController_Actions.swift; path = View/MainViewController_Actions.swift; sourceTree = "<group>"; };
+		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				089D294E1D50F1D800E58C6D /* Software.swift */,
 				47B198A91E6561AB0055CC85 /* Software Array Extension.swift */,
 				08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */,
+				47CFADF31E682C9200356D11 /* SoftwareArray.swift */,
 			);
 			name = Software;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
+				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* CasperSplashWebView.swift in Sources */,
 				47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */,
 				08EC78AC1DE72326007960A4 /* CasperSplashMainViewController.swift in Sources */,

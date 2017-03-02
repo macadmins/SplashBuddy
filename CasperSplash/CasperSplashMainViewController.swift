@@ -14,18 +14,23 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet var softwareTableView: NSTableView!
     @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var continueButton: NSButton?
-    @IBOutlet var softwareArrayController: NSArrayController!
     @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet weak var installingLabel: NSTextField!
     @IBOutlet var mainView: NSView!
     @IBOutlet weak var statusView: NSView!
-    
-    dynamic var softwareArray = [Software]()
-    
-    
+   
     // Predicate used by Storyboard to filter which software to display
     let predicate = NSPredicate.init(format: "displayToUser = true")
     
+    override func awakeFromNib() {
+        
+        // https://developer.apple.com/library/content/qa/qa1871/_index.html
+        
+        if (self.representedObject == nil) {
+            self.representedObject = SoftwareArray.sharedInstance
+        }
+        dump(self.representedObject)
+    }
     
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -41,8 +46,6 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
         // Setup the initial state of objects
         SetupInstalling()
         
-        // Get preferences from UserDefaults
-        Preferences.sharedInstance.getPreferencesApplications(&softwareArray)
 
         // Setup Timer to parse log
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(readTimer), userInfo: nil, repeats: true)
@@ -98,7 +101,7 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
                     for line in lines {
                         if let software = Software(from: line) {
                             DispatchQueue.main.async {
-                                self.softwareArray.modify(with: software)
+                                SoftwareArray.sharedInstance.array.modify(with: software)
                                 
                                 self.checkSoftwareStatus()
                             }

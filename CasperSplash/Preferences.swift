@@ -98,7 +98,7 @@ class Preferences {
     
     
     /// Generates Software objects from Preferences
-    func getPreferencesApplications(_ _softwareArray: inout [Software]) {
+    func getPreferencesApplications() {
         if let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray"){
             for application in applicationsArray {
                 if let application = application as? NSDictionary {
@@ -136,10 +136,9 @@ class Preferences {
                         
                         
                         let software = Software(packageName: name, version: nil, status: .pending, iconPath: "\(assetPath)/\(iconPath)", displayName: displayName, description: description, canContinue: canContinueBool, displayToUser: true)
-                        //dump(software)
                         
-                        // FIXME: Can I work without a global array?
-                        _softwareArray.append(software)
+                        SoftwareArray.sharedInstance.array.append(software)
+                        
                     } else {
                         // FIXME
                        NSLog("applicationsArray: application item is malformed or assetPath is missing")

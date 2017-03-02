@@ -59,15 +59,15 @@ extension CasperSplashMainViewController {
 
     
     func checkSoftwareStatus() {
-        if failedSoftwareArray(softwareArray).count > 0 {
-            errorWhileInstalling(_failedSoftwareArray: failedSoftwareArray(softwareArray))
-        } else if canContinue(softwareArray) {
+        if failedSoftwareArray(SoftwareArray.sharedInstance.array).count > 0 {
+            errorWhileInstalling(_failedSoftwareArray: failedSoftwareArray(SoftwareArray.sharedInstance.array))
+        } else if canContinue(SoftwareArray.sharedInstance.array) {
             doneInstallingCriticalSoftware()
         } else {
             SetupInstalling()
         }
         
-        if allInstalled(softwareArray) {
+        if allInstalled(SoftwareArray.sharedInstance.array) {
             doneInstalling()
         }
     }
