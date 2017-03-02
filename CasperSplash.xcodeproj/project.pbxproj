@@ -10,7 +10,7 @@
 		086F87AC1D532143002AA791 /* ec_32x32.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F761D520A3200CAB019 /* ec_32x32.png */; };
 		086F87AD1D532143002AA791 /* ec_32x32@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */; };
 		086F87B21D536F2B002AA791 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B11D536F2B002AA791 /* Script.swift */; };
-		086F87B81D5391FD002AA791 /* CasperSplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B61D5391FD002AA791 /* CasperSplashController.swift */; };
+		086F87B81D5391FD002AA791 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B61D5391FD002AA791 /* MainWindowController.swift */; };
 		086F87BB1D5397AE002AA791 /* CasperSplashWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */; };
 		086F87BD1D53A018002AA791 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 086F87BC1D53A018002AA791 /* index.html */; };
 		086F87BF1D53A96B002AA791 /* dummy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 086F87BE1D53A96B002AA791 /* dummy.jpg */; };
@@ -26,8 +26,8 @@
 		08DAA4901D54A67A0027E650 /* CasperSplashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D293B1D50D12200E58C6D /* CasperSplashUITests.swift */; };
 		08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */; };
 		08EC78811DE71DD5007960A4 /* CasperSplashController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */; };
-		08EC78AA1DE7210E007960A4 /* CasperSplashBackgroundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */; };
-		08EC78AC1DE72326007960A4 /* CasperSplashMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* CasperSplashMainViewController.swift */; };
+		08EC78AA1DE7210E007960A4 /* BackgroundWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */; };
+		08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* MainViewController.swift */; };
 		47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198A91E6561AB0055CC85 /* Software Array Extension.swift */; };
 		47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */; };
 		47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */; };
@@ -71,7 +71,7 @@
 		086F87B01D536EDF002AA791 /* test_postinstall_successful.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_successful.sh; sourceTree = "<group>"; };
 		086F87B11D536F2B002AA791 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
 		086F87B31D53784C002AA791 /* test_postinstall_failed.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_failed.sh; sourceTree = "<group>"; };
-		086F87B61D5391FD002AA791 /* CasperSplashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashController.swift; sourceTree = "<group>"; };
+		086F87B61D5391FD002AA791 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashWebView.swift; sourceTree = "<group>"; };
 		086F87BC1D53A018002AA791 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		086F87BE1D53A96B002AA791 /* dummy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dummy.jpg; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		08DAA4861D54A62B0027E650 /* CasperSplashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CasperSplashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareStatusValueTransformer.swift; sourceTree = "<group>"; };
 		08EC78801DE71DD5007960A4 /* CasperSplashController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CasperSplashController.storyboard; sourceTree = "<group>"; };
-		08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashBackgroundController.swift; sourceTree = "<group>"; };
-		08EC78AB1DE72326007960A4 /* CasperSplashMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CasperSplashMainViewController.swift; sourceTree = "<group>"; };
+		08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWindowController.swift; sourceTree = "<group>"; };
+		08EC78AB1DE72326007960A4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		47B198A91E6561AB0055CC85 /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
 		47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileHandle Extension.swift"; sourceTree = "<group>"; };
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 		47CFADEF1E681E7400356D11 /* Background */ = {
 			isa = PBXGroup;
 			children = (
-				08EC78A91DE7210E007960A4 /* CasperSplashBackgroundController.swift */,
+				08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */,
 			);
 			name = Background;
 			sourceTree = "<group>";
@@ -234,8 +234,8 @@
 		47CFADF01E681E8D00356D11 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				086F87B61D5391FD002AA791 /* CasperSplashController.swift */,
-				08EC78AB1DE72326007960A4 /* CasperSplashMainViewController.swift */,
+				086F87B61D5391FD002AA791 /* MainWindowController.swift */,
+				08EC78AB1DE72326007960A4 /* MainViewController.swift */,
 				47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */,
 				086F87BA1D5397AE002AA791 /* CasperSplashWebView.swift */,
 			);
@@ -383,16 +383,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				086F87B81D5391FD002AA791 /* CasperSplashController.swift in Sources */,
+				086F87B81D5391FD002AA791 /* MainWindowController.swift in Sources */,
 				089D294F1D50F1D800E58C6D /* Software.swift in Sources */,
-				08EC78AA1DE7210E007960A4 /* CasperSplashBackgroundController.swift in Sources */,
+				08EC78AA1DE7210E007960A4 /* BackgroundWindowController.swift in Sources */,
 				47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* CasperSplashWebView.swift in Sources */,
 				47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */,
-				08EC78AC1DE72326007960A4 /* CasperSplashMainViewController.swift in Sources */,
+				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
 				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,

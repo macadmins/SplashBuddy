@@ -1,5 +1,5 @@
 //
-//  CasperSplashBackgroundController.swift
+//  BackgroundWindowController.swift
 //  CasperSplash
 //
 //  Created by ftiff on 24.11.16.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CasperSplashBackgroundController: NSWindowController {
+class BackgroundWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()

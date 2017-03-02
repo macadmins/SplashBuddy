@@ -1,5 +1,5 @@
 //
-//  CasperSplashMainViewController.swift
+//  MainViewController.swift
 //  CasperSplash
 //
 //  Created by François Levaux on 24.11.16.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
+class MainViewController: NSViewController, NSTableViewDataSource {
     
     @IBOutlet var webView: CasperSplashWebView!
     @IBOutlet var softwareTableView: NSTableView!
@@ -29,7 +29,6 @@ class CasperSplashMainViewController: NSViewController, NSTableViewDataSource {
         if (self.representedObject == nil) {
             self.representedObject = SoftwareArray.sharedInstance
         }
-        dump(self.representedObject)
     }
     
     override func viewWillAppear() {

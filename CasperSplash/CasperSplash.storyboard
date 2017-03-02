@@ -12,7 +12,7 @@
         <!--Window Controller-->
         <scene sceneID="zkc-0l-Upw">
             <objects>
-                <windowController storyboardIdentifier="mainWindow" id="UoU-0S-EqW" customClass="MainWindowController" customModule="CasperSplash" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="mainWindow" id="UoU-0S-EqW" customClass="CasperSplashController" customModule="CasperSplash" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOE-dw-mkn">
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>
@@ -29,7 +29,7 @@
         <!--Main View-->
         <scene sceneID="AJn-Gn-QaV">
             <objects>
-                <viewController title="Main View" storyboardIdentifier="mainView" id="qDQ-T9-zeE" customClass="MainViewController" customModule="CasperSplash" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main View" storyboardIdentifier="mainView" id="qDQ-T9-zeE" customClass="CasperSplashMainViewController" customModule="CasperSplash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="VI7-LS-rJR">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -304,7 +304,7 @@
         <!--Window Controller-->
         <scene sceneID="MHn-J6-Mpz">
             <objects>
-                <windowController storyboardIdentifier="backgroundWindow" id="YYc-bD-NMw" customClass="BackgroundWindowController" customModule="CasperSplash" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="backgroundWindow" id="YYc-bD-NMw" customClass="CasperSplashBackgroundController" customModule="CasperSplash" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="EaE-i8-WAo">
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>

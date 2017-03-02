@@ -16,9 +16,8 @@ class CasperSplashTests: XCTestCase {
     var appDelegate: AppDelegate!
     var testUserDefaults: UserDefaults!
     var testPrefs: Preferences!
-    var casperSplashController: CasperSplashController!
-    var casperSplashMainController: CasperSplashMainViewController!
-    //var testPrefs = Preferences!(nil)
+    var casperSplashController: MainWindowController!
+    var casperSplashMainController: MainViewController!
     
     override func setUp() {
         super.setUp()
@@ -31,11 +30,10 @@ class CasperSplashTests: XCTestCase {
         testUserDefaults!.set(path, forKey: "assetPath")
         
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
         super.tearDown()
         
         
@@ -417,7 +415,7 @@ class CasperSplashTests: XCTestCase {
     
     func testCanContinue_yes() {
         
-        casperSplashMainController = CasperSplashMainViewController()
+        casperSplashMainController = MainViewController()
         let input: [Software] = [
             Software(packageName: "test1", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
             Software(packageName: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)
@@ -427,7 +425,7 @@ class CasperSplashTests: XCTestCase {
     
     func testCanContinue_yesNoCritical() {
         
-        casperSplashMainController = CasperSplashMainViewController()
+        casperSplashMainController = MainViewController()
         let input: [Software] = [
             Software(packageName: "test1", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true),
             Software(packageName: "test2", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true)
@@ -437,7 +435,7 @@ class CasperSplashTests: XCTestCase {
 
     func testCanContinue_no() {
         
-        casperSplashMainController = CasperSplashMainViewController()
+        casperSplashMainController = MainViewController()
         let input = [
             Software(packageName: "test1", version: nil, status: .pending, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
             Software(packageName: "test2", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true)

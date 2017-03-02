@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension CasperSplashMainViewController {
+extension MainViewController {
     
     func SetupInstalling() {
         indeterminateProgressIndicator.startAnimation(self)

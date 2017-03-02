@@ -15,8 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     var softwareStatusValueTransformer: SoftwareStatusValueTransformer?
-    var casperSplashController: CasperSplashController!
-    var casperSplashBackgroundController: CasperSplashBackgroundController!
+    var mainWindowController: MainWindowController!
+    var backgroundController: BackgroundWindowController!
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -35,8 +35,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create Main Controller (the front window)
         
         let storyboard = NSStoryboard(name: "CasperSplashController", bundle: nil)
-        casperSplashController = storyboard.instantiateController(withIdentifier: "mainWindow") as! CasperSplashController
-        casperSplashController.showWindow(self)
+        mainWindowController = storyboard.instantiateController(withIdentifier: "mainWindow") as! MainWindowController
+        mainWindowController.showWindow(self)
         
         
         
@@ -45,8 +45,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Change this in Edit Scheme -> Run -> Info
         
         #if !DEBUG
-        casperSplashBackgroundController = storyboard.instantiateController(withIdentifier: "backgroundWindow") as! CasperSplashBackgroundController
-        casperSplashBackgroundController.showWindow(self)
+        backgroundController = storyboard.instantiateController(withIdentifier: "backgroundWindow") as! BackgroundWindowController
+        backgroundController.showWindow(self)
         #endif
 
 

@@ -1,5 +1,5 @@
 //
-//  CasperSplashController.swift
+//  MainWindowController.swift
 //  CasperSplash
 //
 //  Created by ftiff on 04/08/16.
@@ -11,7 +11,7 @@ import WebKit
 
 
 
-class CasperSplashController: NSWindowController {
+class MainWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
