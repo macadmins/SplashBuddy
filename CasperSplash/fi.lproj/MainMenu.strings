@@ -3,13 +3,13 @@
 "1Xt-HY-uBw.title" = "CasperSplash";
 
 /* Class = "NSMenuItem"; title = "Quit CasperSplash"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quitter CasperSplash";
+"4sb-4s-VLi.title" = "Quit CasperSplash";
 
 /* Class = "NSMenuItem"; title = "About CasperSplash"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "À propos de CasperSplash";
+"5kV-Vb-QxS.title" = "About CasperSplash";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Menu Principal";
+"AYu-sK-qS6.title" = "Main Menu";
 
 /* Class = "NSMenu"; title = "CasperSplash"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "CasperSplash";

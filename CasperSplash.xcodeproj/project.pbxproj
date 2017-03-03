@@ -100,6 +100,16 @@
 		475D9DB01E68C4020035B443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		475D9DB71E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		475D9DB81E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47647E6A1E68D9A5009D535B /* THANKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = THANKS.md; sourceTree = "<group>"; };
+		47647E6B1E695C44009D535B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		47647E6C1E695C44009D535B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CasperSplashController.strings; sourceTree = "<group>"; };
+		47647E6D1E695C44009D535B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47647E6E1E695C44009D535B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47647E6F1E696DD8009D535B /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		47647E701E696DD8009D535B /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/CasperSplashController.strings; sourceTree = "<group>"; };
+		47647E711E696DD8009D535B /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47647E721E696DD8009D535B /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47647E741E6971F4009D535B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		47684F151E68B16C00D422EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47684F171E68B16D00D422EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47684F2B1E68C0E300D422EC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/CasperSplashController.strings; sourceTree = "<group>"; };
@@ -144,6 +154,7 @@
 		089D29141D50D12200E58C6D = {
 			isa = PBXGroup;
 			children = (
+				47647E6A1E68D9A5009D535B /* THANKS.md */,
 				47CFADEA1E680BF900356D11 /* TODO.md */,
 				086F87AE1D536A0B002AA791 /* README.md */,
 				089D291F1D50D12200E58C6D /* CasperSplash */,
@@ -351,6 +362,8 @@
 				Base,
 				fr,
 				nl,
+				de,
+				fi,
 			);
 			mainGroup = 089D29141D50D12200E58C6D;
 			productRefGroup = 089D291E1D50D12200E58C6D /* Products */;
@@ -457,6 +470,9 @@
 			children = (
 				089D29251D50D12200E58C6D /* Base */,
 				475D9DB71E68CBC00035B443 /* nl */,
+				47647E6B1E695C44009D535B /* de */,
+				47647E6F1E696DD8009D535B /* fi */,
+				47647E741E6971F4009D535B /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -467,6 +483,8 @@
 				47684F151E68B16C00D422EC /* Base */,
 				47684F171E68B16D00D422EC /* fr */,
 				47684F2D1E68C0E300D422EC /* nl */,
+				47647E6E1E695C44009D535B /* de */,
+				47647E721E696DD8009D535B /* fi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -477,6 +495,8 @@
 				47684F311E68C39900D422EC /* fr */,
 				47684F331E68C39D00D422EC /* Base */,
 				475D9DB81E68CBC00035B443 /* nl */,
+				47647E6D1E695C44009D535B /* de */,
+				47647E711E696DD8009D535B /* fi */,
 			);
 			name = infoPlist.strings;
 			sourceTree = "<group>";
@@ -487,6 +507,8 @@
 				47AA7B191E68AE3C005BBF48 /* fr */,
 				47AA7B1A1E68AF46005BBF48 /* Base */,
 				47684F2B1E68C0E300D422EC /* nl */,
+				47647E6C1E695C44009D535B /* de */,
+				47647E701E696DD8009D535B /* fi */,
 			);
 			name = CasperSplashController.storyboard;
 			sourceTree = "<group>";
