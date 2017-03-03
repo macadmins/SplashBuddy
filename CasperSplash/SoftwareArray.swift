@@ -43,6 +43,7 @@ class SoftwareArray: NSObject {
         } else if self.canContinue() {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "canContinue"), object: nil)
         } else {
+            /// TODO ?
             print("SetupInstalling()")
         }
         

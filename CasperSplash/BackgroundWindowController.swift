@@ -14,12 +14,12 @@ class BackgroundWindowController: NSWindowController {
         super.windowDidLoad()
         
         guard let backgroundWindow = self.window else {
-            NSLog("Cannot get background window")
+            Log.write(string: "Cannot get background window", cat: "UI", level: .error)
             return
         }
         
         guard let mainDisplayRect = NSScreen.main()?.frame else {
-            NSLog("Cannot get main screen dimensions")
+            Log.write(string: "Cannot get main screen dimensions", cat: "UI", level: .error)
             return
         }
         
