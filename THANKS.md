@@ -8,9 +8,9 @@
 
 # Localization
 
-- French (fr): François Levaux-Tiffreau -- @ftiff
-- Dutch (nl): Henk Codfried
-- German (de): Mic Milic Frederickx -- @kermic
+- French (fr): François Levaux-Tiffreau (@ftiff)
+- Dutch (nl): @riddl0rd, @thomasb
+- German (de): Mic Milic Frederickx (@kermic)
 - Japanese (jp): Anonymous
 - Finnish (fi): Anonymous
 

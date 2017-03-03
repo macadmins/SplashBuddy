@@ -1,11 +1,11 @@
 /* Class = "NSButtonCell"; title = "Continue"; ObjectID = "7yX-oA-A3P"; */
-"7yX-oA-A3P.title" = "Doorgaan";
+"7yX-oA-A3P.title" = "Ga door";
 
 /* Class = "NSView"; ibExternalAccessibilityDescription = "Lower Bar"; ObjectID = "9z5-8K-Bsy"; */
 "9z5-8K-Bsy.ibExternalAccessibilityDescription" = "Onderste regel";
 
 /* Class = "NSViewController"; title = "Background view"; ObjectID = "67C-xF-QMY"; */
-"67C-xF-QMY.title" = "Achtergrond zicht";
+"67C-xF-QMY.title" = "Achtergrond";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "EaE-i8-WAo"; */
 "EaE-i8-WAo.title" = "Venster";
@@ -17,13 +17,13 @@
 "PWh-08-cWA.title" = "Installeren…";
 
 /* Class = "NSTextFieldCell"; title = "Please wait while we prepare your Mac"; ObjectID = "bCS-gQ-vgm"; */
-"bCS-gQ-vgm.title" = "Geduld a.u.b. tijdens de installatie van uw Mac";
+"bCS-gQ-vgm.title" = "Even geduld tijdens de installatie van uw Mac";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "c2Q-bv-sGX"; */
 "c2Q-bv-sGX.title" = "Tekst cel";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "eOE-dw-mkn"; */
-"eOE-dw-mkn.title" = "Window";
+"eOE-dw-mkn.title" = "Venster";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "gAE-fA-iyd"; */
 "gAE-fA-iyd.title" = "Label";
@@ -35,5 +35,5 @@
 "kOR-oN-miF.title" = "Tabel overzicht";
 
 /* Class = "NSViewController"; title = "Main View"; ObjectID = "qDQ-T9-zeE"; */
-"qDQ-T9-zeE.title" = "Hoofd scherm";
+"qDQ-T9-zeE.title" = "Hoofdscherm";
 
