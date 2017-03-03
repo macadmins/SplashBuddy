@@ -48,21 +48,21 @@ class Preferences {
         if let assetPath = getPreferencesAssetPath() {
             self.assetPath = assetPath
         } else {
-            NSLog("Cannot get assetPath from io.fti.CasperSplash.plist")
+            Log.write(string: "Cannot get assetPath from io.fti.CasperSplash.plist", cat: "Foundation", level: .error)
         }
         
         
         if let assetPath = self.assetPath, let postInstallPath = getPreferencesPostInstallPath() {
             self.postInstallScript = Script(absolutePath: assetPath + "/" + postInstallPath)
         } else {
-            NSLog("Cannot get postInstallAssetPath from io.fti.CasperSplash.plist")
+            Log.write(string: "Cannot get postInstallAssetPath from io.fti.CasperSplash.plist", cat: "Foundation", level: .error)
         }
         
         
         if let htmlPath = getPreferencesHtmlPath() {
             self.htmlPath = htmlPath
         } else {
-            NSLog("Cannot get htmlPath from io.fti.CasperSplash.plist")
+            Log.write(string: "Cannot get htmlPath from io.fti.CasperSplash.plist", cat: "Foundation", level: .error)
         }
         
         
@@ -99,32 +99,32 @@ class Preferences {
     func extractSoftware(from dict: NSDictionary) -> Software? {
         
         guard let name = dict["packageName"] as? String else {
-            NSLog("Error reading name from an application in io.fti.CasperSplash")
+            Log.write(string: "Error reading name from an application in io.fti.CasperSplash", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let displayName: String = dict["displayName"] as? String else {
-            NSLog("Error reading displayName from application \(name) in io.fti.CasperSplash")
+            Log.write(string: "Error reading displayName from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let description: String = dict["description"] as? String else {
-            NSLog("Error reading description from application \(name) in io.fti.CasperSplash")
+            Log.write(string: "Error reading description from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let iconRelativePath: String = dict["iconRelativePath"] as? String else {
-            NSLog("Error reading iconRelativePath from application \(name) in io.fti.CasperSplash")
+            Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let canContinueBool: Bool = getBool(from: dict["canContinue"]) else {
-            NSLog("Error reading canContinueBool from application \(name) in io.fti.CasperSplash")
+            Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let assetPath: String = self.assetPath else {
-            NSLog("Error reading asset path")
+            Log.write(string: "Error reading asset path", cat: "Foundation", level: .error)
             return nil
         }
         
@@ -178,13 +178,13 @@ class Preferences {
     /// Generates Software objects from Preferences
     func getPreferencesApplications() {
         guard let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray") else {
-            NSLog("Couldn't find applicationsArray in io.fti.CasperSplash")
+            Log.write(string: "Couldn't find applicationsArray in io.fti.CasperSplash", cat: "Foundation", level: .error)
             return
         }
         
         for application in applicationsArray {
             guard let application = application as? NSDictionary else {
-                NSLog("applicationsArray: application is malformed")
+                Log.write(string: "applicationsArray: application is malformed", cat: "Foundation", level: .error)
                 return
             }
             if let software = extractSoftware(from: application) {

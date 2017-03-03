@@ -72,14 +72,16 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
         guard let postInstallScript = Preferences.sharedInstance.postInstallScript else {
-            NSLog("Couldn't get postInstall Script")
+            Log.write(string: "Couldn't get postInstall Script", cat: "Foundation", level: .error)
             NSApplication.shared().terminate(self)
             return
         }
         
         postInstallScript.execute({ (isSuccessful) in
             
-            if !isSuccessful { NSLog("Couldn't execute postInstall Script") }
+            if !isSuccessful {
+                Log.write(string: "Couldn't execute postInstall Script", cat: "Foundation", level: .error)
+            }
             
             NSApplication.shared().terminate(self)
             

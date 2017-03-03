@@ -35,7 +35,7 @@ class CasperSplashWebView: WebView {
                 self.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
             }
         } else {
-            NSLog("Cannot get HTML Path!")
+            Log.write(string: "Cannot get HTML Path!", cat: "Foundation", level: .error)
         }
     }
 }
