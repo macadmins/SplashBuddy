@@ -79,7 +79,7 @@ class Preferences {
     func getPreferencesHtmlPath() -> String? {
         return self.userDefaults?.string(forKey: "htmlPath")
     }
-
+    
     
     /**
      Absolute path to html index
@@ -96,62 +96,103 @@ class Preferences {
     }
     
     
+    func extractSoftware(from dict: NSDictionary) -> Software? {
+        
+        guard let name = dict["packageName"] as? String else {
+            NSLog("Error reading name from an application in io.fti.CasperSplash")
+            return nil
+        }
+        
+        guard let displayName: String = dict["displayName"] as? String else {
+            NSLog("Error reading displayName from application \(name) in io.fti.CasperSplash")
+            return nil
+        }
+        
+        guard let description: String = dict["description"] as? String else {
+            NSLog("Error reading description from application \(name) in io.fti.CasperSplash")
+            return nil
+        }
+        
+        guard let iconRelativePath: String = dict["iconRelativePath"] as? String else {
+            NSLog("Error reading iconRelativePath from application \(name) in io.fti.CasperSplash")
+            return nil
+        }
+        
+        guard let canContinueBool: Bool = getBool(from: dict["canContinue"]) else {
+            NSLog("Error reading canContinueBool from application \(name) in io.fti.CasperSplash")
+            return nil
+        }
+        
+        guard let assetPath: String = self.assetPath else {
+            NSLog("Error reading asset path")
+            return nil
+        }
+        
+        let iconPath = assetPath + "/" + iconRelativePath
+        
+        return Software(packageName: name,
+                        version: nil,
+                        status: .pending,
+                        iconPath: iconPath,
+                        displayName: displayName,
+                        description: description,
+                        canContinue: canContinueBool,
+                        displayToUser: true)
+        
+    }
+    
+
+    /**
+     Try to get a Bool from an Any (String, Int or Bool)
+     
+     - returns: 
+        - True if 1, "1" or True
+        - False if any other value
+        - nil if cannot cast to String, Int or Bool.
+     
+     - parameter object: Any? (String, Int or Bool)
+     */
+    func getBool(from object: Any?) -> Bool? {
+        
+        // In practice, canContinue is sometimes seen as int, sometimes as String
+        // This workaround helps to be more flexible
+        
+        
+        if let canContinue = object as? Int {
+            
+            return (canContinue == 1)
+            
+        } else if let canContinue = object as? String {
+            
+            return (canContinue == "1")
+            
+        } else if let canContinue = object as? Bool {
+            
+            return canContinue
+            
+        } else {
+            return nil
+        }
+    }
     
     /// Generates Software objects from Preferences
     func getPreferencesApplications() {
-        if let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray"){
-            for application in applicationsArray {
-                if let application = application as? NSDictionary {
-                    if let displayName: String = application["displayName"] as? String,
-                        let description = application["description"] as? String,
-                        let name = application["packageName"] as? String,
-                        let assetPath = self.assetPath,
-                        let iconPath = application["iconRelativePath"] as? String {
-                        
-                        
-                        // In practice, canContinue is sometimes seen as int, sometimes as String
-                        // This workaround helps to be more flexible
-                        var canContinueBool: Bool
-                        
-                        if let canContinue = application["canContinue"] as? Int {
-                            
-                            if canContinue == 1 {
-                                canContinueBool = true
-                            } else {
-                                canContinueBool = false
-                            }
-                        } else if let canContinue = application["canContinue"] as? String {
-                            
-                            if canContinue == "1" {
-                                canContinueBool = true
-                            } else {
-                                canContinueBool = false
-                            }
-                        } else if let canContinue = application["canContinue"] as? Bool {
-                            
-                            canContinueBool = canContinue
-                        } else {
-                            break
-                        }
-                        
-                        
-                        let software = Software(packageName: name, version: nil, status: .pending, iconPath: "\(assetPath)/\(iconPath)", displayName: displayName, description: description, canContinue: canContinueBool, displayToUser: true)
-                        
-                        SoftwareArray.sharedInstance.array.append(software)
-                        
-                    } else {
-                        // FIXME
-                       NSLog("applicationsArray: application item is malformed or assetPath is missing")
-                    }
-                } else {
-                    NSLog("applicationsArray: application is malformed")
-                }
-            }
-        } else {
-            NSLog("Couldn't find applicationsArray in user defaults")
+        guard let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray") else {
+            NSLog("Couldn't find applicationsArray in io.fti.CasperSplash")
+            return
         }
+        
+        for application in applicationsArray {
+            guard let application = application as? NSDictionary else {
+                NSLog("applicationsArray: application is malformed")
+                return
+            }
+            if let software = extractSoftware(from: application) {
+                SoftwareArray.sharedInstance.array.append(software)
+            }
+        }
+        
     }
-
 }
 
 

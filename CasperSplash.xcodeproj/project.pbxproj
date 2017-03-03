@@ -27,6 +27,7 @@
 		08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */; };
 		08EC78AA1DE7210E007960A4 /* BackgroundWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */; };
 		08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* MainViewController.swift */; };
+		47647E7E1E698F3C009D535B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47647E7D1E698F3C009D535B /* PreferencesTests.swift */; };
 		47684F141E68B16C00D422EC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47684F161E68B16C00D422EC /* Localizable.strings */; };
 		47AA7B141E68AD8E005BBF48 /* CasperSplashController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47AA7B161E68AD8E005BBF48 /* CasperSplashController.storyboard */; };
 		47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198A91E6561AB0055CC85 /* Software Array Extension.swift */; };
@@ -100,6 +101,7 @@
 		475D9DB01E68C4020035B443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		475D9DB71E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		475D9DB81E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47647E7D1E698F3C009D535B /* PreferencesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		47684F151E68B16C00D422EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47684F171E68B16D00D422EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47684F2B1E68C0E300D422EC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/CasperSplashController.strings; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				089D29321D50D12200E58C6D /* Info.plist */,
 				089D29491D50D14C00E58C6D /* .travis.yml */,
 				089D29521D51D50700E58C6D /* jamf_1.txt */,
+				47647E7D1E698F3C009D535B /* PreferencesTests.swift */,
 			);
 			path = CasperSplashTests;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47647E7E1E698F3C009D535B /* PreferencesTests.swift in Sources */,
 				47CFADF21E681FB600356D11 /* FileHandle Extension.swift in Sources */,
 				089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */,
 			);

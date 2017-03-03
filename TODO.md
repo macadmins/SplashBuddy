@@ -5,7 +5,7 @@
 - [x] Rename CasperSplash* Views to Main* & Background*
 - [x] Refactor & Move ReadTimer out of CasperSplashMainViewController
 - [x] Localize application
-- [ ] Refactor getPreferencesApplications
+- [*] Refactor getPreferencesApplications
 - [ ] Change NSLog to os_log
 - [ ] Create onboarding process for MacAdmins
 - [ ] Update README.md
