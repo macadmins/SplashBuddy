@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>applicationsArray</key>
+	<array>
+		<dict>
+			<key>canContinue</key>
+			<true/>
+			<key>description</key>
+			<string>Browser</string>
+			<key>displayName</key>
+			<string>Google Chrome</string>
+			<key>iconRelativePath</key>
+			<string>chrome.png</string>
+			<key>packageName</key>
+			<string>Google Chrome</string>
+		</dict>
+		<dict>
+			<key>canContinue</key>
+			<true/>
+			<key>description</key>
+			<string>SSO</string>
+			<key>displayName</key>
+			<string>Enterprise Connect</string>
+			<key>iconRelativePath</key>
+			<string>enterpriseconnect.png</string>
+			<key>packageName</key>
+			<string>EnterpriseConnect</string>
+		</dict>
+		<dict>
+			<key>canContinue</key>
+			<true/>
+			<key>description</key>
+			<string>Backup</string>
+			<key>displayName</key>
+			<string>Druva</string>
+			<key>iconRelativePath</key>
+			<string>druva.png</string>
+			<key>packageName</key>
+			<string>Druva</string>
+		</dict>
+	</array>
+	<key>assetPath</key>
+	<string>/Library/CasperSplash</string>
+	<key>htmlPath</key>
+	<string>presentation.html</string>
+	<key>postInstallAssetPath</key>
+	<string>postInstall.sh</string>
+</dict>
+</plist>
