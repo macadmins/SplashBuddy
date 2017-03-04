@@ -99,6 +99,7 @@
 		08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareStatusValueTransformer.swift; sourceTree = "<group>"; };
 		08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWindowController.swift; sourceTree = "<group>"; };
 		08EC78AB1DE72326007960A4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		47376A141E69DA4C0058B64C /* CasperSplash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CasperSplash.entitlements; sourceTree = "<group>"; };
 		475D9DB01E68C4020035B443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		475D9DB71E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		475D9DB81E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/infoPlist.strings; sourceTree = "<group>"; };
@@ -171,6 +172,7 @@
 		089D291F1D50D12200E58C6D /* CasperSplash */ = {
 			isa = PBXGroup;
 			children = (
+				47376A141E69DA4C0058B64C /* CasperSplash.entitlements */,
 				475D9DB01E68C4020035B443 /* Info.plist */,
 				47684F321E68C39900D422EC /* infoPlist.strings */,
 				089D29201D50D12200E58C6D /* AppDelegate.swift */,
@@ -335,6 +337,11 @@
 						DevelopmentTeam = EM3ER8T33A;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					089D292B1D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -596,6 +603,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CasperSplash/CasperSplash.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EM3ER8T33A;
@@ -612,6 +620,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CasperSplash/CasperSplash.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EM3ER8T33A;
