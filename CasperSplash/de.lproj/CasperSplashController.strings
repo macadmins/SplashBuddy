@@ -1,39 +1,39 @@
-/* Class = "NSButtonCell"; title = "Continue"; ObjectID = "7yX-oA-A3P"; */
-"7yX-oA-A3P.title" = "Ga door";
-
-/* Class = "NSView"; ibExternalAccessibilityDescription = "Lower Bar"; ObjectID = "9z5-8K-Bsy"; */
-"9z5-8K-Bsy.ibExternalAccessibilityDescription" = "Onderste regel";
 
 /* Class = "NSViewController"; title = "Background view"; ObjectID = "67C-xF-QMY"; */
-"67C-xF-QMY.title" = "Achtergrond";
+"67C-xF-QMY.title" = "Hintergrund-Ansicht";
+
+/* Class = "NSButtonCell"; title = "Continue"; ObjectID = "7yX-oA-A3P"; */
+"7yX-oA-A3P.title" = "Weiter";
+
+/* Class = "NSView"; ibExternalAccessibilityDescription = "Lower Bar"; ObjectID = "9z5-8K-Bsy"; */
+"9z5-8K-Bsy.ibExternalAccessibilityDescription" = "Unterer Balken";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "EaE-i8-WAo"; */
-"EaE-i8-WAo.title" = "Venster";
+"EaE-i8-WAo.title" = "Fenster";
 
 /* Class = "NSTextFieldCell"; title = "Welcome to your Mac"; ObjectID = "M9G-bN-6f0"; */
-"M9G-bN-6f0.title" = "Welkom op uw Mac";
+"M9G-bN-6f0.title" = "Willkommen zu Ihrem Mac";
 
 /* Class = "NSTextFieldCell"; title = "Installing…"; ObjectID = "PWh-08-cWA"; */
-"PWh-08-cWA.title" = "Installeren…";
+"PWh-08-cWA.title" = "Installiere…";
 
 /* Class = "NSTextFieldCell"; title = "Please wait while we prepare your Mac"; ObjectID = "bCS-gQ-vgm"; */
-"bCS-gQ-vgm.title" = "Even geduld tijdens de installatie van uw Mac";
+"bCS-gQ-vgm.title" = "Bitte warten Sie, während wir Ihren Mac vorbereiten";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "c2Q-bv-sGX"; */
-"c2Q-bv-sGX.title" = "Tekst cel";
+"c2Q-bv-sGX.title" = "Textzelle";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "eOE-dw-mkn"; */
-"eOE-dw-mkn.title" = "Venster";
+"eOE-dw-mkn.title" = "Fenster";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "gAE-fA-iyd"; */
-"gAE-fA-iyd.title" = "Label";
+"gAE-fA-iyd.title" = "Etikett";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "jUX-9D-aGB"; */
-"jUX-9D-aGB.title" = "Label";
+"jUX-9D-aGB.title" = "Etikett";
 
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "kOR-oN-miF"; */
-"kOR-oN-miF.title" = "Tabel overzicht";
+"kOR-oN-miF.title" = "Tabellenansichtszelle";
 
 /* Class = "NSViewController"; title = "Main View"; ObjectID = "qDQ-T9-zeE"; */
-"qDQ-T9-zeE.title" = "Hoofdscherm";
-
+"qDQ-T9-zeE.title" = "Hauptansicht";
