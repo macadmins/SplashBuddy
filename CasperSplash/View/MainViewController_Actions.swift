@@ -14,7 +14,7 @@ extension MainViewController {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
         
-        installingLabel.stringValue = "Installing…"
+        installingLabel.stringValue = NSLocalizedString("Installing…", comment: "")
         
         statusLabel.stringValue = ""
         
@@ -34,14 +34,21 @@ extension MainViewController {
         if _failedSoftwareArray.count == 1 {
             
             if let failedDisplayName = _failedSoftwareArray[0].displayName {
-            statusLabel.stringValue = String.localizedStringWithFormat(NSLocalizedString("%@ failed to install. Support has been notified.", comment: "A specific application failed to install"), failedDisplayName)
+                statusLabel.stringValue = String.localizedStringWithFormat(NSLocalizedString(
+                    "%@ failed to install. Support has been notified.",
+                    comment: "A specific application failed to install"), failedDisplayName)
+                
             } else {
-                statusLabel.stringValue = NSLocalizedString("An application failed to install. Support has been notified.", comment: "One (unnamed) application failed to install")
+                statusLabel.stringValue = NSLocalizedString(
+                    "An application failed to install. Support has been notified.",
+                    comment: "One (unnamed) application failed to install")
             }
             
             
         } else {
-            statusLabel.stringValue = NSLocalizedString("Some applications failed to install. Support has been notified.", comment: "More than one application failed to install")
+            statusLabel.stringValue = NSLocalizedString(
+                "Some applications failed to install. Support has been notified.",
+                comment: "More than one application failed to install")
         }
         
     }
@@ -58,7 +65,9 @@ extension MainViewController {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
         statusLabel.textColor = .green
-        statusLabel.stringValue = NSLocalizedString("All applications were installed. Please click continue.", comment: "All applications were installed. Please click continue.")
+        statusLabel.stringValue = NSLocalizedString(
+            "All applications were installed. Please click continue.",
+            comment: "All applications were installed. Please click continue.")
     }
     
 
