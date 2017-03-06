@@ -9,3 +9,5 @@
 
 /* One (unnamed) application failed to install */
 "An application failed to install. Support has been notified." = "Een programma kon niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
+
+"Installing…" = "Installeren…";
