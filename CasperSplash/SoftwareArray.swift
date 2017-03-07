@@ -13,7 +13,11 @@ class SoftwareArray: NSObject {
     
     static let sharedInstance = SoftwareArray()
     
-    dynamic var array = [Software]()
+    dynamic var array = [Software]() {
+        didSet {
+            self.checkSoftwareStatus()
+        }
+    }
     
     
     func failedSoftwareArray(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> [Software] {
@@ -31,25 +35,20 @@ class SoftwareArray: NSObject {
     }
 
     
-    
-    override func didChangeValue(forKey key: String) {
-        self.checkSoftwareStatus()
-        super.didChangeValue(forKey: key)
-    }
-    
     func checkSoftwareStatus() {
+        
         if self.failedSoftwareArray().count > 0 {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "errorWhileInstalling"), object: nil)
-        } else if self.canContinue() {
+        }
+        
+        if self.canContinue() {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "canContinue"), object: nil)
-        } else {
-            /// TODO ?
-            print("SetupInstalling()")
         }
         
         if self.allInstalled() {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "doneInstalling"), object: nil)
         }
+        
     }
 
 }
