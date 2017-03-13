@@ -1,7 +1,7 @@
 language: objective-c
 osx_image: xcode8.1
-xcode_project: CasperSplash.xcodeproj
-xcode_scheme: CasperSplash
+xcode_project: SplashBuddy.xcodeproj
+xcode_scheme: SplashBuddy
 xcode_sdk: macosx10.12
 
 # https://docs.travis-ci.com/user/multi-os/
@@ -19,7 +19,7 @@ matrix:
 
 script:
 - set -o pipefail
-- xcodebuild build test -project CasperSplash.xcodeproj -scheme CasperSplash CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" -skip-testing:CasperSplashUITests | xcpretty
+- xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" | xcpretty
 
 notifications:
 slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W
