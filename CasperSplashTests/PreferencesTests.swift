@@ -1,13 +1,13 @@
 //
 //  PreferencesTests.swift
-//  CasperSplash
+//  SplashBuddy
 //
 //  Created by Francois Levaux on 03-03-17.
 //  Copyright © 2017 François Levaux-Tiffreau. All rights reserved.
 //
 
 import XCTest
-@testable import CasperSplash
+@testable import SplashBuddy
 
 class PreferencesTests: XCTestCase {
     
@@ -202,60 +202,7 @@ class PreferencesTests: XCTestCase {
         testUserDefaults.removeObject(forKey: "applicationsArray")
         XCTAssertNil(testUserDefaults.object(forKey: "applicationsArray"))
     }
-    
-    func testUserDefaults_PostInstallScriptFullPath() {
         
-        let input = "test_postinstall_successful.sh"
-        testUserDefaults.set(input, forKey: "postInstallAssetPath")
-        let output = Bundle(for: type(of: self)).bundlePath + "/Contents/Resources/" + input
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        
-        XCTAssertEqual(testPrefs.postInstallScript?.absolutePath, output)
-        
-        testUserDefaults.removeObject(forKey: "postInstallAssetPath")
-        XCTAssertNil(testUserDefaults.object(forKey: "postInstallAssetPath"))
-    }
-    
-    func testUserDefaults_PostInstallScriptFullPathEmpty() {
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        
-        XCTAssertNil(testUserDefaults.object(forKey: "postInstallAssetPath"))
-        XCTAssertNil(testPrefs.postInstallScript?.absolutePath, "")
-    }
-    
-    func testUserDefaults_PostInstallSuccessful() {
-        
-        let input = "test_postinstall_successful.sh"
-        testUserDefaults.set(input, forKey: "postInstallAssetPath")
-        
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        
-        let script = Script(absolutePath: testPrefs.postInstallScript!.absolutePath)
-        
-        script.execute { (isSuccessful) in
-            XCTAssertTrue(isSuccessful)
-        }
-        
-        testUserDefaults.removeObject(forKey: "postInstallAssetPath")
-        XCTAssertNil(testUserDefaults.object(forKey: "postInstallAssetPath"))
-    }
-    
-    func testUserDefaults_PostInstallFailed() {
-        
-        let input = "test_postinstall_failed.sh"
-        testUserDefaults.set(input, forKey: "postInstallAssetPath")
-        
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        
-        let script = Script(absolutePath: testPrefs.postInstallScript!.absolutePath)
-        script.execute { (isSuccessful) in
-            XCTAssertFalse(isSuccessful)
-        }
-        
-        testUserDefaults.removeObject(forKey: "postInstallAssetPath")
-        XCTAssertNil(testUserDefaults.object(forKey: "postInstallAssetPath"))
-    }
-    
     
     func testUserDefaults_HTMLFullPath() {
         

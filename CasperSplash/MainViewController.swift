@@ -1,6 +1,6 @@
 //
 //  MainViewController.swift
-//  CasperSplash
+//  SplashBuddy
 //
 //  Created by François Levaux on 24.11.16.
 //  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
@@ -71,21 +71,8 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
-        guard let postInstallScript = Preferences.sharedInstance.postInstallScript else {
-            Log.write(string: "Couldn't get postInstall Script", cat: "Foundation", level: .error)
-            NSApplication.shared().terminate(self)
-            return
-        }
-        
-        postInstallScript.execute({ (isSuccessful) in
-            
-            if !isSuccessful {
-                Log.write(string: "Couldn't execute postInstall Script", cat: "Foundation", level: .error)
-            }
-            
-            NSApplication.shared().terminate(self)
-            
-        })
+        Preferences.sharedInstance.setupDone = true
+        NSApplication.shared().terminate(self)
         
     }
     

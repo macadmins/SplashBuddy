@@ -1,6 +1,6 @@
 //
 //  Preferences.swift
-//  CasperSplash
+//  SplashBuddy
 //
 //  Created by ftiff on 03/08/16.
 //  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
@@ -30,7 +30,6 @@ class Preferences {
     
     
     // Relative Paths
-    var postInstallScript: Script?
     var htmlPath: String?
     
     
@@ -38,7 +37,24 @@ class Preferences {
     var userDefaults: UserDefaults?
     
     
-    
+    var setupDone: Bool {
+        get {
+            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone")
+        }
+        
+        set(myValue) {
+            if myValue == true {
+                FileManager.default.createFile(atPath: "Library/.SplashBuddyDone", contents: nil, attributes: nil)
+            } else {
+                do {
+                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyDone")
+                } catch {
+                    Log.write(string: "Couldn't remove .SplashBuddyDone", cat: "Preferences", level: .info)
+                }
+                
+            }
+        }
+    }
     
     init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
         
@@ -54,21 +70,14 @@ class Preferences {
         if let assetPath = getPreferencesAssetPath() {
             self.assetPath = assetPath
         } else {
-            Log.write(string: "Cannot get assetPath from io.fti.CasperSplash.plist", cat: "Foundation", level: .error)
-        }
-        
-        
-        if let assetPath = self.assetPath, let postInstallPath = getPreferencesPostInstallPath() {
-            self.postInstallScript = Script(absolutePath: assetPath + "/" + postInstallPath)
-        } else {
-            Log.write(string: "Cannot get postInstallAssetPath from io.fti.CasperSplash.plist", cat: "Foundation", level: .error)
+            Log.write(string: "Cannot get assetPath from io.fti.SplashBuddy.plist", cat: "Foundation", level: .error)
         }
         
         
         if let htmlPath = getPreferencesHtmlPath() {
             self.htmlPath = htmlPath
         } else {
-            Log.write(string: "Cannot get htmlPath from io.fti.CasperSplash.plist", cat: "Foundation", level: .error)
+            Log.write(string: "Cannot get htmlPath from io.fti.SplashBuddy.plist", cat: "Foundation", level: .error)
         }
         
         
@@ -78,9 +87,6 @@ class Preferences {
         return self.userDefaults?.string(forKey: "assetPath")
     }
     
-    func getPreferencesPostInstallPath() -> String? {
-        return self.userDefaults?.string(forKey: "postInstallAssetPath")
-    }
     
     func getPreferencesHtmlPath() -> String? {
         return self.userDefaults?.string(forKey: "htmlPath")
@@ -105,27 +111,27 @@ class Preferences {
     func extractSoftware(from dict: NSDictionary) -> Software? {
         
         guard let name = dict["packageName"] as? String else {
-            Log.write(string: "Error reading name from an application in io.fti.CasperSplash", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading name from an application in io.fti.SplashBuddy", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let displayName: String = dict["displayName"] as? String else {
-            Log.write(string: "Error reading displayName from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading displayName from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let description: String = dict["description"] as? String else {
-            Log.write(string: "Error reading description from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading description from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let iconRelativePath: String = dict["iconRelativePath"] as? String else {
-            Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
             return nil
         }
         
         guard let canContinueBool: Bool = getBool(from: dict["canContinue"]) else {
-            Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.CasperSplash", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
             return nil
         }
         
@@ -184,7 +190,7 @@ class Preferences {
     /// Generates Software objects from Preferences
     func getPreferencesApplications() {
         guard let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray") else {
-            Log.write(string: "Couldn't find applicationsArray in io.fti.CasperSplash", cat: "Foundation", level: .error)
+            Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy", cat: "Foundation", level: .error)
             return
         }
         
