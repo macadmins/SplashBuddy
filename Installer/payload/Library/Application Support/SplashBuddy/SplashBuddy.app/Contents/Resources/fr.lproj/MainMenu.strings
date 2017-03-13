@@ -1,0 +1,15 @@
+
+/* Class = "NSMenuItem"; title = "SplashBuddy"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "SplashBuddy";
+
+/* Class = "NSMenuItem"; title = "Quit SplashBuddy"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quitter SplashBuddy";
+
+/* Class = "NSMenuItem"; title = "About SplashBuddy"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "À propos de SplashBuddy";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Menu Principal";
+
+/* Class = "NSMenu"; title = "SplashBuddy"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "SplashBuddy";
