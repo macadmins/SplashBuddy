@@ -68,6 +68,11 @@ class MainViewController: NSViewController, NSTableViewDataSource {
  
     }
 
+    override func viewDidAppear() {
+        if Preferences.sharedInstance.logFileHandle == nil {
+            self.performSegue(withIdentifier: "error_jamf", sender: nil)
+        }
+    }
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
