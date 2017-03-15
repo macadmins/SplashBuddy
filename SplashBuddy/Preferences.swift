@@ -22,7 +22,6 @@ class Preferences {
     let logFileHandle: FileHandle?
     
     let jamfLog = "/var/log/jamf.log"
-    //lazy var logFileHandle: FileHandle? = FileHandle(forReadingAtPath: Preferences.sharedInstance.jamfLog)
     
     
     /// Absolute Path to assets. Relative paths will be appended.
@@ -63,7 +62,6 @@ class Preferences {
         do {
             self.logFileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: self.jamfLog, isDirectory: false))
         } catch {
-            dump(error)
             self.logFileHandle = nil
         }
         
