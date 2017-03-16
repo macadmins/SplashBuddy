@@ -18,8 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mainWindowController: MainWindowController!
     var backgroundController: BackgroundWindowController!
     
-    
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func applicationDidFinishLaunching(_ notification: Notification) {
 
         
         
@@ -32,19 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         
-        // Create Main Controller (the front window)
-        
-        let storyboard = NSStoryboard(name: "SplashBuddy", bundle: nil)
-        mainWindowController = storyboard.instantiateController(withIdentifier: "mainWindow") as! MainWindowController
-        mainWindowController.showWindow(self)
-        
-        
-        
-        
         // Create Background Controller (the window behind) only displays for Release
         // Change this in Edit Scheme -> Run -> Info
         
         #if !DEBUG
+        
+        let storyboard = NSStoryboard(name: "SplashBuddy", bundle: nil)
         backgroundController = storyboard.instantiateController(withIdentifier: "backgroundWindow") as! BackgroundWindowController
         backgroundController.showWindow(self)
         #endif

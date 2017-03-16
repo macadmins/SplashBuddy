@@ -342,6 +342,40 @@
             </objects>
             <point key="canvasLocation" x="179" y="-495"/>
         </scene>
+        <!--Application-->
+        <scene sceneID="FDY-y2-hvM">
+            <objects>
+                <application id="qTG-UB-5nt" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="5Hn-kG-mLK">
+                        <items>
+                            <menuItem title="SplashBuddy" id="Mm1-rq-zaN">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="SplashBuddy" systemMenu="apple" id="5pp-rB-Rs5">
+                                    <items>
+                                        <menuItem title="About SplashBuddy" id="dPN-j3-pc0">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="dbc-ap-Ogy"/>
+                                        <menuItem title="Quit SplashBuddy" keyEquivalent="q" id="2cR-1q-G3Y">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="terminate:" target="qTG-UB-5nt" id="Yma-gO-cpd"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="NJu-ok-pZt" id="GI2-ws-UOl"/>
+                    </connections>
+                </application>
+                <customObject id="WzY-5W-s0R" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="NJu-ok-pZt" customClass="AppDelegate" customModule="SplashBuddy" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="144" y="187"/>
+        </scene>
     </scenes>
     <resources>
         <image name="NSAdvanced" width="32" height="32"/>
