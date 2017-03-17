@@ -17,7 +17,6 @@ import os.log
   - version: 1.0.0
  */
 class Log {
-    private let test = "io.fti.SplashBuddy"
     
     /**
      Used in conjunction with OSLogType to produce the correct log type for OSLog, but also provide the same level of logging for NSLog as well.
@@ -39,15 +38,15 @@ class Log {
             //  On only OSX 10.12 or newer
             let log = OSLog(subsystem: appName, category: cat)
             if level == .debug {
-                os_log("%@", log: log, type: .debug, string)
+                os_log("%{public}s", log: log, type: .debug, string)
             } else if level == .error {
-                os_log("%@", log: log, type: .error, string)
+                os_log("%{public}s", log: log, type: .error, string)
             } else if level == .fault {
-                os_log("%@", log: log, type: .fault, string)
+                os_log("%{public}s", log: log, type: .fault, string)
             } else if level == .info {
-                os_log("%@", log: log, type: .info, string)
+                os_log("%{public}s", log: log, type: .info, string)
             } else {
-                os_log("%@", log: log, type: .default, string)
+                os_log("%{public}s", log: log, type: .default, string)
             }
         } else {
             // Fallback on earlier versions
