@@ -1,0 +1,3 @@
+#!/bin/bash
+
+launchctl load /Library/LaunchAgents/io.fti.SplashBuddy.launch.plist
