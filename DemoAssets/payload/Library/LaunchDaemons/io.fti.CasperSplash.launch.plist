@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>StartInterval</key>
+    <integer>10</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>Label</key>
+    <string>io.fti.CasperSplash.launch</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Library/CasperSplash/CasperSplash.launch.sh</string>
+    </array>
+    <key>StandardErrorPath</key>
+    <string>/Library/CasperSplash/CasperSplash.launch.err</string>
+    <key>StandardOutPath</key>
+    <string>/Library/CasperSplash/CasperSplash.launch.out</string>
+</dict>
+</plist>
