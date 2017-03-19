@@ -14,8 +14,7 @@
             <objects>
                 <windowController storyboardIdentifier="mainWindow" id="UoU-0S-EqW" customClass="MainWindowController" customModule="SplashBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOE-dw-mkn">
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="contentRect" x="294" y="313" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
