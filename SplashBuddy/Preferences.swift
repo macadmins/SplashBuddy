@@ -8,8 +8,6 @@
 
 import Cocoa
 
-//let prefs = Preferences()
-
 /**
  Preferences() keeps the relevant preferences
  */
@@ -18,19 +16,86 @@ class Preferences {
     
     
     static let sharedInstance = Preferences()
+    public let logFileHandle: FileHandle?
     
-    let logFileHandle: FileHandle?
-    
-    let jamfLog = "/var/log/jamf.log"
-    //lazy var logFileHandle: FileHandle? = FileHandle(forReadingAtPath: Preferences.sharedInstance.jamfLog)
-    
-    
-    /// Absolute Path to assets. Relative paths will be appended.
-    var assetPath: String?
+    internal let jamfLog = "/var/log/jamf.log"
+    internal let assetPath = "/Library/Application Support/SplashBuddy"
     
     
-    // Relative Paths
-    var htmlPath: String?
+    
+    //-----------------------------------------------------------------------------------
+    /// INIT
+    //-----------------------------------------------------------------------------------
+    
+    init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
+        
+        self.userDefaults = nsUserDefaults
+        
+        do {
+            self.logFileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: self.jamfLog, isDirectory: false))
+        } catch {
+            Log.write(string: "Cannot read /var/log/jamf.log",
+                      cat: "Preferences",
+                      level: .error)
+            self.logFileHandle = nil
+        }
+        
+        
+
+        
+        // HTML Path
+        
+        if let htmlPath = getPreferencesHtmlPath() {
+            self.htmlPath = htmlPath
+        } else {
+            Log.write(string: "Cannot get htmlPath from io.fti.SplashBuddy.plist",
+                      cat: "Preferences",
+                      level: .info)
+        }
+        
+        
+        // Legacy
+        
+        if getPreferencesAssetPath() != nil {
+            Log.write(string: "assetPath is now fixed to /Library/Application Support/SplashBuddy",
+                      cat: "Preferences",
+                      level: .info)
+        }
+        
+        
+    }
+
+    
+    
+    
+    //-----------------------------------------------------------------------------------
+    // HTML Path
+    //-----------------------------------------------------------------------------------
+    
+    internal var htmlPath: String?
+    
+    func getPreferencesHtmlPath() -> String? {
+        return self.userDefaults?.string(forKey: "htmlPath")
+    }
+    
+    /**
+     Absolute path to html index
+     - returns: Absolute Path if set in preferences, otherwise the placeholder.
+     */
+    public var htmlAbsolutePath: String {
+        get {
+            
+            if let htmlPath = self.htmlPath {
+                let htmlAbsolutePath = assetPath + "/" + htmlPath
+                if FileManager.default.fileExists(atPath: htmlAbsolutePath) {
+                    return htmlAbsolutePath
+                }
+            }
+            
+            return Bundle.main.path(forResource: "index", ofType: "html")!
+            
+        }
+    }
     
     
     /// User defaults. Should always use standardUserDefaults() if not testing.
@@ -49,98 +114,60 @@ class Preferences {
                 do {
                     try FileManager.default.removeItem(atPath: "Library/.SplashBuddyDone")
                 } catch {
-                    Log.write(string: "Couldn't remove .SplashBuddyDone", cat: "Preferences", level: .info)
+                    Log.write(string: "Couldn't remove .SplashBuddyDone",
+                              cat: "Preferences",
+                              level: .info)
                 }
                 
             }
         }
     }
     
-    init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
-        
-        self.userDefaults = nsUserDefaults
-        
-        do {
-            self.logFileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: self.jamfLog, isDirectory: false))
-        } catch {
-            dump(error)
-            self.logFileHandle = nil
-        }
-        
-        if let assetPath = getPreferencesAssetPath() {
-            self.assetPath = assetPath
-        } else {
-            Log.write(string: "Cannot get assetPath from io.fti.SplashBuddy.plist", cat: "Foundation", level: .error)
-        }
-        
-        
-        if let htmlPath = getPreferencesHtmlPath() {
-            self.htmlPath = htmlPath
-        } else {
-            Log.write(string: "Cannot get htmlPath from io.fti.SplashBuddy.plist", cat: "Foundation", level: .error)
-        }
-        
-        
-    }
-    
-    func getPreferencesAssetPath() -> String? {
-        return self.userDefaults?.string(forKey: "assetPath")
-    }
     
     
-    func getPreferencesHtmlPath() -> String? {
-        return self.userDefaults?.string(forKey: "htmlPath")
-    }
-    
-    
-    /**
-     Absolute path to html index
-     - returns: Absolute Path if set in preferences, otherwise the placeholder.
-     */
-    var htmlAbsolutePath: String? {
-        get {
-            if let assetPath = self.assetPath, let htmlPath = self.htmlPath {
-                return "\(assetPath)/\(htmlPath)"
-            } else {
-                return Bundle.main.path(forResource: "index", ofType: "html")
-            }
-        }
-    }
-    
+    //-----------------------------------------------------------------------------------
+    // Software
+    //-----------------------------------------------------------------------------------
     
     func extractSoftware(from dict: NSDictionary) -> Software? {
         
         guard let name = dict["packageName"] as? String else {
-            Log.write(string: "Error reading name from an application in io.fti.SplashBuddy", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading name from an application in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
             return nil
         }
         
         guard let displayName: String = dict["displayName"] as? String else {
-            Log.write(string: "Error reading displayName from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading displayName from application \(name) in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
             return nil
         }
         
         guard let description: String = dict["description"] as? String else {
-            Log.write(string: "Error reading description from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading description from application \(name) in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
             return nil
         }
         
         guard let iconRelativePath: String = dict["iconRelativePath"] as? String else {
-            Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
             return nil
         }
         
         guard let canContinueBool: Bool = getBool(from: dict["canContinue"]) else {
-            Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.SplashBuddy", cat: "Foundation", level: .error)
+            Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
             return nil
         }
         
-        guard let assetPath: String = self.assetPath else {
-            Log.write(string: "Error reading asset path", cat: "Foundation", level: .error)
-            return nil
-        }
         
-        let iconPath = assetPath + "/" + iconRelativePath
+        let iconPath = self.assetPath + "/" + iconRelativePath
         
         return Software(packageName: name,
                         version: nil,
@@ -190,13 +217,17 @@ class Preferences {
     /// Generates Software objects from Preferences
     func getPreferencesApplications() {
         guard let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray") else {
-            Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy", cat: "Foundation", level: .error)
+            Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
             return
         }
         
         for application in applicationsArray {
             guard let application = application as? NSDictionary else {
-                Log.write(string: "applicationsArray: application is malformed", cat: "Foundation", level: .error)
+                Log.write(string: "applicationsArray: application is malformed",
+                          cat: "Preferences",
+                          level: .error)
                 return
             }
             if let software = extractSoftware(from: application) {
@@ -205,6 +236,22 @@ class Preferences {
         }
         
     }
+    
+
+    
+    
+    //-----------------------------------------------------------------------------------
+    // Legacy
+    //-----------------------------------------------------------------------------------
+    
+    func getPreferencesAssetPath() -> String? {
+        return self.userDefaults?.string(forKey: "assetPath")
+    }
+    
+    
+    
+    
+
 }
 
 

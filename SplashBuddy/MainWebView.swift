@@ -21,21 +21,18 @@ class MainWebView: WebView {
         // An attempt at returning a localized version, if exists.
         // presentation.html -> presentation_fr.html
         
-        if let indexHtmlPath = Preferences.sharedInstance.htmlAbsolutePath {
-            let full_url = URL(fileURLWithPath: indexHtmlPath)
-            let extension_path = full_url.pathExtension
-            let base_path = full_url.deletingPathExtension().path
-            let languageCode = NSLocale.current.languageCode ?? "en"
-            
-            let localized_path = "\(base_path)_\(languageCode).\(extension_path)"
-            
-            if FileManager().fileExists(atPath: localized_path) {
-                self.mainFrame.load(URLRequest(url: URL(fileURLWithPath: localized_path)))
-            } else {
-                self.mainFrame.load(URLRequest(url: URL(fileURLWithPath: indexHtmlPath)))
-            }
+        
+        let full_url = URL(fileURLWithPath: Preferences.sharedInstance.htmlAbsolutePath)
+        let extension_path = full_url.pathExtension
+        let base_path = full_url.deletingPathExtension().path
+        let languageCode = NSLocale.current.languageCode ?? "en"
+        
+        let localized_path = "\(base_path)_\(languageCode).\(extension_path)"
+        
+        if FileManager().fileExists(atPath: localized_path) {
+            self.mainFrame.load(URLRequest(url: URL(fileURLWithPath: localized_path)))
         } else {
-            Log.write(string: "Cannot get HTML Path!", cat: "Foundation", level: .error)
+            self.mainFrame.load(URLRequest(url: URL(fileURLWithPath: Preferences.sharedInstance.htmlAbsolutePath)))
         }
     }
 }
