@@ -18,8 +18,10 @@ class Preferences {
     static let sharedInstance = Preferences()
     public let logFileHandle: FileHandle?
     
+    internal let userDefaults: UserDefaults
     internal let jamfLog = "/var/log/jamf.log"
-    internal let assetPath = "/Library/Application Support/SplashBuddy"
+    
+
     
     
     
@@ -27,7 +29,7 @@ class Preferences {
     /// INIT
     //-----------------------------------------------------------------------------------
     
-    init(nsUserDefaults: UserDefaults? = UserDefaults.standard) {
+    init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
         
         self.userDefaults = nsUserDefaults
         
@@ -54,17 +56,28 @@ class Preferences {
         }
         
         
-        // Legacy
+        // Asset Path
         
-        if getPreferencesAssetPath() != nil {
-            Log.write(string: "assetPath is now fixed to /Library/Application Support/SplashBuddy",
-                      cat: "Preferences",
-                      level: .info)
+        if let assetPath = getPreferencesAssetPath() {
+            self.assetPath = assetPath
+        } else {
+            self.assetPath = defaultAssetPath
         }
         
         
     }
-
+    
+    
+    //-----------------------------------------------------------------------------------
+    // Asset Path
+    //-----------------------------------------------------------------------------------
+    
+    internal var assetPath = String()
+    internal let defaultAssetPath = "/Library/Application Support/SplashBuddy"
+    
+    func getPreferencesAssetPath() -> String? {
+        return self.userDefaults.string(forKey: "assetPath")
+    }
     
     
     
@@ -75,7 +88,7 @@ class Preferences {
     internal var htmlPath: String?
     
     func getPreferencesHtmlPath() -> String? {
-        return self.userDefaults?.string(forKey: "htmlPath")
+        return self.userDefaults.string(forKey: "htmlPath")
     }
     
     /**
@@ -97,9 +110,6 @@ class Preferences {
         }
     }
     
-    
-    /// User defaults. Should always use standardUserDefaults() if not testing.
-    var userDefaults: UserDefaults?
     
     
     var setupDone: Bool {
@@ -216,7 +226,7 @@ class Preferences {
     
     /// Generates Software objects from Preferences
     func getPreferencesApplications() {
-        guard let applicationsArray = self.userDefaults?.array(forKey: "applicationsArray") else {
+        guard let applicationsArray = self.userDefaults.array(forKey: "applicationsArray") else {
             Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy",
                       cat: "Preferences",
                       level: .error)
@@ -237,16 +247,6 @@ class Preferences {
         
     }
     
-
-    
-    
-    //-----------------------------------------------------------------------------------
-    // Legacy
-    //-----------------------------------------------------------------------------------
-    
-    func getPreferencesAssetPath() -> String? {
-        return self.userDefaults?.string(forKey: "assetPath")
-    }
     
     
     
