@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import os.log
+import os
 
 /**
  Performs logging using os_log if on 10.12.x or newer, or NSLog if on older versions.
@@ -38,15 +38,15 @@ class Log {
             //  On only OSX 10.12 or newer
             let log = OSLog(subsystem: appName, category: cat)
             if level == .debug {
-                os_log("%{public}s", log: log, type: .debug, string)
+                os_log("%{public}@", log: log, type: .debug, string)
             } else if level == .error {
-                os_log("%{public}s", log: log, type: .error, string)
+                os_log("%{public}@", log: log, type: .error, string)
             } else if level == .fault {
-                os_log("%{public}s", log: log, type: .fault, string)
+                os_log("%{public}@", log: log, type: .fault, string)
             } else if level == .info {
-                os_log("%{public}s", log: log, type: .info, string)
+                os_log("%{public}@", log: log, type: .info, string)
             } else {
-                os_log("%{public}s", log: log, type: .default, string)
+                os_log("%{public}@", log: log, type: .default, string)
             }
         } else {
             // Fallback on earlier versions

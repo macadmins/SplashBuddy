@@ -26,7 +26,7 @@ class Parser: NSObject {
         DispatchQueue.global(qos: .background).async {
             
             guard let logFileHandle = Preferences.sharedInstance.logFileHandle else {
-                Log.write(string: "Cannot open /var/log/jamf.log", cat: "Foundation", level: .fault)
+                // Hopefully this is already handled by Preferences class
                 return
             }
             
