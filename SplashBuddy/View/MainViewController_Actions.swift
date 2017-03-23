@@ -64,7 +64,7 @@ extension MainViewController {
     func doneInstalling() {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
-        statusLabel.textColor = .green
+        statusLabel.textColor = .labelColor
         statusLabel.stringValue = NSLocalizedString(
             "All applications were installed. Please click continue.",
             comment: "All applications were installed. Please click continue.")
