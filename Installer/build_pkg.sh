@@ -1,8 +1,6 @@
 #!/bin/bash
 
-VERSION="0.14"
-
-echo -e "\033[1mHave you updated VERSION?\033[0m"
+VERSION=`date +%Y%m%d%H%M`
 
 # A weird way to get the absolute path
 # http://stackoverflow.com/questions/3349105/how-to-set-current-working-directory-to-the-directory-of-the-script

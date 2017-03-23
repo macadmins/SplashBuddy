@@ -6,6 +6,30 @@
 	<array>
 		<dict>
 			<key>canContinue</key>
+			<false/>
+			<key>description</key>
+			<string>SSO</string>
+			<key>displayName</key>
+			<string>Enterprise Connect</string>
+			<key>iconRelativePath</key>
+			<string>enterpriseconnect.png</string>
+			<key>packageName</key>
+			<string>Enterprise Connect</string>
+		</dict>
+		<dict>
+			<key>canContinue</key>
+			<false/>
+			<key>description</key>
+			<string>Editor</string>
+			<key>displayName</key>
+			<string>TextMate</string>
+			<key>iconRelativePath</key>
+			<string>textmate.png</string>
+			<key>packageName</key>
+			<string>TextMate</string>
+		</dict>
+		<dict>
+			<key>canContinue</key>
 			<true/>
 			<key>description</key>
 			<string>Browser</string>
@@ -14,31 +38,7 @@
 			<key>iconRelativePath</key>
 			<string>chrome.png</string>
 			<key>packageName</key>
-			<string>Google Chrome</string>
-		</dict>
-		<dict>
-			<key>canContinue</key>
-			<true/>
-			<key>description</key>
-			<string>SSO</string>
-			<key>displayName</key>
-			<string>Enterprise Connect</string>
-			<key>iconRelativePath</key>
-			<string>enterpriseconnect.png</string>
-			<key>packageName</key>
-			<string>EnterpriseConnect</string>
-		</dict>
-		<dict>
-			<key>canContinue</key>
-			<true/>
-			<key>description</key>
-			<string>Backup</string>
-			<key>displayName</key>
-			<string>Druva</string>
-			<key>iconRelativePath</key>
-			<string>druva.png</string>
-			<key>packageName</key>
-			<string>Druva</string>
+			<string>GoogleChrome</string>
 		</dict>
 	</array>
 	<key>assetPath</key>
