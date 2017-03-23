@@ -165,7 +165,7 @@
                                                                                 </imageView>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YTt-EX-sNP">
                                                                                     <rect key="frame" x="21" y="2" width="139" height="17"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="jUX-9D-aGB">
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="description" id="jUX-9D-aGB">
                                                                                         <font key="font" metaFont="systemLight" size="13"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -176,7 +176,7 @@
                                                                                 </textField>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-L9-chH">
                                                                                     <rect key="frame" x="21" y="23" width="139" height="17"/>
-                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="kOR-oN-miF">
+                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="displayName" id="kOR-oN-miF">
                                                                                         <font key="font" metaFont="systemMedium" size="13"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -225,7 +225,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="6vh-2O-7PQ"/>
                                                     <constraint firstAttribute="width" constant="200" id="gpL-t6-Ev5"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="smallSquare" title="Continue" bezelStyle="smallSquare" image="NSRightFacingTriangleTemplate" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yX-oA-A3P">
+                                                <buttonCell key="cell" type="smallSquare" title="Continue" bezelStyle="smallSquare" image="NSRightFacingTriangleTemplate" imagePosition="right" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7yX-oA-A3P">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -280,7 +280,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="continueButton" destination="2Cu-8a-kCe" id="qJx-lY-0bY"/>
+                        <outlet property="continueButton" destination="2Cu-8a-kCe" id="5Us-hv-PKb"/>
                         <outlet property="indeterminateProgressIndicator" destination="7jp-Ob-web" id="pNS-tc-4HU"/>
                         <outlet property="installingLabel" destination="Pvw-wq-IjD" id="Vw9-kM-Wyg"/>
                         <outlet property="mainView" destination="VI7-LS-rJR" id="kli-bF-0SB"/>
@@ -298,7 +298,7 @@
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="760" y="-111"/>
+            <point key="canvasLocation" x="845" y="-56"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="MHn-J6-Mpz">

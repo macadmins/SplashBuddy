@@ -18,7 +18,7 @@ extension MainViewController {
         
         statusLabel.stringValue = ""
         
-        continueButton?.isEnabled = false
+        continueButton.isEnabled = false
     }
     
     
@@ -26,7 +26,7 @@ extension MainViewController {
     func errorWhileInstalling() {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
-        continueButton?.isEnabled = true
+        continueButton.isEnabled = true
         statusLabel.textColor = .red
         
         let _failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
@@ -56,7 +56,7 @@ extension MainViewController {
     
     
     func canContinue() {
-        continueButton?.isEnabled = true
+        continueButton.isEnabled = true
     }
     
     

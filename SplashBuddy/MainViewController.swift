@@ -13,7 +13,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet var webView: MainWebView!
     @IBOutlet var softwareTableView: NSTableView!
     @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
-    @IBOutlet weak var continueButton: NSButton?
+    @IBOutlet weak var continueButton: NSButton!
     @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet weak var installingLabel: NSTextField!
     @IBOutlet var mainView: NSView!
@@ -43,8 +43,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         self.mainView.layer?.borderWidth = 0.2
         
         
-        // Setup the initial state of objects
-        self.setupInstalling()
         
         // Setup the Notifications
         NotificationCenter.default.addObserver(self,
@@ -70,6 +68,9 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
     override func viewDidAppear() {
         
+        // Setup the initial state of objects
+        self.setupInstalling()
+
         // Display Alert if /var/log/jamf.log doesn't exist
         
         if Preferences.sharedInstance.logFileHandle == nil {

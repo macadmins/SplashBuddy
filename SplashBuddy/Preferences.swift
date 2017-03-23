@@ -17,6 +17,7 @@ class Preferences {
     
     static let sharedInstance = Preferences()
     public let logFileHandle: FileHandle?
+    public var doneParsingPlist: Bool = false
     
     internal let userDefaults: UserDefaults
     internal let jamfLog = "/var/log/jamf.log"
@@ -244,6 +245,8 @@ class Preferences {
                 SoftwareArray.sharedInstance.array.append(software)
             }
         }
+        
+        self.doneParsingPlist = true
         
     }
     

@@ -25,6 +25,9 @@ class SoftwareArray: NSObject {
     }
     
     func canContinue(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
+        guard Preferences.sharedInstance.doneParsingPlist == true else {
+            return false
+        }
         let criticalSoftwareArray = _array.filter({ $0.canContinue == false })
         return criticalSoftwareArray.filter({ $0.status == .success }).count == criticalSoftwareArray.count
     }
