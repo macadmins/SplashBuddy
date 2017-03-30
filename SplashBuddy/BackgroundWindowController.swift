@@ -26,7 +26,7 @@ class BackgroundWindowController: NSWindowController {
         backgroundWindow.contentRect(forFrameRect: mainDisplayRect)
         backgroundWindow.setFrame(mainDisplayRect, display: true)
         backgroundWindow.setFrameOrigin(mainDisplayRect.origin)
-        backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow) - 1 )
+        backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow)) - 1
         
     }
     

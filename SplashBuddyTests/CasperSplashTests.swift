@@ -184,6 +184,8 @@ class CasperSplashTests: XCTestCase {
     
     func testCanContinue_yes() {
         
+        Preferences.sharedInstance.doneParsingPlist = true
+
         casperSplashMainController = MainViewController()
         let input: [Software] = [
             Software(packageName: "test1", version: nil, status: .success, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
@@ -194,6 +196,8 @@ class CasperSplashTests: XCTestCase {
     
     func testCanContinue_yesNoCritical() {
         
+        Preferences.sharedInstance.doneParsingPlist = true
+
         casperSplashMainController = MainViewController()
         let input: [Software] = [
             Software(packageName: "test1", version: nil, status: .failed, iconPath: nil, displayName: nil, description: nil, canContinue: true, displayToUser: true),
@@ -204,6 +208,9 @@ class CasperSplashTests: XCTestCase {
 
     func testCanContinue_no() {
         
+
+        Preferences.sharedInstance.doneParsingPlist = true
+
         casperSplashMainController = MainViewController()
         let input = [
             Software(packageName: "test1", version: nil, status: .pending, iconPath: nil, displayName: nil, description: nil, canContinue: false, displayToUser: true),
