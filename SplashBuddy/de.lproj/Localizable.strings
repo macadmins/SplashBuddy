@@ -1,0 +1,15 @@
+/* 
+  Strings.strings
+  SplashBuddy
+
+  Created by Francois Levaux on 02.03.17.
+  Copyright © 2017 François Levaux-Tiffreau. All rights reserved.
+*/
+
+// https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html
+
+"%@ failed to install. Support has been notified." = "%@ konnte nicht installiert werden. Der Support wurde benachrichtigt.";
+"An application failed to install. Support has been notified." = "Ein Programm konnte nicht installiert werden. Der Support wurde benachrichtigt.";
+"Some applications failed to install. Support has been notified." = "Einige Programme konnten nicht installiert werden. Der Support wurde benachrichtigt.";
+"All applications were installed. Please click continue." = "Alle Programme wurden installiert. Bitte klicken Sie weiter.";
+"Installing…" = "Installiere…";

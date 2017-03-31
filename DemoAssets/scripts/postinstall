@@ -1,3 +1,0 @@
-#!/bin/bash
-
-launchctl load /Library/LaunchDaemons/io.fti.CasperSplash.launch.plist
