@@ -17,6 +17,15 @@ class MainWebView: WebView {
         self.layer?.borderColor = NSColor.lightGray.cgColor
         self.layer?.isOpaque = true
         
+        //  Sets preferences to match IB
+        //  NOTE: Possible issue with the IBOutlet connection
+        self.preferences.isJavaEnabled = false
+        self.preferences.isJavaScriptEnabled = false
+        self.preferences.javaScriptCanOpenWindowsAutomatically = false
+        self.preferences.loadsImagesAutomatically = true
+        self.preferences.allowsAnimatedImages = false
+        self.preferences.allowsAnimatedImageLooping = false
+        
         
         // An attempt at returning a localized version, if exists.
         // presentation.html -> presentation_fr.html
