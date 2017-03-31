@@ -20,7 +20,11 @@ class MainWebView: WebView {
         //  Sets preferences to match IB
         //  NOTE: Possible issue with the IBOutlet connection
         self.preferences.isJavaEnabled = false
-        self.preferences.isJavaScriptEnabled = false
+        if Preferences.sharedInstance.javascript {
+            self.preferences.isJavaScriptEnabled = true
+        } else {
+            self.preferences.isJavaScriptEnabled = false
+        }
         self.preferences.javaScriptCanOpenWindowsAutomatically = false
         self.preferences.loadsImagesAutomatically = true
         self.preferences.allowsAnimatedImages = false

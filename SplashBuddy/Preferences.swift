@@ -65,6 +65,14 @@ class Preferences {
             self.assetPath = defaultAssetPath
         }
         
+        // Javascript
+        
+        if let javascript = getPreferencesJavascript() {
+            self.javascript = javascript
+        } else {
+            self.javascript = defaultJavascript
+        }
+        
         
     }
     
@@ -91,6 +99,18 @@ class Preferences {
     func getPreferencesHtmlPath() -> String? {
         return self.userDefaults.string(forKey: "htmlPath")
     }
+    
+    //-----------------------------------------------------------------------------------
+    // Javascript Configuration
+    //-----------------------------------------------------------------------------------
+    
+    internal var javascript: Bool?
+    internal let defaultJavascript: Bool = false
+    
+    func getPreferencesJavascript() -> Bool? {
+        return self.userDefaults.bool(forKey: "javascript")
+    }
+    
     
     /**
      Absolute path to html index
