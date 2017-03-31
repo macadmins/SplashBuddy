@@ -111,6 +111,18 @@ class Preferences {
         return self.userDefaults.bool(forKey: "javascript")
     }
     
+    //-----------------------------------------------------------------------------------
+    // Java Configuration
+    //-----------------------------------------------------------------------------------
+    
+    internal var java: Bool?
+    internal let defaultJava: Bool = false
+    
+    func getPreferencesJava() -> Bool? {
+        return self.userDefaults.bool(forKey: "java")
+    }
+
+    
     
     /**
      Absolute path to html index
