@@ -1,9 +1,9 @@
 
 # Code
 
-- François 'ftiff' Levaux-Tiffreau
+- François 'ftiff' Levaux-Tiffreau (@ftiff)
 - @cybertunnel
-- Joel Rennich
+- Joel Rennich (@mactroll)
 
 
 # Localization
@@ -11,8 +11,6 @@
 - French (fr): François Levaux-Tiffreau (@ftiff)
 - Dutch (nl): @riddl0rd, @thomasb
 - German (de): Mic Milic Frederickx (@kermic)
-- Japanese (jp): Anonymous
-- Finnish (fi): Anonymous
 
 
 # Similar projects
