@@ -1,7 +1,8 @@
 👏🏼💕😎 Thanks for taking the time to contribute!! 😎💕👏🏼
 
+# Contributing Guide
 
-# What should I know before starting?
+## What should I know before starting?
 
 SplashBuddy goal is to provide an *elegant* and *secure* onboarding process for Mac users using [DEP](https://www.apple.com/business/dep/). 
 
@@ -19,19 +20,20 @@ By *secure* we mean:
 [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) is a good additional resource. 
 
 ♻️Note: The very fact that this app exists violates one of Apple guidelines for good app design: [Think twice before providing an onboarding experience](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/StartStop.html#//apple_ref/doc/uid/20000957-CH5-SW1)
-# How can I contribute?
 
-## Contributing to localizations
+## How can I contribute?
+
+### Contributing to localizations
 
 Please [create an issue](https://github.com/ftiff/SplashBuddy/issues/new) if a localization is incorrect, incomplete or missing. 
 
-## Contributing to documentation
+### Contributing to documentation
 
 The [wiki](https://github.com/ftiff/SplashBuddy/wiki) is open to edit for everyone. Don't hesitate to modify it!
 
 Please ask for help in the Slack channel (see below) or [create an issue](https://github.com/ftiff/SplashBuddy/issues/new) if you're uncertain.
 
-## Contributing to code
+### Contributing to code
 
 Please create a pick a topic in the issues section:
 
@@ -47,8 +49,8 @@ Make sure you:
 - Update CHANGELOG.md
 - Use the correct username and email (make sure your employer is OK that you use your professional email)
 
-# Getting help 
+## Getting help 
 
-The best place to discuss SplasBuddy is to join the `#caspersplash` channel on the [MacAdmins Slack](https://macadmins.herokuapp.com).
+The best place to discuss SplashBuddy is to join the `#splashbuddy` channel on the [MacAdmins Slack](https://macadmins.herokuapp.com).
 
 After your first merged PR, you'll be invited to the private developpers channel 👻.
