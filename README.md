@@ -18,7 +18,7 @@ It allows you to:
 
 It currently supports Jamf Pro. You're welcome to [contribute](https://github.com/ftiff/SplashBuddy/blob/master/CONTRIBUTING.md) to the project. Every little helps.
 
-## In action
+## In action
 
 Here's a video of the SplashBuddy running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/) (Click on the image).
 
