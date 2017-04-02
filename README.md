@@ -20,9 +20,9 @@ It currently supports Jamf Pro. You're welcome to [contribute](https://github.co
 
 ## In action
 
-Here's a video of the SplashBuddy running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/)
+Here's a video of the SplashBuddy running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/) (Click on the image).
 
-<script src=“https://fast.wistia.com/embed/medias/8gpvhpwgn4.jsonp” async></script><script src=“https://fast.wistia.com/assets/external/E-v1.js” async></script><div class=“wistia_responsive_padding” style=“padding:80.0% 0 0 0;position:relative;“><div class=“wistia_responsive_wrapper” style=“height:100%;left:0;position:absolute;top:0;width:100%;“><div class=“wistia_embed wistia_async_8gpvhpwgn4 seo=false videoFoam=true” style=“height:100%;width:100%“>&nbsp;</div></div></div>
+[![](Assets/CultureAmp-MBP.png)](https://cultureamp.wistia.com/medias/8gpvhpwgn4)
 
 ## Quick Start
 
