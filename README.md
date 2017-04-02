@@ -1,59 +1,40 @@
+[![Build Status](https://travis-ci.org/ftiff/SplashBuddy.svg?branch=master)](https://travis-ci.org/ftiff/SplashBuddy)
+![](https://img.shields.io/badge/Swift-3.1-brightgreen.svg)
+![](https://img.shields.io/badge/macOS-10.12.4-brightgreen.svg)
+
+
+![](https://img.shields.io/badge/Version-1.0-lightgrey.svg)
+![](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)
+
 # SplashBuddy
-Onboarding splash screen for Casper Suite DEP
 
-Caution: This repo is not ready.
-Watch for an announcement at http://maclovin.org
+SplashBuddy goal is to provide an *elegant* and *secure* onboarding process for Mac users using [DEP](https://www.apple.com/business/dep/). 
 
-#Quick Start
+It allows you to:
 
-- Install SplashBuddy.app in /Library/Application Support/SplashBuddy
-- Generate a SplashBuddy Demo Assets package and install it
-```
-DemoAssets/build_pkg.sh
-sudo install -target / -pkg DemoAssets/CasperSplashDemoAssets-0.7.pkg
-```
+- Prevent your users from using their Mac before the minimum software is installed
+- Provide status on the software that is currently being installed
+- Display important information
 
-# Setting Preferences
+It currently supports Jamf Pro. You're welcome to [contribute](https://github.com/ftiff/SplashBuddy/blob/master/CONTRIBUTING.md) to the project. Every little helps.
 
-## SplashBuddy.plist
+## In action
 
-domain is io.fti.SplashBuddy
+Here's a video of the SplashBuddy running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/) (Click on the image).
 
-I recommend installing a plist in /Library/Preferences/io.fti.SplashBuddy.plist
-Unfortunately, the timing a profile will be pushed is not guaranteed.
+[![](Assets/CultureAmp-MBP.png)](https://cultureamp.wistia.com/medias/8gpvhpwgn4)
 
-The following example will:
-- Set the base path to `/Library/SApplication Support/plashBuddy`
-- Will display the html page `/Library/SplashBuddy/presentation.html`
-- Will add an item in the right corner, called "Acrobat Reader" with subtitle "PDF Reader", with the icon `/Library/Application Support/SplashBuddy/acrobatreader.png`. It will expect a package name in the form "Adobe Reader XI Installer-11.0.10.pkg"
+## Quick Start
+
+The best place to start is the [Onboarding Manual](https://github.com/ftiff/SplashBuddy/wiki/Onboarding-Manual).
 
 
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-    <dict>
-        <key>assetPath</key>
-        <string>/Library/SplashBuddy</string>
-        <key>postInstallAssetPath</key>
-        <string>presentation.html</string>
-        <key>applicationsArray</key>
-        <array>
-            <dict>
-                <key>canContinue</key>
-                <true/>
-                <key>description</key>
-                <string>PDF Reader</string>
-                <key>displayName</key>
-                <string>Acrobat Reader</string>
-                <key>iconRelativePath</key>
-                <string>acrobatreader.png</string>
-                <key>packageName</key>
-                <string>Adobe Reader XI Installer</string>
-            </dict>
-        </array>
-    </dict>
-</plist>
-```
+## Release history
 
+The release history is available [here](CHANGELOG.md).
 
+Splashbuddy was made possible thanks to the work of [the following individuals](THANKS.md).
+
+## Getting help 
+
+The best place to discuss SplashBuddy is to join the `#splashbuddy` channel on the [MacAdmins Slack](https://macadmins.herokuapp.com).
