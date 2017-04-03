@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.1
+osx_image: xcode8.3
 xcode_project: SplashBuddy.xcodeproj
 xcode_scheme: SplashBuddy
 xcode_sdk: macosx10.12
@@ -19,7 +19,10 @@ matrix:
 
 script:
 - set -o pipefail
-- xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" | xcpretty
+- xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
 slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W
