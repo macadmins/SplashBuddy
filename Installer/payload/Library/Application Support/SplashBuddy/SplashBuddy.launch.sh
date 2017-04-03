@@ -15,7 +15,7 @@ pgrep "SplashBuddy" && return 1 || return 0
 }
 
 if IsRunning && [ -f "$app"/Contents/MacOS/SplashBuddy ] \
-	&& [ "$loggedInUser" != "_mbusersetup" ] \
+	&& [ "$loggedInUser" != "_mbsetupuser" ] \
 	&& [ $(pgrep Finder | wc -l) -gt 0 ] \
 	&& [ ! -f "${doneFile}" ]; then
 
