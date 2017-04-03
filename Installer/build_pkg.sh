@@ -7,9 +7,8 @@ VERSION=`date +%Y%m%d%H%M`
 
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 
-echo $dir
-pkgbuild --root ${dir}/payload \
-	 --scripts ${dir}/scripts \
+pkgbuild --root "${dir}/payload" \
+	 --scripts "${dir}/scripts" \
 	 --identifier io.fti.SplashBuddy.Installer \
 	 --version ${VERSION} \
-	${dir}/SplashBuddyInstaller-${VERSION}.pkg
+	"${dir}/SplashBuddyInstaller-${VERSION}.pkg"
