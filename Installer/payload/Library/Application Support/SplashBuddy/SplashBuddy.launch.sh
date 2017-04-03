@@ -11,17 +11,13 @@ app="/Library/Application Support/SplashBuddy/SplashBuddy.app"
 doneFile="/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone"
 
 # Check if:
-# - SplashBuddy binary exists (is fully installed)
+# - SplashBuddy is not already running
+# - SplashBuddy is signed (is fully installed)
 # - User is in control (not _mbsetupuser)
 # - User is on desktop (Finder process exists)
-# - Application is not already running
+# - Done file doesn't exist
 
-function IsNotRunning()
-{
-    pgrep "SplashBuddy" && return 0 || return 1
-}
-
-if IsNotRunning \
+if [ ! $(pgrep SplashBuddy) ] \
 	&& [ $(codesign --verify ${app}) ] \
 	&& [ "$loggedInUser" != "_mbsetupuser" ] \
 	&& [ ! $(pgrep Finder) ] \
