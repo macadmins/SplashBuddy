@@ -6,7 +6,10 @@
 # I suggest you create a Policy to Remove and uninstall the LaunchAgent
 # We cannot do it here as LaunchAgent are executed by the user.
 
-loggedInUser=$(/bin/ls -l /dev/console | /usr/bin/awk '{ print $3 }')
+
+loggedInUser=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+
+
 app="/Library/Application Support/SplashBuddy/SplashBuddy.app"
 doneFile="/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone"
 
