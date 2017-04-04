@@ -20,10 +20,22 @@ doneFile="/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Libr
 # - User is on desktop (Finder process exists)
 # - Done file doesn't exist
 
-if [ ! $(pgrep SplashBuddy) ] \
-	&& [ $(codesign --verify ${app}) ] \
+function appInstalled {
+    codesign --verify "${app}" ? return true : return false
+}
+
+function appNotRunning {
+    pgrep SplashBuddy && return 0 || return 0
+}
+
+function finderRunning {
+    pgrep Finder && return 1 || return 0
+}
+
+if appNotRunning \
+	&& appInstalled \
 	&& [ "$loggedInUser" != "_mbsetupuser" ] \
-	&& [ ! $(pgrep Finder) ] \
+	&& finderRunning \
 	&& [ ! -f "${doneFile}" ]; then
 
     open -a "$app"
