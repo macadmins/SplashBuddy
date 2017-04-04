@@ -21,15 +21,15 @@ doneFile="/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Libr
 # - Done file doesn't exist
 
 function appInstalled {
-    codesign --verify "${app}" ? return true : return false
+    codesign --verify "${app}" && return 0 || return 1
 }
 
 function appNotRunning {
-    pgrep SplashBuddy && return 0 || return 0
+    pgrep SplashBuddy && return 1 || return 0
 }
 
 function finderRunning {
-    pgrep Finder && return 1 || return 0
+    pgrep Finder && return 0 || return 1
 }
 
 if appNotRunning \
