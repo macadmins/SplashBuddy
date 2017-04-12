@@ -4,7 +4,7 @@ Onboarding splash screen for DEP
 Caution: This repo is not ready.
 Watch for an announcement at http://maclovin.org
 
-#Quick Start
+# Quick Start
 
 - Install SplashBuddy.app in /Library/Application Support/SplashBuddy
 - Generate a SplashBuddy Demo Assets package and install it
