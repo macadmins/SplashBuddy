@@ -23,7 +23,7 @@ I recommend installing a plist in /Library/Preferences/io.fti.SplashBuddy.plist
 Unfortunately, the timing a profile will be pushed is not guaranteed.
 
 The following example will:
-- Set the base path to `/Library/SApplication Support/plashBuddy`
+- Set the base path to `/Library/Application Support/SplashBuddy`
 - Will display the html page `/Library/SplashBuddy/presentation.html`
 - Will add an item in the right corner, called "Acrobat Reader" with subtitle "PDF Reader", with the icon `/Library/Application Support/SplashBuddy/acrobatreader.png`. It will expect a package name in the form "Adobe Reader XI Installer-11.0.10.pkg"
 
