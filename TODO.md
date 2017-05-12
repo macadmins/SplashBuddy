@@ -10,4 +10,4 @@
 - [x] Remove Postinstall Script
 - [x] Rename project to SplashBuddy
 - [ ] Create onboarding process for MacAdmins
-- [ ] Update README.md
+- [x] Update README.md
