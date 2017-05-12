@@ -1,32 +1,45 @@
 #!/bin/bash
 
-loggedInUser=$(/bin/ls -l /dev/console | /usr/bin/awk '{ print $3 }')
+# This file should be called by a LaunchAgent
+# Its goal is to ensure SplashBuddy only executes when user is on the desktop.
+
+# I suggest you create a Policy to Remove and uninstall the LaunchAgent
+# We cannot do it here as LaunchAgent are executed by the user.
+
+
+loggedInUser=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+
+
 app="/Library/Application Support/SplashBuddy/SplashBuddy.app"
 doneFile="/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone"
 
 # Check if:
-# - SplashBuddy binary exists (is fully installed)
-# - User is in control (not _mbusersetup)
+# - SplashBuddy is not already running
+# - SplashBuddy is signed (is fully installed)
+# - User is in control (not _mbsetupuser)
 # - User is on desktop (Finder process exists)
-# - Application is not already running
-function IsRunning()
-{
-pgrep "SplashBuddy" && return 1 || return 0
+# - Done file doesn't exist
+
+function appInstalled {
+    codesign --verify "${app}" && return 0 || return 1
 }
 
-if IsRunning && [ -f "$app"/Contents/MacOS/SplashBuddy ] \
-	&& [ "$loggedInUser" != "_mbusersetup" ] \
-	&& [ $(pgrep Finder | wc -l) -gt 0 ] \
+function appNotRunning {
+    pgrep SplashBuddy && return 1 || return 0
+}
+
+function finderRunning {
+    pgrep Finder && return 0 || return 1
+}
+
+if appNotRunning \
+	&& appInstalled \
+	&& [ "$loggedInUser" != "_mbsetupuser" ] \
+	&& finderRunning \
 	&& [ ! -f "${doneFile}" ]; then
 
     open -a "$app"
 	
-	# Remove and uninstall the LaunchDaemon
-	# 
-	# I suggest you create a Policy that will do the following
-	# it will ensure that SplashBuddy restarts if interrupted
-	# by a restart.
-
 fi
 
 exit 0

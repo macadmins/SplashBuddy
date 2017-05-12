@@ -2,14 +2,20 @@
 
 VERSION=`date +%Y%m%d%H%M`
 
-# A weird way to get the absolute path
-# http://stackoverflow.com/questions/3349105/how-to-set-current-working-directory-to-the-directory-of-the-script
+# Get the absolute path of the directory containing this script
+# https://unix.stackexchange.com/questions/9541/find-absolute-path-from-a-script
 
-dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+dir=$(unset CDPATH && cd "$(dirname "$0")" && echo $PWD)
 
-echo $dir
-pkgbuild --root ${dir}/payload \
-	 --scripts ${dir}/scripts \
+# Every use should have read rights and scripts should be executable
+
+/bin/chmod -R o+r "${dir}/payload/"
+/bin/chmod +x "${dir}/scripts"
+
+# Build package
+
+/usr/bin/pkgbuild --root "${dir}/payload" \
+	 --scripts "${dir}/scripts" \
 	 --identifier io.fti.SplashBuddy.Installer \
 	 --version ${VERSION} \
-	${dir}/SplashBuddyInstaller-${VERSION}.pkg
+	"${dir}/SplashBuddyInstaller-${VERSION}.pkg"

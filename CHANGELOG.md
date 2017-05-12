@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Better HTML demo page (if no HTML asset is found)
 * Moved much of the logic out of View Controllers
 * Lots of code refactoring
+* Fixed LaunchAgent script - @smashism #26 
 
 ### Removed
 
