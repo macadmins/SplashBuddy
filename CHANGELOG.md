@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Application is now fully sandboxed, and running as user!
 * Localization for French, German and Dutch
 * An error pops up if it cannot find `/var/log/jamf.log`
-* Easy way to build a package with Installer/build_pkg.sgh
+* Easy way to build a package with Installer/build_pkg.sh
 * Now using the new Logger facility from 10.12+ @cybertunnel
 
 ### Changed
