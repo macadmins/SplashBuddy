@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * An error pops up if it cannot find `/var/log/jamf.log`
 * Easy way to build a package with Installer/build_pkg.sh
 * Now using the new Logger facility from 10.12+ @cybertunnel
+* Now able to turn off and on Java & Javascript as needed through the plist
+    * Javascript and Java are turned off by default
 
 ### Changed
 
@@ -32,6 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Better automated testing with Travis
 * Compatible with Swift 3.1 and macOS 10.12.4
+* Javascript and Java were enabled by default.
 
 # Contributors
 
