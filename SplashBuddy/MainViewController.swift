@@ -20,7 +20,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet weak var statusView: NSView!
    
     // Predicate used by Storyboard to filter which software to display
-    let predicate = NSPredicate.init(format: "displayToUser = true")
+    @objc let predicate = NSPredicate(format: "displayToUser = true")
     
     override func awakeFromNib() {
         
@@ -92,7 +92,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
         Preferences.sharedInstance.setupDone = true
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
         
     }
     

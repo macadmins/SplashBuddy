@@ -170,15 +170,15 @@ class CasperSplashTests: XCTestCase {
     }
     
     func testAddIcon_CheckIfNSImage() {
-        let path = Bundle(for: type(of: self)).pathForImageResource("ec_32x32.png")
+        let path = Bundle(for: type(of: self)).pathForImageResource(NSImage.Name(rawValue: "ec_32x32.png"))
         let icon = Software(packageName: "EC", version: "1.6.2", status: .installing, iconPath: path).icon
         XCTAssert(type(of: icon!) == type(of: NSImage()))
     }
     
     func testAddIcon_WithIncorrectResource() {
-        let path = Bundle(for: type(of: self)).pathForImageResource("nonexistent")
+        let path = Bundle(for: type(of: self)).pathForImageResource(NSImage.Name(rawValue: "nonexistent"))
         
-        XCTAssertEqual(Software(packageName: "EC", version: "1.6.2", status: .installing, iconPath: path).icon, NSImage(named: NSImageNameFolder))
+        XCTAssertEqual(Software(packageName: "EC", version: "1.6.2", status: .installing, iconPath: path).icon, NSImage(named: NSImage.Name.folder))
     }
     
     

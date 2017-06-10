@@ -18,7 +18,7 @@ class BackgroundWindowController: NSWindowController {
             return
         }
         
-        guard let mainDisplayRect = NSScreen.main()?.frame else {
+        guard let mainDisplayRect = NSScreen.main?.frame else {
             Log.write(string: "Cannot get main screen dimensions", cat: "UI", level: .error)
             return
         }
@@ -26,7 +26,7 @@ class BackgroundWindowController: NSWindowController {
         backgroundWindow.contentRect(forFrameRect: mainDisplayRect)
         backgroundWindow.setFrame(mainDisplayRect, display: true)
         backgroundWindow.setFrameOrigin(mainDisplayRect.origin)
-        backgroundWindow.level = Int(CGWindowLevelForKey(.maximumWindow)) - 1
+        backgroundWindow.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)) - 1)
         
     }
     

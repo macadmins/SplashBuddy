@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         #if !DEBUG
         
-        let storyboard = NSStoryboard(name: "SplashBuddy", bundle: nil)
-        backgroundController = storyboard.instantiateController(withIdentifier: "backgroundWindow") as! BackgroundWindowController
+            let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "SplashBuddy"), bundle: nil)
+            backgroundController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "backgroundWindow")) as! BackgroundWindowController
         backgroundController.showWindow(self)
         #endif
 

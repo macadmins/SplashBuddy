@@ -21,7 +21,7 @@ class Parser: NSObject {
         
     }
     
-    func readTimer() -> Void {
+    @objc func readTimer() -> Void {
         
         DispatchQueue.global(qos: .background).async {
             

@@ -13,7 +13,7 @@ class SoftwareArray: NSObject {
     
     static let sharedInstance = SoftwareArray()
     
-    dynamic var array = [Software]() {
+    @objc dynamic var array = [Software]() {
         didSet {
             self.checkSoftwareStatus()
         }

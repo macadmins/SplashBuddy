@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 * Better automated testing with Travis
-* Compatible with Swift 3.1 and macOS 10.12.4
+* Compatible with Swift 4.0 and macOS 10.13
 
 # Contributors
 

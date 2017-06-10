@@ -10,7 +10,7 @@ import Foundation
 
 extension MainViewController {
     
-    func setupInstalling() {
+    @objc func setupInstalling() {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
         
@@ -23,7 +23,7 @@ extension MainViewController {
     
     
     
-    func errorWhileInstalling() {
+    @objc func errorWhileInstalling() {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
         continueButton.isEnabled = true
@@ -55,13 +55,13 @@ extension MainViewController {
 
     
     
-    func canContinue() {
+    @objc func canContinue() {
         continueButton.isEnabled = true
     }
     
     
     
-    func doneInstalling() {
+    @objc func doneInstalling() {
         indeterminateProgressIndicator.isHidden = true
         installingLabel.stringValue = ""
         statusLabel.textColor = .labelColor

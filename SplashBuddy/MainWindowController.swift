@@ -23,7 +23,7 @@ class MainWindowController: NSWindowController {
         }
         
         #if !DEBUG
-        window.level = Int(CGWindowLevelForKey(.maximumWindow))
+            window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
         #endif
         
         window.isOpaque = false

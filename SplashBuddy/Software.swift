@@ -35,14 +35,14 @@ class Software: NSObject {
     
     
     
-    dynamic var packageName: String
-    dynamic var packageVersion: String?
-    dynamic var status: SoftwareStatus
-    dynamic var icon: NSImage?
-    dynamic var displayName: String?
-    dynamic var desc: String?
-    dynamic var canContinue: Bool
-    dynamic var displayToUser: Bool
+    @objc dynamic var packageName: String
+    @objc dynamic var packageVersion: String?
+    @objc dynamic var status: SoftwareStatus
+    @objc dynamic var icon: NSImage?
+    @objc dynamic var displayName: String?
+    @objc dynamic var desc: String?
+    @objc dynamic var canContinue: Bool
+    @objc dynamic var displayToUser: Bool
 
     
     /**
@@ -80,7 +80,7 @@ class Software: NSObject {
         if let iconPath = iconPath {
             self.icon = NSImage(contentsOfFile: iconPath)
         } else {
-            self.icon = NSImage(named: NSImageNameFolder)
+            self.icon = NSImage(named: NSImage.Name.folder)
         }
         
 

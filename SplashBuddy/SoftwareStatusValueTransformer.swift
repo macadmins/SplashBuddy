@@ -27,19 +27,19 @@ class SoftwareStatusValueTransformer: ValueTransformer {
         switch value {
             
         case Software.SoftwareStatus.failed.rawValue:
-            return NSImage(named: "NSStatusUnavailable")
+            return NSImage(named: NSImage.Name(rawValue: "NSStatusUnavailable"))
             
         case Software.SoftwareStatus.installing.rawValue:
-            return NSImage(named: "NSStatusPartiallyAvailable")
+            return NSImage(named: NSImage.Name(rawValue: "NSStatusPartiallyAvailable"))
             
         case Software.SoftwareStatus.pending.rawValue:
-            return NSImage(named: "NSStatusNone")
+            return NSImage(named: NSImage.Name(rawValue: "NSStatusNone"))
             
         case Software.SoftwareStatus.success.rawValue:
-            return NSImage(named: "NSStatusAvailable")
+            return NSImage(named: NSImage.Name(rawValue: "NSStatusAvailable"))
             
         default:
-            return NSImage(named: "NSStatusNone")
+            return NSImage(named: NSImage.Name(rawValue: "NSStatusNone"))
             
         }
     }
