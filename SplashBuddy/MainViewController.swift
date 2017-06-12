@@ -7,10 +7,11 @@
 //
 
 import Cocoa
+import WebKit
 
 class MainViewController: NSViewController, NSTableViewDataSource {
     
-    @IBOutlet var webView: MainWebView!
+    @IBOutlet var webView: WKWebView!
     @IBOutlet var softwareTableView: NSTableView!
     @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var continueButton: NSButton!
@@ -42,6 +43,10 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         self.mainView.layer?.shadowRadius = 2
         self.mainView.layer?.borderWidth = 0.2
         
+        // Setup the web view
+        self.webView.layer?.borderWidth = 1.0
+        self.webView.layer?.borderColor = NSColor.lightGray.cgColor
+        self.webView.layer?.isOpaque = true
         
         
         // Setup the Notifications
@@ -73,20 +78,26 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
         // Display Alert if /var/log/jamf.log doesn't exist
         
-        if Preferences.sharedInstance.logFileHandle == nil {
+        guard (Preferences.sharedInstance.logFileHandle != nil) else {
             let alert = NSAlert()
-            
             alert.alertStyle = .critical
             alert.messageText = "Jamf is not installed correctly"
             alert.informativeText = "/var/log/jamf.log is missing"
             alert.addButton(withTitle: "Quit")
-            
-            alert.beginSheetModal(for: self.view.window!) { (response) in
+            alert.beginSheetModal(for: self.view.window!) { (_) in
                 self.pressedContinueButton(self)
             }
-            
+            return
         }
         
+        
+        // Display the html file
+        
+        if let html = Preferences.sharedInstance.html {
+            self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+        } else {
+            self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
+        }
     }
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
@@ -95,16 +106,4 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         NSApplication.shared.terminate(self)
         
     }
-    
-    
-    
-    
-    
-
-    
-    
-
-
-    
-    
 }

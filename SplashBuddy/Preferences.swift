@@ -43,27 +43,15 @@ class Preferences {
             self.logFileHandle = nil
         }
         
-        
-
-        
-        // HTML Path
-        
-        if let htmlPath = getPreferencesHtmlPath() {
-            self.htmlPath = htmlPath
+        // Do not change asset path (see comment on var assetPath: URL below)
+        // TSTAssetPath is meant for unit testing only.
+        if let assetPath = self.userDefaults.string(forKey: "TSTAssetPath") {
+            self.assetPath = URL(fileURLWithPath: assetPath, isDirectory: true)
         } else {
-            Log.write(string: "Cannot get htmlPath from io.fti.SplashBuddy.plist",
-                      cat: "Preferences",
-                      level: .info)
+            self.assetPath = URL(fileURLWithPath: "/Library/Application Support/SplashBuddy", isDirectory: true)
         }
         
         
-        // Asset Path
-        
-        if let assetPath = getPreferencesAssetPath() {
-            self.assetPath = assetPath
-        } else {
-            self.assetPath = defaultAssetPath
-        }
         
         
     }
@@ -73,12 +61,10 @@ class Preferences {
     // Asset Path
     //-----------------------------------------------------------------------------------
     
-    internal var assetPath = String()
-    internal let defaultAssetPath = "/Library/Application Support/SplashBuddy"
+    // If you decide to change the asset path, make sure you update the entitlements,
+    // or the WKWebView will display white.
     
-    func getPreferencesAssetPath() -> String? {
-        return self.userDefaults.string(forKey: "assetPath")
-    }
+    var assetPath: URL
     
     
     
@@ -86,28 +72,15 @@ class Preferences {
     // HTML Path
     //-----------------------------------------------------------------------------------
     
-    internal var htmlPath: String?
-    
-    func getPreferencesHtmlPath() -> String? {
-        return self.userDefaults.string(forKey: "htmlPath")
+    public var assetBundle: Bundle? {
+        get {
+            return Bundle.init(url: self.assetPath.appendingPathComponent("presentation.bundle"))
+        }
     }
     
-    /**
-     Absolute path to html index
-     - returns: Absolute Path if set in preferences, otherwise the placeholder.
-     */
-    public var htmlAbsolutePath: String {
+    public var html: URL? {
         get {
-            
-            if let htmlPath = self.htmlPath {
-                let htmlAbsolutePath = assetPath + "/" + htmlPath
-                if FileManager.default.fileExists(atPath: htmlAbsolutePath) {
-                    return htmlAbsolutePath
-                }
-            }
-            
-            return Bundle.main.path(forResource: "index", ofType: "html")!
-            
+            return self.assetBundle?.url(forResource: "index", withExtension: "html")
         }
     }
     
@@ -178,7 +151,7 @@ class Preferences {
         }
         
         
-        let iconPath = self.assetPath + "/" + iconRelativePath
+        let iconPath = self.assetPath.appendingPathComponent(iconRelativePath).path
         
         return Software(packageName: name,
                         version: nil,

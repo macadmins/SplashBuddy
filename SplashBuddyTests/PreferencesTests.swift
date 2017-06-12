@@ -27,7 +27,7 @@ class PreferencesTests: XCTestCase {
         testUserDefaults = UserDefaults.init(suiteName: "testing")
         
         assetPath = Bundle(for: type(of: self)).bundlePath + "/Contents/Resources"
-        testUserDefaults!.set(assetPath, forKey: "assetPath")
+        testUserDefaults!.set(assetPath, forKey: "TSTAssetPath")
         
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
@@ -47,11 +47,12 @@ class PreferencesTests: XCTestCase {
     
     func testUserDefaults_assetPath() {
         
-        let output = Bundle(for: type(of: self)).bundlePath + "/Contents/Resources"
+        let output = Bundle(for: type(of: self)).bundleURL.appendingPathComponent("/Contents/Resources")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
         XCTAssertEqual(testPrefs.assetPath, output)
     }
+    
     
     
     func testUserDefaults_Application() {
@@ -194,27 +195,6 @@ class PreferencesTests: XCTestCase {
         
         testUserDefaults.removeObject(forKey: "applicationsArray")
         XCTAssertNil(testUserDefaults.object(forKey: "applicationsArray"))
-    }
-    
-    
-    func testUserDefaults_HTMLFullPath() {
-        
-        let input = "index.html"
-        testUserDefaults.set(input, forKey: "htmlPath")
-        let output = Bundle.main.resourcePath! + "/" + input
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        
-        XCTAssertEqual(testPrefs.htmlAbsolutePath, output)
-        
-        testUserDefaults.removeObject(forKey: "postInstallAssetPath")
-        XCTAssertNil(testUserDefaults.object(forKey: "postInstallAssetPath"))
-    }
-    
-    func testUserDefaults_HTMLFullPathEmpty() {
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        let output = Bundle.main.resourcePath! + "/index.html"
-        
-        XCTAssertEqual(testPrefs.htmlAbsolutePath, output)
     }
 
     

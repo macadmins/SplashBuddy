@@ -4,9 +4,12 @@
 <dict>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
+	<key>com.apple.security.network.client</key>
+	<true/>
 	<key>com.apple.security.temporary-exception.files.absolute-path.read-only</key>
 	<array>
 		<string>/private/var/log/jamf.log</string>
+		<string>/Library/Application Support/SplashBuddy/</string>
 	</array>
 </dict>
 </plist>

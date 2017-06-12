@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/ftiff/SplashBuddy.svg?branch=master)](https://travis-ci.org/ftiff/SplashBuddy)
-![](https://img.shields.io/badge/Swift-3.1-brightgreen.svg)
+![](https://img.shields.io/badge/Swift-4.0-brightgreen.svg)
 ![](https://img.shields.io/badge/macOS-10.12.4-brightgreen.svg)
+![](https://img.shields.io/badge/macOS-10.13-brightgreen.svg)
 
 
 ![](https://img.shields.io/badge/Version-1.0-lightgrey.svg)

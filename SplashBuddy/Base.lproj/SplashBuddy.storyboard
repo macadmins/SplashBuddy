@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G12b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13122.17"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -36,7 +36,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="SdF-5b-Pla">
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a2p-Aj-Ov8">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a2p-Aj-Ov8">
                                         <rect key="frame" x="-2" y="500" width="804" height="60"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to your Mac" id="M9G-bN-6f0">
                                             <font key="font" metaFont="systemThin" size="50"/>
@@ -44,7 +44,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5IX-l2-fiO">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5IX-l2-fiO">
                                         <rect key="frame" x="-2" y="475" width="804" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Please wait while we prepare your Mac" id="bCS-gQ-vgm">
                                             <font key="font" metaFont="system"/>
@@ -58,7 +58,7 @@
                                             <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7jp-Ob-web">
                                                 <rect key="frame" x="744" y="7" width="16" height="16"/>
                                             </progressIndicator>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="huH-bF-pmn">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huH-bF-pmn">
                                                 <rect key="frame" x="-2" y="7" width="566" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="562" id="4G0-cz-piN"/>
@@ -69,7 +69,7 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pvw-wq-IjD">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvw-wq-IjD">
                                                 <rect key="frame" x="672" y="7" width="69" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Installing…" id="PWh-08-cWA">
                                                     <font key="font" metaFont="system"/>
@@ -92,15 +92,6 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="cgO-LI-1JY">
                                         <rect key="frame" x="20" y="50" width="760" height="405"/>
                                         <subviews>
-                                            <webView wantsLayer="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVg-yQ-h6y" customClass="MainWebView" customModule="SplashBuddy" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="561" height="405"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="561" id="uXc-MD-2S7"/>
-                                                </constraints>
-                                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
-                                                    <nil key="identifier"/>
-                                                </webPreferences>
-                                            </webView>
                                             <scrollView appearanceType="aqua" autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeC-7I-iT9">
                                                 <rect key="frame" x="560" y="40" width="200" height="365"/>
                                                 <clipView key="contentView" copiesOnScroll="NO" id="76P-jR-syg">
@@ -163,7 +154,7 @@
                                                                                         <binding destination="WAE-ba-3Iy" name="value" keyPath="objectValue.icon" id="5Zg-Yo-Dzu"/>
                                                                                     </connections>
                                                                                 </imageView>
-                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YTt-EX-sNP">
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YTt-EX-sNP">
                                                                                     <rect key="frame" x="21" y="2" width="139" height="17"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="description" id="jUX-9D-aGB">
                                                                                         <font key="font" metaFont="systemLight" size="13"/>
@@ -174,7 +165,7 @@
                                                                                         <binding destination="WAE-ba-3Iy" name="value" keyPath="objectValue.desc" id="21y-pc-hmY"/>
                                                                                     </connections>
                                                                                 </textField>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-L9-chH">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-L9-chH">
                                                                                     <rect key="frame" x="21" y="23" width="139" height="17"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="displayName" id="kOR-oN-miF">
                                                                                         <font key="font" metaFont="systemMedium" size="13"/>
@@ -233,16 +224,30 @@
                                                     <action selector="pressedContinueButton:" target="qDQ-T9-zeE" id="aic-6q-OXy"/>
                                                 </connections>
                                             </button>
+                                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9lx-PG-aVf">
+                                                <rect key="frame" x="0.0" y="0.0" width="561" height="405"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="561" id="idT-ha-gLs"/>
+                                                </constraints>
+                                                <wkWebViewConfiguration key="configuration">
+                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                    <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO"/>
+                                                </wkWebViewConfiguration>
+                                                <connections>
+                                                    <outlet property="UIDelegate" destination="qDQ-T9-zeE" id="Mbx-Vw-WtP"/>
+                                                    <outlet property="navigationDelegate" destination="qDQ-T9-zeE" id="U4W-ZW-1PS"/>
+                                                </connections>
+                                            </wkWebView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="HVg-yQ-h6y" firstAttribute="bottom" secondItem="2Cu-8a-kCe" secondAttribute="bottom" id="7WO-3U-5BX"/>
-                                            <constraint firstAttribute="bottom" secondItem="HVg-yQ-h6y" secondAttribute="bottom" id="8lU-A5-U2e"/>
+                                            <constraint firstItem="9lx-PG-aVf" firstAttribute="bottom" secondItem="2Cu-8a-kCe" secondAttribute="bottom" id="5TW-qK-ARL"/>
+                                            <constraint firstItem="9lx-PG-aVf" firstAttribute="top" secondItem="jeC-7I-iT9" secondAttribute="top" id="9HP-Mo-IyL"/>
                                             <constraint firstItem="jeC-7I-iT9" firstAttribute="trailing" secondItem="2Cu-8a-kCe" secondAttribute="trailing" id="Moy-Ku-24Z"/>
                                             <constraint firstItem="jeC-7I-iT9" firstAttribute="leading" secondItem="2Cu-8a-kCe" secondAttribute="leading" id="QjY-4q-DQQ"/>
-                                            <constraint firstItem="HVg-yQ-h6y" firstAttribute="top" secondItem="jeC-7I-iT9" secondAttribute="top" id="QzT-il-DOd"/>
-                                            <constraint firstItem="HVg-yQ-h6y" firstAttribute="top" secondItem="cgO-LI-1JY" secondAttribute="top" id="e34-Ds-0dW"/>
-                                            <constraint firstItem="HVg-yQ-h6y" firstAttribute="leading" secondItem="cgO-LI-1JY" secondAttribute="leading" id="gds-jd-XPl"/>
+                                            <constraint firstItem="9lx-PG-aVf" firstAttribute="leading" secondItem="cgO-LI-1JY" secondAttribute="leading" id="Vek-Bn-4PU"/>
                                             <constraint firstItem="2Cu-8a-kCe" firstAttribute="top" secondItem="jeC-7I-iT9" secondAttribute="bottom" id="ml0-vD-fJJ"/>
+                                            <constraint firstItem="9lx-PG-aVf" firstAttribute="top" secondItem="cgO-LI-1JY" secondAttribute="top" id="tTd-8G-W2W"/>
+                                            <constraint firstAttribute="bottom" secondItem="9lx-PG-aVf" secondAttribute="bottom" id="u14-Pg-Nh7"/>
                                             <constraint firstAttribute="trailing" secondItem="jeC-7I-iT9" secondAttribute="trailing" id="yag-oB-n4z"/>
                                         </constraints>
                                     </customView>
@@ -287,7 +292,7 @@
                         <outlet property="softwareTableView" destination="8zI-tR-GNs" id="W4d-jB-ndx"/>
                         <outlet property="statusLabel" destination="huH-bF-pmn" id="iYg-8d-2PX"/>
                         <outlet property="statusView" destination="9z5-8K-Bsy" id="Dvb-uX-9FO"/>
-                        <outlet property="webView" destination="HVg-yQ-h6y" id="FXo-hc-x5M"/>
+                        <outlet property="webView" destination="9lx-PG-aVf" id="nCG-R3-Otx"/>
                     </connections>
                 </viewController>
                 <customObject id="bhw-Fr-Cnv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

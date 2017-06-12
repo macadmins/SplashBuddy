@@ -17,21 +17,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 * Quit application by using CMD+ALT+Q
+* All assets must now reside in /Library/Application Support/SplashBuddy/
 * Moved from XIB to Storyboards
 * Application has been renamed from CasperSplash to SplashBuddy
 * Better HTML demo page (if no HTML asset is found)
 * Moved much of the logic out of View Controllers
 * Lots of code refactoring
-* Fixed LaunchAgent script - @smashism #26 
+* Fixed LaunchAgent script - @smashism #26
+* Now using WKWebView and localization bundle (presentation.bundle)
+* HTML view doesn't allow remote content anymore for increased security
 
 ### Removed
 
 * Removed the postInstall script. Pressing Continue will create the file `~/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone`
+* Removed `assetPath` and `htmlPath` (it is now hardcoded to `/Library/Application Support/SplashBuddy/presentation.bundle` )
 
 ### Fixed
 
 * Better automated testing with Travis
 * Compatible with Swift 4.0 and macOS 10.13
+
+### Known Issues
+
+* Travis CI is not yet compatible with Swift 4.0
 
 # Contributors
 

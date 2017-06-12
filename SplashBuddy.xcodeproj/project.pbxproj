@@ -11,7 +11,7 @@
 		086F87AD1D532143002AA791 /* ec_32x32@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */; };
 		086F87B21D536F2B002AA791 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B11D536F2B002AA791 /* Script.swift */; };
 		086F87B81D5391FD002AA791 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B61D5391FD002AA791 /* MainWindowController.swift */; };
-		086F87BB1D5397AE002AA791 /* MainWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87BA1D5397AE002AA791 /* MainWebView.swift */; };
+		086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87BA1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift */; };
 		086F87BD1D53A018002AA791 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 086F87BC1D53A018002AA791 /* index.html */; };
 		086F87BF1D53A96B002AA791 /* dummy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 086F87BE1D53A96B002AA791 /* dummy.jpg */; };
 		089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29201D50D12200E58C6D /* AppDelegate.swift */; };
@@ -67,7 +67,7 @@
 		086F87B11D536F2B002AA791 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
 		086F87B31D53784C002AA791 /* test_postinstall_failed.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_failed.sh; sourceTree = "<group>"; };
 		086F87B61D5391FD002AA791 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		086F87BA1D5397AE002AA791 /* MainWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWebView.swift; sourceTree = "<group>"; };
+		086F87BA1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewNavigationDelegate.swift; sourceTree = "<group>"; };
 		086F87BC1D53A018002AA791 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		086F87BE1D53A96B002AA791 /* dummy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dummy.jpg; sourceTree = "<group>"; };
 		089D291D1D50D12200E58C6D /* SplashBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplashBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +105,19 @@
 		47684F2D1E68C0E300D422EC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		47684F311E68C39900D422EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/infoPlist.strings; sourceTree = "<group>"; };
 		47684F331E68C39D00D422EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		47725E201EEF267A0007540C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		47725E211EEF267A0007540C /* build_pkg.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_pkg.sh; sourceTree = "<group>"; };
+		47725E261EEF267A0007540C /* chrome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrome.png; sourceTree = "<group>"; };
+		47725E271EEF267A0007540C /* enterpriseconnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enterpriseconnect.png; sourceTree = "<group>"; };
+		47725E281EEF267A0007540C /* postInstall.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postInstall.sh; sourceTree = "<group>"; };
+		47725E291EEF267A0007540C /* presentation.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = presentation.bundle; sourceTree = "<group>"; };
+		47725E2A1EEF267A0007540C /* SplashBuddy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = SplashBuddy.app; sourceTree = "<group>"; };
+		47725E2B1EEF267A0007540C /* SplashBuddy.launch.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SplashBuddy.launch.sh; sourceTree = "<group>"; };
+		47725E2C1EEF267A0007540C /* textmate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textmate.png; sourceTree = "<group>"; };
+		47725E2E1EEF267A0007540C /* io.fti.SplashBuddy.launch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.launch.plist; sourceTree = "<group>"; };
+		47725E301EEF267A0007540C /* io.fti.SplashBuddy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.plist; sourceTree = "<group>"; };
+		47725E321EEF267A0007540C /* postinstall */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
+		47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SplashBuddyInstaller-201703291322.pkg"; sourceTree = "<group>"; };
 		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashBuddy.storyboard; sourceTree = "<group>"; };
 		47B198A91E6561AB0055CC85 /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
@@ -137,6 +150,7 @@
 		089D29141D50D12200E58C6D = {
 			isa = PBXGroup;
 			children = (
+				47725E1F1EEF267A0007540C /* Installer */,
 				472027F61EEBB9E9006A4938 /* CHANGELOG.md */,
 				472027F51EEBB9E9006A4938 /* CONTRIBUTING.md */,
 				47647E6A1E68D9A5009D535B /* THANKS.md */,
@@ -203,6 +217,82 @@
 			path = SplashBuddyTestAssets;
 			sourceTree = "<group>";
 		};
+		47725E1F1EEF267A0007540C /* Installer */ = {
+			isa = PBXGroup;
+			children = (
+				47725E201EEF267A0007540C /* .gitignore */,
+				47725E211EEF267A0007540C /* build_pkg.sh */,
+				47725E221EEF267A0007540C /* payload */,
+				47725E311EEF267A0007540C /* scripts */,
+				47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */,
+			);
+			path = Installer;
+			sourceTree = "<group>";
+		};
+		47725E221EEF267A0007540C /* payload */ = {
+			isa = PBXGroup;
+			children = (
+				47725E231EEF267A0007540C /* Library */,
+			);
+			path = payload;
+			sourceTree = "<group>";
+		};
+		47725E231EEF267A0007540C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				47725E241EEF267A0007540C /* Application Support */,
+				47725E2D1EEF267A0007540C /* LaunchAgents */,
+				47725E2F1EEF267A0007540C /* Preferences */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		47725E241EEF267A0007540C /* Application Support */ = {
+			isa = PBXGroup;
+			children = (
+				47725E251EEF267A0007540C /* SplashBuddy */,
+			);
+			path = "Application Support";
+			sourceTree = "<group>";
+		};
+		47725E251EEF267A0007540C /* SplashBuddy */ = {
+			isa = PBXGroup;
+			children = (
+				47725E261EEF267A0007540C /* chrome.png */,
+				47725E271EEF267A0007540C /* enterpriseconnect.png */,
+				47725E281EEF267A0007540C /* postInstall.sh */,
+				47725E291EEF267A0007540C /* presentation.bundle */,
+				47725E2A1EEF267A0007540C /* SplashBuddy.app */,
+				47725E2B1EEF267A0007540C /* SplashBuddy.launch.sh */,
+				47725E2C1EEF267A0007540C /* textmate.png */,
+			);
+			path = SplashBuddy;
+			sourceTree = "<group>";
+		};
+		47725E2D1EEF267A0007540C /* LaunchAgents */ = {
+			isa = PBXGroup;
+			children = (
+				47725E2E1EEF267A0007540C /* io.fti.SplashBuddy.launch.plist */,
+			);
+			path = LaunchAgents;
+			sourceTree = "<group>";
+		};
+		47725E2F1EEF267A0007540C /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				47725E301EEF267A0007540C /* io.fti.SplashBuddy.plist */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		47725E311EEF267A0007540C /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				47725E321EEF267A0007540C /* postinstall */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
 		47CFADE91E68049600356D11 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +329,7 @@
 				08EC78AB1DE72326007960A4 /* MainViewController.swift */,
 				47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */,
 				47684F161E68B16C00D422EC /* Localizable.strings */,
-				086F87BA1D5397AE002AA791 /* MainWebView.swift */,
+				086F87BA1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -372,7 +462,7 @@
 				81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
-				086F87BB1D5397AE002AA791 /* MainWebView.swift in Sources */,
+				086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */,
 				47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */,
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
