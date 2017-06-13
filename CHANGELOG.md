@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed LaunchAgent script - @smashism #26
 * Now using WKWebView and localization bundle (presentation.bundle)
 * HTML view doesn't allow remote content anymore for increased security
+* Disabled application switcher and gesture to ensure this Application stays on top - @matthewsphillips #34
+* Hides all other applications on launch
 
 ### Removed
 

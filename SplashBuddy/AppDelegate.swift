@@ -12,14 +12,14 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
     
     var softwareStatusValueTransformer: SoftwareStatusValueTransformer?
     var mainWindowController: MainWindowController!
     var backgroundController: BackgroundWindowController!
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-
+        
         
         
         // Value Transformer for Software Status
@@ -35,21 +35,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Change this in Edit Scheme -> Run -> Info
         
         #if !DEBUG
-        
+            
             let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "SplashBuddy"), bundle: nil)
             backgroundController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "backgroundWindow")) as! BackgroundWindowController
-        backgroundController.showWindow(self)
+            backgroundController.showWindow(self)
+            
+            NSApp.hideOtherApplications(self)
+            NSApp.presentationOptions = [ .disableProcessSwitching,
+                                         .hideDock,
+                                         .hideMenuBar,
+                                         .disableForceQuit,
+                                         .disableSessionTermination ]
         #endif
-
-
+        
+        
         
         // Get preferences from UserDefaults
         Preferences.sharedInstance.getPreferencesApplications()
         Parser.sharedInstance.readTimer()
         
-
+        
+        
     }
     
-
- }
+    
+}
 
