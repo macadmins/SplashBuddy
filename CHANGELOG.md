@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Better automated testing with Travis
 * Compatible with Swift 4.0 and macOS 10.13
+* WKWebView now accepts keyboard input (can use forms)
 
 ### Known Issues
 

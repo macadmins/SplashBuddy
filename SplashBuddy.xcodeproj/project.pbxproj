@@ -27,6 +27,7 @@
 		08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* MainViewController.swift */; };
 		47647E7E1E698F3C009D535B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47647E7D1E698F3C009D535B /* PreferencesTests.swift */; };
 		47684F141E68B16C00D422EC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47684F161E68B16C00D422EC /* Localizable.strings */; };
+		47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A218191F04F0BC00FD3EDC /* MainWindow.swift */; };
 		47AA7B141E68AD8E005BBF48 /* SplashBuddy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47AA7B161E68AD8E005BBF48 /* SplashBuddy.storyboard */; };
 		47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198A91E6561AB0055CC85 /* Software Array Extension.swift */; };
 		47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */; };
@@ -118,6 +119,7 @@
 		47725E301EEF267A0007540C /* io.fti.SplashBuddy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.plist; sourceTree = "<group>"; };
 		47725E321EEF267A0007540C /* postinstall */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
 		47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SplashBuddyInstaller-201703291322.pkg"; sourceTree = "<group>"; };
+		47A218191F04F0BC00FD3EDC /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainWindow.swift; path = View/MainWindow.swift; sourceTree = "<group>"; };
 		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashBuddy.storyboard; sourceTree = "<group>"; };
 		47B198A91E6561AB0055CC85 /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				086F87B61D5391FD002AA791 /* MainWindowController.swift */,
+				47A218191F04F0BC00FD3EDC /* MainWindow.swift */,
 				08EC78AB1DE72326007960A4 /* MainViewController.swift */,
 				47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */,
 				47684F161E68B16C00D422EC /* Localizable.strings */,
@@ -467,6 +470,7 @@
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
 				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
+				47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 			);
