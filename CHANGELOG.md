@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Lots of code refactoring
 * Fixed LaunchAgent script - @smashism #26
 * Now using WKWebView and localization bundle (presentation.bundle)
-* HTML view doesn't allow remote content anymore for increased security
+* HTML view doesn't allow content outside of asset folder anymore for increased security (but remote content is ok as long as it is HTTPS)
 * Disabled application switcher and gesture to ensure this Application stays on top - @matthewsphillips #34
 * Hides all other applications on launch
 
