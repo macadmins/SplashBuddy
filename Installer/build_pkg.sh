@@ -12,10 +12,12 @@ dir=$(unset CDPATH && cd "$(dirname "$0")" && echo $PWD)
 /bin/chmod -R o+r "${dir}/payload/"
 /bin/chmod +x "${dir}/scripts"
 
+/usr/bin/find "${dir}" -name .DS_Store -delete
+
 # Build package
 
-/usr/bin/pkgbuild --root "${dir}/payload" \
+/usr/bin/productbuild --content "${dir}/payload" \
 	 --scripts "${dir}/scripts" \
 	 --identifier io.fti.SplashBuddy.Installer \
 	 --version ${VERSION} \
-	"${dir}/SplashBuddyInstaller-${VERSION}.pkg"
+	 "${dir}/SplashBuddyInstaller-${VERSION}.pkg"

@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * HTML view doesn't allow content outside of asset folder anymore for increased security (but remote content is ok as long as it is HTTPS)
 * Disabled application switcher and gesture to ensure this Application stays on top - @matthewsphillips #34
 * Hides all other applications on launch
+* `Installer/pkg_build.sh` now uses `productbuild`
 
 ### Removed
 
