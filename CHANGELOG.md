@@ -41,9 +41,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Compatible with Swift 4.0 and macOS 10.13
 * WKWebView now accepts keyboard input (can use forms)
 
-### Known Issues
-
-* Travis CI is not yet compatible with Swift 4.0
 
 # Contributors
 

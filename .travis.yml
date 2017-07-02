@@ -1,12 +1,13 @@
 language: objective-c
-osx_image: xcode8.3
+osx_image: xcode9
 xcode_project: SplashBuddy.xcodeproj
 xcode_scheme: SplashBuddy
-xcode_sdk: macosx10.12
+xcode_sdk: macosx10.13
 
 # https://docs.travis-ci.com/user/multi-os/
 matrix:
   include:
+    - xcode_sdk: macosx10.12
     - xcode_sdk: macosx10.11
 
 # http://stackoverflow.com/questions/34231587/xcode-ui-testing-on-travis-for-osx-with-xcode-helper-accessibility
