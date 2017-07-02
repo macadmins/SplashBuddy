@@ -45,14 +45,6 @@ class PreferencesTests: XCTestCase {
         
     }
     
-    func testUserDefaults_assetPath() {
-        
-        let output = Bundle(for: type(of: self)).bundleURL.appendingPathComponent("/Contents/Resources")
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        
-        XCTAssertEqual(testPrefs.assetPath, output)
-    }
-    
     
     
     func testUserDefaults_Application() {
