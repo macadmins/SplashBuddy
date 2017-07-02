@@ -100,8 +100,8 @@ class Software: NSObject {
             let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.characters.count))
             
             if !matches.isEmpty {
-                name = (line as NSString).substring(with: matches[0].rangeAt(1))
-                version = (line as NSString).substring(with: matches[0].rangeAt(2))
+                name = (line as NSString).substring(with: matches[0].range(at: 1))
+                version = (line as NSString).substring(with: matches[0].range(at: 2))
                 break
             }
         }
