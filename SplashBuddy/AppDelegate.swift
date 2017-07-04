@@ -58,6 +58,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
+    @IBAction func quitAndSetSBDone(_ sender: Any) {
+        Preferences.sharedInstance.setupDone = true
+        NSApp.terminate(self)
+    }
+    
     
 }
 

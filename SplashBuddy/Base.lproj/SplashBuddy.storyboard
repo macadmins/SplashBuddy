@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G23a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G23a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13122.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.19"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13122.19"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -360,7 +360,13 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="dbc-ap-Ogy"/>
-                                        <menuItem title="Quit SplashBuddy" keyEquivalent="q" id="2cR-1q-G3Y">
+                                        <menuItem title="Quit SplashBuddy and set .SplashBuddyDone" alternate="YES" keyEquivalent="q" id="9sK-Yv-hyG">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="quitAndSetSBDone:" target="NJu-ok-pZt" id="6Ej-DG-VnV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Quit SplashBuddy" alternate="YES" keyEquivalent="q" id="2cR-1q-G3Y">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="terminate:" target="qTG-UB-5nt" id="Yma-gO-cpd"/>

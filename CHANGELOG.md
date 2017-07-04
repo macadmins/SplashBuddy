@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * An error pops up if it cannot find `/var/log/jamf.log`
 * Easy way to build a package with Installer/build_pkg.sh
 * Now using the new Logger facility from 10.12+ @cybertunnel
+* Quit SplashBuddy and set .SplashBuddyDone by using CMD+ALT+CTRL+Q (@matgriffin)
 
 ### Changed
 
