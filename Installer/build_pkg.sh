@@ -16,7 +16,7 @@ dir=$(unset CDPATH && cd "$(dirname "$0")" && echo $PWD)
 
 # Build package
 
-/usr/bin/productbuild --content "${dir}/payload" \
+/usr/bin/pkgbuild --root "${dir}/payload" \
 	 --scripts "${dir}/scripts" \
 	 --identifier io.fti.SplashBuddy.Installer \
 	 --version ${VERSION} \
