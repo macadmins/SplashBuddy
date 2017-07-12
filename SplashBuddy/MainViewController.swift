@@ -70,7 +70,10 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                                                name: NSNotification.Name(rawValue: "doneInstalling"),
                                                object: nil)
         
-        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(MainViewController.formSubmitted),
+                                               name: NSNotification.Name(rawValue: "formSubmitted"),
+                                               object: nil)
         
 
  
@@ -103,6 +106,18 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else {
             self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
+        }
+    }
+    
+    @objc func formSubmitted(_ sender: AnyObject) {
+        DispatchQueue.main.async {
+            self.sendButton.isHidden = true
+            
+            if let html = Preferences.sharedInstance.html {
+                self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+            } else {
+                self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
+            }
         }
     }
     

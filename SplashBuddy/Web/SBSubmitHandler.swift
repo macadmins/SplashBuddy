@@ -33,18 +33,10 @@ class SBSubmitHandler: NSObject, WKScriptMessageHandler {
         }
         
         if let assetTag = obj.assetTag, let computerName = obj.computerName {
-          NotificationCenter.default.post(name: NSNotification.Name("SBFormSubmitted"), object: self, userInfo: ["assetTag": assetTag, "computerName": computerName])
+          NotificationCenter.default.post(name: NSNotification.Name("formSubmitted"), object: self, userInfo: ["assetTag": assetTag, "computerName": computerName])
         }
         
         
-//        DispatchQueue.main.async {
-//            self.sendButton.isHidden = true
-//
-//            if let html = Preferences.sharedInstance.html {
-//                self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
-//            } else {
-//                self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
-//            }
-//        }
+
     }
 }
