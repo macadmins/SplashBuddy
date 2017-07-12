@@ -8,7 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Now accepts User Input
+* Now accepts User Input (it will display if `form.html` exists in `presentation.bundle`)
+* Key `hideSidebar` to hide the sidebar and get a full html view
+
+### Changed
+* Brand new Layout!
+
 
 ## [unreleased]
 

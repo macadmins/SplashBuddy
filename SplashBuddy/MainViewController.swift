@@ -19,7 +19,8 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet weak var installingLabel: NSTextField!
     @IBOutlet var mainView: NSView!
     @IBOutlet weak var statusView: NSView!
-   
+    @IBOutlet weak var sidebarView: NSView!
+    
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
     
@@ -54,7 +55,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                                                selector: #selector(MainViewController.errorWhileInstalling),
                                                name: NSNotification.Name(rawValue: "errorWhileInstalling"),
                                                object: nil)
-
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MainViewController.canContinue),
                                                name: NSNotification.Name(rawValue: "canContinue"),
@@ -67,15 +68,15 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
         
         
-
- 
+        
+        
     }
-
+    
     override func viewDidAppear() {
         
         // Setup the initial state of objects
         self.setupInstalling()
-
+        
         // Display Alert if /var/log/jamf.log doesn't exist
         
         guard (Preferences.sharedInstance.logFileHandle != nil) else {
@@ -93,8 +94,17 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
         // Display the html file
         if let form = Preferences.sharedInstance.form {
+            DispatchQueue.main.async {
+                self.sendButton.isHidden = false
+                self.continueButton.isHidden = true
+            }
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else if let html = Preferences.sharedInstance.html {
+            DispatchQueue.main.async {
+                self.sendButton.isHidden = true
+                self.continueButton.isHidden = false
+            }
+            
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else {
             self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
@@ -152,6 +162,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             }
             DispatchQueue.main.async {
                 self.sendButton.isHidden = true
+                self.continueButton.isHidden = false
                 
                 if let html = Preferences.sharedInstance.html {
                     self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -159,6 +170,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                     self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
                 }
             }
+            
             
         }
         
