@@ -34,6 +34,7 @@
 		47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */; };
 		47CFADF21E681FB600356D11 /* FileHandle Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */; };
 		47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADF31E682C9200356D11 /* SoftwareArray.swift */; };
+		47D25EF11F1615900048DD6C /* UserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D25EF01F1615900048DD6C /* UserInput.swift */; };
 		47E8A7CD1E689787001292B8 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8A7CC1E689787001292B8 /* Parser.swift */; };
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
 /* End PBXBuildFile section */
@@ -118,7 +119,6 @@
 		47725E2E1EEF267A0007540C /* io.fti.SplashBuddy.launch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.launch.plist; sourceTree = "<group>"; };
 		47725E301EEF267A0007540C /* io.fti.SplashBuddy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.plist; sourceTree = "<group>"; };
 		47725E321EEF267A0007540C /* postinstall */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
-		47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SplashBuddyInstaller-201703291322.pkg"; sourceTree = "<group>"; };
 		47A218191F04F0BC00FD3EDC /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainWindow.swift; path = View/MainWindow.swift; sourceTree = "<group>"; };
 		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashBuddy.storyboard; sourceTree = "<group>"; };
@@ -127,6 +127,7 @@
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController_Actions.swift; path = View/MainViewController_Actions.swift; sourceTree = "<group>"; };
 		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
+		47D25EF01F1615900048DD6C /* UserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInput.swift; sourceTree = "<group>"; };
 		47E8A7CC1E689787001292B8 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		81D9D7301E69ABE4008ED3F5 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +178,7 @@
 		089D291F1D50D12200E58C6D /* SplashBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				47D25EEF1F1615630048DD6C /* UserInput */,
 				47376A141E69DA4C0058B64C /* SplashBuddy.entitlements */,
 				475D9DB01E68C4020035B443 /* Info.plist */,
 				47684F321E68C39900D422EC /* infoPlist.strings */,
@@ -226,7 +228,6 @@
 				47725E211EEF267A0007540C /* build_pkg.sh */,
 				47725E221EEF267A0007540C /* payload */,
 				47725E311EEF267A0007540C /* scripts */,
-				47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */,
 			);
 			path = Installer;
 			sourceTree = "<group>";
@@ -335,6 +336,14 @@
 				086F87BA1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		47D25EEF1F1615630048DD6C /* UserInput */ = {
+			isa = PBXGroup;
+			children = (
+				47D25EF01F1615900048DD6C /* UserInput.swift */,
+			);
+			path = UserInput;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +472,7 @@
 				47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */,
+				47D25EF11F1615900048DD6C /* UserInput.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */,

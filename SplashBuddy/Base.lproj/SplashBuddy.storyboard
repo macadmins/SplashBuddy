@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G23a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G24b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.19"/>
         <plugIn identifier="com.apple.WebKit2IBPlugin" version="13122.19"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -238,14 +239,28 @@
                                                     <outlet property="navigationDelegate" destination="qDQ-T9-zeE" id="U4W-ZW-1PS"/>
                                                 </connections>
                                             </wkWebView>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-G9-Dch">
+                                                <rect key="frame" x="560" y="-1" width="200" height="42"/>
+                                                <buttonCell key="cell" type="smallSquare" title="Send" bezelStyle="smallSquare" image="NSRightFacingTriangleTemplate" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypl-QX-cfb">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="evalForm:" target="qDQ-T9-zeE" id="Zbu-Gi-7E8"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="9lx-PG-aVf" firstAttribute="bottom" secondItem="2Cu-8a-kCe" secondAttribute="bottom" id="5TW-qK-ARL"/>
                                             <constraint firstItem="9lx-PG-aVf" firstAttribute="top" secondItem="jeC-7I-iT9" secondAttribute="top" id="9HP-Mo-IyL"/>
+                                            <constraint firstItem="Wsg-G9-Dch" firstAttribute="firstBaseline" secondItem="2Cu-8a-kCe" secondAttribute="firstBaseline" id="B3i-Nv-SLJ"/>
                                             <constraint firstItem="jeC-7I-iT9" firstAttribute="trailing" secondItem="2Cu-8a-kCe" secondAttribute="trailing" id="Moy-Ku-24Z"/>
+                                            <constraint firstItem="Wsg-G9-Dch" firstAttribute="baseline" secondItem="2Cu-8a-kCe" secondAttribute="baseline" id="OrU-am-pjQ"/>
+                                            <constraint firstItem="Wsg-G9-Dch" firstAttribute="trailing" secondItem="2Cu-8a-kCe" secondAttribute="trailing" id="QG1-Jf-64Z"/>
                                             <constraint firstItem="jeC-7I-iT9" firstAttribute="leading" secondItem="2Cu-8a-kCe" secondAttribute="leading" id="QjY-4q-DQQ"/>
                                             <constraint firstItem="9lx-PG-aVf" firstAttribute="leading" secondItem="cgO-LI-1JY" secondAttribute="leading" id="Vek-Bn-4PU"/>
                                             <constraint firstItem="2Cu-8a-kCe" firstAttribute="top" secondItem="jeC-7I-iT9" secondAttribute="bottom" id="ml0-vD-fJJ"/>
+                                            <constraint firstItem="Wsg-G9-Dch" firstAttribute="leading" secondItem="2Cu-8a-kCe" secondAttribute="leading" id="qng-lX-4MM"/>
                                             <constraint firstItem="9lx-PG-aVf" firstAttribute="top" secondItem="cgO-LI-1JY" secondAttribute="top" id="tTd-8G-W2W"/>
                                             <constraint firstAttribute="bottom" secondItem="9lx-PG-aVf" secondAttribute="bottom" id="u14-Pg-Nh7"/>
                                             <constraint firstAttribute="trailing" secondItem="jeC-7I-iT9" secondAttribute="trailing" id="yag-oB-n4z"/>
@@ -289,6 +304,7 @@
                         <outlet property="indeterminateProgressIndicator" destination="7jp-Ob-web" id="pNS-tc-4HU"/>
                         <outlet property="installingLabel" destination="Pvw-wq-IjD" id="Vw9-kM-Wyg"/>
                         <outlet property="mainView" destination="VI7-LS-rJR" id="kli-bF-0SB"/>
+                        <outlet property="sendButton" destination="Wsg-G9-Dch" id="QAq-dm-O7K"/>
                         <outlet property="softwareTableView" destination="8zI-tR-GNs" id="W4d-jB-ndx"/>
                         <outlet property="statusLabel" destination="huH-bF-pmn" id="iYg-8d-2PX"/>
                         <outlet property="statusView" destination="9z5-8K-Bsy" id="Dvb-uX-9FO"/>
