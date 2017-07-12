@@ -23,6 +23,10 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     lazy var userInputHandler: SBSubmitHandler = {
         return SBSubmitHandler()
     }()
+    
+    lazy var customEventHandler: SBTriggerHandler = {
+        return SBTriggerHandler()
+    }()
    
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
@@ -40,6 +44,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         super.viewWillAppear()
         
         webView.configuration.userContentController.add(userInputHandler, name: "splashbuddy")
+        webView.configuration.userContentController.add(customEventHandler, name: "trigger")
         
         // Setup the view
         self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor

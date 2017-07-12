@@ -26,6 +26,7 @@
 		08EC78AA1DE7210E007960A4 /* BackgroundWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */; };
 		08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* MainViewController.swift */; };
 		24B011E71F162A5100CC2008 /* SBSubmitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B011E61F162A5100CC2008 /* SBSubmitHandler.swift */; };
+		24B011E91F1635AC00CC2008 /* SBTriggerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B011E81F1635AC00CC2008 /* SBTriggerHandler.swift */; };
 		47647E7E1E698F3C009D535B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47647E7D1E698F3C009D535B /* PreferencesTests.swift */; };
 		47684F141E68B16C00D422EC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47684F161E68B16C00D422EC /* Localizable.strings */; };
 		47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A218191F04F0BC00FD3EDC /* MainWindow.swift */; };
@@ -90,6 +91,7 @@
 		08EC78A91DE7210E007960A4 /* BackgroundWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWindowController.swift; sourceTree = "<group>"; };
 		08EC78AB1DE72326007960A4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		24B011E61F162A5100CC2008 /* SBSubmitHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBSubmitHandler.swift; sourceTree = "<group>"; };
+		24B011E81F1635AC00CC2008 /* SBTriggerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBTriggerHandler.swift; sourceTree = "<group>"; };
 		472027F51EEBB9E9006A4938 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		472027F61EEBB9E9006A4938 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		47376A141E69DA4C0058B64C /* SplashBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SplashBuddy.entitlements; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				24B011E61F162A5100CC2008 /* SBSubmitHandler.swift */,
+				24B011E81F1635AC00CC2008 /* SBTriggerHandler.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
 				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
+				24B011E91F1635AC00CC2008 /* SBTriggerHandler.swift in Sources */,
 				47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
