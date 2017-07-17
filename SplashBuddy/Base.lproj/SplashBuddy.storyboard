@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G24b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.19"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13122.19"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13156.6"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13156.6"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -17,6 +17,9 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOE-dw-mkn" customClass="MainWindow" customModule="SplashBuddy" customModuleProvider="target">
                         <rect key="contentRect" x="294" y="313" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="UoU-0S-EqW" id="28o-FO-SQU"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="qDQ-T9-zeE" kind="relationship" relationship="window.shadowedContentViewController" id="HbF-Nz-HDe"/>
@@ -186,7 +189,7 @@
                                                                 </clipView>
                                                                 <edgeInsets key="contentInsets" left="5" right="15" top="20" bottom="100"/>
                                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6y1-ZO-fX2">
-                                                                    <rect key="frame" x="5" y="504" width="210" height="16"/>
+                                                                    <rect key="frame" x="5" y="505" width="210" height="15"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </scroller>
                                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.16101694915254236" horizontal="NO" id="oUS-tj-Dbn">
@@ -243,10 +246,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
                                             </visualEffectView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-Zf-dqr">
-                                                <rect key="frame" x="119" y="-6" width="562" height="71"/>
+                                                <rect key="frame" x="119" y="8" width="562" height="43"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huH-bF-pmn">
-                                                        <rect key="frame" x="-2" y="54" width="566" height="17"/>
+                                                        <rect key="frame" x="-2" y="26" width="566" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="562" id="ajv-2j-SP0"/>
                                                         </constraints>
@@ -254,17 +257,6 @@
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvw-wq-IjD">
-                                                        <rect key="frame" x="246.5" y="26" width="69" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="jQo-oM-dfd"/>
-                                                        </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Installing…" id="PWh-08-cWA">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Are-bh-n7c">
@@ -277,10 +269,8 @@
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
-                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
@@ -358,7 +348,6 @@
                     <connections>
                         <outlet property="continueButton" destination="k7a-CL-x2G" id="7B2-Pa-6MA"/>
                         <outlet property="indeterminateProgressIndicator" destination="Are-bh-n7c" id="Y6v-o2-1td"/>
-                        <outlet property="installingLabel" destination="Pvw-wq-IjD" id="Vw9-kM-Wyg"/>
                         <outlet property="mainView" destination="VI7-LS-rJR" id="kli-bF-0SB"/>
                         <outlet property="sendButton" destination="34c-Ar-Slk" id="HbV-rW-K1x"/>
                         <outlet property="sidebarView" destination="lkr-Fa-FkH" id="G6V-YO-w7K"/>
@@ -386,6 +375,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="YYc-bD-NMw" id="rVm-ZW-3yI"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="67C-xF-QMY" kind="relationship" relationship="window.shadowedContentViewController" id="4yU-3e-8Yb"/>

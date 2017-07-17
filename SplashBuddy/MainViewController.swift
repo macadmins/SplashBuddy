@@ -16,7 +16,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var continueButton: NSButton!
     @IBOutlet weak var statusLabel: NSTextField!
-    @IBOutlet weak var installingLabel: NSTextField!
     @IBOutlet var mainView: NSView!
     @IBOutlet weak var statusView: NSView!
     @IBOutlet weak var sidebarView: NSView!
