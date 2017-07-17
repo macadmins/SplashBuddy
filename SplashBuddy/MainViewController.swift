@@ -39,7 +39,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         // Setup the view
         self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
         self.mainView.layer?.cornerRadius = 10
-        self.mainView.layer?.shadowOpacity = 0.5
         self.mainView.layer?.shadowRadius = 2
         self.mainView.layer?.borderWidth = 0.2
         
