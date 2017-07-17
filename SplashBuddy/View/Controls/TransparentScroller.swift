@@ -11,6 +11,10 @@ import AppKit
 class TransparentScroller : NSScroller {
     
     override func draw(_ dirtyRect: NSRect) {
+        
+        NSColor.clear.set()
+        NSBezierPath(rect: dirtyRect).fill()
+        
         self.drawKnob()
     }
 }
