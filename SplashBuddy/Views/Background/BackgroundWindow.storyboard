@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Xto-A7-JoV">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13156.6"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="ni9-RP-62T">
+            <objects>
+                <windowController storyboardIdentifier="backgroundWindow" id="Xto-A7-JoV" customClass="BackgroundWindowController" customModule="SplashBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="NIC-7q-u3W">
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="Xto-A7-JoV" id="DbG-aH-iAg"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="11N-Zl-h0V" kind="relationship" relationship="window.shadowedContentViewController" id="3xR-6K-jKv"/>
+                    </connections>
+                </windowController>
+                <customObject id="iB9-WQ-iXB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-476" y="-533"/>
+        </scene>
+        <!--Background view-->
+        <scene sceneID="xAq-S7-yRU">
+            <objects>
+                <customObject id="zAr-VR-eHV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Background view" id="11N-Zl-h0V" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="P65-EE-Py9">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="QpG-qp-NXh">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="QpG-qp-NXh" secondAttribute="bottom" id="PDf-0S-QAZ"/>
+                            <constraint firstItem="QpG-qp-NXh" firstAttribute="leading" secondItem="P65-EE-Py9" secondAttribute="leading" id="PID-SY-wuj"/>
+                            <constraint firstAttribute="trailing" secondItem="QpG-qp-NXh" secondAttribute="trailing" id="oVw-Nv-aAL"/>
+                            <constraint firstItem="QpG-qp-NXh" firstAttribute="top" secondItem="P65-EE-Py9" secondAttribute="top" id="tsk-T8-2QB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="179" y="-495"/>
+        </scene>
+    </scenes>
+</document>

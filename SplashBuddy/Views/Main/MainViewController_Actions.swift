@@ -14,10 +14,7 @@ extension MainViewController {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
         
-        installingLabel.stringValue = NSLocalizedString("Installing…", comment: "")
-        
         statusLabel.isHidden = false
-        installingLabel.isHidden = true
         statusLabel.stringValue = "We are preparing your Mac…"
         
         self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
@@ -30,7 +27,6 @@ extension MainViewController {
     
     @objc func errorWhileInstalling() {
         indeterminateProgressIndicator.isHidden = true
-        installingLabel.isHidden = true
         self.continueButton.isEnabled = true
         statusLabel.textColor = .red
         
@@ -68,7 +64,6 @@ extension MainViewController {
     
     @objc func doneInstalling() {
         indeterminateProgressIndicator.isHidden = true
-        installingLabel.isHidden = true
         statusLabel.textColor = .labelColor
         statusLabel.stringValue = NSLocalizedString(
             "All applications were installed. Please click continue.",
