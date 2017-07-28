@@ -20,7 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         
-        
+        // For continue button Restart, Shutdown and Logout.
+        NSApp.disableRelaunchOnLogin()
         
         // Value Transformer for Software Status
         // We use it to map the software status (.pending…) with color images (orange…) in the Software TableView
