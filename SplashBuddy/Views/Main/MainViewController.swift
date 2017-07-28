@@ -47,6 +47,9 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         self.webView.layer?.borderColor = NSColor.lightGray.cgColor
         self.webView.layer?.isOpaque = true
         
+        // Setup the Continue Button
+        
+        self.continueButton.title = Preferences.sharedInstance.continueAction.localizedName
         
         // Setup the Notifications
         NotificationCenter.default.addObserver(self,
@@ -112,7 +115,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
         Preferences.sharedInstance.setupDone = true
-        NSApplication.shared.terminate(self)
+        Preferences.sharedInstance.continueAction.pressed(sender)
         
     }
     

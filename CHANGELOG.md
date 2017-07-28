@@ -10,9 +10,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Now accepts User Input (it will display if `form.html` exists in `presentation.bundle`)
 * Key `hideSidebar` to hide the sidebar and get a full html view
+* New behaviors for `Continue` button: Restart, Shutdown, Logout, Launch Application or Quit. (uses `continueAction` preferences key)
 
 ### Changed
 * Brand new Layout!
+* Added Temporary exception to sandbox to allow sending Apple Events to Login Window (to restart etc.)
 
 
 ## [unreleased]

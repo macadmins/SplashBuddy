@@ -27,7 +27,7 @@ class Preferences {
     
     
     //-----------------------------------------------------------------------------------
-    /// INIT
+    // MARK: - INIT
     //-----------------------------------------------------------------------------------
     
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
@@ -58,7 +58,7 @@ class Preferences {
     
     
     //-----------------------------------------------------------------------------------
-    // Asset Path
+    // MARK: - Asset Path
     //-----------------------------------------------------------------------------------
     
     // If you decide to change the asset path, make sure you update the entitlements,
@@ -68,7 +68,23 @@ class Preferences {
     
     
     //-----------------------------------------------------------------------------------
-    // Options
+    // MARK: - Continue Button
+    //-----------------------------------------------------------------------------------
+    
+    //
+    
+    public var continueAction: ContinueButton.Action {
+        get {
+            let action: String = self.userDefaults.string(forKey: "continueAction") ?? "quit"
+            return ContinueButton.Action.from(string: action)
+            
+        }
+    }
+    
+    
+    
+    //-----------------------------------------------------------------------------------
+    // MARK: - Options
     //-----------------------------------------------------------------------------------
     
     public var sidebar: Bool {
@@ -78,7 +94,7 @@ class Preferences {
     }
     
     //-----------------------------------------------------------------------------------
-    // HTML Path
+    // MARK: - HTML Path
     //-----------------------------------------------------------------------------------
     
     public var assetBundle: Bundle? {
@@ -124,7 +140,7 @@ class Preferences {
     
     
     //-----------------------------------------------------------------------------------
-    // Software
+    // MARK: - Software
     //-----------------------------------------------------------------------------------
     
     func extractSoftware(from dict: NSDictionary) -> Software? {
