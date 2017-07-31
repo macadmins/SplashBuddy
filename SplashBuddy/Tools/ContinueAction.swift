@@ -15,6 +15,7 @@ struct ContinueButton {
         case Shutdown
         case LaunchProgram(path: String)
         case Quit
+        case Hidden
         
         static func from(string: String) -> Action {
             
@@ -31,6 +32,9 @@ struct ContinueButton {
                 
             case "quit":
                 return .Quit
+                
+            case "hidden":
+                return .Hidden
                 
             default:
                 if FileManager.default.fileExists(atPath: string) {
@@ -54,6 +58,14 @@ struct ContinueButton {
             }
         }
         
+        var isHidden: Bool {
+            switch self {
+            case .Hidden:
+                return true
+            default:
+                return false
+            }
+        }
         var applicationPath: String? {
             switch self {
             case .LaunchProgram(let path):
@@ -89,7 +101,11 @@ struct ContinueButton {
                 } catch {
                     dump(error.localizedDescription)
                 }
+ 
                 
+            case .Hidden:
+                fallthrough
+            
                 
             case .Quit:
                 NSApplication.shared.terminate(self)

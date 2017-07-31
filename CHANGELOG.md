@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 * Brand new Layout!
 * Added Temporary exception to sandbox to allow sending Apple Events to Login Window (to restart etc.)
+* Continue button can now be hidden
 
 
 ## [unreleased]
