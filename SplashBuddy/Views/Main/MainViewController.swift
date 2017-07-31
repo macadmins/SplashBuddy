@@ -43,8 +43,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         self.mainView.layer?.borderWidth = 0.2
         
         // Setup the web view
-        self.webView.layer?.borderWidth = 1.0
-        self.webView.layer?.borderColor = NSColor.lightGray.cgColor
         self.webView.layer?.isOpaque = true
         
         
