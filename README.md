@@ -27,7 +27,7 @@ Here's a video of the SplashBuddy running at Culture Amp that was presented duri
 
 ## Quick Start
 
-The best place to start is the [Onboarding Manual](https://github.com/ftiff/SplashBuddy/wiki/Onboarding-Manual).
+The best place to start is the [Kickstart Guide](https://github.com/ftiff/SplashBuddy/wiki/30---kickstart-guide).
 
 
 ## Release history
