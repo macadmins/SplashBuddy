@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Compatible with Swift 4.0 and macOS 10.13
 * WKWebView now accepts keyboard input (can use forms)
 * Installer now better handle upgrades (thanks @elios and @scriptingosx)
+* SplashBuddy now handles multiple screens (thanks @jamfmatt)
 
 # Contributors
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G23a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.19"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13122.19"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13156.6"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13156.6"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -16,6 +16,9 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOE-dw-mkn" customClass="MainWindow" customModule="SplashBuddy" customModuleProvider="target">
                         <rect key="contentRect" x="294" y="313" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="UoU-0S-EqW" id="y6i-3b-J3v"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="qDQ-T9-zeE" kind="relationship" relationship="window.shadowedContentViewController" id="HbF-Nz-HDe"/>
@@ -304,47 +307,6 @@
                 </arrayController>
             </objects>
             <point key="canvasLocation" x="845" y="-56"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="MHn-J6-Mpz">
-            <objects>
-                <windowController storyboardIdentifier="backgroundWindow" id="YYc-bD-NMw" customClass="BackgroundWindowController" customModule="SplashBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="EaE-i8-WAo">
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
-                    <connections>
-                        <segue destination="67C-xF-QMY" kind="relationship" relationship="window.shadowedContentViewController" id="4yU-3e-8Yb"/>
-                    </connections>
-                </windowController>
-                <customObject id="w5f-5l-JPr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-476" y="-533"/>
-        </scene>
-        <!--Background view-->
-        <scene sceneID="XTw-bS-hLu">
-            <objects>
-                <viewController title="Background view" id="67C-xF-QMY" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="t0F-VP-Mjb">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="oUN-14-jBi">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                            </visualEffectView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="oUN-14-jBi" secondAttribute="trailing" id="3HY-ye-qN9"/>
-                            <constraint firstItem="oUN-14-jBi" firstAttribute="leading" secondItem="t0F-VP-Mjb" secondAttribute="leading" id="IV9-bV-2FX"/>
-                            <constraint firstItem="oUN-14-jBi" firstAttribute="top" secondItem="t0F-VP-Mjb" secondAttribute="top" id="TFR-i0-A0d"/>
-                            <constraint firstAttribute="bottom" secondItem="oUN-14-jBi" secondAttribute="bottom" id="gUg-mB-wgZ"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <customObject id="mfO-hq-4hA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="179" y="-495"/>
         </scene>
         <!--Application-->
         <scene sceneID="FDY-y2-hvM">
