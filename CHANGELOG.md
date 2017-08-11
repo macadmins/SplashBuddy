@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Removed the postInstall script. Pressing Continue will create the file `~/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone`
 * Removed `assetPath` and `htmlPath` (it is now hardcoded to `/Library/Application Support/SplashBuddy/presentation.bundle` )
+* 10.11 is no longer supported (WKWebView NSCoding support was broken in previous versions) -- use RC4 if you *absolutely* need 10.11 support
 
 ### Fixed
 

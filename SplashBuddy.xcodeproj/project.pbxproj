@@ -648,6 +648,7 @@
 				DEVELOPMENT_TEAM = EM3ER8T33A;
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.SplashBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -666,6 +667,7 @@
 				DEVELOPMENT_TEAM = EM3ER8T33A;
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.SplashBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
