@@ -20,4 +20,5 @@ dir=$(unset CDPATH && cd "$(dirname "$0")" && echo $PWD)
 	 --scripts "${dir}/scripts" \
 	 --identifier io.fti.SplashBuddy.Installer \
 	 --version ${VERSION} \
+	 --component-plist "${dir}/SplashBuddy-component.plist" \
 	 "${dir}/SplashBuddyInstaller-${VERSION}.pkg"
