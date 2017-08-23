@@ -108,7 +108,6 @@
 		47725E211EEF267A0007540C /* build_pkg.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_pkg.sh; sourceTree = "<group>"; };
 		47725E261EEF267A0007540C /* chrome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrome.png; sourceTree = "<group>"; };
 		47725E271EEF267A0007540C /* enterpriseconnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enterpriseconnect.png; sourceTree = "<group>"; };
-		47725E281EEF267A0007540C /* postInstall.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postInstall.sh; sourceTree = "<group>"; };
 		47725E291EEF267A0007540C /* presentation.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = presentation.bundle; sourceTree = "<group>"; };
 		47725E2A1EEF267A0007540C /* SplashBuddy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = SplashBuddy.app; sourceTree = "<group>"; };
 		47725E2B1EEF267A0007540C /* SplashBuddy.launch.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SplashBuddy.launch.sh; sourceTree = "<group>"; };
@@ -116,7 +115,7 @@
 		47725E2E1EEF267A0007540C /* io.fti.SplashBuddy.launch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.launch.plist; sourceTree = "<group>"; };
 		47725E301EEF267A0007540C /* io.fti.SplashBuddy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.plist; sourceTree = "<group>"; };
 		47725E321EEF267A0007540C /* postinstall */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
-		47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SplashBuddyInstaller-201703291322.pkg"; sourceTree = "<group>"; };
+		47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.installer-pkg"; path = "SplashBuddyInstaller-201703291322.pkg"; sourceTree = "<group>"; };
 		47A218191F04F0BC00FD3EDC /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainWindow.swift; path = View/MainWindow.swift; sourceTree = "<group>"; };
 		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashBuddy.storyboard; sourceTree = "<group>"; };
@@ -260,7 +259,6 @@
 			children = (
 				47725E261EEF267A0007540C /* chrome.png */,
 				47725E271EEF267A0007540C /* enterpriseconnect.png */,
-				47725E281EEF267A0007540C /* postInstall.sh */,
 				47725E291EEF267A0007540C /* presentation.bundle */,
 				47725E2A1EEF267A0007540C /* SplashBuddy.app */,
 				47725E2B1EEF267A0007540C /* SplashBuddy.launch.sh */,
