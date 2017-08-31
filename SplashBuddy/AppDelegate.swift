@@ -30,12 +30,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ValueTransformer.setValueTransformer(softwareStatusValueTransformer,
                                              forName: NSValueTransformerName(rawValue: "SoftwareStatusValueTransformer"))
         
+        // Create Background Controller (the window behind)
+        // Hide it with `SplashBuddy.app/Contents/MacOS/SplashBuddy -hideBackground true`
         
-        
-        // Create Background Controller (the window behind) only displays for Release
-        // Change this in Edit Scheme -> Run -> Info
-        
-        #if !DEBUG
+        if Preferences.sharedInstance.background {
             
             for screen in NSScreen.screens {
                 
@@ -61,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                          .hideMenuBar,
                                          .disableForceQuit,
                                          .disableSessionTermination ]
-        #endif
+        }
         
         
         

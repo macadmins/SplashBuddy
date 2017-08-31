@@ -93,6 +93,12 @@ class Preferences {
         }
     }
     
+    public var background: Bool {
+        get {
+            return !self.userDefaults.bool(forKey: "hideBackground")
+        }
+    }
+    
     //-----------------------------------------------------------------------------------
     // MARK: - HTML Path
     //-----------------------------------------------------------------------------------

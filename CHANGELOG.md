@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Now accepts User Input (it will display if `form.html` exists in `presentation.bundle`)
 * Key `hideSidebar` to hide the sidebar and get a full html view
 * New behaviors for `Continue` button: Restart, Shutdown, Logout, Launch Application or Quit. (uses `continueAction` preferences key)
+* Hide Background with setting `hideBackground` to `true`. Eg. `SplashBuddy.app/Contents/MacOS/SplashBuddy -hideBackground true`
 
 ### Changed
 * Brand new Layout!
