@@ -1,3 +1,21 @@
+# Community
+
+A huge thanks to the community on #SplashBuddy on the MacAdmins Slack, and especially:
+
+- @cybertunnel 🚨
+- @cynikl 👹
+- @emily ⌘
+- @grahamrpugh 🇨🇭
+- @hkabik 🎸
+- @jamfmatt ⛑
+- @jwojda 🕴
+- @matgriffin 👾
+- @mosen 👻
+- @phish 🐟
+- @rudy 🏈
+- @smithjw 🕺
+
+
 
 # Code
 

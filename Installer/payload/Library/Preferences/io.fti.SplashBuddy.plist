@@ -41,9 +41,5 @@
 			<string>GoogleChrome</string>
 		</dict>
 	</array>
-	<key>assetPath</key>
-	<string>/Library/Application Support/SplashBuddy</string>
-	<key>htmlPath</key>
-	<string>presentation.html</string>
 </dict>
 </plist>
