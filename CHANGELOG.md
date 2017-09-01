@@ -10,12 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Now accepts User Input (it will display if `form.html` exists in `presentation.bundle`)
 * Key `hideSidebar` to hide the sidebar and get a full html view
+* New behaviors for `Continue` button: Restart, Shutdown, Logout, Launch Application or Quit. (uses `continueAction` preferences key)
+* Hide Background with setting `hideBackground` to `true`. Eg. `SplashBuddy.app/Contents/MacOS/SplashBuddy -hideBackground true`
 
 ### Changed
 * Brand new Layout!
+* Added Temporary exception to sandbox to allow sending Apple Events to Login Window (to restart etc.)
+* Continue button can now be hidden
 
 
-## [unreleased]
+## [1.0]
 
 ### Added
 
@@ -45,13 +49,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * Removed the postInstall script. Pressing Continue will create the file `~/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone`
 * Removed `assetPath` and `htmlPath` (it is now hardcoded to `/Library/Application Support/SplashBuddy/presentation.bundle` )
+* 10.11 is no longer supported (WKWebView NSCoding support was broken in previous versions) -- use RC4 if you *absolutely* need 10.11 support
 
 ### Fixed
 
 * Better automated testing with Travis
 * Compatible with Swift 4.0 and macOS 10.13
 * WKWebView now accepts keyboard input (can use forms)
-
+* Installer now better handle upgrades (thanks @elios and @scriptingosx)
+* SplashBuddy now handles multiple screens (thanks @jamfmatt)
 
 # Contributors
 

@@ -9,7 +9,6 @@ matrix:
   include:
     - xcode_sdk: macosx10.13
     - xcode_sdk: macosx10.12
-    - xcode_sdk: macosx10.11
 
 # http://stackoverflow.com/questions/34231587/xcode-ui-testing-on-travis-for-osx-with-xcode-helper-accessibility
 # Not compatible with 10.12 

@@ -45,6 +45,8 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         // Setup the web view
         self.webView.layer?.isOpaque = true
         
+        // Setup the Continue Button
+        self.continueButton.title = Preferences.sharedInstance.continueAction.localizedName
         
         // Setup the Notifications
         NotificationCenter.default.addObserver(self,
@@ -93,12 +95,13 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             DispatchQueue.main.async {
                 self.sendButton.isHidden = false
                 self.continueButton.isHidden = true
+
             }
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else if let html = Preferences.sharedInstance.html {
             DispatchQueue.main.async {
                 self.sendButton.isHidden = true
-                self.continueButton.isHidden = false
+                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
             
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -110,7 +113,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
         Preferences.sharedInstance.setupDone = true
-        NSApplication.shared.terminate(self)
+        Preferences.sharedInstance.continueAction.pressed(sender)
         
     }
     
@@ -220,7 +223,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             
             DispatchQueue.main.async {
                 self.sendButton.isHidden = true
-                self.continueButton.isHidden = false
+                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
                 
                 if let html = Preferences.sharedInstance.html {
                     self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
