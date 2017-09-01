@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/ftiff/SplashBuddy.svg?branch=master)](https://travis-ci.org/ftiff/SplashBuddy)
 ![](https://img.shields.io/badge/Swift-4.0-brightgreen.svg)
-![](https://img.shields.io/badge/macOS-10.12.4-brightgreen.svg)
+![](https://img.shields.io/badge/macOS-10.12.6-brightgreen.svg)
 ![](https://img.shields.io/badge/macOS-10.13-brightgreen.svg)
 
 
@@ -47,7 +47,7 @@ The best place to discuss SplashBuddy is to join the `#splashbuddy` channel on t
 
 ## Contributing
 
-If you use SplashBuddy, please consider [donating](https://supporterhq.com/api/b/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy). If you can, use [Bitcoin](bitcoin:1McfDZyLxvPzq5Pc1aMysWHxEDxP2gABeo) as there are no fees. Goals of the donation is to get a lump of money we can use to pay for specific developments and events. I (ftiff) have been working countless hours at night for two years to bring SplashBuddy to life. [Many others](https://github.com/ftiff/SplashBuddy/blob/master/THANKS.md) invested time in it too. 
+If you use SplashBuddy, please consider [donating](https://supporterhq.com/support/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy). If you can, use [Bitcoin](bitcoin:1McfDZyLxvPzq5Pc1aMysWHxEDxP2gABeo) as there are no fees. Goals of the donation is to get a lump of money we can use to pay for specific developments and events. I (ftiff) have been working countless hours at night for two years to bring SplashBuddy to life. [Many others](https://github.com/ftiff/SplashBuddy/blob/master/THANKS.md) invested time in it too. 
 
 We need money to:
 - [ ] Get a one-day code review of SplashBuddy by an experienced Mac software developer ($500)
