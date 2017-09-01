@@ -6,6 +6,7 @@
 
 ![](https://img.shields.io/badge/Version-1.0-lightgrey.svg)
 ![](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)
+[![Support](https://supporterhq.com/api/b/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy)](https://supporterhq.com/support/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy)
 
 # SplashBuddy
 
@@ -36,6 +37,21 @@ The release history is available [here](CHANGELOG.md).
 
 Splashbuddy was made possible thanks to the work of [the following individuals](THANKS.md).
 
+
 ## Getting help 
 
 The best place to discuss SplashBuddy is to join the `#splashbuddy` channel on the [MacAdmins Slack](https://macadmins.herokuapp.com).
+
+[Subscribe to the newsletter](http://eepurl.com/cZZ50T) to get news, tips and tricks.
+
+
+## Contributing
+
+If you use SplashBuddy, please consider [donating](https://supporterhq.com/api/b/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy). If you can, use [Bitcoin](bitcoin:1McfDZyLxvPzq5Pc1aMysWHxEDxP2gABeo) as there are no fees. Goals of the donation is to get a lump of money we can use to pay for specific developments and events. I (ftiff) have been working countless hours at night for two years to bring SplashBuddy to life. [Many others](https://github.com/ftiff/SplashBuddy/blob/master/THANKS.md) invested time in it too. 
+
+We need money to:
+- [ ] Get a one-day code review of SplashBuddy by an experienced Mac software developer ($500)
+- [ ] Pay for a venue for JNUC'17 [SplashBuddy Jumpstart](https://www.jamf.com/jamf-nation/events/jnuc/2017/289/splashbuddy-jumpstart?view=info) ($?)
+- [ ] Fund a second open source project for MacAdmins ($2000)
+
+You can also contribute in [other ways](https://github.com/ftiff/SplashBuddy/blob/master/CONTRIBUTING.md).
