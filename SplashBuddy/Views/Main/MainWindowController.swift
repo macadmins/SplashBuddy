@@ -22,9 +22,9 @@ class MainWindowController: NSWindowController {
             return
         }
         
-        #if !DEBUG
+        if Preferences.sharedInstance.background {
             window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
-        #endif
+        }
         
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
