@@ -54,7 +54,7 @@ class Preferences {
             return try FileHandle(forReadingFrom: URL(fileURLWithPath: file, isDirectory: false))
         } catch {
             Log.write(string: "Cannot read \(file)",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
             return nil
         }
@@ -138,7 +138,7 @@ class Preferences {
                     try FileManager.default.removeItem(atPath: "Library/.SplashBuddyDone")
                 } catch {
                     Log.write(string: "Couldn't remove .SplashBuddyDone",
-                              cat: "Preferences",
+                              cat: .Preferences,
                               level: .info)
                 }
                 
@@ -156,42 +156,48 @@ class Preferences {
         
         guard let name = dict["packageName"] as? String else {
             Log.write(string: "Error reading name from an application in io.fti.SplashBuddy",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
             return nil
         }
         
+        Log.write(string: "START Parsing PKG \(name)", cat: .Preferences, level: .debug)
+
+        
         guard let displayName: String = dict["displayName"] as? String else {
             Log.write(string: "Error reading displayName from application \(name) in io.fti.SplashBuddy",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
             return nil
         }
         
         guard let description: String = dict["description"] as? String else {
             Log.write(string: "Error reading description from application \(name) in io.fti.SplashBuddy",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
             return nil
         }
         
         guard let iconRelativePath: String = dict["iconRelativePath"] as? String else {
             Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.SplashBuddy",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
             return nil
         }
         
         guard let canContinueBool: Bool = getBool(from: dict["canContinue"]) else {
             Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.SplashBuddy",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
             return nil
         }
         
         
+        
         let iconPath = self.assetPath.appendingPathComponent(iconRelativePath).path
         
+        Log.write(string: "DONE Parsing PKG \(name)", cat: .Preferences, level: .debug)
+
         return Software(packageName: name,
                         version: nil,
                         status: .pending,
@@ -245,6 +251,8 @@ class Preferences {
     
     /// Generates Software objects from Preferences
     func getPreferencesApplications() throws {
+        Log.write(string: "START Parsing applicationsArray", cat: .Preferences, level: .debug)
+
         guard let applicationsArray = self.userDefaults.array(forKey: "applicationsArray") else {
             throw Preferences.Errors.NoApplicationArray
         }
@@ -255,11 +263,13 @@ class Preferences {
             }
             if let software = extractSoftware(from: application) {
                 SoftwareArray.sharedInstance.array.append(software)
+                Log.write(string: "PKG: \(software.description)", cat: .Software, level: .info)
             }
         }
         
         self.doneParsingPlist = true
-        
+        Log.write(string: "DONE Parsing applicationsArray", cat: .Preferences, level: .debug)
+
     }
     
     

@@ -18,6 +18,14 @@ import os
  */
 class Log {
     
+    enum Categories: String {
+        case Software
+        case Preferences
+        case UserInput
+        case LoginWindowEvent
+        case UI
+        case ContinueButton
+    }
     /**
      Used in conjunction with OSLogType to produce the correct log type for OSLog, but also provide the same level of logging for NSLog as well.
      */
@@ -32,11 +40,11 @@ class Log {
         -   cat: The category of the logging, like UI, Foundation, etc.
         -   level: The level of the logging; info, debug, error, fault. Leave blank for default logging.
      */
-    static func write(string: String, cat: String, level: Level?) {
+    static func write(string: String, cat: Categories, level: Level?) {
         let appName = "io.fti.SplashBuddy"
         if #available(OSX 10.12, *) {
             //  On only OSX 10.12 or newer
-            let log = OSLog(subsystem: appName, category: cat)
+            let log = OSLog(subsystem: appName, category: cat.rawValue)
             if level == .debug {
                 os_log("%{public}@", log: log, type: .debug, string)
             } else if level == .error {
@@ -51,15 +59,15 @@ class Log {
         } else {
             // Fallback on earlier versions
             if level == .debug {
-                NSLog(" [\(cat)] DEBUG: \(string)")
+                NSLog(" [\(cat.rawValue)] DEBUG: \(string)")
             } else if level == .error {
-                NSLog(" [\(cat)] ERROR: \(string)")
+                NSLog(" [\(cat.rawValue)] ERROR: \(string)")
             } else if level == .fault {
-                NSLog(" [\(cat)] FAULT: \(string)")
+                NSLog(" [\(cat.rawValue)] FAULT: \(string)")
             } else if level == .info {
-                NSLog(" [\(cat)] INFO: \(string)")
+                NSLog(" [\(cat.rawValue)] INFO: \(string)")
             } else {
-                NSLog(" [\(cat)] \(string)")
+                NSLog(" [\(cat.rawValue)] \(string)")
             }
         }
     }

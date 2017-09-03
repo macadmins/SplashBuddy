@@ -35,6 +35,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if Preferences.sharedInstance.background {
             
+            Log.write(string: "START: Background Window",
+                      cat: .UI,
+                      level: .debug)
+            
             for screen in NSScreen.screens {
                 
                 let view = NSVisualEffectView()
@@ -53,7 +57,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 windows.append(window)
             }
             
+            Log.write(string: "DONE: Background Window",
+                      cat: .UI,
+                      level: .debug)
+            
+            Log.write(string: "Hide other applications",
+                      cat: .UI,
+                      level: .debug)
             NSApp.hideOtherApplications(self)
+            
+            Log.write(string: "Disable process switching, dock, menubar, forcequit and session termination",
+                      cat: .UI,
+                      level: .debug)
+
             NSApp.presentationOptions = [ .disableProcessSwitching,
                                          .hideDock,
                                          .hideMenuBar,
@@ -68,15 +84,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             try Preferences.sharedInstance.getPreferencesApplications()
         } catch Preferences.Errors.MalformedApplication {
             Log.write(string: "applicationsArray: application is malformed",
-                    cat: "Preferences",
+                    cat: .Preferences,
                     level: .error)
         } catch Preferences.Errors.NoApplicationArray {
             Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
         } catch {
             Log.write(string: "Unknown error while reading Applications",
-                      cat: "Preferences",
+                      cat: .Preferences,
                       level: .error)
         }
         Parser.sharedInstance.readTimer()
@@ -86,6 +102,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func quitAndSetSBDone(_ sender: Any) {
+        Log.write(string: "Quitting SplashBuddy and setting .SplashBuddyDone",
+                  cat: .UI,
+                  level: .debug)
+
         Preferences.sharedInstance.setupDone = true
         NSApp.terminate(self)
     }

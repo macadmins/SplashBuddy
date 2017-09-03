@@ -78,6 +78,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         // Display Alert if /var/log/jamf.log doesn't exist
         
         guard (Preferences.sharedInstance.logFileHandle != nil) else {
+            Log.write(string: "Showing Alert: Jamf is not installed correctly", cat: .UI, level: .debug)
             let alert = NSAlert()
             alert.alertStyle = .critical
             alert.messageText = "Jamf is not installed correctly"
@@ -97,21 +98,24 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                 self.continueButton.isHidden = true
 
             }
+            Log.write(string: "Loading Web Form", cat: .UI, level: .debug)
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else if let html = Preferences.sharedInstance.html {
             DispatchQueue.main.async {
                 self.sendButton.isHidden = true
                 self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
-            
+            Log.write(string: "Loading Web Presentation", cat: .UI, level: .debug)
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else {
+            Log.write(string: "Cannot find Web Presentation", cat: .UI, level: .error)
             self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
         }
     }
     
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
-        
+        Log.write(string: "User pressed Continue Button", cat: .UI, level: .info)
+
         Preferences.sharedInstance.setupDone = true
         Preferences.sharedInstance.continueAction.pressed(sender)
         
@@ -190,34 +194,28 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
         webView.evaluateJavaScript(js) {
             (data: Any?, error: Error?) in
+            
+            Log.write(string: "START: Form Javascript Evaluation", cat: .UserInput, level: .debug)
+
             if error != nil {
-                Log.write(string: "Error getting User Input", cat: "UserInput", level: .error)
+                Log.write(string: "Error getting User Input", cat: .UserInput, level: .error)
                 return
             }
             
             guard let jsonString = data as? String else {
-                Log.write(string: "Cannot read User Input data", cat: "UserInput", level: .error)
+                Log.write(string: "Cannot read User Input data", cat: .UserInput, level: .error)
                 return
             }
             
             guard let jsonData = jsonString.data(using: .utf8) else {
-                Log.write(string: "Cannot cast User Input to data", cat: "UserInput", level: .error)
+                Log.write(string: "Cannot cast User Input to data", cat: .UserInput, level: .error)
                 return
             }
             
-            /*let obj = try! JSONDecoder().decode(UserInput.self, from: jsonData)
-            
-            if let assetTag = obj.assetTag {
-                FileManager.default.createFile(atPath: "assetTag.txt", contents: assetTag.data(using: .utf8)!, attributes: nil)
-            }
-            
-            if let computerName = obj.computerName {
-                FileManager.default.createFile(atPath: "computerName.txt", contents: computerName.data(using: .utf8)!, attributes: nil)
-            }*/
             
             let obj = try! JSONSerialization.jsonObject(with: jsonData, options: [])
             for item in obj as! NSDictionary {
-                Log.write(string: "Writing value to \(item.key) with value of \(item.value)", cat: "UserInput", level: .debug)
+                Log.write(string: "FORM: \(item.key) => \(item.value)", cat: .UserInput, level: .info)
                 FileManager.default.createFile(atPath: "\(item.key).txt", contents: (item.value as? String ?? "").data(using: .utf8), attributes: nil)
             }
             
@@ -232,7 +230,8 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                 }
             }
             
-            
+            Log.write(string: "DONE: Form Javascript Evaluation", cat: .UserInput, level: .debug)
+
         }
         
     }

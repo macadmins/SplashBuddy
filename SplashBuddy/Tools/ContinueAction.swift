@@ -40,7 +40,7 @@ struct ContinueButton {
                 if FileManager.default.fileExists(atPath: string) {
                     return .LaunchProgram(path: string)
                 } else {
-                    Log.write(string: "Cannot find application at path: \(string)", cat: "ContinueButton", level: .error)
+                    Log.write(string: "Cannot find application at path: \(string)", cat: .ContinueButton, level: .error)
                     return .Quit
                 }
                 
@@ -83,7 +83,7 @@ struct ContinueButton {
                 do {
                     try LoginWindow.restart()
                 } catch {
-                    dump(error.localizedDescription)
+                    Log.write(string: "Error: \(error.localizedDescription)", cat: .ContinueButton, level: .error)
                 }
                 
                 
@@ -91,7 +91,7 @@ struct ContinueButton {
                 do {
                     try LoginWindow.shutdown()
                 } catch {
-                    dump(error.localizedDescription)
+                    Log.write(string: "Error: \(error.localizedDescription)", cat: .ContinueButton, level: .error)
                 }
                 
                 
@@ -99,7 +99,7 @@ struct ContinueButton {
                 do {
                     try LoginWindow.logout()
                 } catch {
-                    dump(error.localizedDescription)
+                    Log.write(string: "Error: \(error.localizedDescription)", cat: .ContinueButton, level: .error)
                 }
  
                 
@@ -114,16 +114,16 @@ struct ContinueButton {
             default:
                 
                 guard let applicationPath = applicationPath else {
-                    Log.write(string: "Cannot get Application Path", cat: "ContinueButton", level: .error)
+                    Log.write(string: "Cannot get Application Path", cat: .ContinueButton, level: .error)
                     NSApplication.shared.terminate(self)
                     return
                 }
                 if NSWorkspace.shared.launchApplication(applicationPath) {
-                    Log.write(string: "Successfully launched application \(applicationPath)", cat: "ContinueButton", level: .info)
+                    Log.write(string: "Successfully launched application \(applicationPath)", cat: .ContinueButton, level: .info)
                     NSApplication.shared.terminate(self)
                 } else {
                     NSApplication.shared.terminate(self)
-                    Log.write(string: "Couldn't launch application \(applicationPath)", cat: "ContinueButton", level: .error)
+                    Log.write(string: "Couldn't launch application \(applicationPath)", cat: .ContinueButton, level: .error)
                 }
             }
         }

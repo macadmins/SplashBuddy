@@ -18,7 +18,7 @@ class MainWindowController: NSWindowController {
         // Display Front Window
         
         guard let window = self.window else {
-            Log.write(string: "Cannot get main window", cat: "UI", level: .error)
+            Log.write(string: "Cannot get main window", cat: .UI, level: .error)
             return
         }
         

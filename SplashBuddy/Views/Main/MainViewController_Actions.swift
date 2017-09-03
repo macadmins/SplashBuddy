@@ -26,6 +26,8 @@ extension MainViewController {
     
     
     @objc func errorWhileInstalling() {
+        Log.write(string: "Error(s) while installing", cat: .UI, level: .debug)
+
         indeterminateProgressIndicator.isHidden = true
         self.continueButton.isEnabled = true
         statusLabel.textColor = .red
@@ -57,12 +59,16 @@ extension MainViewController {
     
     
     @objc func canContinue() {
+        Log.write(string: "Enabling Continue Button", cat: .UI, level: .info)
+
         self.continueButton.isEnabled = true
     }
     
     
     
     @objc func doneInstalling() {
+        Log.write(string: "All apps are done installing", cat: .Software, level: .info)
+
         indeterminateProgressIndicator.isHidden = true
         statusLabel.textColor = .labelColor
         statusLabel.stringValue = NSLocalizedString(

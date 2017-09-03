@@ -14,13 +14,13 @@ import Cocoa
  The goal here is to:
  1. Create a Software object from the plist (MacAdmin supplied Software)
  2. Parse the log and either:
-    - Modify the Software object (if it already exists)
-    - Create a new Software object.
+ - Modify the Software object (if it already exists)
+ - Create a new Software object.
  
  */
 
 class Software: NSObject {
-
+    
     /**
      Status of the software.
      Default is .pending, other cases will be set while parsing the log
@@ -31,6 +31,20 @@ class Software: NSObject {
         case success = 1
         case failed = 2
         case pending = 3
+        
+        var description: String {
+            switch self {
+            case .failed:
+                return "Failed"
+            case .success:
+                return "Success"
+            case .installing:
+                return "Installing"
+            case .pending:
+                return "Pending"
+                
+            }
+        }
     }
     
     
@@ -43,13 +57,13 @@ class Software: NSObject {
     @objc dynamic var desc: String?
     @objc dynamic var canContinue: Bool
     @objc dynamic var displayToUser: Bool
-
+    
     
     /**
      Initializes a Software Object
      
      - note: Only packageName is required to parse, displayName, description and displayToUser will have to be set later to properly show it on the GUI.
-
+     
      - parameter packageName: *packageName*-packageVersion.pkg
      - parameter version: Optional
      - parameter iconPath: Optional
@@ -83,7 +97,6 @@ class Software: NSObject {
             self.icon = NSImage(named: NSImage.Name.folder)
         }
         
-
         
     }
     
@@ -108,11 +121,16 @@ class Software: NSObject {
         
         if let packageName = name, let packageVersion = version, let packageStatus = status {
             self.init(packageName: packageName, version: packageVersion, status: packageStatus)
+            
         } else {
             return nil
         }
     }
-
+    
+    override var description: String {
+        return "'\(self.packageName)' => \(self.status.description) \(canContinue ? "" : "(BLOCKER)")"
+    }
+    
 }
 
 func == (lhs: Software, rhs: Software) -> Bool {

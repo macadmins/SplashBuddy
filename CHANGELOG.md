@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Key `hideSidebar` to hide the sidebar and get a full html view
 * New behaviors for `Continue` button: Restart, Shutdown, Logout, Launch Application or Quit. (uses `continueAction` preferences key)
 * Hide Background with setting `hideBackground` to `true`. Eg. `SplashBuddy.app/Contents/MacOS/SplashBuddy -hideBackground true`
+* Added info and debug logs
+* Added logs categories: `Software`, `Preferences`, `UserInput`, `LoginWindowEvent`, `UI` and `ContinueButton`
 
 ### Changed
 * Brand new Layout!

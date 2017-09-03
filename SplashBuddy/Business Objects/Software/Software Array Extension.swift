@@ -27,6 +27,7 @@ extension Array where Element:Software {
             self.append(software as! Element)
             
         }
+        Log.write(string: "PKG: \(software.description)", cat: .Software, level: .info)
     }
     
     
@@ -49,6 +50,7 @@ extension Array where Element:Software {
             self.append(software as! Element)
             
         }
+        Log.write(string: "PKG: \(software.description)", cat: .Software, level: .info)
     }
     
     
