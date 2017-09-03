@@ -64,7 +64,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         // Get preferences from UserDefaults
-        Preferences.sharedInstance.getPreferencesApplications()
+        do {
+            try Preferences.sharedInstance.getPreferencesApplications()
+        } catch Preferences.Errors.MalformedApplication {
+            Log.write(string: "applicationsArray: application is malformed",
+                    cat: "Preferences",
+                    level: .error)
+        } catch Preferences.Errors.NoApplicationArray {
+            Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
+        } catch {
+            Log.write(string: "Unknown error while reading Applications",
+                      cat: "Preferences",
+                      level: .error)
+        }
         Parser.sharedInstance.readTimer()
         
         

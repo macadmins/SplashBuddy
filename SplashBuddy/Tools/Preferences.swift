@@ -34,14 +34,7 @@ class Preferences {
         
         self.userDefaults = nsUserDefaults
         
-        do {
-            self.logFileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: self.jamfLog, isDirectory: false))
-        } catch {
-            Log.write(string: "Cannot read /var/log/jamf.log",
-                      cat: "Preferences",
-                      level: .error)
-            self.logFileHandle = nil
-        }
+        self.logFileHandle = Preferences.getFileHandle()
         
         // Do not change asset path (see comment on var assetPath: URL below)
         // TSTAssetPath is meant for unit testing only.
@@ -56,6 +49,16 @@ class Preferences {
         
     }
     
+    static internal func getFileHandle(from file: String = "/var/log/jamf.log") -> FileHandle? {
+        do {
+            return try FileHandle(forReadingFrom: URL(fileURLWithPath: file, isDirectory: false))
+        } catch {
+            Log.write(string: "Cannot read \(file)",
+                      cat: "Preferences",
+                      level: .error)
+            return nil
+        }
+    }
     
     //-----------------------------------------------------------------------------------
     // MARK: - Asset Path
@@ -229,26 +232,26 @@ class Preferences {
             
             return canContinue
             
-        } else {
-            return nil
         }
+        
+        return nil
+    
+    }
+    
+    enum Errors: Error {
+        case NoApplicationArray
+        case MalformedApplication
     }
     
     /// Generates Software objects from Preferences
-    func getPreferencesApplications() {
+    func getPreferencesApplications() throws {
         guard let applicationsArray = self.userDefaults.array(forKey: "applicationsArray") else {
-            Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy",
-                      cat: "Preferences",
-                      level: .error)
-            return
+            throw Preferences.Errors.NoApplicationArray
         }
         
         for application in applicationsArray {
             guard let application = application as? NSDictionary else {
-                Log.write(string: "applicationsArray: application is malformed",
-                          cat: "Preferences",
-                          level: .error)
-                return
+                throw Preferences.Errors.MalformedApplication
             }
             if let software = extractSoftware(from: application) {
                 SoftwareArray.sharedInstance.array.append(software)

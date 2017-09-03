@@ -45,7 +45,64 @@ class PreferencesTests: XCTestCase {
         
     }
     
+    //-----------------------------------------------------------------------------------
+    // MARK: - File Handle
+    //-----------------------------------------------------------------------------------
     
+    func testFileHandle() {
+        FileManager.default.createFile(atPath: "tempLog", contents: nil, attributes: nil)
+        let fileHandle = Preferences.getFileHandle(from: "tempLog")
+        XCTAssertNotNil(fileHandle)
+        _ = try? FileManager.default.removeItem(atPath: "tempLog")
+        let nilFileHandle = Preferences.getFileHandle(from: "tempLog")
+        XCTAssertNil(nilFileHandle)
+    }
+    
+    
+    //-----------------------------------------------------------------------------------
+    // MARK: - Setup Done
+    //-----------------------------------------------------------------------------------
+    
+    func testSetSetupDone() {
+        Preferences.sharedInstance.setupDone = true
+        XCTAssertTrue(FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone"))
+    }
+    
+    func testUnsetSetupDone() {
+        Preferences.sharedInstance.setupDone = false
+        XCTAssertFalse(FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone"))
+    }
+    
+    func testSetupDoneSet() {
+        FileManager.default.createFile(atPath: "Library/.SplashBuddyDone", contents: nil, attributes: nil)
+        XCTAssertTrue(Preferences.sharedInstance.setupDone)
+    }
+    
+    func testSetupDoneNotSet() {
+        _ = try? FileManager.default.removeItem(atPath: "Library/.SplashBuddyDone")
+        XCTAssertFalse(Preferences.sharedInstance.setupDone)
+    }
+    
+    //-----------------------------------------------------------------------------------
+    // MARK: - User Defaults
+    //-----------------------------------------------------------------------------------
+    
+    func testUserDefaults_MalformedApplication() {
+        let input = [true]
+        testUserDefaults!.set(input, forKey: "applicationsArray")
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        XCTAssertThrowsError(try testPrefs.getPreferencesApplications(), "") { (error) in
+            XCTAssertEqual(error as? Preferences.Errors, .MalformedApplication)
+        }
+    }
+    
+    func testUserDefaults_NoApplicationsArray() {
+        testUserDefaults.set(nil, forKey: "applicationsArray")
+        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
+        XCTAssertThrowsError(try testPrefs.getPreferencesApplications(), "") { (error) in
+            XCTAssertEqual(error as? Preferences.Errors, .NoApplicationArray)
+        }
+    }
     
     func testUserDefaults_Application() {
         
@@ -61,7 +118,7 @@ class PreferencesTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications()
+        try! testPrefs.getPreferencesApplications()
         
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
@@ -89,7 +146,7 @@ class PreferencesTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications()
+        try! testPrefs.getPreferencesApplications()
         
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
@@ -125,7 +182,7 @@ class PreferencesTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
-        testPrefs.getPreferencesApplications()
+        try! testPrefs.getPreferencesApplications()
         
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
@@ -151,7 +208,9 @@ class PreferencesTests: XCTestCase {
         
         testUserDefaults = UserDefaults.init(suiteName: "none")
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        testPrefs.getPreferencesApplications()
+        
+        // Disabling throwing ".NoApplicationArray"
+        _ = try? testPrefs.getPreferencesApplications()
         
         XCTAssertTrue(SoftwareArray.sharedInstance.array.isEmpty)
     }
@@ -171,7 +230,7 @@ class PreferencesTests: XCTestCase {
         testUserDefaults!.set(input, forKey: "applicationsArray")
         
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        testPrefs.getPreferencesApplications()
+        try! testPrefs.getPreferencesApplications()
         
         let fileHandle = FileHandle(forReadingAtPath: path!)
         SoftwareArray.sharedInstance.array.modify(from: fileHandle!)
@@ -215,6 +274,10 @@ class PreferencesTests: XCTestCase {
         XCTAssertTrue(result.canContinue)
         XCTAssertTrue(result.displayToUser)
     }
+    
+    //-----------------------------------------------------------------------------------
+    // MARK: - Extraxt Software
+    //-----------------------------------------------------------------------------------
     
     func test_extractSoftware_no_displayName() {
         
@@ -295,6 +358,10 @@ class PreferencesTests: XCTestCase {
         
         XCTAssertNil(result)
     }
+    
+    //-----------------------------------------------------------------------------------
+    // MARK: - Get Bool
+    //-----------------------------------------------------------------------------------
     
     func test_getBool_String() {
         XCTAssertTrue(testPrefs.getBool(from: "1")!)
