@@ -92,7 +92,9 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
         
         // Display the html file
-        if let form = Preferences.sharedInstance.form {
+        
+        if Preferences.sharedInstance.form != nil && (!Preferences.sharedInstance.formDone) {
+            let form = Preferences.sharedInstance.form!
             DispatchQueue.main.async {
                 self.sendButton.isHidden = false
                 self.continueButton.isHidden = true
@@ -101,6 +103,9 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             Log.write(string: "Loading Web Form", cat: .UI, level: .debug)
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else if let html = Preferences.sharedInstance.html {
+            if Preferences.sharedInstance.formDone {
+                Log.write(string: "Form already completed.", cat: .UserInput, level: .debug)
+            }
             DispatchQueue.main.async {
                 self.sendButton.isHidden = true
                 self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
@@ -236,8 +241,8 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             }
             
             Log.write(string: "DONE: Form Javascript Evaluation", cat: .UserInput, level: .debug)
-            print("Successfully completed form");
-
+            Log.write(string: "Form complete, writing to .SplashBuddyFormDone", cat: .UI, level: .debug)
+            Preferences.sharedInstance.formDone = true
         }
         
     }

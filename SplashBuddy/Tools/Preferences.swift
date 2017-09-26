@@ -146,6 +146,25 @@ class Preferences {
         }
     }
     
+    var formDone: Bool {
+        get {
+            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyFormDone")
+        }
+        
+        set(myValue) {
+            if myValue == true {
+                FileManager.default.createFile(atPath: "Library/.SplashBuddyFormDone", contents: nil, attributes: nil)
+            } else {
+                do {
+                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                }
+                catch {
+                    Log.write(string: "Couldn't remove .SplashBuddyFormDone", cat: .Preferences, level: .info)
+                }
+            }
+        }
+    }
+    
     
     
     //-----------------------------------------------------------------------------------
