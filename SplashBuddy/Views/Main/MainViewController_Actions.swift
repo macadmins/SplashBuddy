@@ -27,8 +27,7 @@ extension MainViewController {
     }
     
     @objc func errorWhileInstalling() {
-        indeterminateProgressIndicator.isHidden = true
-        self.continueButton.isEnabled = true
+        continueButton.isEnabled = true
         statusLabel.textColor = .red
         
         let _failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
@@ -62,6 +61,9 @@ extension MainViewController {
     @objc func doneInstalling() {
         indeterminateProgressIndicator.stopAnimation(self)
         indeterminateProgressIndicator.isHidden = true
+    }
+    
+    @objc func allSuccess() {
         statusLabel.textColor = .labelColor
         statusLabel.stringValue = NSLocalizedString(
             "All applications were installed. Please click continue.",
