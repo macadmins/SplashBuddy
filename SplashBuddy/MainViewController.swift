@@ -50,24 +50,31 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
         
         // Setup the Notifications
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MainViewController.errorWhileInstalling),
-                                               name: NSNotification.Name(rawValue: "errorWhileInstalling"),
+                                               name: SoftwareArray.StateNotification.ErrorWhileInstalling.notification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MainViewController.canContinue),
-                                               name: NSNotification.Name(rawValue: "canContinue"),
+                                               name: SoftwareArray.StateNotification.CanContinue.notification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MainViewController.doneInstalling),
-                                               name: NSNotification.Name(rawValue: "doneInstalling"),
+                                               name: SoftwareArray.StateNotification.DoneInstalling.notification,
                                                object: nil)
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(MainViewController.clearLabel),
+                                               name: SoftwareArray.StateNotification.Processing.notification,
+                                               object: nil)
         
-        
-
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(MainViewController.allSuccess),
+                                               name: SoftwareArray.StateNotification.AllSuccess.notification,
+                                               object: nil)
  
     }
 

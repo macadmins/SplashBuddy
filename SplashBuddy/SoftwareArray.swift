@@ -19,9 +19,21 @@ class SoftwareArray: NSObject {
         }
     }
     
+    enum StateNotification: String {
+        case ErrorWhileInstalling
+        case CanContinue
+        case DoneInstalling
+        case SetupInstalling
+        case Processing
+        case AllSuccess
+        
+        var notification: Notification.Name {
+            return Notification.Name(rawValue: self.rawValue)
+        }
+    }
     
     func failedSoftwareArray(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> [Software] {
-        return _array.filter({ $0.status == .failed })
+       return _array.filter({ $0.status == .failed })
     }
     
     func canContinue(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
@@ -32,25 +44,38 @@ class SoftwareArray: NSObject {
         return criticalSoftwareArray.filter({ $0.status == .success }).count == criticalSoftwareArray.count
     }
     
-    func allInstalled(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
+    func allDone(_ _array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
         let displayedSoftwareArray = _array.filter({ $0.displayToUser == true })
-        return displayedSoftwareArray.filter({ $0.status == .success }).count == displayedSoftwareArray.count
+        return displayedSoftwareArray.filter({ $0.status == .success || $0.status == .failed }).count == displayedSoftwareArray.count
     }
 
     
     func checkSoftwareStatus() {
         
-        if self.failedSoftwareArray().count > 0 {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "errorWhileInstalling"), object: nil)
-        }
         
         if self.canContinue() {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "canContinue"), object: nil)
+            NotificationCenter.default.post(name: SoftwareArray.StateNotification.CanContinue.notification, object: nil)
         }
         
-        if self.allInstalled() {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "doneInstalling"), object: nil)
+        if self.allDone() {
+            
+            NotificationCenter.default.post(name: SoftwareArray.StateNotification.DoneInstalling.notification, object: nil)
+            
+            if self.failedSoftwareArray().count == 0 {
+                NotificationCenter.default.post(name: SoftwareArray.StateNotification.AllSuccess.notification, object: nil)
+                return
+            }
         }
+        
+        if self.failedSoftwareArray().count > 0 {
+            NotificationCenter.default.post(name: SoftwareArray.StateNotification.ErrorWhileInstalling.notification, object: nil)
+        } else {
+            NotificationCenter.default.post(name: SoftwareArray.StateNotification.Processing.notification, object: nil)
+
+        }
+
+        
+
         
     }
 

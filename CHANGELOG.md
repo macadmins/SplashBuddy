@@ -45,6 +45,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * SplashBuddy now handles multiple screens (thanks @jamfmatt)
 * Base.lproj renamed to en.lproj for 10.13 compatibility
 * Switched from legacy "launchctl load" to "enable, bootstrap, kickstart"
+* Error message will now clear if software turns from error to success (fixes #42 -- thanks @jamfmatt)
 
 # Contributors
 

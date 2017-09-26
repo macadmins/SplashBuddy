@@ -10,7 +10,7 @@ import Foundation
 
 extension MainViewController {
     
-    @objc func setupInstalling() {
+    func setupInstalling() {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
         
@@ -21,11 +21,11 @@ extension MainViewController {
         continueButton.isEnabled = false
     }
     
-    
+    @objc func clearLabel() {
+        statusLabel.stringValue = ""
+    }
     
     @objc func errorWhileInstalling() {
-        indeterminateProgressIndicator.isHidden = true
-        installingLabel.stringValue = ""
         continueButton.isEnabled = true
         statusLabel.textColor = .red
         
@@ -53,17 +53,18 @@ extension MainViewController {
         
     }
 
-    
-    
     @objc func canContinue() {
         continueButton.isEnabled = true
     }
     
-    
-    
     @objc func doneInstalling() {
+        indeterminateProgressIndicator.stopAnimation(self)
         indeterminateProgressIndicator.isHidden = true
+        
         installingLabel.stringValue = ""
+    }
+    
+    @objc func allSuccess() {
         statusLabel.textColor = .labelColor
         statusLabel.stringValue = NSLocalizedString(
             "All applications were installed. Please click continue.",
