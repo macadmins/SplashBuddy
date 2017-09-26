@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Easy way to build a package with Installer/build_pkg.sh
 * Now using the new Logger facility from 10.12+ @cybertunnel
 * Quit SplashBuddy and set .SplashBuddyDone by using CMD+ALT+CTRL+Q (@matgriffin)
+* Tools/sb_ghost_pkg.sh originally from @jamfmatt -- to easily test & set status from Jamf Pro
 
 ### Changed
 
