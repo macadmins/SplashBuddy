@@ -7,6 +7,11 @@ VERSION=`date +%Y%m%d%H%M`
 
 dir=$(unset CDPATH && cd "$(dirname "$0")" && echo $PWD)
 
+if [ -d "${dir}/payload/Library/Application Support/SplashBuddy/presentation.bundle/Base.lproj" ]; then
+    echo "Renaming Base.lproj to en.lproj…"
+    mv "${dir}/payload/Library/Application Support/SplashBuddy/presentation.bundle/Base.lproj" "${dir}/payload/Library/Application Support/SplashBuddy/presentation.bundle/en.lproj"
+fi
+
 # Every use should have read rights and scripts should be executable
 
 /bin/chmod -R o+r "${dir}/payload/"
