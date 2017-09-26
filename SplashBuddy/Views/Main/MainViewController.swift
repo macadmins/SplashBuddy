@@ -125,69 +125,74 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBAction func evalForm(_ sender: Any) {
         let js = """
             function sb() {
-                var sbItems = document.getElementsByTagName('input');
-          var sbValues = {};
-          for (var i=0; i < sbItems.length; i++) {
-              //    Input elements that accept text
-              if (sbItems.item(i).type == "text") {
-                sbValues[sbItems.item(i).name] = sbItems.item(i).value;
-            }
-            //    Input elements that are Checkboxes
-            else if (sbItems.item(i).type == "checkbox") {
-                //    Checks if there are more than one checkbox of the specific name.
-                if (document.getElementsByName(sbItems.item(i).name).length > 1) {
-                  var checkboxElements = document.getElementsByName(sbItems.item(i).name);
-                //    Cycles through the found elements
-                for (var x = 0; x < checkboxElements.length; x++) {
-                    //
-                    if (checkboxElements.item(x).checked) {
-                      sbValues[checkboxElements.item(x).name] = checkboxElements.item(x).value;
-                  } else {
-                      console.log("Not checked");
+              var sbValues = {}; // Return value array
+
+              //  Input Element Processing
+              var sbItems = document.getElementsByTagName('input');
+              for (var i=0; i < sbItems.length; i++) {
+                //  Input elements which are text type
+                if (sbItems.item(i).type == "text") {
+                  sbValues[sbItems.item(i).name] = sbItems.item(i).value;
+                }
+                //  Input elements which are checkbox type
+                else if (sbItems.item(i).type == "checkbox") {
+                  if (document.getElementsByName(sbItems.item(i).name).length > 1) {  //  More than one checkbox detected
+                    var checkboxElements = document.getElementsByName(sbItems.item(i).name);
+                    //  Begin processing for checkbox elements
+                    for (var x=0; x < checkboxElements.length; x++) {
+                      if (checkboxElements.item(x).checked) {
+                        sbValues[checkboxElements.item(x).name] = checkboxElements.item(x).value;
+                      }
+                      else {
+                        console.log("Not checked"); //  For debugging
+                      }
+                    } //  End proccessing for checkbox elements
+                  }
+                  else {  //  Single checkbox detected returning true or false
+                    if (sbItems.item(i).checked) sbValues[sbItems.item(i).name] = "TRUE";
+                    else sbValues[sbItems.item(i).name] = "FALSE";
                   }
                 }
-              } else {
-                  if (sbItems.item(i).checked) {
-                    console.log("TRUE");
-                  sbValues[sbItems.item(i).name] = "TRUE";
-                } else {
-                    console.log("FALSE");
-                  sbValues[sbItems.item(i).name] = "FALSE";
-                }
-              }
-            }
-            //    Input elements that are Radio Buttons
-            else if (sbItems.item(i).type == "radio") {
-                if (document.getElementsByName(sbItems.item(i).name).length > 1) {
-                  var radioElements = document.getElementsByName(sbItems.item(i).name);
-                //    Cycles through the found elements
-                for (var x = 0; x < radioElements.length; x++) {
-                    //
-                    if (radioElements.item(x).checked) {
-                      sbValues[radioElements.item(x).name] = radioElements.item(x).value;
-                  } else {
-                      console.log("Not checked");
+                //  Input elements which are radio type
+                else if (sbItems.item(i).type == "radio") {
+                  if (document.getElementsByName(sbItems.item(i).name).length > 1) {  //  More than one radio detected
+                    var radioElements = document.getElementsByName(sbItems.item(i).name);
+                    //  Begin processing for radio elements
+                    for (var x=0; x < radioElements.length; x++) {
+                      if (radioElements.item(x).checked) {
+                        sbValues[radioElements.item(x).name] = radioElements.item(x).value;
+                      } else {
+                        console.log("Not selected");  //  For debugging
+                      }
+                    } //  End processing for radio elements
+                  }
+                  else {  //  Single radio checkbox detected returning true or false
+                    if (sbItems.item(i).checked) sbValues[sbItems.item(i).name] = "TRUE";
+                    else sbValues[sbItems.item(i).name] = "FALSE";
                   }
                 }
-              } else {
-                  if (sbItems.item(i).checked) {
-                    console.log("TRUE");
-                  sbValues[sbItems.item(i).name] = "TRUE";
-                } else {
-                    console.log("FALSE");
-                  sbValues[sbItems.item(i).name] = "FALSE";
+                else {
+                  console.log(sbITems.item(i).type);  //  For debugging
                 }
               }
-            } else {
-            console.log(sbItems.item(i).type);
-            }
-          }
-          //    Select elements
-          sbItems = document.getElementsByTagName('select');
-          for (var i = 0; i < sbItems.length; i++) {
-              sbValues[sbItems.item(i).name] = sbItems.item(i).options[sbItems.item(i).selectedIndex].value;
-          }
-          return sbValues
+              //  Select elements
+              sbItems = document.getElementsByTagName('select');
+              for (var i=0; i < sbItems.length; i++) {
+                if (sbItems.item(i).options[sbItems.item(i).selectedIndex] != undefined) {
+                  sbValues[sbItems.item(i).name] = sbItems.item(i).options[sbItems.item(i).selectedIndex].value;
+                }
+              }
+
+              var reqElements = document.querySelectorAll('[sbReq=true]');
+              for (var i=0; i < reqElements.length; i++) {
+                var key = sbValues[reqElements.item(i).name];
+                if (key == null || key == undefined || key == "") {
+                  throw "Not all required elements filled out";
+                } else {
+                  console.log("Value for "+reqElements.item(i).name+" found with "+key);
+                }
+              }
+              return sbValues;
             }
             JSON.stringify(sb());
         """
@@ -231,6 +236,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             }
             
             Log.write(string: "DONE: Form Javascript Evaluation", cat: .UserInput, level: .debug)
+            print("Successfully completed form");
 
         }
         
