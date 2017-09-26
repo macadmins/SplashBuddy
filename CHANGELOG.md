@@ -43,6 +43,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * WKWebView now accepts keyboard input (can use forms)
 * Installer now better handle upgrades (thanks @elios and @scriptingosx)
 * SplashBuddy now handles multiple screens (thanks @jamfmatt)
+* Base.lproj renamed to en.lproj for 10.13 compatibility
+* Switched from legacy "launchctl load" to "enable, bootstrap, kickstart"
 
 # Contributors
 

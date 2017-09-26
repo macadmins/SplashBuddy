@@ -1,3 +1,12 @@
 #!/bin/bash
 
-launchctl load /Library/LaunchAgents/io.fti.SplashBuddy.launch.plist
+loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");'`
+loggedInUID=`id -u ${loggedInUser}`
+
+if [[ ${loggedInUID} -gt 500 ]]; then
+	echo "Launching SplashBuddy for user ${loggedInUID}…"
+	sudo -u \#${loggedInUID} launchctl enable gui/${loggedInUID}/io.fti.SplashBuddy.launch
+	sudo -u \#${loggedInUID} launchctl bootstrap gui/${loggedInUID}/ /Library/LaunchAgents/io.fti.SplashBuddy.launch.plist
+	sudo -u \#${loggedInUID} launchctl kickstart gui/${loggedInUID}/io.fti.SplashBuddy.launch
+fi
+
