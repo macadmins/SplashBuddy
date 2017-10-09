@@ -29,6 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                              forName: NSValueTransformerName(rawValue: "SoftwareStatusValueTransformer"))
         
         
+        // Disable relaunch on login. This should be controlled by a LaunchAgent.
+        NSApp.disableRelaunchOnLogin()
         
         // Create Background Controller (the window behind) only displays for Release
         // Change this in Edit Scheme -> Run -> Info
