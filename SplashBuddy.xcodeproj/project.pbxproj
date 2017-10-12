@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		086F87AC1D532143002AA791 /* ec_32x32.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F761D520A3200CAB019 /* ec_32x32.png */; };
 		086F87AD1D532143002AA791 /* ec_32x32@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 08AC4F771D520A3200CAB019 /* ec_32x32@2x.png */; };
-		086F87B21D536F2B002AA791 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B11D536F2B002AA791 /* Script.swift */; };
 		086F87B81D5391FD002AA791 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87B61D5391FD002AA791 /* MainWindowController.swift */; };
 		086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F87BA1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift */; };
 		086F87BD1D53A018002AA791 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 086F87BC1D53A018002AA791 /* index.html */; };
@@ -24,6 +23,8 @@
 		08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC4F7C1D5222BD00CAB019 /* Preferences.swift */; };
 		08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */; };
 		08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EC78AB1DE72326007960A4 /* MainViewController.swift */; };
+		47390F481F2B64C9009EA94C /* ContinueAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47390F471F2B64C9009EA94C /* ContinueAction.swift */; };
+		47390F4A1F2B90F1009EA94C /* LoginWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47390F491F2B90F1009EA94C /* LoginWindow.swift */; };
 		47647E7E1E698F3C009D535B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47647E7D1E698F3C009D535B /* PreferencesTests.swift */; };
 		47684F141E68B16C00D422EC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47684F161E68B16C00D422EC /* Localizable.strings */; };
 		47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A218191F04F0BC00FD3EDC /* MainWindow.swift */; };
@@ -35,6 +36,7 @@
 		47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADF31E682C9200356D11 /* SoftwareArray.swift */; };
 		47E8A7CD1E689787001292B8 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8A7CC1E689787001292B8 /* Parser.swift */; };
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
+		D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,6 @@
 /* Begin PBXFileReference section */
 		086F87AE1D536A0B002AA791 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		086F87B01D536EDF002AA791 /* test_postinstall_successful.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_successful.sh; sourceTree = "<group>"; };
-		086F87B11D536F2B002AA791 /* Script.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
 		086F87B31D53784C002AA791 /* test_postinstall_failed.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test_postinstall_failed.sh; sourceTree = "<group>"; };
 		086F87B61D5391FD002AA791 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		086F87BA1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewNavigationDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +78,7 @@
 		089D29301D50D12200E58C6D /* CasperSplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashTests.swift; sourceTree = "<group>"; };
 		089D29321D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		089D29491D50D14C00E58C6D /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
-		089D294C1D50F04900E58C6D /* Regexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Regexes.swift; path = Controller/Regexes.swift; sourceTree = "<group>"; };
+		089D294C1D50F04900E58C6D /* Regexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regexes.swift; sourceTree = "<group>"; };
 		089D294E1D50F1D800E58C6D /* Software.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
 		089D29521D51D50700E58C6D /* jamf_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jamf_1.txt; sourceTree = "<group>"; };
 		08AC4F761D520A3200CAB019 /* ec_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ec_32x32.png; sourceTree = "<group>"; };
@@ -88,6 +89,8 @@
 		472027F51EEBB9E9006A4938 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		472027F61EEBB9E9006A4938 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		47376A141E69DA4C0058B64C /* SplashBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SplashBuddy.entitlements; sourceTree = "<group>"; };
+		47390F471F2B64C9009EA94C /* ContinueAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueAction.swift; sourceTree = "<group>"; };
+		47390F491F2B90F1009EA94C /* LoginWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWindow.swift; sourceTree = "<group>"; };
 		475D9DB01E68C4020035B443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		475D9DB81E68CBC00035B443 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/infoPlist.strings; sourceTree = "<group>"; };
 		47647E6A1E68D9A5009D535B /* THANKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = THANKS.md; sourceTree = "<group>"; };
@@ -115,17 +118,18 @@
 		47725E2E1EEF267A0007540C /* io.fti.SplashBuddy.launch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.launch.plist; sourceTree = "<group>"; };
 		47725E301EEF267A0007540C /* io.fti.SplashBuddy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.plist; sourceTree = "<group>"; };
 		47725E321EEF267A0007540C /* postinstall */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postinstall; sourceTree = "<group>"; };
-		47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.installer-pkg"; path = "SplashBuddyInstaller-201703291322.pkg"; sourceTree = "<group>"; };
-		47A218191F04F0BC00FD3EDC /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainWindow.swift; path = View/MainWindow.swift; sourceTree = "<group>"; };
+		47A218191F04F0BC00FD3EDC /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
 		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashBuddy.storyboard; sourceTree = "<group>"; };
 		47B198A91E6561AB0055CC85 /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
 		47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileHandle Extension.swift"; sourceTree = "<group>"; };
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
-		47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController_Actions.swift; path = View/MainViewController_Actions.swift; sourceTree = "<group>"; };
+		47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController_Actions.swift; sourceTree = "<group>"; };
 		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
 		47E8A7CC1E689787001292B8 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		81D9D7301E69ABE4008ED3F5 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentScroller.swift; sourceTree = "<group>"; };
+		D9894FEA1F1CE5CA00DF7F42 /* BackgroundWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BackgroundWindow.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 				08AC4F751D520A3200CAB019 /* SplashBuddyTestAssets */,
 				089D292F1D50D12200E58C6D /* SplashBuddyTests */,
 				089D291E1D50D12200E58C6D /* Products */,
+				47B8350C1F587E0C00E4B426 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,19 +179,11 @@
 		089D291F1D50D12200E58C6D /* SplashBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				47376A141E69DA4C0058B64C /* SplashBuddy.entitlements */,
-				475D9DB01E68C4020035B443 /* Info.plist */,
-				47684F321E68C39900D422EC /* infoPlist.strings */,
 				089D29201D50D12200E58C6D /* AppDelegate.swift */,
+				D9894FE91F1CE56700DF7F42 /* Resources */,
 				47CFADE91E68049600356D11 /* Views */,
-				089D29221D50D12200E58C6D /* Assets.xcassets */,
-				47CFADEE1E681E5B00356D11 /* Software */,
-				47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */,
-				47E8A7CC1E689787001292B8 /* Parser.swift */,
-				089D294C1D50F04900E58C6D /* Regexes.swift */,
-				08AC4F7C1D5222BD00CAB019 /* Preferences.swift */,
-				086F87B11D536F2B002AA791 /* Script.swift */,
-				81D9D7301E69ABE4008ED3F5 /* Log.swift */,
+				D9894FEC1F1CE7E800DF7F42 /* Tools */,
+				D9894FE71F1CE4F100DF7F42 /* Business Objects */,
 			);
 			path = SplashBuddy;
 			sourceTree = "<group>";
@@ -223,7 +220,6 @@
 				47725E211EEF267A0007540C /* build_pkg.sh */,
 				47725E221EEF267A0007540C /* payload */,
 				47725E311EEF267A0007540C /* scripts */,
-				47725E331EEF267A0007540C /* SplashBuddyInstaller-201703291322.pkg */,
 			);
 			path = Installer;
 			sourceTree = "<group>";
@@ -291,13 +287,23 @@
 			path = scripts;
 			sourceTree = "<group>";
 		};
+		47B8350C1F587E0C00E4B426 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D9894FEA1F1CE5CA00DF7F42 /* BackgroundWindow.storyboard */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		47CFADE91E68049600356D11 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				47CFADF01E681E8D00356D11 /* Main */,
+				D9894FED1F1CEA8B00DF7F42 /* Web */,
 				47AA7B161E68AD8E005BBF48 /* SplashBuddy.storyboard */,
+				D9894FE41F1CDC4D00DF7F42 /* Controls */,
+				47CFADF01E681E8D00356D11 /* Main */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		47CFADEE1E681E5B00356D11 /* Software */ = {
@@ -308,7 +314,7 @@
 				08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */,
 				47CFADF31E682C9200356D11 /* SoftwareArray.swift */,
 			);
-			name = Software;
+			path = Software;
 			sourceTree = "<group>";
 		};
 		47CFADF01E681E8D00356D11 /* Main */ = {
@@ -318,10 +324,58 @@
 				47A218191F04F0BC00FD3EDC /* MainWindow.swift */,
 				08EC78AB1DE72326007960A4 /* MainViewController.swift */,
 				47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D9894FE41F1CDC4D00DF7F42 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		D9894FE71F1CE4F100DF7F42 /* Business Objects */ = {
+			isa = PBXGroup;
+			children = (
+				47CFADEE1E681E5B00356D11 /* Software */,
+			);
+			path = "Business Objects";
+			sourceTree = "<group>";
+		};
+		D9894FE91F1CE56700DF7F42 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				089D29221D50D12200E58C6D /* Assets.xcassets */,
 				47684F161E68B16C00D422EC /* Localizable.strings */,
+				47376A141E69DA4C0058B64C /* SplashBuddy.entitlements */,
+				47684F321E68C39900D422EC /* infoPlist.strings */,
+				475D9DB01E68C4020035B443 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D9894FEC1F1CE7E800DF7F42 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */,
+				47E8A7CC1E689787001292B8 /* Parser.swift */,
+				089D294C1D50F04900E58C6D /* Regexes.swift */,
+				08AC4F7C1D5222BD00CAB019 /* Preferences.swift */,
+				81D9D7301E69ABE4008ED3F5 /* Log.swift */,
+				47390F471F2B64C9009EA94C /* ContinueAction.swift */,
+				47390F491F2B90F1009EA94C /* LoginWindow.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D9894FED1F1CEA8B00DF7F42 /* Web */ = {
+			isa = PBXGroup;
+			children = (
 				086F87BA1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift */,
 			);
-			name = Main;
+			path = Web;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +501,8 @@
 				089D294F1D50F1D800E58C6D /* Software.swift in Sources */,
 				47E8A7CD1E689787001292B8 /* Parser.swift in Sources */,
 				47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */,
+				47390F4A1F2B90F1009EA94C /* LoginWindow.swift in Sources */,
+				47390F481F2B64C9009EA94C /* ContinueAction.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
@@ -454,8 +510,8 @@
 				086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */,
 				47B198AC1E6565CC0055CC85 /* FileHandle Extension.swift in Sources */,
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
+				D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */,
 				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
-				086F87B21D536F2B002AA791 /* Script.swift in Sources */,
 				47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
@@ -517,6 +573,7 @@
 				47647E701E696DD8009D535B /* fi */,
 			);
 			name = SplashBuddy.storyboard;
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -628,16 +685,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SplashBuddy/SplashBuddy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SplashBuddy/Resources/SplashBuddy.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EM3ER8T33A;
-				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Info.plist";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.SplashBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -647,15 +706,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SplashBuddy/SplashBuddy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SplashBuddy/Resources/SplashBuddy.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EM3ER8T33A;
-				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Info.plist";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.SplashBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

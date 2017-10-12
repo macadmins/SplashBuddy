@@ -14,11 +14,12 @@ extension MainViewController {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
         
-        installingLabel.stringValue = NSLocalizedString("Installing…", comment: "")
+        statusLabel.isHidden = false
+        statusLabel.stringValue = "We are preparing your Mac…"
         
-        statusLabel.stringValue = ""
+        self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
         
-        continueButton.isEnabled = false
+        self.continueButton.isEnabled = false
     }
     
     @objc func clearLabel() {
@@ -26,7 +27,8 @@ extension MainViewController {
     }
     
     @objc func errorWhileInstalling() {
-        continueButton.isEnabled = true
+        indeterminateProgressIndicator.isHidden = true
+        self.continueButton.isEnabled = true
         statusLabel.textColor = .red
         
         let _failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
@@ -54,17 +56,12 @@ extension MainViewController {
     }
 
     @objc func canContinue() {
-        continueButton.isEnabled = true
+        self.continueButton.isEnabled = true
     }
     
     @objc func doneInstalling() {
         indeterminateProgressIndicator.stopAnimation(self)
         indeterminateProgressIndicator.isHidden = true
-        
-        installingLabel.stringValue = ""
-    }
-    
-    @objc func allSuccess() {
         statusLabel.textColor = .labelColor
         statusLabel.stringValue = NSLocalizedString(
             "All applications were installed. Please click continue.",

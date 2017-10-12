@@ -11,5 +11,9 @@
 		<string>/private/var/log/jamf.log</string>
 		<string>/Library/Application Support/SplashBuddy/</string>
 	</array>
+    <key>com.apple.security.temporary-exception.apple-events</key>
+    <array>
+        <string>com.apple.loginwindow</string>
+    </array>
 </dict>
 </plist>

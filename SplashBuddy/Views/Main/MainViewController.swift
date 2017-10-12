@@ -16,10 +16,10 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var continueButton: NSButton!
     @IBOutlet weak var statusLabel: NSTextField!
-    @IBOutlet weak var installingLabel: NSTextField!
     @IBOutlet var mainView: NSView!
     @IBOutlet weak var statusView: NSView!
-   
+    @IBOutlet weak var sidebarView: NSView!
+    
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
     
@@ -39,15 +39,14 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         // Setup the view
         self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
         self.mainView.layer?.cornerRadius = 10
-        self.mainView.layer?.shadowOpacity = 0.5
         self.mainView.layer?.shadowRadius = 2
         self.mainView.layer?.borderWidth = 0.2
         
         // Setup the web view
-        self.webView.layer?.borderWidth = 1.0
-        self.webView.layer?.borderColor = NSColor.lightGray.cgColor
         self.webView.layer?.isOpaque = true
         
+        // Setup the Continue Button
+        self.continueButton.title = Preferences.sharedInstance.continueAction.localizedName
         
         // Setup the Notifications
 
@@ -55,7 +54,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                                                selector: #selector(MainViewController.errorWhileInstalling),
                                                name: SoftwareArray.StateNotification.ErrorWhileInstalling.notification,
                                                object: nil)
-
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MainViewController.canContinue),
                                                name: SoftwareArray.StateNotification.CanContinue.notification,
@@ -77,12 +76,12 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                                                object: nil)
  
     }
-
+    
     override func viewDidAppear() {
         
         // Setup the initial state of objects
         self.setupInstalling()
-
+        
         // Display Alert if /var/log/jamf.log doesn't exist
         
         guard (Preferences.sharedInstance.logFileHandle != nil) else {
@@ -99,8 +98,11 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
         
         // Display the html file
-        
-        if let html = Preferences.sharedInstance.html {
+       if let html = Preferences.sharedInstance.html {
+            DispatchQueue.main.async {
+                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
+            }
+            
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else {
             self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
@@ -110,7 +112,9 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBAction func pressedContinueButton(_ sender: AnyObject) {
         
         Preferences.sharedInstance.setupDone = true
-        NSApplication.shared.terminate(self)
+        Preferences.sharedInstance.continueAction.pressed(sender)
         
     }
+    
+        
 }

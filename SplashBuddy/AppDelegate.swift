@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         
+        // For continue button Restart, Shutdown and Logout.
+        NSApp.disableRelaunchOnLogin()
         
         // Value Transformer for Software Status
         // We use it to map the software status (.pending…) with color images (orange…) in the Software TableView
@@ -28,14 +30,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ValueTransformer.setValueTransformer(softwareStatusValueTransformer,
                                              forName: NSValueTransformerName(rawValue: "SoftwareStatusValueTransformer"))
         
+        // Create Background Controller (the window behind)
+        // Hide it with `SplashBuddy.app/Contents/MacOS/SplashBuddy -hideBackground true`
         
-        // Disable relaunch on login. This should be controlled by a LaunchAgent.
-        NSApp.disableRelaunchOnLogin()
-        
-        // Create Background Controller (the window behind) only displays for Release
-        // Change this in Edit Scheme -> Run -> Info
-        
-        #if !DEBUG
+        if Preferences.sharedInstance.background {
             
             for screen in NSScreen.screens {
                 
@@ -61,12 +59,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                          .hideMenuBar,
                                          .disableForceQuit,
                                          .disableSessionTermination ]
-        #endif
+        }
         
         
         
         // Get preferences from UserDefaults
-        Preferences.sharedInstance.getPreferencesApplications()
+        do {
+            try Preferences.sharedInstance.getPreferencesApplications()
+        } catch Preferences.Errors.MalformedApplication {
+            Log.write(string: "applicationsArray: application is malformed",
+                    cat: "Preferences",
+                    level: .error)
+        } catch Preferences.Errors.NoApplicationArray {
+            Log.write(string: "Couldn't find applicationsArray in io.fti.SplashBuddy",
+                      cat: "Preferences",
+                      level: .error)
+        } catch {
+            Log.write(string: "Unknown error while reading Applications",
+                      cat: "Preferences",
+                      level: .error)
+        }
         Parser.sharedInstance.readTimer()
         
         
