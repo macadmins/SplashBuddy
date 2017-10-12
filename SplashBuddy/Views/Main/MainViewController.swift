@@ -91,16 +91,8 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
         
         // Display the html file
-        if let form = Preferences.sharedInstance.form {
+       if let html = Preferences.sharedInstance.html {
             DispatchQueue.main.async {
-                self.sendButton.isHidden = false
-                self.continueButton.isHidden = true
-
-            }
-            self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
-        } else if let html = Preferences.sharedInstance.html {
-            DispatchQueue.main.async {
-                self.sendButton.isHidden = true
                 self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
             
@@ -117,61 +109,5 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         
     }
     
-    @IBOutlet weak var sendButton: NSButton!
-    @IBAction func evalForm(_ sender: Any) {
-        let js = """
-            function sb() {
-                var sbItems = document.getElementsByTagName('input');
-                var sbValues = {};
-                for (var i = 0; i < sbItems.length; i++) {
-                    sbValues[sbItems.item(i).name] = sbItems.item(i).value;
-                }
-                return sbValues
-            }
-            JSON.stringify(sb());
-        """
         
-        webView.evaluateJavaScript(js) {
-            (data: Any?, error: Error?) in
-            if error != nil {
-                Log.write(string: "Error getting User Input", cat: "UserInput", level: .error)
-                return
-            }
-            
-            dump(data)
-            
-            guard let jsonString = data as? String else {
-                Log.write(string: "Cannot read User Input data", cat: "UserInput", level: .error)
-                return
-            }
-            
-            guard let jsonData = jsonString.data(using: .utf8) else {
-                Log.write(string: "Cannot cast User Input to data", cat: "UserInput", level: .error)
-                return
-            }
-            
-            let obj = try! JSONDecoder().decode(UserInput.self, from: jsonData)
-            
-            if let assetTag = obj.assetTag {
-                FileManager.default.createFile(atPath: "assetTag.txt", contents: assetTag.data(using: .utf8)!, attributes: nil)
-            }
-            
-            if let computerName = obj.computerName {
-                FileManager.default.createFile(atPath: "computerName.txt", contents: computerName.data(using: .utf8)!, attributes: nil)
-            }
-            DispatchQueue.main.async {
-                self.sendButton.isHidden = true
-                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
-                
-                if let html = Preferences.sharedInstance.html {
-                    self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
-                } else {
-                    self.webView.loadHTMLString("Please create a bundle in /Library/Application Support/SplashBuddy", baseURL: nil)
-                }
-            }
-            
-            
-        }
-        
-    }
 }

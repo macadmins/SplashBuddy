@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13156.6"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13156.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13196"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -73,7 +73,7 @@
                                                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                             <tableColumns>
-                                                                                <tableColumn width="221" minWidth="40" maxWidth="1000" id="fqj-gr-Q3i">
+                                                                                <tableColumn identifier="" width="221" minWidth="40" maxWidth="1000" id="fqj-gr-Q3i">
                                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                                         <font key="font" metaFont="smallSystem"/>
                                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -221,7 +221,7 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="9z5-8K-Bsy">
                                         <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
                                         <subviews>
-                                            <visualEffectView blendingMode="withinWindow" material="mediumLight" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VIc-9A-62o">
+                                            <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="mediumLight" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VIc-9A-62o">
                                                 <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
                                             </visualEffectView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-Zf-dqr">
@@ -256,16 +256,6 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="34c-Ar-Slk">
-                                                <rect key="frame" x="715" y="12" width="71" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qcZ-8b-5R5">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="evalForm:" target="qDQ-T9-zeE" id="Muo-Do-TQE"/>
-                                                </connections>
-                                            </button>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-CL-x2G">
                                                 <rect key="frame" x="691" y="12" width="95" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jcN-QC-epo">
@@ -278,15 +268,12 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="34c-Ar-Slk" secondAttribute="trailing" constant="20" id="6SW-0a-XSm"/>
                                             <constraint firstItem="k7a-CL-x2G" firstAttribute="centerY" secondItem="qF2-Zf-dqr" secondAttribute="centerY" id="6fB-7w-od0"/>
                                             <constraint firstItem="VIc-9A-62o" firstAttribute="top" secondItem="9z5-8K-Bsy" secondAttribute="top" id="772-5A-yjz"/>
                                             <constraint firstAttribute="trailing" secondItem="VIc-9A-62o" secondAttribute="trailing" id="Ajh-xI-dKG"/>
                                             <constraint firstAttribute="height" constant="60" id="G1R-Mw-wo0"/>
                                             <constraint firstItem="k7a-CL-x2G" firstAttribute="leading" secondItem="qF2-Zf-dqr" secondAttribute="trailing" priority="250" id="UZ0-4U-iXj"/>
                                             <constraint firstItem="VIc-9A-62o" firstAttribute="leading" secondItem="9z5-8K-Bsy" secondAttribute="leading" id="gUx-2D-75H"/>
-                                            <constraint firstItem="34c-Ar-Slk" firstAttribute="leading" secondItem="qF2-Zf-dqr" secondAttribute="trailing" priority="250" id="h6T-Ad-3Wp"/>
-                                            <constraint firstItem="34c-Ar-Slk" firstAttribute="centerY" secondItem="qF2-Zf-dqr" secondAttribute="centerY" id="iqu-5g-Tue"/>
                                             <constraint firstAttribute="bottom" secondItem="VIc-9A-62o" secondAttribute="bottom" id="vA5-hZ-TV8"/>
                                             <constraint firstAttribute="trailing" secondItem="k7a-CL-x2G" secondAttribute="trailing" constant="20" id="xFh-zM-Upc"/>
                                             <constraint firstItem="qF2-Zf-dqr" firstAttribute="centerY" secondItem="9z5-8K-Bsy" secondAttribute="centerY" id="zdN-Lt-BJZ"/>
@@ -327,7 +314,6 @@
                         <outlet property="continueButton" destination="k7a-CL-x2G" id="7B2-Pa-6MA"/>
                         <outlet property="indeterminateProgressIndicator" destination="Are-bh-n7c" id="Y6v-o2-1td"/>
                         <outlet property="mainView" destination="VI7-LS-rJR" id="kli-bF-0SB"/>
-                        <outlet property="sendButton" destination="34c-Ar-Slk" id="HbV-rW-K1x"/>
                         <outlet property="sidebarView" destination="lkr-Fa-FkH" id="G6V-YO-w7K"/>
                         <outlet property="statusLabel" destination="huH-bF-pmn" id="iYg-8d-2PX"/>
                         <outlet property="statusView" destination="9z5-8K-Bsy" id="Dvb-uX-9FO"/>

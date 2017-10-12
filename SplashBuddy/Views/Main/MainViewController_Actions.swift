@@ -19,7 +19,6 @@ extension MainViewController {
         
         self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
         
-        self.continueButton.isHidden = true
         self.continueButton.isEnabled = false
     }
     

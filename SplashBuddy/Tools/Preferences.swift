@@ -118,12 +118,6 @@ class Preferences {
         }
     }
     
-    public var form: URL? {
-        get {
-            return self.assetBundle?.url(forResource: "form", withExtension: "html")
-        }
-    }
-    
     
     var setupDone: Bool {
         get {

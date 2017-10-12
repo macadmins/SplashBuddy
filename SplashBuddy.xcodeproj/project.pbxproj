@@ -34,7 +34,6 @@
 		47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */; };
 		47CFADF21E681FB600356D11 /* FileHandle Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198AB1E6565CC0055CC85 /* FileHandle Extension.swift */; };
 		47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADF31E682C9200356D11 /* SoftwareArray.swift */; };
-		47D25EF11F1615900048DD6C /* UserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D25EF01F1615900048DD6C /* UserInput.swift */; };
 		47E8A7CD1E689787001292B8 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8A7CC1E689787001292B8 /* Parser.swift */; };
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
 		D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */; };
@@ -127,7 +126,6 @@
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController_Actions.swift; sourceTree = "<group>"; };
 		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
-		47D25EF01F1615900048DD6C /* UserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInput.swift; sourceTree = "<group>"; };
 		47E8A7CC1E689787001292B8 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		81D9D7301E69ABE4008ED3F5 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentScroller.swift; sourceTree = "<group>"; };
@@ -330,14 +328,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		47D25EEF1F1615630048DD6C /* UserInput */ = {
-			isa = PBXGroup;
-			children = (
-				47D25EF01F1615900048DD6C /* UserInput.swift */,
-			);
-			path = UserInput;
-			sourceTree = "<group>";
-		};
 		D9894FE41F1CDC4D00DF7F42 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,7 +339,6 @@
 		D9894FE71F1CE4F100DF7F42 /* Business Objects */ = {
 			isa = PBXGroup;
 			children = (
-				47D25EEF1F1615630048DD6C /* UserInput */,
 				47CFADEE1E681E5B00356D11 /* Software */,
 			);
 			path = "Business Objects";
@@ -442,7 +431,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = EM3ER8T33A;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -516,7 +505,6 @@
 				47390F481F2B64C9009EA94C /* ContinueAction.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */,
-				47D25EF11F1615900048DD6C /* UserInput.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */,
@@ -698,10 +686,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SplashBuddy/Resources/SplashBuddy.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EM3ER8T33A;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -719,10 +707,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SplashBuddy/Resources/SplashBuddy.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EM3ER8T33A;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

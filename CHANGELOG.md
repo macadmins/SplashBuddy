@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Now accepts User Input (it will display if `form.html` exists in `presentation.bundle`)
 * Key `hideSidebar` to hide the sidebar and get a full html view
 * New behaviors for `Continue` button: Restart, Shutdown, Logout, Launch Application or Quit. (uses `continueAction` preferences key)
 * Hide Background with setting `hideBackground` to `true`. Eg. `SplashBuddy.app/Contents/MacOS/SplashBuddy -hideBackground true`
@@ -17,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Brand new Layout!
 * Added Temporary exception to sandbox to allow sending Apple Events to Login Window (to restart etc.)
 * Continue button can now be hidden
+* Moved Userinput on a separate branch. Feature is not ready for 1.1
 
 
 ## [1.0]
