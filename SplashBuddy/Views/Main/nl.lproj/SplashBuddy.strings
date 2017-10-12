@@ -1,26 +1,29 @@
-/* Class = "NSButtonCell"; title = "Continue"; ObjectID = "7yX-oA-A3P"; */
-"7yX-oA-A3P.title" = "Ga door";
+/* Class = "NSMenuItem"; title = "Quit SplashBuddy"; ObjectID = "2cR-1q-G3Y"; */
+"2cR-1q-G3Y.title" = "Beëindig SplashBuddy";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "5Hn-kG-mLK"; */
+"5Hn-kG-mLK.title" = "Hoofdmenu";
+
+/* Class = "NSMenu"; title = "SplashBuddy"; ObjectID = "5pp-rB-Rs5"; */
+"5pp-rB-Rs5.title" = "SplashBuddy";
+
+/* Class = "NSMenuItem"; title = "Quit SplashBuddy and set .SplashBuddyDone"; ObjectID = "9sK-Yv-hyG"; */
+"9sK-Yv-hyG.title" = "Beëindig SplashBuddy en stel .SplashBuddyDone in";
 
 /* Class = "NSView"; ibExternalAccessibilityDescription = "Lower Bar"; ObjectID = "9z5-8K-Bsy"; */
 "9z5-8K-Bsy.ibExternalAccessibilityDescription" = "Onderste regel";
 
-/* Class = "NSViewController"; title = "Background view"; ObjectID = "67C-xF-QMY"; */
-"67C-xF-QMY.title" = "Achtergrond";
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "HEm-cX-eEV"; */
+"HEm-cX-eEV.title" = "Tekstcel";
 
-/* Class = "NSWindow"; title = "Window"; ObjectID = "EaE-i8-WAo"; */
-"EaE-i8-WAo.title" = "Venster";
+/* Class = "NSTextFieldCell"; title = "displayName"; ObjectID = "IV9-h3-DQ0"; */
+"IV9-h3-DQ0.title" = "displayName";
 
-/* Class = "NSTextFieldCell"; title = "Welcome to your Mac"; ObjectID = "M9G-bN-6f0"; */
-"M9G-bN-6f0.title" = "Welkom op uw Mac";
+/* Class = "NSMenuItem"; title = "SplashBuddy"; ObjectID = "Mm1-rq-zaN"; */
+"Mm1-rq-zaN.title" = "SplashBuddy";
 
-/* Class = "NSTextFieldCell"; title = "Installing…"; ObjectID = "PWh-08-cWA"; */
-"PWh-08-cWA.title" = "Installeren…";
-
-/* Class = "NSTextFieldCell"; title = "Please wait while we prepare your Mac"; ObjectID = "bCS-gQ-vgm"; */
-"bCS-gQ-vgm.title" = "Even geduld tijdens de installatie van uw Mac";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "c2Q-bv-sGX"; */
-"c2Q-bv-sGX.title" = "Tekst cel";
+/* Class = "NSMenuItem"; title = "About SplashBuddy"; ObjectID = "dPN-j3-pc0"; */
+"dPN-j3-pc0.title" = "Over SplashBuddy";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "eOE-dw-mkn"; */
 "eOE-dw-mkn.title" = "Venster";
@@ -28,11 +31,11 @@
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "gAE-fA-iyd"; */
 "gAE-fA-iyd.title" = "Label";
 
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "jUX-9D-aGB"; */
-"jUX-9D-aGB.title" = "Label";
+/* Class = "NSButtonCell"; title = "Continue"; ObjectID = "jcN-QC-epo"; */
+"jcN-QC-epo.title" = "Ga door";
 
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "kOR-oN-miF"; */
-"kOR-oN-miF.title" = "Tabel overzicht";
+/* Class = "NSTextFieldCell"; title = "description"; ObjectID = "lnB-mt-lsP"; */
+"lnB-mt-lsP.title" = "Beschrijving";
 
 /* Class = "NSViewController"; title = "Main View"; ObjectID = "qDQ-T9-zeE"; */
 "qDQ-T9-zeE.title" = "Hoofdscherm";

@@ -28,7 +28,7 @@ A huge thanks to the community on #SplashBuddy on the MacAdmins Slack, and espec
 
 - French (fr): François Levaux-Tiffreau (@ftiff)
 - Dutch (nl): @riddl0rd, @thomasb
-- German (de): Mic Milic Frederickx (@kermic)
+- German (de): Mic Milic Frederickx (@kermic), Christoph Fellner (@christophf)
 
 
 # Similar projects

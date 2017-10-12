@@ -1,15 +1,54 @@
-/* 
-  Strings.strings
-  SplashBuddy
-
-  Created by Francois Levaux on 02.03.17.
-  Copyright © 2017 François Levaux-Tiffreau. All rights reserved.
-*/
-
-// https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html
-
+/* A specific application failed to install */
 "%@ failed to install. Support has been notified." = "%@ konnte nicht installiert werden. Der Support wurde benachrichtigt.";
-"An application failed to install. Support has been notified." = "Ein Programm konnte nicht installiert werden. Der Support wurde benachrichtigt.";
-"Some applications failed to install. Support has been notified." = "Einige Programme konnten nicht installiert werden. Der Support wurde benachrichtigt.";
+
+/* Everything was ok. There's no button. An automated action will happen (like force restart) */
+"All applications were installed. Finishing installation…" = "Alle Anwendungen installiert wurden. Abschluss der Installation...";
+
+/* (No Comment) */
 "All applications were installed. Please click continue." = "Alle Programme wurden installiert. Bitte klicken Sie weiter.";
-"Installing…" = "Installiere…";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Continue." = "Alle Anwendungen installiert wurden. Bitte klicken Sie auf Weiter.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Logout." = "Alle Anwendungen installiert wurden. Bitte klicken Sie auf abmelden.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Quit." = "Alle Anwendungen installiert wurden. Bitte klicken Sie auf Beenden.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Restart." = "Alle Anwendungen installiert wurden. Bitte klicken Sie auf Neustart.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Shutdown." = "Alle Anwendungen installiert wurden. Bitte klicken Sie auf Herunterfahren.";
+
+/* One (unnamed) application failed to install */
+"An application failed to install. Support has been notified." = "Ein Programm konnte nicht installiert werden. Der Support wurde benachrichtigt.";
+
+/* Label of the button for Continue */
+"Continue" = "Weiter";
+
+/* (No Comment) */
+"Installing…" = "Installieren...";
+
+/* Label of the button for Logout */
+"Logout" = "Ausloggen";
+
+/* Displayed when cannot load HTML bundle */
+"Please create a bundle in /Library/Application Support/SplashBuddy" = "Bitte erstellen Sie ein bundle in /Library/Application Support/SplashBuddy";
+
+/* Label of the button for Quit */
+"Quit" = "Beenden";
+
+/* Label of the button for Restart */
+"Restart" = "Neu starten";
+
+/* Label of the button for Shutdown */
+"Shutdown" = "Herunterfahren";
+
+/* More than one application failed to install */
+"Some applications failed to install. Support has been notified." = "Einige Programme konnten nicht installiert werden. Der Support wurde benachrichtigt.";
+
+/* Displayed above progress bar */
+"We are preparing your Mac…" = "Wir bereiten Ihren Mac vor ...";
+

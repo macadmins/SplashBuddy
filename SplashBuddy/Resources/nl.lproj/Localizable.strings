@@ -1,13 +1,54 @@
-/* All applications were installed. Please click continue. */
-"All applications were installed. Please click continue." = "Alle programma's zijn geinstalleerd. Klik op doorgaan";
-
-/* More than one application failed to install */
-"Some applications failed to install. Support has been notified." = "Sommige programma's konden niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
-
 /* A specific application failed to install */
 "%@ failed to install. Support has been notified." = "Installatie van %@ is mislukt. Hiervan is automatisch melding gemaakt.";
+
+/* Everything was ok. There's no button. An automated action will happen (like force restart) */
+"All applications were installed. Finishing installation…" = "Alle applicaties zijn geïnstalleerd. De installatie wordt beëindigd...";
+
+/* (No Comment) */
+"All applications were installed. Please click continue." = "Alle programma's zijn geinstalleerd. Klik op doorgaan";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Continue." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Continue";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Logout." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Logout";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Quit." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Quit";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Restart." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Restart";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Shutdown." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Shutdown";
 
 /* One (unnamed) application failed to install */
 "An application failed to install. Support has been notified." = "Een programma kon niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
 
-"Installing…" = "Installeren…";
+/* Label of the button for Continue */
+"Continue" = "Doorgaan";
+
+/* (No Comment) */
+"Installing…" = "Installeren...";
+
+/* Label of the button for Logout */
+"Logout" = "Uitloggen";
+
+/* Displayed when cannot load HTML bundle */
+"Please create a bundle in /Library/Application Support/SplashBuddy" = "Maak een bundle aan in /Library/Application Support/SplashBuddy";
+
+/* Label of the button for Quit */
+"Quit" = "Beëindigen";
+
+/* Label of the button for Restart */
+"Restart" = "Herstart";
+
+/* Label of the button for Shutdown */
+"Shutdown" = "Afsluiten";
+
+/* More than one application failed to install */
+"Some applications failed to install. Support has been notified." = "Sommige programma's konden niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
+
+/* Displayed above progress bar */
+"We are preparing your Mac…" = "We zijn uw computer aan het voorbereiden...";
+

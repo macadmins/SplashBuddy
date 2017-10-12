@@ -15,7 +15,7 @@ extension MainViewController {
         indeterminateProgressIndicator.isHidden = false
         
         statusLabel.isHidden = false
-        statusLabel.stringValue = "We are preparing your Mac…"
+        statusLabel.stringValue = NSLocalizedString("We are preparing your Mac…", comment: "Displayed above progress bar")
         
         self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
         
@@ -23,7 +23,8 @@ extension MainViewController {
     }
     
     @objc func clearLabel() {
-        statusLabel.stringValue = ""
+        statusLabel.stringValue = NSLocalizedString("We are preparing your Mac…", comment: "Displayed above progress bar")
+        statusLabel.textColor = .black
     }
     
     @objc func errorWhileInstalling() {
@@ -65,9 +66,7 @@ extension MainViewController {
     
     @objc func allSuccess() {
         statusLabel.textColor = .labelColor
-        statusLabel.stringValue = NSLocalizedString(
-            "All applications were installed. Please click continue.",
-            comment: "All applications were installed. Please click continue.")
+        statusLabel.stringValue = Preferences.sharedInstance.continueAction.localizedSuccessStatus
     }
     
 

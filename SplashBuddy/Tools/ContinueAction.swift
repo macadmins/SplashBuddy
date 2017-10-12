@@ -58,6 +58,35 @@ struct ContinueButton {
             }
         }
         
+        var localizedSuccessStatus: String {
+            switch self {
+            case .Restart: return NSLocalizedString(
+                "All applications were installed. Please click on Restart.",
+                comment: "Everything was ok. Asking user to click on the button")
+                
+            case .Shutdown: return NSLocalizedString(
+                "All applications were installed. Please click on Shutdown.",
+                comment: "Everything was ok. Asking user to click on the button")
+                
+            case .Logout: return NSLocalizedString(
+                "All applications were installed. Please click on Logout.",
+                comment: "Everything was ok. Asking user to click on the button")
+                
+            case .Quit: return NSLocalizedString(
+                "All applications were installed. Please click on Quit.",
+                comment: "Everything was ok. Asking user to click on the button")
+                
+            case .Hidden: return NSLocalizedString(
+                "All applications were installed. Finishing installation…",
+                comment: "Everything was ok. There's no button. An automated action will happen (like force restart)")
+                
+            default: return NSLocalizedString(
+                "All applications were installed. Please click on Continue.",
+                comment: "Everything was ok. Asking user to click on the button")
+                
+            }
+        }
+        
         var isHidden: Bool {
             switch self {
             case .Hidden:
