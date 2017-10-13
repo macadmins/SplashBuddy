@@ -23,6 +23,20 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
     
+    private let enterKeyJS = """
+    window.onload = function() {
+        document.body.onkeydown = function(e){
+            if ( e.keyCode == "13" ) {
+                window.location.href = "formdone://";
+            }
+        }
+    }
+    """
+    
+    internal func formEnterKey() -> Void {
+        self.evalForm(self.sendButton)
+    }
+    
     override func awakeFromNib() {
         
         // https://developer.apple.com/library/content/qa/qa1871/_index.html
@@ -102,6 +116,8 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             }
             Log.write(string: "Loading Web Form", cat: .UI, level: .debug)
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+            Log.write(string: "Injecting Javascript.", cat: .UserInput, level: .debug)
+            self.webView.evaluateJavaScript(self.enterKeyJS, completionHandler: nil)
         } else if let html = Preferences.sharedInstance.html {
             if Preferences.sharedInstance.formDone {
                 Log.write(string: "Form already completed.", cat: .UserInput, level: .debug)
