@@ -49,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 window.backgroundColor = .white
                 window.contentView = view
                 window.makeKeyAndOrderFront(self)
-                
+                window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)) - 1)
                 windows.append(window)
             }
             

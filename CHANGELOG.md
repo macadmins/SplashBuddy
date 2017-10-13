@@ -64,6 +64,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Switched from legacy "launchctl load" to "enable, bootstrap, kickstart"
 * Error message will now clear if software turns from error to success (fixes #42 -- thanks @jamfmatt)
 * Disable relaunch on login. This should be controlled by a LaunchAgent. (thanks @grahamrpugh)
+* Background window now stays in front of Dock (thanks @jwojda)
 
 # Contributors
 
