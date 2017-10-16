@@ -1,5 +1,5 @@
 /* Class = "NSMenuItem"; title = "Quit SplashBuddy"; ObjectID = "2cR-1q-G3Y"; */
-"2cR-1q-G3Y.title" = "Beëindig SplashBuddy";
+"2cR-1q-G3Y.title" = "Stop SplashBuddy";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "5Hn-kG-mLK"; */
 "5Hn-kG-mLK.title" = "Hoofdmenu";
@@ -8,7 +8,7 @@
 "5pp-rB-Rs5.title" = "SplashBuddy";
 
 /* Class = "NSMenuItem"; title = "Quit SplashBuddy and set .SplashBuddyDone"; ObjectID = "9sK-Yv-hyG"; */
-"9sK-Yv-hyG.title" = "Beëindig SplashBuddy en stel .SplashBuddyDone in";
+"9sK-Yv-hyG.title" = "Stop SplashBuddy en stel .SplashBuddyDone in";
 
 /* Class = "NSView"; ibExternalAccessibilityDescription = "Lower Bar"; ObjectID = "9z5-8K-Bsy"; */
 "9z5-8K-Bsy.ibExternalAccessibilityDescription" = "Onderste regel";

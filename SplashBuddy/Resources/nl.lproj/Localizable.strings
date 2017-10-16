@@ -8,19 +8,19 @@
 "All applications were installed. Please click continue." = "Alle programma's zijn geinstalleerd. Klik op doorgaan";
 
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Continue." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Continue";
+"All applications were installed. Please click on Continue." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Doorgaan";
 
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Logout." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Logout";
+"All applications were installed. Please click on Logout." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Log uit";
 
 /* Everything was ok. Asking user to click on the button */
 "All applications were installed. Please click on Quit." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Quit";
 
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Restart." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Restart";
+"All applications were installed. Please click on Restart." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Herstart";
 
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Shutdown." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Shutdown";
+"All applications were installed. Please click on Shutdown." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Zet uit";
 
 /* One (unnamed) application failed to install */
 "An application failed to install. Support has been notified." = "Een programma kon niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
@@ -50,5 +50,5 @@
 "Some applications failed to install. Support has been notified." = "Sommige programma's konden niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
 
 /* Displayed above progress bar */
-"We are preparing your Mac…" = "We zijn uw computer aan het voorbereiden...";
+"We are preparing your Mac…" = "We zijn uw Mac aan het voorbereiden...";
 
