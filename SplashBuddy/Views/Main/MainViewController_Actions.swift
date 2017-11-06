@@ -56,6 +56,7 @@ extension MainViewController {
     }
 
     @objc func canContinue() {
+        Preferences.sharedInstance.setupDone = true
         self.continueButton.isEnabled = true
     }
     

@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Continue button can now be hidden
 * Moved Userinput on a separate branch. Feature is not ready for 1.1
 
+### Fixed
+* `.SplashBuddyDone` will be set when all critical items are done (`canContinue` = `false`) (@LovelessInSeattle)
 
 ## [1.0]
 
