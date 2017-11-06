@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 * `.SplashBuddyDone` will be set when all critical items are done (`canContinue` = `false`) (@LovelessInSeattle)
+* A failed item will no longer activate continue button (@LovelessInSeattle)
 
 ## [1.0]
 

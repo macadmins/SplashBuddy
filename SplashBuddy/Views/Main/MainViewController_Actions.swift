@@ -28,7 +28,6 @@ extension MainViewController {
     }
     
     @objc func errorWhileInstalling() {
-        continueButton.isEnabled = true
         statusLabel.textColor = .red
         
         let _failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
