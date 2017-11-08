@@ -2,7 +2,7 @@
 "%@ failed to install. Support has been notified." = "%@ konnte nicht installiert werden. Der Support wurde benachrichtigt.";
 
 /* Everything was ok. There's no button. An automated action will happen (like force restart) */
-"All applications were installed. Finishing installation…" = "Alle Anwendungen installiert wurden. Abschluss der Installation...";
+"All applications were installed. Finishing installation…" = "Alle Anwendungen installiert wurden. Abschluss der Installation…";
 
 /* (No Comment) */
 "All applications were installed. Please click continue." = "Alle Programme wurden installiert. Bitte klicken Sie weiter.";
@@ -29,7 +29,7 @@
 "Continue" = "Weiter";
 
 /* (No Comment) */
-"Installing…" = "Installieren...";
+"Installing…" = "Installieren…";
 
 /* Label of the button for Logout */
 "Logout" = "Ausloggen";
@@ -50,5 +50,5 @@
 "Some applications failed to install. Support has been notified." = "Einige Programme konnten nicht installiert werden. Der Support wurde benachrichtigt.";
 
 /* Displayed above progress bar */
-"We are preparing your Mac…" = "Wir bereiten Ihren Mac vor ...";
+"We are preparing your Mac…" = "Wir bereiten Ihren Mac vor…";
 
