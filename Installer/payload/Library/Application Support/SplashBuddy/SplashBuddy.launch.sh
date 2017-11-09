@@ -7,7 +7,7 @@
 # We cannot do it here as LaunchAgent are executed by the user.
 
 
-loggedInUser=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+loggedInUser=$(/usr/bin/python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
 
 app="/Library/Application Support/SplashBuddy/SplashBuddy.app"
@@ -21,15 +21,15 @@ doneFile="/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Libr
 # - Done file doesn't exist
 
 function appInstalled {
-    codesign --verify "${app}" && return 0 || return 1
+    /usr/bin/codesign --verify "${app}" && return 0 || return 1
 }
 
 function appNotRunning {
-    pgrep SplashBuddy && return 1 || return 0
+    /usr/bin/pgrep SplashBuddy && return 1 || return 0
 }
 
 function finderRunning {
-    pgrep Finder && return 0 || return 1
+    /usr/bin/pgrep Finder && return 0 || return 1
 }
 
 if appNotRunning \
@@ -38,7 +38,7 @@ if appNotRunning \
 	&& finderRunning \
 	&& [ ! -f "${doneFile}" ]; then
 
-    open -a "$app"
+    /usr/bin/open -a "$app"
 	
 fi
 
