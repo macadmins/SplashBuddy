@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export backupPATH=$PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 # Uninstalls SplashBuddy
@@ -13,3 +14,4 @@ loggedInUser=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyCons
 rm "/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone"
 
 pkgutil --forget "io.fti.SplashBuddy.Installer"
+export PATH=$backupPATH
