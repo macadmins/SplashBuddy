@@ -1,21 +1,71 @@
-<html><head><meta charset="UTF-8"><body><div style="color:white;font-size:40px;border:0px;text-align:center;background-image:url('login_background.png');padding:20px;width:100%">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+	<head>
+		<title>SplashBuddy Setup</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="../common/styles.css">
+		<link rel="stylesheet" type="text/css" href="../common/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="../common/slick/slick-theme.css"/>
+		<script src="../common/jquery-3.2.1.min.js"></script>
+	</head>
 
-Welcome to SplashBuddy
+	<body>
+		<p>
+		<div class="title">Welcome to SplashBuddy</div>
+		<div class="content">
+			<div class="carousel">
+  				<div>
+					<br>
+					<img src="../common/SplashBuddy.png" alt="Enso" style="width:64px;height:64px;">
+					<br>
+					<p>Welcome to SplashBuddy!
+  					<p>This is the first step to crafting a more engaging onboarding experience for your users!
+					<br>
+					<div class="shortcut">
+						Hit <div class="key">&#8984;</div> + <div class="key">&#8997;</div> + <div class="key">Q</div> to quit SplashBuddy.
+					</div>
+				</div>
+				<div>
+					<br>
+					<img src="../common/SplashBuddy.png" alt="Enso" style="width:64px;height:64px;">
+					<br>
+					<p>This page is used to test the proper operation of SplashBuddy demo package after it has been installed.
+					<p>If you can read this page it means that SplashBuddy is working properly.
+					<p>You may now edit this page in <br><tt>/Library/Application Support/SplashBuddy/presentation.bundle</tt>
+				</div>
+				<div>
+					<br>
+					<img src="../common/Jamf.png" alt="Jamf" style="width:64px;height:64px;">
+					<br>
+					<p>Jamf is a macOS management framework that is used to take the burden off employees for common tasks.
+					<p>With Jamf we ensure that your Mac is always up-to-date and meets all security requirements.
+				</div>
+				<div>
+					<br>
+					<img src="../common/Self Service.png" alt="Self Service" style="width:64px;height:64px;">
+					<br>
+					<p>One of the benefits of Jamf is Self Service; think of it like a custom App Store just for CAmpers.
+					<p>You'll find it on the lefthand side of your Dock.
+					<p>If you would like to see an app in Self Service, drop a request in #help_it on Slack!
+				</div>
+			</div>
+		</div>
 
-</div><div style="border-width:1px;border-style:solid;background-color:lightgrey;padding:10px;margin:10%">
 
-This page is used to test the proper operation of SplashBuddy demo package after it has been installed. If you can read this page it means that SplashBuddy is working properly.
 
-</div><div style="margin:10%;text-align:center">
-
-You may now edit this page in <br><tt>/Library/Application Support/SplashBuddy/presentation.bundle</tt>
-
-</div><div style="margin:10%;text-align:center;font-size:10px;color:darkgreen;">
-
-Hit
-
-<div style="display:inline-block; border:1px solid grey; padding:2px;margin-bottom:5px;border-radius:5px">&#8984;</div> + <div style="display:inline-block; border:1px solid grey; padding:2px;margin-bottom:5px;border-radius:5px">&#8997;</div> + <div style="display:inline-block; border:1px solid grey; padding:2px;margin-bottom:5px;border-radius:5px">Q</div>
-
-to quit SplashBuddy.
-
-</span></div></body></html>
+	<script type="text/javascript" src="../common/slick/slick.min.js"></script>
+		<script type="text/javascript">
+	    $(document).ready(function(){
+	      $('.carousel').slick({
+					slidesToScroll: 1,
+ 					autoplay: true,
+ 					autoplaySpeed: 10000,
+					arrows: false,
+					dots: true,
+					draggable: false,
+					fade: true,
+					speed: 750,
+	      });
+	    });
+	  </script>
+	</body>
+</html>

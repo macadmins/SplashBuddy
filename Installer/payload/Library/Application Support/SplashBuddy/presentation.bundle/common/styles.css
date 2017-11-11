@@ -1,0 +1,106 @@
+@font-face {
+    font-family: "Ideal Sans";
+    src: url('IdealSans-Light.otf') format('opentype');
+    font-weight: lighter;
+    font-style: lighter;
+}
+@font-face {
+    font-family: "Ideal Sans";
+    src: url('IdealSans-Book.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-color: #fff;
+    background-image: url("bg-grey.png");
+    background-size: cover;
+    color: #3e4543;
+    font-size: 1.25em;
+    font-family: "Ideal Sans", helvetica;
+    font-weight: lighter;
+    margin: 0;
+    padding: 0;
+}
+img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em
+}
+:link {
+    color: #0000FF;
+}
+:visited {
+    color: #0000FF;
+}
+a:hover {
+    color: #DE5961;
+}
+h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 1.75em;
+    font-weight: lighter;
+}
+h2 {
+    font-size: 1.2em;
+    font-weight: lighter;
+}
+h3 {
+    font-size: 1.1em;
+    font-weight: lighter;
+}
+
+.content {
+    padding: 10px 75px;
+    text-align: center;
+}
+.content2 {
+    width: 90%;
+}
+.content-columns {
+    /* Setting relative positioning allows for
+    absolute positioning for sub-classes */
+    position: relative;
+    padding-top: 1em;
+}
+.content-column-left {
+    /* Value for IE/Win; will be overwritten for other browsers */
+    width: 47%;
+    padding-right: 3%;
+    float: left;
+    padding-bottom: 2em;
+}
+.content-column-right {
+    /* Values for IE/Win; will be overwritten for other browsers */
+    width: 47%;
+    padding-left: 3%;
+    float: left;
+    padding-bottom: 2em;
+}
+.content-columns>.content-column-left, .content-columns>.content-column-right {
+    /* Non-IE/Win */
+}
+.shortcut {
+    font-size:10px;
+}
+.key {
+    /* Values for SB keyboard shortcut */
+    display: inline-block;
+    border: 1px solid grey;
+    padding: 2px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.title {
+    color: white;
+    font-size: 40px;
+    border: 0px;
+    text-align: center;
+    background-image: url('../common/login_background.png');
+    padding: 20px;
+    width: 100%;
+}
+
+a:hover img {
+    border: 2px solid #DE5961;
+}
