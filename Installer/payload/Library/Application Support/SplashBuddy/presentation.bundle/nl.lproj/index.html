@@ -1,21 +1,73 @@
-<html><head><meta charset="UTF-8"><body><div style="color:white;font-size:40px;border:10px;text-align:center;background-image:url('../common/login_background.png');padding:20px">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+	<head>
+		<title>SplashBuddy Setup</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="../common/styles.css">
+		<link rel="stylesheet" type="text/css" href="../common/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="../common/slick/slick-theme.css"/>
+		<script src="../common/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<div class="title">Welkom bij SplashBuddy</div>
+		<div class="content">
+			<div class="carousel">
+  				<div>
+					<br>
+					<img src="../common/SplashBuddy.png" alt="Enso" style="width:64px;height:64px;">
+					<br>
+					<p>Welkom bij SplashBuddy!
+  					<p>Dit is de eerste stap om een meer boeiende onboarding-ervaring voor uw gebruikers te creëren!
+				</div>
+				<div>
+					<br>
+					<img src="../common/SplashBuddy.png" alt="Enso" style="width:64px;height:64px;">
+					<br>
+					<p>This page is used to test the proper operation ofensure that the SplashBuddy demo package has been installed correctly.
+					<p>If you can read this page, it means that SplashBuddy is working properly.
+					<p>You may now edit this page in <br><tt>/Library/Application Support/SplashBuddy/presentation.bundle</tt>
+				</div>
+				<div>
+					<br>
+					<img src="../common/SplashBuddy.png" alt="Enso" style="width:64px;height:64px;">
+					<br>
+					<p>The following pages are examples of the information you can present to users
+					<p>Please feel free to edit them as you see fit
+				</div>
+				<div>
+					<br>
+					<img src="../common/Jamf.png" alt="Jamf" style="width:64px;height:64px;">
+					<br>
+					<p>Jamf is a macOS management framework that is used to take the burden off employees for common tasks.
+					<p>With Jamf we ensure that your Mac is always up-to-date and meets all security requirements.
+				</div>
+				<div>
+					<br>
+					<img src="../common/Self Service.png" alt="Self Service" style="width:64px;height:64px;">
+					<br>
+					<p>One of the benefits of Jamf is Self Service; think of it like a custom App Store just for employees.
+					<p>You'll find it on the lefthand side of your Dock.
+				</div>
+			</div>
+			<div class="shortcut">
+				<br>
+				Gebruik <div class="key">&#8984;</div> + <div class="key">&#8997;</div> + <div class="key">Q</div> om SplashBuddy te sluiten.
+			</div>
+		</div>
 
-SplashBuddy Test Pagina
-
-</div><div style="border-width:1px;border-style:solid;background-color:lightgrey;padding:10px;margin:10%">
-
-Deze pagina wordt gebruik om de na installatie van het SplashBuddy Demo pakket het programma te testen. Als u deze pagina kunt lezen werkt SplashBuddy correct.
-
-</div><div style="margin:10%;text-align:center">
-
-Deze pagina kan bewerkt worden in <br><tt>/Library/Application Support/SplashBuddy/presentation.bundle</tt>
-
-</div><div style="margin:10%;text-align:center;font-size:10px;color:darkgreen;">
-
-Gebruik
-
-<div style="display:inline-block; border:1px solid grey; padding:2px;margin-bottom:5px;border-radius:5px">&#8984;</div> + <div style="display:inline-block; border:1px solid grey; padding:2px;margin-bottom:5px;border-radius:5px">&#8997;</div> + <div style="display:inline-block; border:1px solid grey; padding:2px;margin-bottom:5px;border-radius:5px">Q</div>
-
-om SplashBuddy te sluiten.
-
-</span></div></body></html>
+	<script type="text/javascript" src="../common/slick/slick.min.js"></script>
+		<script type="text/javascript">
+	    $(document).ready(function(){
+	      	$('.carousel').slick({
+				slidesToScroll: 1,
+ 				autoplay: true,
+ 				autoplaySpeed: 10000,
+				arrows: false,
+				dots: true,
+				draggable: false,
+				fade: true,
+				speed: 750,
+	      	});
+	    });
+	  	</script>
+	</body>
+</html>
