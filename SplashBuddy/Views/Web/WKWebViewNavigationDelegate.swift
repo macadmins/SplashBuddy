@@ -13,7 +13,7 @@ import WebKit
 extension MainViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        dump(error)
+        Log.write(string: error.localizedDescription, cat: "WebView", level: .error)
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {

@@ -8,6 +8,7 @@
 
 import Cocoa
 
+/// Used to bridge SoftwareStatus to an NSImage
 class SoftwareStatusValueTransformer: ValueTransformer {
     
     override class func transformedValueClass() -> AnyClass {

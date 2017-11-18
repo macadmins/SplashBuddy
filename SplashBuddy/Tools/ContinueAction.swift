@@ -9,6 +9,8 @@
 import Cocoa
 
 struct ContinueButton {
+    
+    /// Restart, Logout, Shutdown, Quit, Hidden or a path to an application
     enum Action {
         case Restart
         case Logout
@@ -112,7 +114,7 @@ struct ContinueButton {
                 do {
                     try LoginWindow.restart()
                 } catch {
-                    dump(error.localizedDescription)
+                    Log.write(string: error.localizedDescription, cat: "ContinueAction", level: .error)
                 }
                 
                 
@@ -120,7 +122,7 @@ struct ContinueButton {
                 do {
                     try LoginWindow.shutdown()
                 } catch {
-                    dump(error.localizedDescription)
+                    Log.write(string: error.localizedDescription, cat: "ContinueAction", level: .error)
                 }
                 
                 
@@ -128,7 +130,7 @@ struct ContinueButton {
                 do {
                     try LoginWindow.logout()
                 } catch {
-                    dump(error.localizedDescription)
+                    Log.write(string: error.localizedDescription, cat: "ContinueAction", level: .error)
                 }
  
                 

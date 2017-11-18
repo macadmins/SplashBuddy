@@ -64,8 +64,12 @@ class Preferences {
     // MARK: - Asset Path
     //-----------------------------------------------------------------------------------
     
-    // If you decide to change the asset path, make sure you update the entitlements,
-    // or the WKWebView will display white.
+    /**
+     * Returns the path to all the assets used by SplashBuddy
+     *
+     * - important: If you decide to change the asset path, make sure you update the entitlements,
+     * or the WKWebView will display white.
+     */
     
     var assetPath: URL
     
@@ -74,8 +78,17 @@ class Preferences {
     // MARK: - Continue Button
     //-----------------------------------------------------------------------------------
     
-    //
-    
+    /**
+     * Action when the user clicks on the continue button
+     *
+     * It can either be:
+     * - Restart
+     * - Logout
+     * - Shutdown
+     * - Quit
+     * - Hidden
+     * - a path to an application (eg. `/Applications/Safari.app`)
+     */
     public var continueAction: ContinueButton.Action {
         get {
             let action: String = self.userDefaults.string(forKey: "continueAction") ?? "quit"
@@ -90,12 +103,15 @@ class Preferences {
     // MARK: - Options
     //-----------------------------------------------------------------------------------
     
+    
+    /// set to `true` to hide sidebar
     public var sidebar: Bool {
         get {
             return self.userDefaults.bool(forKey: "hideSidebar")
         }
     }
     
+    /// set to `true` to hide background behind main window (for debugging)
     public var background: Bool {
         get {
             return !self.userDefaults.bool(forKey: "hideBackground")
@@ -106,19 +122,32 @@ class Preferences {
     // MARK: - HTML Path
     //-----------------------------------------------------------------------------------
     
+    /**
+     * Returns the path to the HTML bundle
+     *
+     * - important: If you decide to change the asset path, make sure you update the entitlements,
+     * or the WKWebView will display white.
+     */
     public var assetBundle: Bundle? {
         get {
             return Bundle.init(url: self.assetPath.appendingPathComponent("presentation.bundle"))
         }
     }
     
+    /// Returns `index.html` with the right localization
     public var html: URL? {
         get {
             return self.assetBundle?.url(forResource: "index", withExtension: "html")
         }
     }
+ 
+    
+    //-----------------------------------------------------------------------------------
+    // MARK: - Tag files
+    //-----------------------------------------------------------------------------------
     
     
+    /// All critical software are installed
     var setupDone: Bool {
         get {
             return FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone")

@@ -15,8 +15,8 @@ class MainWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        // Display Front Window
         
+        // Display Front Window
         guard let window = self.window else {
             Log.write(string: "Cannot get main window", cat: "UI", level: .error)
             return

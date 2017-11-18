@@ -8,6 +8,7 @@
 
 import AppKit
 
+/// To have scrollers play well on a vibrant background
 class TransparentScroller : NSScroller {
     
     override func draw(_ dirtyRect: NSRect) {

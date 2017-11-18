@@ -21,6 +21,7 @@ class Parser: NSObject {
         
     }
     
+    /// Read lines to end of file and modify the SoftwareArray singleton
     @objc func readTimer() -> Void {
         
         DispatchQueue.global(qos: .background).async {

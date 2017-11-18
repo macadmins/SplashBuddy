@@ -13,6 +13,11 @@ import Foundation
 extension Array where Element:Software {
     
     
+    /**
+     * Modify SoftwareArray from Software
+     *
+     * If similar element exists, modifies it. Otherwise adds a new element.
+     **/
     mutating func modify(with software: Software) {
         
         // If Software already exists, replace status and package version
@@ -30,9 +35,11 @@ extension Array where Element:Software {
     }
     
     
-    /** Tries to get a Software from `line`. 
-    ***  If similar element exists, modifies it. Otherwise adds a new element.
-    **/
+    /**
+     * Modify SoftwareArray from a line (String)
+     *
+     * If similar element exists, modifies it. Otherwise adds a new element.
+     **/
     mutating func modify(from line: String) {
         
         guard let software = Software(from: line) else {
@@ -51,15 +58,4 @@ extension Array where Element:Software {
         }
     }
     
-    
-    mutating func modify(from file: FileHandle) {
-        
-        guard let lines = file.readLines() else {
-            return // TODO: don't care ??
-        }
-        
-        for line in lines {
-            self.modify(from: line)
-        }
-    }
 }

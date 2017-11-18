@@ -65,6 +65,7 @@ class PreferencesTests: XCTestCase {
     
     func testSetSetupDone() {
         Preferences.sharedInstance.setupDone = true
+        debugPrint(FileManager.default.currentDirectoryPath)
         XCTAssertTrue(FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone"))
     }
     
@@ -215,38 +216,6 @@ class PreferencesTests: XCTestCase {
         XCTAssertTrue(SoftwareArray.sharedInstance.array.isEmpty)
     }
     
-    func testUserDefaults_CanParseSoftwareFromFile() {
-        let path = Bundle(for: type(of: self)).path(forResource: "jamf_1", ofType: "txt")
-        
-        let input = [[
-            "displayName": "Suceeded",
-            "description": "test",
-            "packageName": "Success021",
-            "iconRelativePath": "ec_32x32.png",
-            "canContinue": 1
-            ]]
-        // Setup user defaults
-        
-        testUserDefaults!.set(input, forKey: "applicationsArray")
-        
-        testPrefs = Preferences(nsUserDefaults: testUserDefaults)
-        try! testPrefs.getPreferencesApplications()
-        
-        let fileHandle = FileHandle(forReadingAtPath: path!)
-        SoftwareArray.sharedInstance.array.modify(from: fileHandle!)
-        
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Success021")
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageVersion, "0.21")
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.success)
-        XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == NSImage.self)
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Suceeded")
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.desc, "test")
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.canContinue, true)
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayToUser, true)
-        
-        testUserDefaults.removeObject(forKey: "applicationsArray")
-        XCTAssertNil(testUserDefaults.object(forKey: "applicationsArray"))
-    }
 
     
     func test_extractSoftware() {

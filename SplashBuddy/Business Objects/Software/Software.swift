@@ -46,7 +46,7 @@ class Software: NSObject {
 
     
     /**
-     Initializes a Software Object
+     Manually initializes a Software Object
      
      - note: Only packageName is required to parse, displayName, description and displayToUser will have to be set later to properly show it on the GUI.
 
@@ -87,6 +87,19 @@ class Software: NSObject {
         
     }
     
+    /**
+     Initializes a Software Object from a String
+     
+     - note: Only packageName is required to parse, displayName, description and displayToUser will have to be set later to properly show it on the GUI.
+     
+     - parameter packageName: *packageName*-packageVersion.pkg
+     - parameter version: Optional
+     - parameter iconPath: Optional
+     - parameter displayName: Name displayed to user
+     - parameter description: Second line underneath name
+     - parameter canContinue: if set to false, the Software will block the "Continue" button until installed
+     - parameter displayToUser: set to True to display in GUI
+     */
     convenience init?(from line: String) {
         
         var name: String?

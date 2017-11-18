@@ -9,6 +9,8 @@
 import Foundation
 
 extension FileHandle  {
+    
+    /// returns an array of lines to the end of file
     func readLines() -> [String]? {
         return String(data: self.readDataToEndOfFile(), encoding: String.Encoding.utf8)?.components(separatedBy: "\n")
         

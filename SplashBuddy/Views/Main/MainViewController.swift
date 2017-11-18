@@ -66,7 +66,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(MainViewController.clearLabel),
+                                               selector: #selector(MainViewController.resetStatusLabel),
                                                name: SoftwareArray.StateNotification.Processing.notification,
                                                object: nil)
         
@@ -83,7 +83,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         self.setupInstalling()
         
         // Display Alert if /var/log/jamf.log doesn't exist
-        
         guard (Preferences.sharedInstance.logFileHandle != nil) else {
             let alert = NSAlert()
             alert.alertStyle = .critical
@@ -109,13 +108,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             self.webView.loadHTMLString(errorMsg, baseURL: nil)
         }
     }
-    
-    @IBAction func pressedContinueButton(_ sender: AnyObject) {
-        
-        Preferences.sharedInstance.setupDone = true
-        Preferences.sharedInstance.continueAction.pressed(sender)
-        
-    }
+
     
         
 }

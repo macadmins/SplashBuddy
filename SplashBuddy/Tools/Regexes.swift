@@ -14,6 +14,7 @@ import Foundation
  - returns: A Dictionary of status: regex
  */
 
+
 func initRegex() -> Dictionary<Software.SoftwareStatus, NSRegularExpression?> {
     
     let re_options = NSRegularExpression.Options.anchorsMatchLines
@@ -22,7 +23,6 @@ func initRegex() -> Dictionary<Software.SoftwareStatus, NSRegularExpression?> {
     
     
     // Installing
-    
     let re_installing: NSRegularExpression?
     
     do {
