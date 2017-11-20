@@ -2,7 +2,7 @@
 "%@ failed to install. Support has been notified." = "Installatie van %@ is mislukt. Hiervan is automatisch melding gemaakt.";
 
 /* Everything was ok. There's no button. An automated action will happen (like force restart) */
-"All applications were installed. Finishing installation…" = "Alle applicaties zijn geïnstalleerd. De installatie wordt beëindigd...";
+"All applications were installed. Finishing installation…" = "Alle applicaties zijn geïnstalleerd. De installatie wordt beëindigd…";
 
 /* (No Comment) */
 "All applications were installed. Please click continue." = "Alle programma's zijn geinstalleerd. Klik op doorgaan";
@@ -14,7 +14,7 @@
 "All applications were installed. Please click on Logout." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Log uit";
 
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Quit." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Quit";
+"All applications were installed. Please click on Quit." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Beëindigen";
 
 /* Everything was ok. Asking user to click on the button */
 "All applications were installed. Please click on Restart." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Herstart";
@@ -29,7 +29,7 @@
 "Continue" = "Doorgaan";
 
 /* (No Comment) */
-"Installing…" = "Installeren...";
+"Installing…" = "Installeren…";
 
 /* Label of the button for Logout */
 "Logout" = "Uitloggen";
@@ -50,5 +50,5 @@
 "Some applications failed to install. Support has been notified." = "Sommige programma's konden niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
 
 /* Displayed above progress bar */
-"We are preparing your Mac…" = "We zijn uw Mac aan het voorbereiden...";
+"We are preparing your Mac…" = "We zijn uw Mac aan het voorbereiden…";
 

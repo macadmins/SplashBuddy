@@ -2,7 +2,7 @@
 "%@ failed to install. Support has been notified." = "%@ impossibile installare. Supporto è stato notificato.";
 
 /* Everything was ok. There's no button. An automated action will happen (like force restart) */
-"All applications were installed. Finishing installation…" = "Sono state installate tutte le applicazioni. Completamento installazione...";
+"All applications were installed. Finishing installation…" = "Sono state installate tutte le applicazioni. Completamento installazione…";
 
 /* (No Comment) */
 "All applications were installed. Please click continue." = "Tutte le applicazioni sono state installate. Si prega di fare clic su continua.";
@@ -50,5 +50,5 @@
 "Some applications failed to install. Support has been notified." = "Alcune applicazioni non sono state installate. Il supporto è stato notificato.";
 
 /* Displayed above progress bar */
-"We are preparing your Mac…" = "Stiamo preparando il tuo Mac...";
+"We are preparing your Mac…" = "Stiamo preparando il tuo Mac…";
 
