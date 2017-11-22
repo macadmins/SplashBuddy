@@ -79,7 +79,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                       cat: "Preferences",
                       level: .error)
         }
-        Parser.sharedInstance.readTimer()
         
         
         

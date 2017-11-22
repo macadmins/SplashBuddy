@@ -118,50 +118,6 @@ class CasperSplashTests: XCTestCase {
     }
     
     
-    
-    func testReadFromFile_CanReadFile() {
-        let path = Bundle(for: type(of: self)).path(forResource: "jamf_1", ofType: "txt")
-        let output = [
-        "Wed Mar 16 13:31:11 François's Mac mini jamf[2874]: Installing Success021-0.21.pkg...",
-        "Wed Mar 16 13:31:14 François's Mac mini jamf[2874]: Successfully installed Success021-0.21.pkg.",
-        "Wed Mar 16 13:31:15 François's Mac mini jamf[2874]: Installing Failed153-1.5.3.pkg...",
-        "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is Failed153-1.5.3",
-        "Wed Mar 16 13:31:11 François's Mac mini jamf[2874]: Installing Installing022-0.22.pkg...",
-        ]
-
-        let fileHandle = FileHandle(forReadingAtPath: path!)
-        XCTAssertEqual((fileHandle?.readLines()!)!, output)
-    }
-    
-//    func testReadFromFile_CanParseSoftwareFromFile() {
-//        let path = Bundle(for: type(of: self)).path(forResource: "jamf_1", ofType: "txt")
-//        
-//        struct software {
-//            let name: String
-//            let version: String
-//            let status: Software.SoftwareStatus
-//            
-//        }
-//        let output = [
-//            software.init(name: "Success021", version: "0.21", status: .success),
-//            software.init(name: "Failed153", version: "1.5.3", status: .failed),
-//            software.init(name: "Installing022", version: "0.22", status: .installing)
-//        ]
-//        let fileHandle = FileHandle(forReadingAtPath: path!)
-//        let results = fileToSoftware(fileHandle!)
-//
-//        for (index, item) in output.enumerated() {
-//            XCTAssertEqual(results[index].packageName, item.name)
-//            XCTAssertEqual(results[index].packageVersion, item.version)
-//            XCTAssertEqual(results[index].status, item.status)
-//            XCTAssertEqual(results[index].icon, NSImage(named: NSImageNameFolder))
-//            XCTAssertNil(results[index].displayName)
-//            XCTAssertNil(results[index].desc)
-//            XCTAssertEqual(results[index].canContinue, true)
-//        }
-//
-//    }
-    
     func testReadFromFile_NonExistentFile() {
         let path = "/nonexistent"
         let fileHandle = FileHandle(forReadingAtPath: path)

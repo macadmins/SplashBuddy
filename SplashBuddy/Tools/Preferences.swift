@@ -16,11 +16,10 @@ class Preferences {
     
     
     static let sharedInstance = Preferences()
-    public let logFileHandle: FileHandle?
+    internal var logFileHandle: FileHandle?
     public var doneParsingPlist: Bool = false
     
     internal let userDefaults: UserDefaults
-    internal let jamfLog = "/var/log/jamf.log"
     
 
     
@@ -34,7 +33,6 @@ class Preferences {
         
         self.userDefaults = nsUserDefaults
         
-        self.logFileHandle = Preferences.getFileHandle()
         
         // Do not change asset path (see comment on var assetPath: URL below)
         // TSTAssetPath is meant for unit testing only.
@@ -44,12 +42,44 @@ class Preferences {
             self.assetPath = URL(fileURLWithPath: "/Library/Application Support/SplashBuddy", isDirectory: true)
         }
         
+        // TSTJamfLog is meant for unit testing only.
+        if let jamfLogPath: String = self.userDefaults.string(forKey: "TSTJamfLog") {
+            self.logFileHandle = self.getFileHandle(from: jamfLogPath)
+        } else {
+            self.logFileHandle = self.getFileHandle()
+        }
         
         
         
+        // Start parsing the log file
+        
+        guard let logFileHandle = self.logFileHandle else {
+            Log.write(string: "Cannot check logFileHandle", cat: "Preferences", level: .error)
+            return
+        }
+        
+        logFileHandle.readabilityHandler = { fileHandle in
+            
+            let data = fileHandle.readDataToEndOfFile()
+            
+            guard let string = String(data: data, encoding: .utf8) else {
+                return
+            }
+            
+            for line in string.split(separator: "\n") {
+                
+                if let software = Software(from: String(line)) {
+                    
+                    DispatchQueue.main.async {
+                        SoftwareArray.sharedInstance.array.modify(with: software)
+                        
+                    }
+                }
+            }
+        }
     }
     
-    static internal func getFileHandle(from file: String = "/var/log/jamf.log") -> FileHandle? {
+    internal func getFileHandle(from file: String = "/var/log/jamf.log") -> FileHandle? {
         do {
             return try FileHandle(forReadingFrom: URL(fileURLWithPath: file, isDirectory: false))
         } catch {

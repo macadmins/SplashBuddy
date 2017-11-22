@@ -29,6 +29,9 @@ class PreferencesTests: XCTestCase {
         assetPath = Bundle(for: type(of: self)).bundlePath + "/Contents/Resources"
         testUserDefaults!.set(assetPath, forKey: "TSTAssetPath")
         
+        let testJamfLog = Bundle(for: type(of: self)).path(forResource: "jamf_1", ofType: "txt")
+        testUserDefaults!.set(testJamfLog, forKey: "TSTJamfLog")
+        
         testPrefs = Preferences(nsUserDefaults: testUserDefaults)
         
         
@@ -49,14 +52,8 @@ class PreferencesTests: XCTestCase {
     // MARK: - File Handle
     //-----------------------------------------------------------------------------------
     
-    func testFileHandle() {
-        FileManager.default.createFile(atPath: "tempLog", contents: nil, attributes: nil)
-        let fileHandle = Preferences.getFileHandle(from: "tempLog")
-        XCTAssertNotNil(fileHandle)
-        _ = try? FileManager.default.removeItem(atPath: "tempLog")
-        let nilFileHandle = Preferences.getFileHandle(from: "tempLog")
-        XCTAssertNil(nilFileHandle)
-    }
+
+    
     
     
     //-----------------------------------------------------------------------------------

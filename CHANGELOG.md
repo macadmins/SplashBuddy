@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [1.2]
+
+### Added
+
+### Changed
+
+* Better and faster parsing of the `/var/log/jamf.log`
+
+### Fixed
+
 ## [1.1]
 
 ### Added
