@@ -104,7 +104,6 @@
 		47725E261EEF267A0007540C /* chrome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrome.png; sourceTree = "<group>"; };
 		47725E271EEF267A0007540C /* enterpriseconnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enterpriseconnect.png; sourceTree = "<group>"; };
 		47725E291EEF267A0007540C /* presentation.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = presentation.bundle; sourceTree = "<group>"; };
-		47725E2A1EEF267A0007540C /* SplashBuddy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = SplashBuddy.app; sourceTree = "<group>"; };
 		47725E2B1EEF267A0007540C /* SplashBuddy.launch.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SplashBuddy.launch.sh; sourceTree = "<group>"; };
 		47725E2C1EEF267A0007540C /* textmate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textmate.png; sourceTree = "<group>"; };
 		47725E2E1EEF267A0007540C /* io.fti.SplashBuddy.launch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = io.fti.SplashBuddy.launch.plist; sourceTree = "<group>"; };
@@ -255,7 +254,6 @@
 				47725E261EEF267A0007540C /* chrome.png */,
 				47725E271EEF267A0007540C /* enterpriseconnect.png */,
 				47725E291EEF267A0007540C /* presentation.bundle */,
-				47725E2A1EEF267A0007540C /* SplashBuddy.app */,
 				47725E2B1EEF267A0007540C /* SplashBuddy.launch.sh */,
 				47725E2C1EEF267A0007540C /* textmate.png */,
 			);

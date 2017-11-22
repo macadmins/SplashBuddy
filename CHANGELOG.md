@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 * Better and faster parsing of the `/var/log/jamf.log`
+* Better `presentation.bundle`, courtesy of @smithjw 
 
 ### Fixed
 

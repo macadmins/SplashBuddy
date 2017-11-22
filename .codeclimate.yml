@@ -1,0 +1,2 @@
+exclude_patterns:
+- "Installer/payload/Library/Application\ Support/SplashBuddy/presentation.bundle/common/"
