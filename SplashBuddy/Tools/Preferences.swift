@@ -148,6 +148,13 @@ class Preferences {
         }
     }
     
+    /// set to `true` to enable Big Notification
+    public var labMode: Bool {
+        get {
+            return self.userDefaults.bool(forKey: "labMode")
+        }
+    }
+    
     //-----------------------------------------------------------------------------------
     // MARK: - HTML Path
     //-----------------------------------------------------------------------------------
@@ -168,6 +175,13 @@ class Preferences {
     public var html: URL? {
         get {
             return self.assetBundle?.url(forResource: "index", withExtension: "html")
+        }
+    }
+    
+    /// Returns `complete.html` with the right localization
+    public var labComplete: URL? {
+        get {
+            return self.assetBundle?.url(forResource: "complete", withExtension: "html")
         }
     }
  
