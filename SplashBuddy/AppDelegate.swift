@@ -80,7 +80,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                       level: .error)
         }
         
+        // Clear all global tag files
         
+        Preferences.sharedInstance.allInstalled = false
+        Preferences.sharedInstance.allSuccessfullyInstalled = false
+        Preferences.sharedInstance.criticalDone = false
+        Preferences.sharedInstance.errorWhileInstalling = false
         
     }
     

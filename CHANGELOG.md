@@ -9,10 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+* `/var/tmp/SplashBuddy/` with more tag files : `CriticalDone` (All critical softwares are installed), `ErrorWhileInstalling` (Errors while installing), `AllInstalled` (All software is installed (failed or success)), `AllSuccessfullyInstalled` (All software is sucessfully installed).
+
 ### Changed
 
 * Better and faster parsing of the `/var/log/jamf.log`
-* Better `presentation.bundle`, courtesy of @smithjw 
+* Better `presentation.bundle`, courtesy of @smithjw
+* New exception in entitlements: `com.apple.security.temporary-exception.files.absolute-path.read-write` for `/private/tmp/SplashBuddy`
 
 ### Fixed
 

@@ -39,6 +39,8 @@ extension MainViewController {
     
     /// sets the status label to display an error
     @objc func errorWhileInstalling() {
+        Preferences.sharedInstance.errorWhileInstalling = true
+        
         guard let error = SoftwareArray.sharedInstance.localizedErrorStatus else {
             return
         }
@@ -48,18 +50,20 @@ extension MainViewController {
 
     /// all critical software is installed
     @objc func canContinue() {
-        Preferences.sharedInstance.setupDone = true
+        Preferences.sharedInstance.criticalDone = true
         self.continueButton.isEnabled = true
     }
     
     /// all software is installed (failed or success)
     @objc func doneInstalling() {
+        Preferences.sharedInstance.allInstalled = true
         indeterminateProgressIndicator.stopAnimation(self)
         indeterminateProgressIndicator.isHidden = true
     }
     
     /// all software is sucessfully installed
     @objc func allSuccess() {
+        Preferences.sharedInstance.allSuccessfullyInstalled = true
         statusLabel.textColor = .labelColor
         statusLabel.stringValue = Preferences.sharedInstance.continueAction.localizedSuccessStatus
     }

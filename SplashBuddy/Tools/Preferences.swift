@@ -177,7 +177,7 @@ class Preferences {
     //-----------------------------------------------------------------------------------
     
     
-    /// All critical software are installed
+    /// All softwares are installed
     var setupDone: Bool {
         get {
             return FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone")
@@ -199,7 +199,114 @@ class Preferences {
         }
     }
     
+    private enum TagFile: String {
+        case CriticalDone
+        case ErrorWhileInstalling
+        case AllInstalled
+        case AllSuccessfullyInstalled
+    }
     
+    private func createSplashBuddyTmpIfNeeded() {
+        var YES: ObjCBool = true
+        if !FileManager.default.fileExists(atPath: "/private/tmp/SplashBuddy/", isDirectory: &YES)  {
+            do {
+                try FileManager.default.createDirectory(atPath: "/private/tmp/SplashBuddy",
+                                                        withIntermediateDirectories: false,
+                                                        attributes: [
+                                                            .groupOwnerAccountID: 20,
+                                                            .posixPermissions: 0o777,
+                                                            ])
+                
+            } catch {
+                Log.write(string: "Cannot create /private/tmp/SplashBuddy/",
+                          cat: "Preferences",
+                          level: .error)
+                fatalError("Cannot create /private/tmp/SplashBuddy/")
+            }
+        }
+    }
+    
+    private func checkTagFile(named: TagFile) -> Bool {
+        return FileManager.default.fileExists(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue))
+    }
+    
+    private func createOrDeleteTagFile(named: TagFile, create: Bool) {
+        
+        createSplashBuddyTmpIfNeeded()
+        
+        if create == true {
+            if FileManager.default.createFile(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue),
+                                           contents: nil,
+                                           attributes: [
+                                            .groupOwnerAccountID: 20,
+                                            .posixPermissions: 0o777,
+                                            ]) {
+                Log.write(string: "Created .".appending(named.rawValue),
+                          cat: "Preferences",
+                          level: .info)
+            } else {
+                Log.write(string: "Couldn't create .".appending(named.rawValue),
+                          cat: "Preferences",
+                          level: .error)
+            }
+
+        } else {
+            do {
+                try FileManager.default.removeItem(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue))
+            } catch {
+                Log.write(string: "Couldn't remove .".appending(named.rawValue),
+                          cat: "Preferences",
+                          level: .info)
+            }
+            
+        }
+    }
+    
+    /// All critical softwares are installed
+    var criticalDone: Bool {
+        get {
+                return checkTagFile(named: .CriticalDone)
+        }
+        
+        set(myValue) {
+            createOrDeleteTagFile(named: .CriticalDone, create: myValue)
+        }
+    }
+    
+    /// Errors while installing
+    var errorWhileInstalling: Bool {
+        get {
+            return checkTagFile(named: .ErrorWhileInstalling)
+        }
+        
+        set(myValue) {
+            createOrDeleteTagFile(named: .ErrorWhileInstalling, create: myValue)
+        }
+    }
+    
+    
+    /// all software is installed (failed or success)
+    var allInstalled: Bool {
+        get {
+            return checkTagFile(named: .AllInstalled)
+        }
+        
+        set(myValue) {
+            createOrDeleteTagFile(named: .AllInstalled, create: myValue)
+        }
+    }
+    
+    /// all software is sucessfully installed
+    var allSuccessfullyInstalled: Bool {
+        get {
+            return checkTagFile(named: .AllSuccessfullyInstalled)
+        }
+        
+        set(myValue) {
+            createOrDeleteTagFile(named: .AllSuccessfullyInstalled, create: myValue)
+        }
+    }
+
     
     //-----------------------------------------------------------------------------------
     // MARK: - Software

@@ -127,7 +127,6 @@
 		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
 		81D9D7301E69ABE4008ED3F5 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentScroller.swift; sourceTree = "<group>"; };
-		D9894FEA1F1CE5CA00DF7F42 /* BackgroundWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BackgroundWindow.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +160,6 @@
 				08AC4F751D520A3200CAB019 /* SplashBuddyTestAssets */,
 				089D292F1D50D12200E58C6D /* SplashBuddyTests */,
 				089D291E1D50D12200E58C6D /* Products */,
-				47B8350C1F587E0C00E4B426 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -282,14 +280,6 @@
 				47725E321EEF267A0007540C /* postinstall */,
 			);
 			path = scripts;
-			sourceTree = "<group>";
-		};
-		47B8350C1F587E0C00E4B426 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				D9894FEA1F1CE5CA00DF7F42 /* BackgroundWindow.storyboard */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		47CFADE91E68049600356D11 /* Views */ = {
