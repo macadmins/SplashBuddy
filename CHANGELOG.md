@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 * `/var/tmp/SplashBuddy/` with more tag files : `CriticalDone` (All critical softwares are installed), `ErrorWhileInstalling` (Errors while installing), `AllInstalled` (All software is installed (failed or success)), `AllSuccessfullyInstalled` (All software is sucessfully installed).
+* With `labMode` set to `true`, SplashBuddy will automatically display `complete.html` from `presentation.bundle` when all software is done installing (successfully or not) -- thank you @howardgmac
 
 ### Changed
 

@@ -59,6 +59,15 @@ extension MainViewController {
         Preferences.sharedInstance.allInstalled = true
         indeterminateProgressIndicator.stopAnimation(self)
         indeterminateProgressIndicator.isHidden = true
+        if (Preferences.sharedInstance.labMode) {
+            self.sidebarView.isHidden = true
+            if let labComplete = Preferences.sharedInstance.labComplete {
+                self.webView.loadFileURL(labComplete, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+            } else {
+                let errorMsg = NSLocalizedString("Please create a complete.html file in your presentation.bundle located in /Library/Application Support/SplashBuddy", comment: "Displayed when cannot load HTML bundle")
+                self.webView.loadHTMLString(errorMsg, baseURL: nil)
+            }
+        }
     }
     
     /// all software is sucessfully installed
