@@ -2,8 +2,7 @@
 //  Software.swift
 //  SplashBuddy
 //
-//  Created by ftiff on 02/08/16.
-//  Copyright © 2016 François Levaux-Tiffreau. All rights reserved.
+//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
 //
 
 import Cocoa
@@ -26,15 +25,12 @@ class Software: NSObject {
      Default is .pending, other cases will be set while parsing the log
      */
     @objc enum SoftwareStatus: Int {
-        
         case installing = 0
         case success = 1
         case failed = 2
         case pending = 3
     }
-    
-    
-    
+
     @objc dynamic var packageName: String
     @objc dynamic var packageVersion: String?
     @objc dynamic var status: SoftwareStatus
@@ -44,7 +40,6 @@ class Software: NSObject {
     @objc dynamic var canContinue: Bool
     @objc dynamic var displayToUser: Bool
 
-    
     /**
      Manually initializes a Software Object
      
@@ -58,8 +53,7 @@ class Software: NSObject {
      - parameter canContinue: if set to false, the Software will block the "Continue" button until installed
      - parameter displayToUser: set to True to display in GUI
      */
-    
-    
+
     init(packageName: String,
          version: String? = nil,
          status: SoftwareStatus = .pending,
@@ -68,7 +62,7 @@ class Software: NSObject {
          description: String? = nil,
          canContinue: Bool = true,
          displayToUser: Bool = false) {
-        
+
         self.packageName = packageName
         self.packageVersion = version
         self.status = status
@@ -76,17 +70,14 @@ class Software: NSObject {
         self.displayToUser = displayToUser
         self.displayName = displayName
         self.desc = description
-        
+
         if let iconPath = iconPath {
             self.icon = NSImage(contentsOfFile: iconPath)
         } else {
             self.icon = NSImage(named: NSImage.Name.folder)
         }
-        
-
-        
     }
-    
+
     /**
      Initializes a Software Object from a String
      
@@ -101,24 +92,23 @@ class Software: NSObject {
      - parameter displayToUser: set to True to display in GUI
      */
     convenience init?(from line: String) {
-        
+
         var name: String?
         var version: String?
         var status: SoftwareStatus?
-        
+
         for (regexStatus, regex) in initRegex() {
-            
             status = regexStatus
-            
-            let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.characters.count))
-            
+
+            let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.count))
+
             if !matches.isEmpty {
                 name = (line as NSString).substring(with: matches[0].range(at: 1))
                 version = (line as NSString).substring(with: matches[0].range(at: 2))
                 break
             }
         }
-        
+
         if let packageName = name, let packageVersion = version, let packageStatus = status {
             self.init(packageName: packageName, version: packageVersion, status: packageStatus)
         } else {
@@ -131,8 +121,3 @@ class Software: NSObject {
 func == (lhs: Software, rhs: Software) -> Bool {
     return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
 }
-
-
-
-
-
