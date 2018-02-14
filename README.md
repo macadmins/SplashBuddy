@@ -4,9 +4,8 @@
 ![](https://img.shields.io/badge/macOS-10.13-brightgreen.svg)
 
 
-![](https://img.shields.io/badge/Version-1.0-lightgrey.svg)
+![](https://img.shields.io/badge/Version-1.2-lightgrey.svg)
 ![](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)
-[![Support](https://supporterhq.com/api/b/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy)](https://supporterhq.com/support/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy)
 
 # SplashBuddy
 
@@ -22,9 +21,9 @@ It currently supports Jamf Pro. You're welcome to [contribute](https://github.co
 
 ## In action
 
-Here's a video of the SplashBuddy running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/) (Click on the image).
+![](Assets/secrid_splashbuddy.png)
 
-[![](Assets/CultureAmp-MBP.png)](https://cultureamp.wistia.com/medias/8gpvhpwgn4)
+Here's a video of the SplashBuddy (v1.0) running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/): [Link](https://cultureamp.wistia.com/medias/8gpvhpwgn4).
 
 ## Quick Start
 
