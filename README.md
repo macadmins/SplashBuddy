@@ -21,7 +21,7 @@ It currently supports Jamf Pro. You're welcome to [contribute](https://github.co
 
 ## In action
 
-![](Assets/secrid_splashbuddy.png)
+![](Assets/secrid_splashbuddy.jpeg)
 
 Here's a video of the SplashBuddy (v1.0) running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/): [Link](https://cultureamp.wistia.com/medias/8gpvhpwgn4).
 
