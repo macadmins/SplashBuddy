@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/macOS-10.13-brightgreen.svg)
 
 
-![](https://img.shields.io/badge/Version-1.2-lightgrey.svg)
+![](https://img.shields.io/badge/Version-1.2.0-lightgrey.svg)
 ![](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)
 
 # SplashBuddy
