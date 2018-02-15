@@ -4,9 +4,8 @@
 ![](https://img.shields.io/badge/macOS-10.13-brightgreen.svg)
 
 
-![](https://img.shields.io/badge/Version-1.0-lightgrey.svg)
+![](https://img.shields.io/badge/Version-1.2.0-lightgrey.svg)
 ![](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)
-[![Support](https://supporterhq.com/api/b/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy)](https://supporterhq.com/support/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy)
 
 # SplashBuddy
 
@@ -22,9 +21,9 @@ It currently supports Jamf Pro. You're welcome to [contribute](https://github.co
 
 ## In action
 
-Here's a video of the SplashBuddy running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/) (Click on the image).
+![](Assets/secrid_splashbuddy.jpeg)
 
-[![](Assets/CultureAmp-MBP.png)](https://cultureamp.wistia.com/medias/8gpvhpwgn4)
+Here's a video of the SplashBuddy (v1.0) running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/): [Link](https://cultureamp.wistia.com/medias/8gpvhpwgn4).
 
 ## Quick Start
 
@@ -47,11 +46,6 @@ The best place to discuss SplashBuddy is to join the `#splashbuddy` channel on t
 
 ## Contributing
 
-If you use SplashBuddy, please consider [donating](https://supporterhq.com/support/ahkcfnbm4sib0djpa9xhee78p/SplashBuddy). If you can, use [Bitcoin](bitcoin:1McfDZyLxvPzq5Pc1aMysWHxEDxP2gABeo) as there are no fees. Goals of the donation is to get a lump of money we can use to pay for specific developments and events. I (ftiff) have been working countless hours at night for two years to bring SplashBuddy to life. [Many others](https://github.com/ftiff/SplashBuddy/blob/master/THANKS.md) invested time in it too. 
+I (ftiff) have been working countless hours at night for two years to bring SplashBuddy to life. [Many others](https://github.com/ftiff/SplashBuddy/blob/master/THANKS.md) invested time in it too. 
 
-We need money to:
-- [ ] Get a one-day code review of SplashBuddy by an experienced Mac software developer ($500)
-- [ ] Pay for a venue for JNUC'17 [SplashBuddy Jumpstart](https://www.jamf.com/jamf-nation/events/jnuc/2017/289/splashbuddy-jumpstart?view=info) ($?)
-- [ ] Fund a second open source project for MacAdmins ($2000)
-
-You can also contribute in [other ways](https://github.com/ftiff/SplashBuddy/blob/master/CONTRIBUTING.md).
+You can also [contribute](https://github.com/ftiff/SplashBuddy/blob/master/CONTRIBUTING.md) and be part of this list.
