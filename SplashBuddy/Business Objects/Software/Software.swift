@@ -100,7 +100,7 @@ class Software: NSObject {
         for (regexStatus, regex) in initRegex() {
             status = regexStatus
 
-            let matches = regex!.matches(in: line, options: [], range: NSMakeRange(0, line.count))
+            let matches = regex!.matches(in: line, options: [], range: NSRange(location: 0, length: line.count))
 
             if !matches.isEmpty {
                 name = (line as NSString).substring(with: matches[0].range(at: 1))
