@@ -125,10 +125,7 @@ struct ContinueButton {
                     Log.write(string: error.localizedDescription, cat: "ContinueAction", level: .error)
                 }
 
-            case .hidden:
-                fallthrough
-
-            case .quit:
+            case .hidden, .quit:
                 NSApplication.shared.terminate(self)
 
             default:
