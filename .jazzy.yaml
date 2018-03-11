@@ -1,9 +1,9 @@
-module: CasperSplash
+module: SplashBuddy
 author: François Levaux-Tiffreau
 author_url: https://maclovin.org
-github_url: https://github.com/ftiff/CasperSplash
+github_url: https://github.com/ShufflePuck/SplashBuddy
 copyright: 'GPLv3'
-xcodebuild_arguments: [-target, CasperSplash]
+xcodebuild_arguments: [-target, SplashBuddy]
 clean: true
 min_acl: private
 skip_undocumented: true

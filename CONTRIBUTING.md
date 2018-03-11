@@ -1,6 +1,6 @@
-👏🏼💕😎 Thanks for taking the time to contribute!! 😎💕👏🏼
-
 # Contributing Guide
+
+👏🏼💕😎 Thanks for taking the time to contribute!! 😎💕👏🏼
 
 ## What should I know before starting?
 
@@ -25,20 +25,20 @@ By *secure* we mean:
 
 ### Contributing to localizations
 
-Please [create an issue](https://github.com/ftiff/SplashBuddy/issues/new) if a localization is incorrect, incomplete or missing.
+Please [create an issue](https://github.com/Shufflepuck/SplashBuddy/issues/new) if a localization is incorrect, incomplete or missing.
 
 ### Contributing to documentation
 
-The [wiki](https://github.com/ftiff/SplashBuddy/wiki) is open to edit for everyone. Don't hesitate to modify it!
+The [wiki](https://github.com/Shufflepuck/SplashBuddy/wiki) is open to edit for everyone. Don't hesitate to modify it!
 
-Please ask for help in the Slack channel (see below) or [create an issue](https://github.com/ftiff/SplashBuddy/issues/new) if you're uncertain.
+Please ask for help in the Slack channel (see below) or [create an issue](https://github.com/Shufflepuck/SplashBuddy/issues/new) if you're uncertain.
 
 ### Contributing to code
 
 Please create a pick a topic in the issues section:
 
-* [Beginner issues](https://github.com/ftiff/SplashBuddy/labels/beginner) - issues which should only require a few lines of code, and a test or two.
-* [Help wanted issues](https://github.com/ftiff/SplashBuddy/labels/help%20wanted) - issues which should be a bit more involved than `beginner` issues.
+* [Beginner issues](https://github.com/Shufflepuck/SplashBuddy/labels/beginner) - issues which should only require a few lines of code, and a test or two.
+* [Help wanted issues](https://github.com/Shufflepuck/SplashBuddy/labels/help%20wanted) - issues which should be a bit more involved than `beginner` issues.
 
 Please start from `master` branch and create a PR when you're ready to submit the code.
 

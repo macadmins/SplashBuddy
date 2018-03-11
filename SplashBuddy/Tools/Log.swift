@@ -2,8 +2,7 @@
 //  Log.swift
 //  SplashBuddy
 //
-//  Created by Morgan, Tyler on 3/3/17.
-//  Copyright © 2017 François Levaux-Tiffreau. All rights reserved.
+//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
 //
 
 import Foundation
@@ -12,12 +11,12 @@ import os
 /**
  Performs logging using os_log if on 10.12.x or newer, or NSLog if on older versions.
  
-  - authors: Tyler Morgan
-  - note: This is only going to be used until 10.11 is no longer supported in the environments.
-  - version: 1.0.0
+ - authors: Tyler Morgan
+ - note: This is only going to be used until 10.11 is no longer supported in the environments.
+ - version: 1.0.0
  */
 class Log {
-    
+
     /**
      Used in conjunction with OSLogType to produce the correct log type for OSLog, but also provide the same level of logging for NSLog as well.
      */
@@ -28,9 +27,9 @@ class Log {
      Writes to the log using the correct logging methods for the OS.
      
      - parameters:
-        -   string: A string that will be entered into the log
-        -   cat: The category of the logging, like UI, Foundation, etc.
-        -   level: The level of the logging; info, debug, error, fault. Leave blank for default logging.
+     -   string: A string that will be entered into the log
+     -   cat: The category of the logging, like UI, Foundation, etc.
+     -   level: The level of the logging; info, debug, error, fault. Leave blank for default logging.
      */
     static func write(string: String, cat: String, level: Level?) {
         let appName = "io.fti.SplashBuddy"

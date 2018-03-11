@@ -1,15 +1,15 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-
 ## [1.2]
 
 ### Added
 
-* `/var/tmp/SplashBuddy/` with more tag files : `CriticalDone` (All critical softwares are installed), `ErrorWhileInstalling` (Errors while installing), `AllInstalled` (All software is installed (failed or success)), `AllSuccessfullyInstalled` (All software is sucessfully installed).
+* `/var/tmp/SplashBuddy/` with more tag files : `criticalDone` (All critical softwares are installed), `errorWhileInstalling` (Errors while installing), `allInstalled` (All software is installed (failed or success)), `allSuccessfullyInstalled` (All software is sucessfully installed).
 * With `labMode` set to `true`, SplashBuddy will automatically display `complete.html` from `presentation.bundle` when all software is done installing (successfully or not) -- thank you @howardgmac
 
 ### Changed
@@ -30,12 +30,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Italian localization
 
 ### Changed
+
 * Brand new Layout!
 * Added Temporary exception to sandbox to allow sending Apple Events to Login Window (to restart etc.)
 * Continue button can now be hidden
 * Moved Userinput on a separate branch. Feature is not ready for 1.1
 
 ### Fixed
+
 * `.SplashBuddyDone` will be set when all critical items are done (`canContinue` = `false`) (@LovelessInSeattle)
 * A failed item will no longer activate continue button (@LovelessInSeattle)
 
@@ -86,19 +88,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Disable relaunch on login. This should be controlled by a LaunchAgent. (thanks @grahamrpugh)
 * Background window now stays in front of Dock (thanks @jwojda)
 
-# Contributors
+## Contributors
 
 ## Code
 
-- François 'ftiff' Levaux-Tiffreau (@ftiff)
-- @cybertunnel
-- Joel Rennich (@mactroll)
-
+* François 'ftiff' Levaux-Tiffreau (@ftiff)
+* @cybertunnel
+* Joel Rennich (@mactroll)
 
 ## Localization
 
-- French (fr): François Levaux-Tiffreau (@ftiff)
-- Dutch (nl): @riddl0rd, @thomasb
-- German (de): Mic Milic Frederickx (@kermic)
-
-
+* French (fr): François Levaux-Tiffreau (@ftiff)
+* Dutch (nl): @riddl0rd, @thomasb
+* German (de): Mic Milic Frederickx (@kermic)
