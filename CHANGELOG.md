@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.1]
+
+### Fixed
+
+* Typo in the release note that could be confusing
+
 ## [1.2]
 
 ### Added
 
-* `/var/tmp/SplashBuddy/` with more tag files : `criticalDone` (All critical softwares are installed), `errorWhileInstalling` (Errors while installing), `allInstalled` (All software is installed (failed or success)), `allSuccessfullyInstalled` (All software is sucessfully installed).
+* `/private/tmp/SplashBuddy/` with more tag files : `criticalDone` (All critical softwares are installed), `errorWhileInstalling` (Errors while installing), `allInstalled` (All software is installed (failed or success)), `allSuccessfullyInstalled` (All software is sucessfully installed).
 * With `labMode` set to `true`, SplashBuddy will automatically display `complete.html` from `presentation.bundle` when all software is done installing (successfully or not) -- thank you @howardgmac
 
 ### Changed
@@ -17,8 +23,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Better and faster parsing of the `/var/log/jamf.log`
 * Better `presentation.bundle`, courtesy of @smithjw
 * New exception in entitlements: `com.apple.security.temporary-exception.files.absolute-path.read-write` for `/private/tmp/SplashBuddy`
-
-### Fixed
 
 ## [1.1]
 

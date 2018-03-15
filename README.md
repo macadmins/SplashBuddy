@@ -5,7 +5,7 @@
 ![macOS](https://img.shields.io/badge/macOS-10.12.6-brightgreen.svg)
 ![macOS](https://img.shields.io/badge/macOS-10.13-brightgreen.svg)
 
-![Version](https://img.shields.io/badge/Version-1.2.0-lightgrey.svg)
+![Version](https://img.shields.io/badge/Version-1.2.1-lightgrey.svg)
 ![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)
 
 SplashBuddy goal is to provide an *elegant* and *secure* onboarding process for Mac users using [DEP](https://www.apple.com/business/dep/).
