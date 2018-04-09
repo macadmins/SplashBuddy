@@ -1,0 +1,7 @@
+included:
+- SplashBuddy
+
+line_length: 200
+
+opt_in_rules:
+- empty_count

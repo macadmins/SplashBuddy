@@ -2,8 +2,7 @@
 //  LoginWindow.swift
 //  SplashBuddy
 //
-//  Created by Francois Levaux on 28.07.17.
-//  Copyright © 2017 François Levaux-Tiffreau. All rights reserved.
+//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
 //
 
 import Cocoa
@@ -11,30 +10,29 @@ import Cocoa
 class LoginWindow {
 
     static func sleep() throws {
-        Log.write(string: "System will Sleep", cat: .LoginWindowEvent, level: .info)
+        Log.write(string: "System will Sleep", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAESleep)
     }
-    
+
     static func shutdown() throws {
-        Log.write(string: "System will Shutdown", cat: .LoginWindowEvent, level: .info)
+        Log.write(string: "System will Shutdown", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAEShutDown)
     }
-    
+
     static func logout() throws {
-        Log.write(string: "System will Logout user", cat: .LoginWindowEvent, level: .info)
+        Log.write(string: "System will Logout user", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAEReallyLogOut)
     }
-    
+
     static func restart() throws {
-        Log.write(string: "System will Restart", cat: .LoginWindowEvent, level: .info)
+        Log.write(string: "System will Restart", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAERestart)
     }
-    
 
     static private func sendEvent(eventCode: OSType) throws {
         // https://developer.apple.com/library/content/qa/qa1134/_index.html
         // https://stackoverflow.com/questions/37783016/sending-appleevent-fails-with-sandbox
-        
+
         /*
          * You must have the following exeptions in your .entitlements file:
          *
@@ -44,19 +42,19 @@ class LoginWindow {
          *  </array>
          *
          */
-        
+
         var kPSNOfSystemProcess = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kSystemProcess))
         var targetDesc = AEAddressDesc()
         var status = OSStatus()
         var error = OSErr()
-        
+
         error = AECreateDesc(keyProcessSerialNumber, &kPSNOfSystemProcess, MemoryLayout<ProcessSerialNumber>.size, &targetDesc)
-        
+
         if error != noErr {
-            Log.write(string: "Error creating Desc", cat: .LoginWindowEvent, level: .error)
+            Log.write(string: "Error creating Desc", cat: "LoginWindowEvent", level: .error)
             throw NSError(domain: "AECreateDesc", code: Int(error), userInfo: nil)
         }
-        
+
         var event = AppleEvent()
         error = AECreateAppleEvent(kCoreEventClass,
                                    eventCode,
@@ -64,26 +62,26 @@ class LoginWindow {
                                    AEReturnID(kAutoGenerateReturnID),
                                    AETransactionID(kAnyTransactionID),
                                    &event)
-        
+
         if error != noErr {
-            Log.write(string: "Error creating AppleEvent", cat: .LoginWindowEvent, level: .error)
+            Log.write(string: "Error creating AppleEvent", cat: "LoginWindowEvent", level: .error)
             throw NSError(domain: "AECreateAppleEvent", code: Int(error), userInfo: nil)
         }
-        
+
         AEDisposeDesc(&targetDesc)
 
         var reply = AppleEvent()
-        
+
         status = AESendMessage(&event,
                                &reply,
                                AESendMode(kAENoReply),
                                1000)
-        
+
         if status != OSStatus(0) {
-            Log.write(string: "Error sending AppleEvent", cat: .LoginWindowEvent, level: .error)
+            Log.write(string: "Error sending AppleEvent", cat: "LoginWindowEvent", level: .error)
             throw NSError(domain: "AESendMessage", code: Int(status), userInfo: nil)
         }
-        
+
         AEDisposeDesc(&event)
         AEDisposeDesc(&reply)
     }

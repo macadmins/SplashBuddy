@@ -1,12 +1,54 @@
-/* More than one application failed to install */
-"Some applications failed to install. Support has been notified." = "Plusieurs applications n'ont pas pu être installées. Le support a été notifié.";
-
 /* A specific application failed to install */
-"%@ failed to install. Support has been notified." = "%@ n'a pas pu être installé. Le support a été notifié.";
+"%@ failed to install. Support has been notified." = "%@ n'a pu être installé. Le support a été notifié.";
+
+/* Everything was ok. There's no button. An automated action will happen (like force restart) */
+"All applications were installed. Finishing installation…" = "Toutes les applications ont été installées. Fin de l'installation…";
+
+/* (No Comment) */
+"All applications were installed. Please click continue." = "Toutes les applications ont été installées. Veuillez cliquer sur Continuer.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Continue." = "Toutes les applications ont été installées. Veuillez cliquer sur Continuer.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Logout." = "Toutes les applications ont été installées. Veuillez cliquer sur Fermer la session.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Quit." = "Toutes les applications ont été installées. Veuillez cliquer sur Quitter.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Restart." = "Toutes les applications ont été installées. Veuillez cliquer sur Redémarrer.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Shutdown." = "Toutes les applications ont été installées. Veuillez cliquer sur Éteindre.";
 
 /* One (unnamed) application failed to install */
 "An application failed to install. Support has been notified." = "Une application n'a pu être installée. Le support a été notifié.";
 
-"All applications were installed. Please click continue." = "Toutes les applications ont été installées. Veuillez cliquer sur Continuer.";
+/* Label of the button for Continue */
+"Continue" = "Continuer";
 
-"Installing…" = "Installing…";
+/* (No Comment) */
+"Installing…" = "Installation…";
+
+/* Label of the button for Logout */
+"Logout" = "Fermer la session";
+
+/* Displayed when cannot load HTML bundle */
+"Please create a bundle in /Library/Application Support/SplashBuddy" = "Veuillez créer un bundle dans /Library/Application Support/SplashBuddy";
+
+/* Label of the button for Quit */
+"Quit" = "Quitter";
+
+/* Label of the button for Restart */
+"Restart" = "Redémarrer";
+
+/* Label of the button for Shutdown */
+"Shutdown" = "Éteindre";
+
+/* More than one application failed to install */
+"Some applications failed to install. Support has been notified." = "Plusieurs applications n'ont pu être installées. Le support a été notifié.";
+
+/* Displayed above progress bar */
+"We are preparing your Mac…" = "Nous préparons votre Mac…";
+

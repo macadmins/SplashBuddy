@@ -1,4 +1,6 @@
-# Community
+# Thanks
+
+## Community
 
 A huge thanks to the community on #SplashBuddy on the MacAdmins Slack, and especially:
 
@@ -15,23 +17,19 @@ A huge thanks to the community on #SplashBuddy on the MacAdmins Slack, and espec
 - @rudy 🏈
 - @smithjw 🕺
 
-
-
-# Code
+## Code
 
 - François 'ftiff' Levaux-Tiffreau (@ftiff)
 - @cybertunnel
 - Joel Rennich (@mactroll)
 
-
-# Localization
+## Localization
 
 - French (fr): François Levaux-Tiffreau (@ftiff)
 - Dutch (nl): @riddl0rd, @thomasb
-- German (de): Mic Milic Frederickx (@kermic)
+- German (de): Mic Milic Frederickx (@kermic), Christoph Fellner (@christophf)
 
-
-# Similar projects
+## Similar projects
 
 - IBM
 - ProgressScreen

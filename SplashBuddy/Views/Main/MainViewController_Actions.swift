@@ -2,82 +2,77 @@
 //  MainViewController_Actions.swift
 //  SplashBuddy
 //
-//  Created by Francois Levaux on 02.03.17.
-//  Copyright © 2017 François Levaux-Tiffreau. All rights reserved.
+//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
 //
 
 import Foundation
 
 extension MainViewController {
-    
-    @objc func setupInstalling() {
+
+    /// User pressed the continue (or restart, logout…) button
+    @IBAction func pressedContinueButton(_ sender: AnyObject) {
+        Preferences.sharedInstance.setupDone = true
+        Preferences.sharedInstance.continueAction.pressed(sender)
+    }
+
+    /// Set the initial state of the view
+    func setupInstalling() {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
-        
+
         statusLabel.isHidden = false
-        statusLabel.stringValue = "We are preparing your Mac…"
-        
+        statusLabel.stringValue = NSLocalizedString("We are preparing your Mac…", comment: "Displayed above progress bar")
+
         self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
-        
-        self.continueButton.isHidden = true
+
         self.continueButton.isEnabled = false
     }
-    
-    
-    
+
+    /// reset the status label to "We are preparing your Mac…"
+    @objc func resetStatusLabel() {
+        statusLabel.stringValue = NSLocalizedString("We are preparing your Mac…", comment: "Displayed above progress bar")
+        statusLabel.textColor = .black
+    }
+
+    /// sets the status label to display an error
     @objc func errorWhileInstalling() {
-        Log.write(string: "Error(s) while installing", cat: .UI, level: .debug)
+        Preferences.sharedInstance.errorWhileInstalling = true
 
-        indeterminateProgressIndicator.isHidden = true
-        self.continueButton.isEnabled = true
-        statusLabel.textColor = .red
-        
-        let _failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
-        
-        if _failedSoftwareArray.count == 1 {
-            
-            if let failedDisplayName = _failedSoftwareArray[0].displayName {
-                statusLabel.stringValue = String.localizedStringWithFormat(NSLocalizedString(
-                    "%@ failed to install. Support has been notified.",
-                    comment: "A specific application failed to install"), failedDisplayName)
-                
-            } else {
-                statusLabel.stringValue = NSLocalizedString(
-                    "An application failed to install. Support has been notified.",
-                    comment: "One (unnamed) application failed to install")
-            }
-            
-            
-        } else {
-            statusLabel.stringValue = NSLocalizedString(
-                "Some applications failed to install. Support has been notified.",
-                comment: "More than one application failed to install")
+        guard let error = SoftwareArray.sharedInstance.localizedErrorStatus else {
+            return
         }
-        
+        statusLabel.textColor = .red
+        statusLabel.stringValue = error
     }
 
-    
-    
+    /// all critical software is installed
     @objc func canContinue() {
-        Log.write(string: "Enabling Continue Button", cat: .UI, level: .info)
-
+        Preferences.sharedInstance.criticalDone = true
         self.continueButton.isEnabled = true
     }
-    
-    
-    
+
+    /// all software is installed (failed or success)
     @objc func doneInstalling() {
-        Log.write(string: "All apps are done installing", cat: .Software, level: .info)
-
+        Preferences.sharedInstance.allInstalled = true
+        indeterminateProgressIndicator.stopAnimation(self)
         indeterminateProgressIndicator.isHidden = true
-        statusLabel.textColor = .labelColor
-        statusLabel.stringValue = NSLocalizedString(
-            "All applications were installed. Please click continue.",
-            comment: "All applications were installed. Please click continue.")
-    }
-    
 
-    
-    
-    
+        if Preferences.sharedInstance.labMode {
+            self.sidebarView.isHidden = true
+            if let labComplete = Preferences.sharedInstance.labComplete {
+                self.webView.loadFileURL(labComplete, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+            } else {
+                let errorMsg = NSLocalizedString("Please create a complete.html file in your presentation.bundle located in /Library/Application Support/SplashBuddy",
+                                                 comment: "Displayed when cannot load HTML bundle")
+                self.webView.loadHTMLString(errorMsg, baseURL: nil)
+            }
+        }
+    }
+
+    /// all software is sucessfully installed
+    @objc func allSuccess() {
+        Preferences.sharedInstance.allSuccessfullyInstalled = true
+        statusLabel.textColor = .labelColor
+        statusLabel.stringValue = Preferences.sharedInstance.continueAction.localizedSuccessStatus
+    }
 }

@@ -1,0 +1,54 @@
+/* A specific application failed to install */
+"%@ failed to install. Support has been notified." = "%@ failed to install. Support has been notified.";
+
+/* Everything was ok. There's no button. An automated action will happen (like force restart) */
+"All applications were installed. Finishing installation…" = "All applications were installed. Finishing installation…";
+
+/* (No Comment) */
+"All applications were installed. Please click continue." = "All applications were installed. Please click continue.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Continue." = "All applications were installed. Please click on Continue.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Logout." = "All applications were installed. Please click on Logout.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Quit." = "All applications were installed. Please click on Quit.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Restart." = "All applications were installed. Please click on Restart.";
+
+/* Everything was ok. Asking user to click on the button */
+"All applications were installed. Please click on Shutdown." = "All applications were installed. Please click on Shutdown.";
+
+/* One (unnamed) application failed to install */
+"An application failed to install. Support has been notified." = "An application failed to install. Support has been notified.";
+
+/* Label of the button for Continue */
+"Continue" = "Continue";
+
+/* (No Comment) */
+"Installing…" = "Installing…";
+
+/* Label of the button for Logout */
+"Logout" = "Logout";
+
+/* Displayed when cannot load HTML bundle */
+"Please create a bundle in /Library/Application Support/SplashBuddy" = "Please create a bundle in /Library/Application Support/SplashBuddy";
+
+/* Label of the button for Quit */
+"Quit" = "Quit";
+
+/* Label of the button for Restart */
+"Restart" = "Restart";
+
+/* Label of the button for Shutdown */
+"Shutdown" = "Shutdown";
+
+/* More than one application failed to install */
+"Some applications failed to install. Support has been notified." = "Some applications failed to install. Support has been notified.";
+
+/* Displayed above progress bar */
+"We are preparing your Mac…" = "We are preparing your Mac…";
+
