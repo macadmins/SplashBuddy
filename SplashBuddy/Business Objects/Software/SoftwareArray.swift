@@ -20,22 +20,22 @@ class SoftwareArray: NSObject {
     enum StateNotification: String {
 
         /// An error was detected (even if software is not in `applicationArray`)
-        case errorWhileInstalling
+        case errorWhileInstalling = "ErrorWhileInstalling"
 
         /// All critical software were installed
-        case canContinue
+        case canContinue = "CanContinue"
 
         /// All software were installed (either failed or success)
-        case doneInstalling
+        case doneInstalling = "DoneInstalling"
 
         /// All software were installed successfully
-        case allSuccess
+        case allSuccess = "AllSuccess"
 
         /// SplashBuddy will start processing the log
-        case setupInstalling
+        case setupInstalling = "SetupInstalling"
 
         /// SplashBuddy is processing the log
-        case processing
+        case processing = "Processing"
 
         var notification: Notification.Name {
             return Notification.Name(rawValue: self.rawValue)
