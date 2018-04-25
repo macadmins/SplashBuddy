@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.2]
+
+### Fixed
+
+* 1.2.1 doesn't even show, let alone install policies [[#77](https://github.com/Shufflepuck/SplashBuddy/issues/77)]
+
 ## [1.2.1]
 
 ### Fixed
@@ -15,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* `/private/tmp/SplashBuddy/` with more tag files : `criticalDone` (All critical softwares are installed), `errorWhileInstalling` (Errors while installing), `allInstalled` (All software is installed (failed or success)), `allSuccessfullyInstalled` (All software is sucessfully installed).
+* `/private/tmp/SplashBuddy/` with more tag files : `CriticalDone` (All critical softwares are installed), `ErrorWhileInstalling` (Errors while installing), `AllInstalled` (All software is installed (failed or success)), `AllSuccessfullyInstalled` (All software is sucessfully installed).
 * With `labMode` set to `true`, SplashBuddy will automatically display `complete.html` from `presentation.bundle` when all software is done installing (successfully or not) -- thank you @howardgmac
 
 ### Changed

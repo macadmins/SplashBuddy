@@ -176,10 +176,10 @@ class Preferences {
     }
 
     private enum TagFile: String {
-        case criticalDone
-        case errorWhileInstalling
-        case allInstalled
-        case allSuccessfullyInstalled
+        case criticalDone = "CriticalDone"
+        case errorWhileInstalling = "ErrorWhileInstalling"
+        case allInstalled = "AllInstalled"
+        case allSuccessfullyInstalled = "AllSuccessfullyInstalled"
     }
 
     private func createSplashBuddyTmpIfNeeded() {
