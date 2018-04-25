@@ -25,5 +25,6 @@ class MainWindowController: NSWindowController {
 
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
+        window.canBecomeVisibleWithoutLogin = true
     }
 }
