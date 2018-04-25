@@ -1,42 +1,28 @@
 /* Class = "NSMenuItem"; title = "Quit SplashBuddy"; ObjectID = "2cR-1q-G3Y"; */
 "2cR-1q-G3Y.title" = "Esci da SplashBuddy";
-
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "5Hn-kG-mLK"; */
 "5Hn-kG-mLK.title" = "Main Menu";
-
 /* Class = "NSMenu"; title = "SplashBuddy"; ObjectID = "5pp-rB-Rs5"; */
 "5pp-rB-Rs5.title" = "SplashBuddy";
-
 /* Class = "NSMenuItem"; title = "Quit SplashBuddy and set .SplashBuddyDone"; ObjectID = "9sK-Yv-hyG"; */
 "9sK-Yv-hyG.title" = "Chiudere SplashBuddy e impostare .SplashBuddyDone";
-
 /* Class = "NSView"; ibExternalAccessibilityDescription = "Lower Bar"; ObjectID = "9z5-8K-Bsy"; */
 "9z5-8K-Bsy.ibExternalAccessibilityDescription" = "Lower Bar";
-
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "HEm-cX-eEV"; */
 "HEm-cX-eEV.title" = "Text Cell";
-
 /* Class = "NSTextFieldCell"; title = "displayName"; ObjectID = "IV9-h3-DQ0"; */
 "IV9-h3-DQ0.title" = "displayName";
-
 /* Class = "NSMenuItem"; title = "SplashBuddy"; ObjectID = "Mm1-rq-zaN"; */
 "Mm1-rq-zaN.title" = "SplashBuddy";
-
 /* Class = "NSMenuItem"; title = "About SplashBuddy"; ObjectID = "dPN-j3-pc0"; */
 "dPN-j3-pc0.title" = "About SplashBuddy";
-
 /* Class = "NSWindow"; title = "Window"; ObjectID = "eOE-dw-mkn"; */
 "eOE-dw-mkn.title" = "Window";
-
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "gAE-fA-iyd"; */
 "gAE-fA-iyd.title" = "Label";
-
 /* Class = "NSButtonCell"; title = "Continue"; ObjectID = "jcN-QC-epo"; */
 "jcN-QC-epo.title" = "Continue";
-
 /* Class = "NSTextFieldCell"; title = "description"; ObjectID = "lnB-mt-lsP"; */
 "lnB-mt-lsP.title" = "description";
-
 /* Class = "NSViewController"; title = "Main View"; ObjectID = "qDQ-T9-zeE"; */
 "qDQ-T9-zeE.title" = "Main View";
-

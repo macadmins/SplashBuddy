@@ -1,54 +1,34 @@
 /* A specific application failed to install */
-"%@ failed to install. Support has been notified." = "%@ n'a pu être installé. Le support a été notifié.";
-
+"error.failed_specific_app_install" = "%@ n'a pu être installé. Le support a été notifié.";
 /* Everything was ok. There's no button. An automated action will happen (like force restart) */
-"All applications were installed. Finishing installation…" = "Toutes les applications ont été installées. Fin de l'installation…";
-
-/* (No Comment) */
-"All applications were installed. Please click continue." = "Toutes les applications ont été installées. Veuillez cliquer sur Continuer.";
-
+"actions.apps_installed_finishing" = "Toutes les applications ont été installées. Fin de l'installation…";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Continue." = "Toutes les applications ont été installées. Veuillez cliquer sur Continuer.";
-
+"actions.apps_installed_continue" = "Toutes les applications ont été installées. Veuillez cliquer sur Continuer.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Logout." = "Toutes les applications ont été installées. Veuillez cliquer sur Fermer la session.";
-
+"actions.apps_installed_logout" = "Toutes les applications ont été installées. Veuillez cliquer sur Fermer la session.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Quit." = "Toutes les applications ont été installées. Veuillez cliquer sur Quitter.";
-
+"actions.apps_installed_quit" = "Toutes les applications ont été installées. Veuillez cliquer sur Quitter.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Restart." = "Toutes les applications ont été installées. Veuillez cliquer sur Redémarrer.";
-
+"actions.apps_installed_restart" = "Toutes les applications ont été installées. Veuillez cliquer sur Redémarrer.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Shutdown." = "Toutes les applications ont été installées. Veuillez cliquer sur Éteindre.";
-
+"actions.apps_installed_shutdown" = "Toutes les applications ont été installées. Veuillez cliquer sur Éteindre.";
 /* One (unnamed) application failed to install */
-"An application failed to install. Support has been notified." = "Une application n'a pu être installée. Le support a été notifié.";
-
-/* Label of the button for Continue */
-"Continue" = "Continuer";
-
-/* (No Comment) */
-"Installing…" = "Installation…";
-
-/* Label of the button for Logout */
-"Logout" = "Fermer la session";
-
+"error.failed_unknown_app_install" = "Une application n'a pu être installée. Le support a été notifié.";
 /* Displayed when cannot load HTML bundle */
-"Please create a bundle in /Library/Application Support/SplashBuddy" = "Veuillez créer un bundle dans /Library/Application Support/SplashBuddy";
-
-/* Label of the button for Quit */
-"Quit" = "Quitter";
-
-/* Label of the button for Restart */
-"Restart" = "Redémarrer";
-
-/* Label of the button for Shutdown */
-"Shutdown" = "Éteindre";
-
+"error.create_missing_bundle" = "Veuillez créer un bundle dans /Library/Application Support/SplashBuddy";
 /* More than one application failed to install */
-"Some applications failed to install. Support has been notified." = "Plusieurs applications n'ont pu être installées. Le support a été notifié.";
-
+"error.failed_multiple_app_install" = "Plusieurs applications n'ont pu être installées. Le support a été notifié.";
 /* Displayed above progress bar */
-"We are preparing your Mac…" = "Nous préparons votre Mac…";
-
+"actions.preparing_your_mac" = "Nous préparons votre Mac…";
+/* Displayed when cannot load HTML bundle */
+"error.create_complete_html_file" = "Veuillez créer un fichier complete.html dans votre presentation.bundle situé dans /Library/Application Support/SplashBuddy";
+/* Continue button default value. */
+"btn.continue" = "Continuer";
+/* Variation of the Continue button. */
+"btn.shutdown" = "Éteindre";
+/* Variation of the Continue button. */
+"btn.restart" = "Redémarrer";
+/* Variation of the Continue button. */
+"btn.quit" = "Quitter";
+/* Variation of the Continue button. */
+"btn.logout" = "Fermer la session";
