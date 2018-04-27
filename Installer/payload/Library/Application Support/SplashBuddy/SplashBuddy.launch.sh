@@ -37,6 +37,7 @@ if [[ $launchAtLoginWindow == "yes" ]]; then
     echo "Launch at LW = Yes"
     if appNotRunning \
     	&& appInstalled \
+        && `# Remove this line to have SB launch over the Setup Assistant` [ "$loggedInUser" != "_mbsetupuser" ] \
     	&& [ ! -f "${doneFile}" ]; then
 
         /usr/bin/open -a "$app"
