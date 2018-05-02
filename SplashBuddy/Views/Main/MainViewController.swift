@@ -140,73 +140,103 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBAction func evalForm(_ sender: Any) {
         let js = """
             function sb() {
-              var sbValues = {}; // Return value array
-
-              //  Input Element Processing
+              var sbValues = {}; // Init empty array
+              /*
+              -----------------------
+              | Input Processing    |
+              -----------------------
+              Supported inputs:
+              - Single Checkbox
+              - Group Checkbox
+              - Radio
+              - Text
+              */
               var sbItems = document.getElementsByTagName('input');
-              for (var i=0; i < sbItems.length; i++) {
-                //  Input elements which are text type
-                if (sbItems.item(i).type == "text") {
-                  sbValues[sbItems.item(i).name] = sbItems.item(i).value;
+              for (var i = 0; i < sbItems.length; i++) {
+                //  Input items that are text type
+                var currentItem = sbItems.item(i);
+                if (currentItem.type == "text") {
+                  sbValues[currentItem.name] = currentItem.value;
                 }
-                //  Input elements which are checkbox type
-                else if (sbItems.item(i).type == "checkbox") {
-                  if (document.getElementsByName(sbItems.item(i).name).length > 1) {  //  More than one checkbox detected
-                    var checkboxElements = document.getElementsByName(sbItems.item(i).name);
-                    //  Begin processing for checkbox elements
-                    for (var x=0; x < checkboxElements.length; x++) {
+                //  Input items that are checkbox
+                else if (currentItem.type == "checkbox") {
+                  //  Checks if more than one checkbox is in a group.
+                  if (document.getElementsByName(currentItem.name).length > 1) {
+                    var checkboxElements = document.getElementsByName(currentItem.name);
+                    //  Begin processing checkbox items
+                    for (var x = 0; x < checkboxElements.length; x++) {
                       if (checkboxElements.item(x).checked) {
                         sbValues[checkboxElements.item(x).name] = checkboxElements.item(x).value;
+                      } else {
+                        console.log("Not checked"); //  for debugging
                       }
-                      else {
-                        console.log("Not checked"); //  For debugging
-                      }
-                    } //  End proccessing for checkbox elements
-                  }
-                  else {  //  Single checkbox detected returning true or false
-                    if (sbItems.item(i).checked) sbValues[sbItems.item(i).name] = "TRUE";
-                    else sbValues[sbItems.item(i).name] = "FALSE";
+                    }
+                    //  End processing items
+                  } else {
+                    //  Single checkbox detected
+                    if (currentItem.getAttribute('sbbool') == "true") {
+                      if (currentItem.checked) sbValues[currentItem.name] = "TRUE";
+                      else sbValues[currentItem.name] = "FALSE";
+                    } else {
+                      if (currentItem.checked) sbValues[currentItem.name] = currentItem.value;
+                    }
                   }
                 }
-                //  Input elements which are radio type
-                else if (sbItems.item(i).type == "radio") {
-                  if (document.getElementsByName(sbItems.item(i).name).length > 1) {  //  More than one radio detected
-                    var radioElements = document.getElementsByName(sbItems.item(i).name);
+                //  Input items that are radios
+                else if (currentItem.type == "radio") {
+                  if (document.getElementsByName(currentItem.name).length > 1) {
+                    var radioElements = document.getElementsByName(currentItem.name);
                     //  Begin processing for radio elements
-                    for (var x=0; x < radioElements.length; x++) {
+                    for (var x = 0; x < radioElements.length; x++) {
                       if (radioElements.item(x).checked) {
                         sbValues[radioElements.item(x).name] = radioElements.item(x).value;
                       } else {
-                        console.log("Not selected");  //  For debugging
+                        console.log("Not selected");
                       }
-                    } //  End processing for radio elements
+                    }
+                    //  End processing items
+                  } else {
+                    if (currentItem.getAttribute('sbbool') == "true") {
+                      if (currentItem.checked) sbValues[currentItem.name] = "TRUE";
+                      else sbValues[currentItem.name] = "FALSE";
+                    } else {
+                      if (currentItem.checked) sbValues[currentItem.name] = currentItem.value
+                    }
                   }
-                  else {  //  Single radio checkbox detected returning true or false
-                    if (sbItems.item(i).checked) sbValues[sbItems.item(i).name] = "TRUE";
-                    else sbValues[sbItems.item(i).name] = "FALSE";
-                  }
-                }
-                else {
-                  console.log(sbITems.item(i).type);  //  For debugging
+                } else {
+                  console.log(currentItem.type);
                 }
               }
-              //  Select elements
+              /*
+              ---------------------
+              | Select processing |
+              ---------------------
+              Processes the Select elements for the selected Option tag
+              */
               sbItems = document.getElementsByTagName('select');
-              for (var i=0; i < sbItems.length; i++) {
+              for (var i = 0; i < sbItems.length; i++) {
                 if (sbItems.item(i).options[sbItems.item(i).selectedIndex] != undefined) {
-                  sbValues[sbItems.item(i).name] = sbItems.item(i).options[sbItems.item(i).selectedIndex].value;
+                  var value = sbItems.item(i).options[sbItems.item(i).selectedIndex].getAttribute('value');
+                  if (value != undefined && value != "") sbValues[sbItems.item(i).name] = value;
                 }
               }
 
+              /*
+              ---------------------
+              | Requirement Check |
+              ---------------------
+              Checks to see if the required elements are filled by the "sbReq" attribute
+              */
               var reqElements = document.querySelectorAll('[sbReq=true]');
-              for (var i=0; i < reqElements.length; i++) {
+              for (var i = 0; i < reqElements.length; i++) {
                 var key = sbValues[reqElements.item(i).name];
                 if (key == null || key == undefined || key == "") {
                   throw "Not all required elements filled out";
                 } else {
-                  console.log("Value for "+reqElements.item(i).name+" found with "+key);
+                  console.log("Value for " + reqElements.item(i).name + " found with " + key);
                 }
               }
+
               return sbValues;
             }
             JSON.stringify(sb());
