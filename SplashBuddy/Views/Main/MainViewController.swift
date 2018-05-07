@@ -100,8 +100,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else {
-            let errorMsg = NSLocalizedString("Please create a bundle in /Library/Application Support/SplashBuddy",
-                                             comment: "Displayed when cannot load HTML bundle")
+            let errorMsg = NSLocalizedString("error.create_missing_bundle")
             self.webView.loadHTMLString(errorMsg, baseURL: nil)
         }
     }
