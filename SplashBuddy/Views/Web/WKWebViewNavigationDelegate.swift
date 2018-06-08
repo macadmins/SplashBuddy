@@ -16,13 +16,13 @@ extension MainViewController: WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
-        
+
         if url?.description.range(of: "formdone://") != nil {
-            Log.write(string: "Enter key pressed, attempting to run formEnterKey function.", cat: .UserInput, level: .debug)
-            decisionHandler(.cancel);
+            Log.write(string: "Enter key pressed, attempting to run formEnterKey function.", cat: "UserInput", level: .debug)
+            decisionHandler(.cancel)
             self.formEnterKey()
         } else {
-            decisionHandler(.allow);
+            decisionHandler(.allow)
         }
     }
 
