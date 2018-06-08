@@ -10,26 +10,22 @@
     let infoDict = {
       'United States':
       {
-        'Corporate': {
-          'Headquarters': {
+        'New York': {
+          'New York City': {
             'prefix':"HQ",
-            'domains':["Cable", "CorpHQ"]
-          },
-          'New Jersey': {
-            'prefix':"NJ",
-            'domains':["Cable"]
+            'domains':["Domain1", "Domain2"]
           }
         },
-        'North East': {
-          'Maine': {
+        'New Jersey': {
+          'Trenton': {
             'prefix': "MN",
-            'domains': ["Cable"]
+            'domains': ["Domain1"]
           }
         }
     },
     'India': {
       'prefix':"IN",
-      'domains':["Cable"]
+      'domains':["Domain1"]
     }
   };
 
@@ -128,76 +124,6 @@
         siteKey = $('#site option:selected').text();
         populateDomainOptions(infoDict[countryKey][divisionKey][siteKey]['domains']);
       });
-
-      $('button[name="test"]').click(function(){
-        sb();
-        function sb() {
-        	var sbItems = document.getElementsByTagName('input');
-          var sbValues = {};
-          for (var i=0; i < sbItems.length; i++) {
-          	//	Input elements that accept text
-          	if (sbItems.item(i).type == "text") {
-            	sbValues[sbItems.item(i).name] = sbItems.item(i).value;
-            }
-            //	Input elements that are Checkboxes
-            else if (sbItems.item(i).type == "checkbox") {
-            	//	Checks if there are more than one checkbox of the specific name.
-            	if (document.getElementsByName(sbItems.item(i).name).length > 1) {
-              	var checkboxElements = document.getElementsByName(sbItems.item(i).name);
-                //	Cycles through the found elements
-                for (var x = 0; x < checkboxElements.length; x++) {
-                	//
-                	if (checkboxElements.item(x).checked) {
-                  	sbValues[checkboxElements.item(x).name] = checkboxElements.item(x).value;
-                  } else {
-                  	console.log("Not checked");
-                  }
-                }
-              } else {
-              	if (sbItems.item(i).checked) {
-                	console.log("TRUE");
-                  sbValues[sbItems.item(i).name] = "TRUE";
-                } else {
-                	console.log("FALSE");
-                  sbValues[sbItems.item(i).name] = "FALSE";
-                }
-              }
-            }
-            //	Input elements that are Radio Buttons
-            else if (sbItems.item(i).type == "radio") {
-            	if (document.getElementsByName(sbItems.item(i).name).length > 1) {
-              	var radioElements = document.getElementsByName(sbItems.item(i).name);
-                //	Cycles through the found elements
-                for (var x = 0; x < radioElements.length; x++) {
-                	//
-                	if (radioElements.item(x).checked) {
-                  	sbValues[radioElements.item(x).name] = radioElements.item(x).value;
-                  } else {
-                  	console.log("Not checked");
-                  }
-                }
-              } else {
-              	if (sbItems.item(i).checked) {
-                	console.log("TRUE");
-                  sbValues[sbItems.item(i).name] = "TRUE";
-                } else {
-                	console.log("FALSE");
-                  sbValues[sbItems.item(i).name] = "FALSE";
-                }
-              }
-            } else {
-            console.log(sbItems.item(i).type);
-            }
-          }
-          //	Select elements
-          sbItems = document.getElementsByTagName('select');
-          for (var i = 0; i < sbItems.length; i++) {
-          	sbValues[sbItems.item(i).name] = sbItems.item(i).options[sbItems.item(i).selectedIndex].value;
-          }
-          $('.info').append(JSON.stringify(sbValues));
-          return sbValues
-        }
-      });
     });
   </script>
 </head>
@@ -205,7 +131,7 @@
   <div class='jumbotron jumbotron-fluid'>
     <div class='container'>
       <div class='text-center'>
-        <img src='comcast_logo.png' alt='Comcast Logo' class='img-fluid' style='max-width:100px;'/>
+        <img src='https://placehold.it/100x50' alt='Comcast Logo' class='img-fluid' style='max-width:100px;'/>
       </div>
       <h1 class='display-4 text-center'>Welcome to your Mac!</h1>
       <p class='lead text-center'>We need some info to proceed.</p>
@@ -228,9 +154,9 @@
       <div class='row'>
         <div class='col'>
           <div class='form-group'>
-            <label for='username'>NTID</label>
+            <label for='username'>Username</label>
             <input type='text' class='form-control' id='username' name='username' aria-describedby='usernameHelp' placeholder='Your NTID' />
-            <small id='usernameHelp' class='form-text text-muted'>This is your username you use to log into Comcast machines and resources.</small>
+            <small id='usernameHelp' class='form-text text-muted'>This is your username you use to log into your machines and resources.</small>
           </div>
         </div>
         <div class='col'>
@@ -246,8 +172,6 @@
           <div class='form-group'>
             <label for='country'>Country</label>
             <select class='form-control' id='country' name='country' aria-describedby='countryHelp' >
-              <option value='US'>United States</option>
-              <option value='IN'>India</option>
             </select>
             <small id='countryHelp' class='form-text text-muted'>This is used to help deploy your computer properly</small>
           </div>
@@ -256,24 +180,16 @@
           <div class='form-group'>
             <label for='division'>Division</label>
             <select class='form-control' id='division' name='division' aria-describedby='divisionHelp' >
-              <option value='northeast'>North East</option>
-              <option value='coporate'>Corporate</option>
-              <option value='central'>Central</option>
-              <option value='west'>West</option>
             </select>
-            <small id='divisionHelp' class='form-text text-muted'>The division your team belongs to.</small>
+            <small id='divisionHelp' class='form-text text-muted'>The state your team resides in.</small>
           </div>
         </div>
       </div>
       <div class='form-group'>
         <label for='site'>Site</label>
         <select class='form-control' id='site' name='site' aria-describedby='siteHelp' >
-          <option value='HQ'>Headquarters</option>
-          <option value='NJ'>New Jersey</option>
-          <option value='PA'>Pennslyvania</option>
-          <option value='CO'>Colorado</option>
         </select>
-        <small id='siteHelp' class='form-text text-muted'>This is usually the state you or your team reside in. If in Philadelphia, you are in Headquarters.</small>
+        <small id='siteHelp' class='form-text text-muted'>The city your team resides in.</small>
       </div>
       <div class='form-check'>
         <label class='form-check-label'>
@@ -285,8 +201,6 @@
         <!--  Domain options get rendered dynamically -->
       </div>
     </form>
-    <button name="test">Test</button>
-    <div class='info'></div>
   </div>
   <br />
   <br />
