@@ -175,6 +175,26 @@ class Preferences {
         }
     }
 
+var formDone: Bool {
+        get {
+            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyFormDone")
+        }
+        
+        set(myValue) {
+            if myValue == true {
+                FileManager.default.createFile(atPath: "Library/.SplashBuddyFormDone", contents: nil, attributes: nil)
+            } else {
+                do {
+                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                }
+                catch {
+                    Log.write(string: "Couldn't remove .SplashBuddyFormDone", cat: .Preferences, level: .info)
+                }
+            }
+        }
+    }
+
+
     private enum TagFile: String {
         case criticalDone = "CriticalDone"
         case errorWhileInstalling = "ErrorWhileInstalling"
@@ -220,8 +240,11 @@ class Preferences {
                           level: .info)
             } else {
                 Log.write(string: "Couldn't create .".appending(named.rawValue),
+                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                }
                           cat: "Preferences",
                           level: .error)
+                }
             }
 
         } else {
@@ -375,7 +398,8 @@ class Preferences {
                 SoftwareArray.sharedInstance.array.append(software)
             }
         }
-
+        
         self.doneParsingPlist = true
+        Log.write(string: "DONE Parsing applicationsArray", cat: .Preferences, level: .debug)
     }
 }
