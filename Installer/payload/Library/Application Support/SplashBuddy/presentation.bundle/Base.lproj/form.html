@@ -1,0 +1,296 @@
+<html>
+<head>
+  <script src="jquery-3.2.1.min.js" ></script>
+  <script src="popper.js"></script>
+  <script src="bootstrap.min.js" ></script>
+  <scrpt src="form.js" ></script>
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <!--<link rel="stylesheet" type="text/css" href="form.css">-->
+  <script>
+    let infoDict = {
+      'United States':
+      {
+        'Corporate': {
+          'Headquarters': {
+            'prefix':"HQ",
+            'domains':["Cable", "CorpHQ"]
+          },
+          'New Jersey': {
+            'prefix':"NJ",
+            'domains':["Cable"]
+          }
+        },
+        'North East': {
+          'Maine': {
+            'prefix': "MN",
+            'domains': ["Cable"]
+          }
+        }
+    },
+    'India': {
+      'prefix':"IN",
+      'domains':["Cable"]
+    }
+  };
+
+  var countryKey = "";
+  var divisionKey = "";
+  var siteKey = "";
+
+  function stagingView() {
+    $('#country').html('');
+    $('#division').html('');
+    $('#site').html('');
+    $('#division').parent().hide();
+    $('#site').parent().hide();
+    $('#domainOptions').hide();
+  }
+
+  function populateCountryList(){
+    $('#country').html('');
+    $('#division').html('');
+    $('#site').html('');
+    $('#country').append('<option checked>-- Select Your Country --</option>');
+    for (var key in infoDict) {
+      var optVal = infoDict[key]['prefix'];
+      if (typeof optVal == "undefined") {optVal = (key);}
+      $('#country').append('<option value="'+optVal+'">'+key+'</option>');
+    }
+  }
+
+  function populateDivsionList(){
+    $('#division').html('');
+    $('#division').append('<option checked>-- Select Your Division --</option>');
+    $('#division').parent().show();
+    for (var division in infoDict[countryKey]) {
+      var divOptVal = infoDict[countryKey][division]['prefix'];
+      if (typeof divOptVal == "undefined") {divOptVal = division;}
+      $('#division').append('<option value="'+divOptVal+'">'+division+'</option>');
+    }
+  }
+
+  function populateSiteList(){
+    $('#site').html('');
+    $('#site').append('<option checked>-- Select Your Site --</option>');
+    $('#site').parent().show();
+    for (var site in infoDict[countryKey][divisionKey]) {
+      var siteOptVal = infoDict[countryKey][divisionKey][site]['prefix'];
+      if (typeof siteOptVal == "undefined") {siteOptVal = site;}
+      $('#site').append('<option value="'+siteOptVal+'">'+site+'</option>');
+    }
+  }
+
+  function populateDomainOptions(domains) {
+    $('#domainOptions').html('');
+    $('#domainOptions').show('');
+    if (domains.length == 1) {
+      $('#domainOptions').append('<div class="form-check form-check-inline"><label class="form-check-label"><input id="'+domains[0]+'" value="'+domains[0]+'" name="domain" type="radio" class="form-check-input" checked></div>'+domains[0]+'</label>');
+    } else {
+      for (var d = 0; d < domains.length; d++) {
+        if (d == 0) {$('#domainOptions').append('<div class="form-check form-check-inline"><label class="form-check-label"><input id="'+domains[d]+'" value="'+domains[d]+'" name="domain" type="radio" class="form-check-input" checked></div>'+domains[d]+'</label>');}
+        else {
+          $('#domainOptions').append('<div class="form-check form-check-inline"><label class="form-check-label"><input id="'+domains[d]+'" value="'+domains[d]+'" name="domain" type="radio" class="form-check-input"></div>'+domains[d]+'</label>');
+        }
+      }
+    }
+  }
+
+    $('document').ready(function() {
+      stagingView();
+      populateCountryList();
+
+      //  Actions
+      $('#country').change(function(){  //  Country Selected
+        $('#division').html('');
+        $('#site').html('');
+        $('#division').parent().hide();
+        $('#site').parent().hide();
+        countryKey = $('#country option:selected').val();
+        if (countryKey.length <= 2) {
+          populateDomainOptions(infoDict[$('#country option:selected').text()]['domains']);
+        } else {
+          populateDivsionList();
+          $('#site').parent().hide();
+        }
+      });
+
+      $('#division').change(function(){ //  Division Selected
+        $('#site').html('');
+        $('#site').parent().hide();
+        divisionKey = $('#division option:selected').val();
+        if (divisionKey.length <= 2) {
+          populateDomainOptions(infoDict[countryKey][$('#division option:selected').text()]['domains']);
+        } else {
+          populateSiteList();
+        }
+      });
+      $('#site').change(function(){ //  Site Selected
+        siteKey = $('#site option:selected').text();
+        populateDomainOptions(infoDict[countryKey][divisionKey][siteKey]['domains']);
+      });
+
+      $('button[name="test"]').click(function(){
+        sb();
+        function sb() {
+        	var sbItems = document.getElementsByTagName('input');
+          var sbValues = {};
+          for (var i=0; i < sbItems.length; i++) {
+          	//	Input elements that accept text
+          	if (sbItems.item(i).type == "text") {
+            	sbValues[sbItems.item(i).name] = sbItems.item(i).value;
+            }
+            //	Input elements that are Checkboxes
+            else if (sbItems.item(i).type == "checkbox") {
+            	//	Checks if there are more than one checkbox of the specific name.
+            	if (document.getElementsByName(sbItems.item(i).name).length > 1) {
+              	var checkboxElements = document.getElementsByName(sbItems.item(i).name);
+                //	Cycles through the found elements
+                for (var x = 0; x < checkboxElements.length; x++) {
+                	//
+                	if (checkboxElements.item(x).checked) {
+                  	sbValues[checkboxElements.item(x).name] = checkboxElements.item(x).value;
+                  } else {
+                  	console.log("Not checked");
+                  }
+                }
+              } else {
+              	if (sbItems.item(i).checked) {
+                	console.log("TRUE");
+                  sbValues[sbItems.item(i).name] = "TRUE";
+                } else {
+                	console.log("FALSE");
+                  sbValues[sbItems.item(i).name] = "FALSE";
+                }
+              }
+            }
+            //	Input elements that are Radio Buttons
+            else if (sbItems.item(i).type == "radio") {
+            	if (document.getElementsByName(sbItems.item(i).name).length > 1) {
+              	var radioElements = document.getElementsByName(sbItems.item(i).name);
+                //	Cycles through the found elements
+                for (var x = 0; x < radioElements.length; x++) {
+                	//
+                	if (radioElements.item(x).checked) {
+                  	sbValues[radioElements.item(x).name] = radioElements.item(x).value;
+                  } else {
+                  	console.log("Not checked");
+                  }
+                }
+              } else {
+              	if (sbItems.item(i).checked) {
+                	console.log("TRUE");
+                  sbValues[sbItems.item(i).name] = "TRUE";
+                } else {
+                	console.log("FALSE");
+                  sbValues[sbItems.item(i).name] = "FALSE";
+                }
+              }
+            } else {
+            console.log(sbItems.item(i).type);
+            }
+          }
+          //	Select elements
+          sbItems = document.getElementsByTagName('select');
+          for (var i = 0; i < sbItems.length; i++) {
+          	sbValues[sbItems.item(i).name] = sbItems.item(i).options[sbItems.item(i).selectedIndex].value;
+          }
+          $('.info').append(JSON.stringify(sbValues));
+          return sbValues
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class='jumbotron jumbotron-fluid'>
+    <div class='container'>
+      <div class='text-center'>
+        <img src='comcast_logo.png' alt='Comcast Logo' class='img-fluid' style='max-width:100px;'/>
+      </div>
+      <h1 class='display-4 text-center'>Welcome to your Mac!</h1>
+      <p class='lead text-center'>We need some info to proceed.</p>
+    </div>
+  </div>
+  <div class='container-fluid'>
+    <form>
+      <div class='row'>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='asset-tag'>Asset Tag</label>
+            <input type='text' class='form-control' id='asset-tag' name='asset-tag' aria-describedby='asset-tagHelp' placeholder='Asset Tag' />
+            <small id='asset-tagHelp' class='form-text text-muted'>Usually found on the top lid of your computer.</small>
+          </div>
+        </div>
+        <div class='col'>
+          <img class='img-fluid' src='asset.jpg' alt='assettag image' />
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='username'>NTID</label>
+            <input type='text' class='form-control' id='username' name='username' aria-describedby='usernameHelp' placeholder='Your NTID' />
+            <small id='usernameHelp' class='form-text text-muted'>This is your username you use to log into Comcast machines and resources.</small>
+          </div>
+        </div>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='lastName'>Last Name</label>
+            <input type='text' class='form-control' id='lastName' name='lastName' aria-describedby='lastNameHelp' placeholder='Your Last Name' />
+            <small id='lastNameHelp' class='form-text text-muted'>This is needed to properly assign the asset.</small>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='country'>Country</label>
+            <select class='form-control' id='country' name='country' aria-describedby='countryHelp' >
+              <option value='US'>United States</option>
+              <option value='IN'>India</option>
+            </select>
+            <small id='countryHelp' class='form-text text-muted'>This is used to help deploy your computer properly</small>
+          </div>
+        </div>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='division'>Division</label>
+            <select class='form-control' id='division' name='division' aria-describedby='divisionHelp' >
+              <option value='northeast'>North East</option>
+              <option value='coporate'>Corporate</option>
+              <option value='central'>Central</option>
+              <option value='west'>West</option>
+            </select>
+            <small id='divisionHelp' class='form-text text-muted'>The division your team belongs to.</small>
+          </div>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='site'>Site</label>
+        <select class='form-control' id='site' name='site' aria-describedby='siteHelp' >
+          <option value='HQ'>Headquarters</option>
+          <option value='NJ'>New Jersey</option>
+          <option value='PA'>Pennslyvania</option>
+          <option value='CO'>Colorado</option>
+        </select>
+        <small id='siteHelp' class='form-text text-muted'>This is usually the state you or your team reside in. If in Philadelphia, you are in Headquarters.</small>
+      </div>
+      <div class='form-check'>
+        <label class='form-check-label'>
+          <input type='checkbox' class='form-check-input' name='joinDomain' checked>
+          Join Domain
+        </label>
+      </div>
+      <div id='domainOptions'>
+        <!--  Domain options get rendered dynamically -->
+      </div>
+    </form>
+    <button name="test">Test</button>
+    <div class='info'></div>
+  </div>
+  <br />
+  <br />
+  <br />
+</body>
+
+</html>

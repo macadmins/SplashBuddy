@@ -93,7 +93,13 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         }
 
         // Display the html file
-       if let html = Preferences.sharedInstance.html {
+        if let form = Preferences.sharedInstance.form {
+            DispatchQueue.main.async {
+                self.sendButton.isHidden = false
+                self.continueButton.isHidden = true
+            }
+            self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+       else if let html = Preferences.sharedInstance.html {
             DispatchQueue.main.async {
                 self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
@@ -101,6 +107,127 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else {
             let errorMsg = NSLocalizedString("error.create_missing_bundle")
+        }
+    }
+    
+    @IBAction func pressedContinueButton(_ sender: AnyObject) {
+        
+        Preferences.sharedInstance.setupDone = true
+        NSApplication.shared.terminate(self)
+        
+    }
+    
+    @IBOutlet weak var sendButton: NSButton!
+    @IBAction func evalForm(_ sender: Any) {
+        let js = """
+            function sb() {
+                var sbItems = document.getElementsByTagName('input');
+          var sbValues = {};
+          for (var i=0; i < sbItems.length; i++) {
+              //    Input elements that accept text
+              if (sbItems.item(i).type == "text") {
+                sbValues[sbItems.item(i).name] = sbItems.item(i).value;
+            }
+            //    Input elements that are Checkboxes
+            else if (sbItems.item(i).type == "checkbox") {
+                //    Checks if there are more than one checkbox of the specific name.
+                if (document.getElementsByName(sbItems.item(i).name).length > 1) {
+                  var checkboxElements = document.getElementsByName(sbItems.item(i).name);
+                //    Cycles through the found elements
+                for (var x = 0; x < checkboxElements.length; x++) {
+                    //
+                    if (checkboxElements.item(x).checked) {
+                      sbValues[checkboxElements.item(x).name] = checkboxElements.item(x).value;
+                  } else {
+                      console.log("Not checked");
+                  }
+                }
+              } else {
+                  if (sbItems.item(i).checked) {
+                    console.log("TRUE");
+                  sbValues[sbItems.item(i).name] = "TRUE";
+                } else {
+                    console.log("FALSE");
+                  sbValues[sbItems.item(i).name] = "FALSE";
+                }
+              }
+            }
+            //    Input elements that are Radio Buttons
+            else if (sbItems.item(i).type == "radio") {
+                if (document.getElementsByName(sbItems.item(i).name).length > 1) {
+                  var radioElements = document.getElementsByName(sbItems.item(i).name);
+                //    Cycles through the found elements
+                for (var x = 0; x < radioElements.length; x++) {
+                    //
+                    if (radioElements.item(x).checked) {
+                      sbValues[radioElements.item(x).name] = radioElements.item(x).value;
+                  } else {
+                      console.log("Not checked");
+                  }
+                }
+              } else {
+                  if (sbItems.item(i).checked) {
+                    console.log("TRUE");
+                  sbValues[sbItems.item(i).name] = "TRUE";
+                } else {
+                    console.log("FALSE");
+                  sbValues[sbItems.item(i).name] = "FALSE";
+                }
+              }
+            } else {
+            console.log(sbItems.item(i).type);
+            }
+          }
+          //    Select elements
+          sbItems = document.getElementsByTagName('select');
+          for (var i = 0; i < sbItems.length; i++) {
+              sbValues[sbItems.item(i).name] = sbItems.item(i).options[sbItems.item(i).selectedIndex].value;
+          }
+          return sbValues
+            }
+            JSON.stringify(sb());
+        """
+        
+        webView.evaluateJavaScript(js) {
+            (data: Any?, error: Error?) in
+            if error != nil {
+                Log.write(string: "Error getting User Input", cat: "UserInput", level: .error)
+                return
+            }
+            
+            guard let jsonString = data as? String else {
+                Log.write(string: "Cannot read User Input data", cat: "UserInput", level: .error)
+                return
+            }
+            
+            guard let jsonData = jsonString.data(using: .utf8) else {
+                Log.write(string: "Cannot cast User Input to data", cat: "UserInput", level: .error)
+                return
+            }
+            
+            /*let obj = try! JSONDecoder().decode(UserInput.self, from: jsonData)
+            
+            if let assetTag = obj.assetTag {
+                FileManager.default.createFile(atPath: "assetTag.txt", contents: assetTag.data(using: .utf8)!, attributes: nil)
+            }
+            
+            if let computerName = obj.computerName {
+                FileManager.default.createFile(atPath: "computerName.txt", contents: computerName.data(using: .utf8)!, attributes: nil)
+            }*/
+            
+            let obj = try! JSONSerialization.jsonObject(with: jsonData, options: [])
+            for item in obj as! NSDictionary {
+                Log.write(string: "Writing value to \(item.key) with value of \(item.value)", cat: "UserInput", level: .debug)
+                FileManager.default.createFile(atPath: "\(item.key).txt", contents: (item.value as? String ?? "").data(using: .utf8), attributes: nil)
+            }
+            
+            DispatchQueue.main.async {
+                self.sendButton.isHidden = true
+                self.continueButton.isHidden = false
+                
+                if let html = Preferences.sharedInstance.html {
+                    self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+                } else {
             self.webView.loadHTMLString(errorMsg, baseURL: nil)
         }
     }
