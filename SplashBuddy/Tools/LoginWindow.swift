@@ -10,22 +10,22 @@ import Cocoa
 class LoginWindow {
 
     static func sleep() throws {
-        Log.write(string: "System will Sleep", cat: "LoginWindow sendEvent", level: .info)
+        Log.write(string: "System will Sleep", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAESleep)
     }
 
     static func shutdown() throws {
-        Log.write(string: "System will Shutdown", cat: "LoginWindow sendEvent", level: .info)
+        Log.write(string: "System will Shutdown", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAEShutDown)
     }
 
     static func logout() throws {
-        Log.write(string: "System will Logout user", cat: "LoginWindow sendEvent", level: .info)
+        Log.write(string: "System will Logout user", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAEReallyLogOut)
     }
 
     static func restart() throws {
-        Log.write(string: "System will Restart", cat: "LoginWindow sendEvent", level: .info)
+        Log.write(string: "System will Restart", cat: "LoginWindowEvent", level: .info)
         try self.sendEvent(eventCode: kAERestart)
     }
 
@@ -51,7 +51,7 @@ class LoginWindow {
         error = AECreateDesc(keyProcessSerialNumber, &kPSNOfSystemProcess, MemoryLayout<ProcessSerialNumber>.size, &targetDesc)
 
         if error != noErr {
-            Log.write(string: "Error creating Desc", cat: "LoginWindow sendEvent", level: .error)
+            Log.write(string: "Error creating Desc", cat: "LoginWindowEvent", level: .error)
             throw NSError(domain: "AECreateDesc", code: Int(error), userInfo: nil)
         }
 
@@ -64,7 +64,7 @@ class LoginWindow {
                                    &event)
 
         if error != noErr {
-            Log.write(string: "Error creating AppleEvent", cat: "LoginWindow sendEvent", level: .error)
+            Log.write(string: "Error creating AppleEvent", cat: "LoginWindowEvent", level: .error)
             throw NSError(domain: "AECreateAppleEvent", code: Int(error), userInfo: nil)
         }
 
@@ -78,7 +78,7 @@ class LoginWindow {
                                1000)
 
         if status != OSStatus(0) {
-            Log.write(string: "Error sending AppleEvent", cat: "LoginWindow sendEvent", level: .error)
+            Log.write(string: "Error sending AppleEvent", cat: "LoginWindowEvent", level: .error)
             throw NSError(domain: "AESendMessage", code: Int(status), userInfo: nil)
         }
 
