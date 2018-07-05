@@ -126,10 +126,13 @@
 		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
 		81D9D7301E69ABE4008ED3F5 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentScroller.swift; sourceTree = "<group>"; };
+		ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLocalizedStringExtensions.swift; sourceTree = "<group>"; };
+		ED8518B320EDFAA5004D9F52 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
+		ED8518B420EDFAA5004D9F52 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ED8518B520EDFAA5004D9F52 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAD20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA78DAE20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
-		ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLocalizedStringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +457,7 @@
 				de,
 				it,
 				es,
+				ja,
 			);
 			mainGroup = 089D29141D50D12200E58C6D;
 			productRefGroup = 089D291E1D50D12200E58C6D /* Products */;
@@ -562,6 +566,7 @@
 				479DD8881F914D03001796B1 /* it */,
 				479DD88B1F914E66001796B1 /* en */,
 				EDA78DAE20A03D2D00BBA14E /* es */,
+				ED8518B520EDFAA5004D9F52 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 				479DD8871F914C44001796B1 /* it */,
 				479DD88A1F914E5E001796B1 /* en */,
 				EDA78DAD20A03D2D00BBA14E /* es */,
+				ED8518B420EDFAA5004D9F52 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 				47180C9A1F8FC9040017F78F /* it */,
 				479DD8851F914C20001796B1 /* en */,
 				EDA78DAF20A03D2D00BBA14E /* es */,
+				ED8518B320EDFAA5004D9F52 /* ja */,
 			);
 			name = SplashBuddy.storyboard;
 			path = Main;
