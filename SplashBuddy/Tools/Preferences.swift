@@ -150,6 +150,10 @@ class Preferences {
         return self.assetBundle?.url(forResource: "complete", withExtension: "html")
     }
 
+    public var form: URL? {
+        return self.assetBundle?.url(forResource: "form", withExtension: "html")
+    }
+
     //-----------------------------------------------------------------------------------
     // MARK: - Tag files
     //-----------------------------------------------------------------------------------
@@ -175,6 +179,24 @@ class Preferences {
         }
     }
 
+    var formDone: Bool {
+        get {
+            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyFormDone")
+        }
+
+        set(myValue) {
+            if myValue == true {
+                FileManager.default.createFile(atPath: "Library/.SplashBuddyFormDone", contents: nil, attributes: nil)
+            } else {
+                do {
+                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                } catch {
+                    Log.write(string: "Couldn't remove .SplashBuddyFormDone", cat: "Preferences", level: .info)
+                }
+            }
+        }
+    }
+
     private enum TagFile: String {
         case criticalDone = "CriticalDone"
         case errorWhileInstalling = "ErrorWhileInstalling"
@@ -191,7 +213,7 @@ class Preferences {
                                                         attributes: [
                                                             .groupOwnerAccountID: 20,
                                                             .posixPermissions: 0o777
-                                                            ])
+                    ])
             } catch {
                 Log.write(string: "Cannot create /private/tmp/SplashBuddy/",
                           cat: "Preferences",
@@ -214,23 +236,24 @@ class Preferences {
                                               attributes: [
                                                 .groupOwnerAccountID: 20,
                                                 .posixPermissions: 0o777
-                                                ]) {
+                ]) {
                 Log.write(string: "Created .".appending(named.rawValue),
                           cat: "Preferences",
                           level: .info)
             } else {
-                Log.write(string: "Couldn't create .".appending(named.rawValue),
-                          cat: "Preferences",
-                          level: .error)
+                Log.write(string: "Couldn't create .".appending(named.rawValue), cat: "Preferences", level: .error)
+                do {
+                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                } catch {
+
+                }
             }
 
         } else {
             do {
                 try FileManager.default.removeItem(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue))
             } catch {
-                Log.write(string: "Couldn't remove .".appending(named.rawValue),
-                          cat: "Preferences",
-                          level: .info)
+                Log.write(string: "Couldn't remove .".appending(named.rawValue), cat: "Preferences", level: .info)
             }
         }
     }
@@ -377,5 +400,6 @@ class Preferences {
         }
 
         self.doneParsingPlist = true
+        Log.write(string: "DONE Parsing applicationsArray", cat: "Preferences", level: .debug)
     }
 }
