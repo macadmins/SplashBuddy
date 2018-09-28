@@ -31,7 +31,6 @@ extension MainViewController {
     /// reset the status label to "We are preparing your Mac…"
     @objc func resetStatusLabel() {
         statusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
-        statusLabel.textColor = .black
     }
 
     /// sets the status label to display an error

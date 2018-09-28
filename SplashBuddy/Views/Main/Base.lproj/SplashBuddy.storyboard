@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13196"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
         <scene sceneID="zkc-0l-Upw">
             <objects>
                 <windowController storyboardIdentifier="mainWindow" id="UoU-0S-EqW" customClass="MainWindowController" customModule="SplashBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOE-dw-mkn" customClass="MainWindow" customModule="SplashBuddy" customModuleProvider="target">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOE-dw-mkn" customClass="MainWindow" customModule="SplashBuddy" customModuleProvider="target">
                         <rect key="contentRect" x="294" y="313" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <connections>
@@ -73,7 +70,7 @@
                                                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                             <tableColumns>
-                                                                                <tableColumn identifier="" width="221" minWidth="40" maxWidth="1000" id="fqj-gr-Q3i">
+                                                                                <tableColumn width="221" minWidth="40" maxWidth="1000" id="fqj-gr-Q3i">
                                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                                         <font key="font" metaFont="smallSystem"/>
                                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -86,12 +83,12 @@
                                                                                     </textFieldCell>
                                                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                     <prototypeCellViews>
-                                                                                        <tableCellView id="hta-JT-VTJ">
+                                                                                        <tableCellView misplaced="YES" id="hta-JT-VTJ">
                                                                                             <rect key="frame" x="1" y="3" width="221" height="42"/>
                                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                             <subviews>
                                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jKX-pD-fCY">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="15" height="42"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="15" height="138"/>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="width" constant="15" id="Ce4-AS-Z55"/>
                                                                                                     </constraints>
@@ -113,7 +110,7 @@
                                                                                                     </connections>
                                                                                                 </imageView>
                                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BWi-7D-6z9">
-                                                                                                    <rect key="frame" x="184" y="5" width="32" height="32"/>
+                                                                                                    <rect key="frame" x="91" y="5" width="128" height="128"/>
                                                                                                     <constraints>
                                                                                                         <constraint firstAttribute="width" secondItem="BWi-7D-6z9" secondAttribute="height" multiplier="1:1" id="D7s-XB-4lM"/>
                                                                                                     </constraints>
@@ -123,7 +120,7 @@
                                                                                                     </connections>
                                                                                                 </imageView>
                                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9D-nO-L12">
-                                                                                                    <rect key="frame" x="21" y="2" width="165" height="17"/>
+                                                                                                    <rect key="frame" x="21" y="2" width="72" height="17"/>
                                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="description" id="lnB-mt-lsP">
                                                                                                         <font key="font" metaFont="systemLight" size="13"/>
                                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -134,7 +131,7 @@
                                                                                                     </connections>
                                                                                                 </textField>
                                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="drd-hV-059">
-                                                                                                    <rect key="frame" x="21" y="23" width="165" height="17"/>
+                                                                                                    <rect key="frame" x="21" y="119" width="72" height="17"/>
                                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="displayName" id="IV9-h3-DQ0">
                                                                                                         <font key="font" metaFont="systemMedium" size="13"/>
                                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -171,11 +168,11 @@
                                                                     <nil key="backgroundColor"/>
                                                                 </clipView>
                                                                 <edgeInsets key="contentInsets" left="5" right="0.0" top="10" bottom="60"/>
-                                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6y1-ZO-fX2" customClass="TransparentScroller" customModule="SplashBuddy" customModuleProvider="target">
+                                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="6y1-ZO-fX2" customClass="TransparentScroller" customModule="SplashBuddy" customModuleProvider="target">
                                                                     <rect key="frame" x="5" y="524" width="224" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </scroller>
-                                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.13235294117647059" horizontal="NO" id="oUS-tj-Dbn" customClass="TransparentScroller" customModule="SplashBuddy" customModuleProvider="target">
+                                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.13235294117647059" horizontal="NO" id="oUS-tj-Dbn" customClass="TransparentScroller" customModule="SplashBuddy" customModuleProvider="target">
                                                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </scroller>
@@ -221,18 +218,18 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="9z5-8K-Bsy">
                                         <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
                                         <subviews>
-                                            <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="mediumLight" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VIc-9A-62o">
+                                            <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="titlebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VIc-9A-62o">
                                                 <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
                                             </visualEffectView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-Zf-dqr">
-                                                <rect key="frame" x="119" y="8" width="562" height="43"/>
+                                                <rect key="frame" x="119" y="9" width="562" height="43"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huH-bF-pmn">
                                                         <rect key="frame" x="-2" y="26" width="566" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="gAE-fA-iyd">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Are-bh-n7c">
@@ -257,7 +254,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-CL-x2G">
-                                                <rect key="frame" x="691" y="12" width="95" height="32"/>
+                                                <rect key="frame" x="691" y="13" width="95" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jcN-QC-epo">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -373,7 +370,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSAdvanced" width="128" height="128"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
     </resources>
 </document>
