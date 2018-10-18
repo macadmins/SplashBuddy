@@ -1,54 +1,34 @@
 /* A specific application failed to install */
-"%@ failed to install. Support has been notified." = "Installatie van %@ is mislukt. Hiervan is automatisch melding gemaakt.";
-
+"error.failed_specific_app_install" = "Installatie van %@ is mislukt. Hiervan is automatisch melding gemaakt.";
 /* Everything was ok. There's no button. An automated action will happen (like force restart) */
-"All applications were installed. Finishing installation…" = "Alle applicaties zijn geïnstalleerd. De installatie wordt beëindigd…";
-
-/* (No Comment) */
-"All applications were installed. Please click continue." = "Alle programma's zijn geinstalleerd. Klik op doorgaan";
-
+"actions.apps_installed_finishing" = "Alle applicaties zijn geïnstalleerd. De installatie wordt beëindigd...";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Continue." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Doorgaan";
-
+"actions.apps_installed_continue" = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Doorgaan";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Logout." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Log uit";
-
+"actions.apps_installed_logout" = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Log uit";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Quit." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Beëindigen";
-
+"actions.apps_installed_quit" = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Quit";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Restart." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Herstart";
-
+"actions.apps_installed_restart" = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Herstart";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Shutdown." = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Zet uit";
-
+"actions.apps_installed_shutdown" = "Alle applicaties zijn geïnstalleerd. Klik a.u.b. op Zet uit";
 /* One (unnamed) application failed to install */
-"An application failed to install. Support has been notified." = "Een programma kon niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
-
-/* Label of the button for Continue */
-"Continue" = "Doorgaan";
-
-/* (No Comment) */
-"Installing…" = "Installeren…";
-
-/* Label of the button for Logout */
-"Logout" = "Uitloggen";
-
+"error.failed_unknown_app_install" = "Een programma kon niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
 /* Displayed when cannot load HTML bundle */
-"Please create a bundle in /Library/Application Support/SplashBuddy" = "Maak een bundle aan in /Library/Application Support/SplashBuddy";
-
-/* Label of the button for Quit */
-"Quit" = "Beëindigen";
-
-/* Label of the button for Restart */
-"Restart" = "Herstart";
-
-/* Label of the button for Shutdown */
-"Shutdown" = "Afsluiten";
-
+"error.create_missing_bundle" = "Maak een bundle aan in /Library/Application Support/SplashBuddy";
 /* More than one application failed to install */
-"Some applications failed to install. Support has been notified." = "Sommige programma's konden niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
-
+"error.failed_multiple_app_install" = "Sommige programma's konden niet geinstalleerd worden. Hiervan is automatisch melding gemaakt.";
 /* Displayed above progress bar */
-"We are preparing your Mac…" = "We zijn uw Mac aan het voorbereiden…";
-
+"actions.preparing_your_mac" = "We zijn uw Mac aan het voorbereiden...";
+/* Displayed when cannot load HTML bundle */
+"error.create_complete_html_file" = "";
+/* Continue button default value. */
+"btn.continue" = "Doorgaan";
+/* Variation of the Continue button. */
+"btn.shutdown" = "Afsluiten";
+/* Variation of the Continue button. */
+"btn.restart" = "Herstart";
+/* Variation of the Continue button. */
+"btn.quit" = "Beëindigen";
+/* Variation of the Continue button. */
+"btn.logout" = "Uitloggen";

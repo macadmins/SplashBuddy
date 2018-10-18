@@ -1,7 +1,4 @@
 //
-//  MainViewController_Actions.swift
-//  SplashBuddy
-//
 //  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
 //
 
@@ -21,7 +18,7 @@ extension MainViewController {
         indeterminateProgressIndicator.isHidden = false
 
         statusLabel.isHidden = false
-        statusLabel.stringValue = NSLocalizedString("We are preparing your Mac…", comment: "Displayed above progress bar")
+        statusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
 
         self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
 
@@ -30,8 +27,7 @@ extension MainViewController {
 
     /// reset the status label to "We are preparing your Mac…"
     @objc func resetStatusLabel() {
-        statusLabel.stringValue = NSLocalizedString("We are preparing your Mac…", comment: "Displayed above progress bar")
-        statusLabel.textColor = .black
+        statusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
     }
 
     /// sets the status label to display an error
@@ -62,8 +58,7 @@ extension MainViewController {
             if let labComplete = Preferences.sharedInstance.labComplete {
                 self.webView.loadFileURL(labComplete, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
             } else {
-                let errorMsg = NSLocalizedString("Please create a complete.html file in your presentation.bundle located in /Library/Application Support/SplashBuddy",
-                                                 comment: "Displayed when cannot load HTML bundle")
+                let errorMsg = NSLocalizedString("error.create_complete_html_file")
                 self.webView.loadHTMLString(errorMsg, baseURL: nil)
             }
         }

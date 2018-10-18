@@ -1,0 +1,34 @@
+/* A specific application failed to install */
+"error.failed_specific_app_install" = "%@ のインストールに失敗しました。サポートに連絡しました。";
+/* Everything was ok. There's no button. An automated action will happen (like force restart) */
+"actions.apps_installed_finishing" = "全てのアプリケーションがインストールされました。インストール作業を終了しています...";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_continue" = "全てのアプリケーションがインストールされました。継続をクリックしてください。";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_logout" = "全てのアプリケーションがインストールされました。ログアウトをクリックしてください。";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_quit" = "全てのアプリケーションがインストールされました。再起動をクリックしてください。";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_restart" = "全てのアプリケーションがインストールされました。再起動をクリックしてください。";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_shutdown" = "全てのアプリケーションがインストールされました。システム終了をクリックしてください。";
+/* One (unnamed) application failed to install */
+"error.failed_unknown_app_install" = "一つのアプリケーションのインストールに失敗しました。サポートに連絡しました。";
+/* Displayed when cannot load HTML bundle */
+"error.create_missing_bundle" = "/Library/Application Support/SplashBuddyの中にbundleファイルを作成してください。";
+/* More than one application failed to install */
+"error.failed_multiple_app_install" = "いくつかのアプリケーションのインストールに失敗しました。サポートに連絡しました。";
+/* Displayed above progress bar */
+"actions.preparing_your_mac" = "Macの準備をしています...";
+/* Displayed when cannot load HTML bundle */
+"error.create_complete_html_file" = "";
+/* Continue button default value. */
+"btn.continue" = "継続";
+/* Variation of the Continue button. */
+"btn.shutdown" = "システム終了";
+/* Variation of the Continue button. */
+"btn.restart" = "再起動";
+/* Variation of the Continue button. */
+"btn.quit" = "終了";
+/* Variation of the Continue button. */
+"btn.logout" = "ログアウト";

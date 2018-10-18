@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.0]
+
+### Added
+
+* Reworked localization [[#81](https://github.com/Shufflepuck/SplashBuddy/issues/81)]
+* Added Spanish localization [[#85](https://github.com/Shufflepuck/SplashBuddy/issues/85)]
+* Added User Input
+* Added Japanese localization [[#96](https://github.com/Shufflepuck/SplashBuddy/issues/96)]
+* Added support for `macOS 10.14`
+
 ## [1.2.2]
 
 ### Fixed

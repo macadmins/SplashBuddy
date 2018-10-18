@@ -1,0 +1,34 @@
+/* A specific application failed to install */
+"error.failed_specific_app_install" = "%@ no se pudo instalar. Soporte ha sido notificado.";
+/* Everything was ok. There's no button. An automated action will happen (like force restart) */
+"actions.apps_installed_finishing" = "Todas las aplicaciones fueron instaladas. Terminación de la instalación ...";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_continue" = "Todas las aplicaciones fueron instaladas. Por favor, haga clic en Continuar.";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_logout" = "Todas las aplicaciones fueron instaladas. Por favor, haga clic en Cerrar sesión.";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_quit" = "Todas las aplicaciones fueron instaladas. Por favor, haga clic en Apagar.";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_restart" = "Todas las aplicaciones fueron instaladas. Por favor, haga clic en Reiniciar.";
+/* Everything was ok. Asking user to click on the button */
+"actions.apps_installed_shutdown" = "Todas las aplicaciones fueron instaladas. Por favor, haga clic en Apagar.";
+/* One (unnamed) application failed to install */
+"error.failed_unknown_app_install" = "Algunas aplicaciones no se pudieron instalar. Soporte ha sido notificado.";
+/* Displayed when cannot load HTML bundle */
+"error.create_missing_bundle" = "Por favor, cree un paquete en /Library/Application Support/SplashBuddy";
+/* More than one application failed to install */
+"error.failed_multiple_app_install" = "Algunas aplicaciones no se pudieron instalar. Soporte ha sido notificado.";
+/* Displayed above progress bar */
+"actions.preparing_your_mac" = "Estamos preparando tu Mac ...";
+/* Displayed when cannot load HTML bundle */
+"error.create_complete_html_file" = "Por favor, cree un complete.html completo en su paquete presentation.bundle ubicado en /Library/Application Support/SplashBuddy";
+/* Continue button default value. */
+"btn.continue" = "Continuar";
+/* Variation of the Continue button. */
+"btn.shutdown" = "Apagar";
+/* Variation of the Continue button. */
+"btn.restart" = "Reiniciar";
+/* Variation of the Continue button. */
+"btn.quit" = "Dejar";
+/* Variation of the Continue button. */
+"btn.logout" = "Cerrar sesión";

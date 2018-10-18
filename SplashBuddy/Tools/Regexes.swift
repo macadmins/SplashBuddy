@@ -1,8 +1,5 @@
 //
-//  Regexes.swift
-//  CasperWait
-//
-//  Copyright © 2016 François Levaux. All rights reserved.
+//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
 //
 
 import Foundation

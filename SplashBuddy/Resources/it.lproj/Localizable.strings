@@ -1,54 +1,34 @@
 /* A specific application failed to install */
-"%@ failed to install. Support has been notified." = "%@ impossibile installare. Supporto è stato notificato.";
-
+"error.failed_specific_app_install" = "%@ impossibile installare. Supporto è stato notificato.";
 /* Everything was ok. There's no button. An automated action will happen (like force restart) */
-"All applications were installed. Finishing installation…" = "Sono state installate tutte le applicazioni. Completamento installazione…";
-
-/* (No Comment) */
-"All applications were installed. Please click continue." = "Tutte le applicazioni sono state installate. Si prega di fare clic su continua.";
-
+"actions.apps_installed_finishing" = "Sono state installate tutte le applicazioni. Completamento installazione...";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Continue." = "Tutte le applicazioni sono state installate. Si prega di fare clic su Continua.";
-
+"actions.apps_installed_continue" = "Tutte le applicazioni sono state installate. Si prega di fare clic su Continua.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Logout." = "Tutte le applicazioni sono state installate. Si prega di fare clic su Esegui il Logout.";
-
+"actions.apps_installed_logout" = "Tutte le applicazioni sono state installate. Si prega di fare clic su Esegui il Logout.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Quit." = "Tutte le applicazioni sono state installate. Si prega di fare clic su Esci.";
-
+"actions.apps_installed_quit" = "Tutte le applicazioni sono state installate. Si prega di fare clic su Esci.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Restart." = "Tutte le applicazioni sono state installate. Si prega di fare clic su Riavvia.";
-
+"actions.apps_installed_restart" = "Tutte le applicazioni sono state installate. Si prega di fare clic su Riavvia.";
 /* Everything was ok. Asking user to click on the button */
-"All applications were installed. Please click on Shutdown." = "Tutte le applicazioni sono state installate. Fare clic su Spegni.";
-
+"actions.apps_installed_shutdown" = "Tutte le applicazioni sono state installate. Fare clic su Spegni.";
 /* One (unnamed) application failed to install */
-"An application failed to install. Support has been notified." = "Un'applicazione impossibile installare. Il supporto è stato notificato.";
-
-/* Label of the button for Continue */
-"Continue" = "Continua";
-
-/* (No Comment) */
-"Installing…" = "Installiere…";
-
-/* Label of the button for Logout */
-"Logout" = "Esegui il logout";
-
+"error.failed_unknown_app_install" = "Un'applicazione impossibile installare. Il supporto è stato notificato.";
 /* Displayed when cannot load HTML bundle */
-"Please create a bundle in /Library/Application Support/SplashBuddy" = "Si prega di creare un bundle in /Libreria/Application Support/SplashBuddy";
-
-/* Label of the button for Quit */
-"Quit" = "Esci";
-
-/* Label of the button for Restart */
-"Restart" = "Riavvia";
-
-/* Label of the button for Shutdown */
-"Shutdown" = "Spegni";
-
+"error.create_missing_bundle" = "Si prega di creare un bundle in /Libreria/Application Support/SplashBuddy";
 /* More than one application failed to install */
-"Some applications failed to install. Support has been notified." = "Alcune applicazioni non sono state installate. Il supporto è stato notificato.";
-
+"error.failed_multiple_app_install" = "Alcune applicazioni non sono state installate. Il supporto è stato notificato.";
 /* Displayed above progress bar */
-"We are preparing your Mac…" = "Stiamo preparando il tuo Mac…";
-
+"actions.preparing_your_mac" = "Stiamo preparando il tuo Mac...";
+/* Displayed when cannot load HTML bundle */
+"error.create_complete_html_file" = "";
+/* Continue button default value. */
+"btn.continue" = "Continua";
+/* Variation of the Continue button. */
+"btn.shutdown" = "Spegni";
+/* Variation of the Continue button. */
+"btn.restart" = "Riavvia";
+/* Variation of the Continue button. */
+"btn.quit" = "Esci";
+/* Variation of the Continue button. */
+"btn.logout" = "Disconnettersi";
