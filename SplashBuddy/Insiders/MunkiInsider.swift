@@ -16,7 +16,7 @@
 
 import Foundation
 
-func initJAMFRegex() -> [Software.SoftwareStatus: NSRegularExpression?] {
+func initMunkiRegex() -> [Software.SoftwareStatus: NSRegularExpression?] {
     
     let re_options = NSRegularExpression.Options.anchorsMatchLines
     
@@ -63,13 +63,13 @@ func initJAMFRegex() -> [Software.SoftwareStatus: NSRegularExpression?] {
     ]
 }
 
-class JAMFInsider : GenericInsider {
+class MunkiInsider : GenericInsider {
     convenience init(userDefaults: UserDefaults = UserDefaults.standard) {
-        let jamfLogPath = userDefaults.string(forKey: Constants.Testing.JAMFLog) ?? Constants.Defaults.JAMFLogPath
-        self.init(userDefaults: userDefaults, withLogPath: jamfLogPath)
+        let munkiLogPath = userDefaults.string(forKey: Constants.Testing.MunkiLog) ?? Constants.Defaults.MunkiLogPath
+        self.init(userDefaults: userDefaults, withLogPath: munkiLogPath)
     }
     
     override func regexes() -> [Software.SoftwareStatus: NSRegularExpression?] {
-        return initJAMFRegex()
+        return initMunkiRegex()
     }
 }

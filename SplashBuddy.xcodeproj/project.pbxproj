@@ -38,6 +38,8 @@
 		ED525EBB20907D4700BF776B /* NSLocalizedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */; };
 		F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6DD2183B177008A1773 /* Constants.swift */; };
 		F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */; };
+		F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */; };
+		F8A1E6F32183CDFD008A1773 /* GenericInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,8 @@
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		F8A1E6DD2183B177008A1773 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAMFInsider.swift; sourceTree = "<group>"; };
+		F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunkiInsider.swift; sourceTree = "<group>"; };
+		F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericInsider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,7 +391,9 @@
 		F8A1E6DF2183B18E008A1773 /* Insiders */ = {
 			isa = PBXGroup;
 			children = (
+				F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */,
 				F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */,
+				F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */,
 			);
 			path = Insiders;
 			sourceTree = "<group>";
@@ -550,6 +556,8 @@
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 				F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */,
+				F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */,
+				F8A1E6F32183CDFD008A1773 /* GenericInsider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,14 +23,17 @@ struct Constants {
     
     struct Insiders {
         static let JAMF = "JAMFInsider"
+        static let Munki = "MunkiInsider"
     }
     
     struct Defaults {
         static let JAMFLogPath = "/var/log/jamf.log"
+        static let MunkiLogPath = "/Library/Managed Installs/Logs/ManagedSoftwareUpdate.log"
     }
     
     struct Testing {
         static let Asset = "TSTAssetPath"
         static let JAMFLog = "TSTJamfLog"
+        static let MunkiLog = "TSTMunkiLog"
     }
 }

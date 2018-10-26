@@ -52,14 +52,31 @@ class Preferences {
         }
         
         var hasOneInsiderOrMore = false
+        
         if self.userDefaults.bool(forKey: Constants.Insiders.JAMF) {
             hasOneInsiderOrMore = true
             DispatchQueue.global(qos: .background).async {
-                let insider = JAMFInsider(nsUserDefaults: self.userDefaults)
+                let insider = JAMFInsider(userDefaults: self.userDefaults)
                 guard insider.logFileHandle != nil else {
                     self.insiderError = true
                     self.insiderErrorMessage = "Jamf is not installed correctly"
                     self.insiderErrorInfo = "/var/log/jamf.log is missing"
+                    return
+                }
+                insider.run()
+                self.insiders.append(insider)
+            }
+        }
+        
+        
+        if self.userDefaults.bool(forKey: Constants.Insiders.Munki) {
+            hasOneInsiderOrMore = true
+            DispatchQueue.global(qos: .background).async {
+                let insider = MunkiInsider(userDefaults: self.userDefaults)
+                guard insider.logFileHandle != nil else {
+                    self.insiderError = true
+                    self.insiderErrorMessage = "Munki is not installed correctly"
+                    self.insiderErrorInfo = "/Library/Managed Installs/Logs/ManagedSoftwareUpdate.log is missing"
                     return
                 }
                 insider.run()
