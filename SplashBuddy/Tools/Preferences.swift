@@ -33,6 +33,7 @@ class Preferences {
     public var insiderErrorMessage: String = ""
     public var insiderErrorInfo: String = ""
     
+    internal var insiders = [AnyObject]()
     //-----------------------------------------------------------------------------------
     // MARK: - INIT
     //-----------------------------------------------------------------------------------
@@ -48,7 +49,9 @@ class Preferences {
             self.assetPath = (FileManager.default.urls(for: .applicationSupportDirectory, in: .localDomainMask).first?.appendingPathComponent(Constants.AppName, isDirectory: true))!
         }
         
+        var hasOneInsiderOrMore = false
         if self.userDefaults.bool(forKey: Constants.Insiders.JAMF) {
+            hasOneInsiderOrMore = true
             DispatchQueue.global(qos: .background).async {
                 let insider = JAMFInsider(nsUserDefaults: self.userDefaults)
                 guard insider.logFileHandle != nil else {
@@ -58,7 +61,15 @@ class Preferences {
                     return
                 }
                 insider.run()
+                self.insiders.append(insider)
             }
+        }
+        
+        if !hasOneInsiderOrMore {
+            self.insiderError = true
+            self.insiderErrorMessage = "No insiders setup"
+            self.insiderErrorInfo = "You need to enable at least one insider to make this tool useful"
+            return
         }
     }
 

@@ -77,7 +77,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-hideBackground 1"
-            isEnabled = "NO">
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-JAMFInsider 1"
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
