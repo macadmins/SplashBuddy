@@ -24,61 +24,41 @@ class Preferences {
     public var doneParsingPlist: Bool = false
 
     internal let userDefaults: UserDefaults
+    
+    internal let temporaryFolderURL = FileManager.default.temporaryDirectory.appendingPathComponent(Constants.AppName, isDirectory: true)
+    internal let setupDoneURL = (FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?.appendingPathComponent(Constants.SetupDone))!
+    internal let formDoneURL = (FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?.appendingPathComponent(Constants.FormDone))!
 
+    public var insiderError: Bool = false
+    public var insiderErrorMessage: String = ""
+    public var insiderErrorInfo: String = ""
+    
     //-----------------------------------------------------------------------------------
     // MARK: - INIT
     //-----------------------------------------------------------------------------------
 
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = nsUserDefaults
-
+        
         // Do not change asset path (see comment on var assetPath: URL below)
         // TSTAssetPath is meant for unit testing only.
-        if let assetPath = self.userDefaults.string(forKey: "TSTAssetPath") {
+        if let assetPath = self.userDefaults.string(forKey: Constants.Testing.Asset) {
             self.assetPath = URL(fileURLWithPath: assetPath, isDirectory: true)
         } else {
-            self.assetPath = URL(fileURLWithPath: "/Library/Application Support/SplashBuddy", isDirectory: true)
+            self.assetPath = (FileManager.default.urls(for: .applicationSupportDirectory, in: .localDomainMask).first?.appendingPathComponent(Constants.AppName, isDirectory: true))!
         }
-
-        // TSTJamfLog is meant for unit testing only.
-        if let jamfLogPath: String = self.userDefaults.string(forKey: "TSTJamfLog") {
-            self.logFileHandle = self.getFileHandle(from: jamfLogPath)
-        } else {
-            self.logFileHandle = self.getFileHandle()
-        }
-
-        // Start parsing the log file
-
-        guard let logFileHandle = self.logFileHandle else {
-            Log.write(string: "Cannot check logFileHandle", cat: "Preferences", level: .error)
-            return
-        }
-
-        logFileHandle.readabilityHandler = { fileHandle in
-            let data = fileHandle.readDataToEndOfFile()
-
-            guard let string = String(data: data, encoding: .utf8) else {
-                return
-            }
-
-            for line in string.split(separator: "\n") {
-                if let software = Software(from: String(line)) {
-                    DispatchQueue.main.async {
-                        SoftwareArray.sharedInstance.array.modify(with: software)
-                    }
+        
+        if self.userDefaults.bool(forKey: Constants.Insiders.JAMF) {
+            DispatchQueue.global(qos: .background).async {
+                let insider = JAMFInsider(nsUserDefaults: self.userDefaults)
+                guard insider.logFileHandle != nil else {
+                    self.insiderError = true
+                    self.insiderErrorMessage = "Jamf is not installed correctly"
+                    self.insiderErrorInfo = "/var/log/jamf.log is missing"
+                    return
                 }
+                insider.run()
             }
-        }
-    }
-
-    internal func getFileHandle(from file: String = "/var/log/jamf.log") -> FileHandle? {
-        do {
-            return try FileHandle(forReadingFrom: URL(fileURLWithPath: file, isDirectory: false))
-        } catch {
-            Log.write(string: "Cannot read \(file)",
-                cat: "Preferences",
-                level: .error)
-            return nil
         }
     }
 
@@ -168,17 +148,17 @@ class Preferences {
     /// All softwares are installed
     var setupDone: Bool {
         get {
-            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone")
+            return FileManager.default.fileExists(atPath: self.setupDoneURL.path)
         }
 
         set(myValue) {
             if myValue == true {
-                FileManager.default.createFile(atPath: "Library/.SplashBuddyDone", contents: nil, attributes: nil)
+                FileManager.default.createFile(atPath: self.setupDoneURL.path, contents: nil, attributes: nil)
             } else {
                 do {
-                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyDone")
+                    try FileManager.default.removeItem(atPath: self.setupDoneURL.path)
                 } catch {
-                    Log.write(string: "Couldn't remove .SplashBuddyDone",
+                    Log.write(string: "Couldn't remove \(self.setupDoneURL.path))",
                               cat: "Preferences",
                               level: .info)
                 }
@@ -188,17 +168,17 @@ class Preferences {
 
     var formDone: Bool {
         get {
-            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyFormDone")
+            return FileManager.default.fileExists(atPath: self.formDoneURL.path)
         }
 
         set(myValue) {
             if myValue == true {
-                FileManager.default.createFile(atPath: "Library/.SplashBuddyFormDone", contents: nil, attributes: nil)
+                FileManager.default.createFile(atPath: self.formDoneURL.path, contents: nil, attributes: nil)
             } else {
                 do {
-                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                    try FileManager.default.removeItem(atPath: self.formDoneURL.path)
                 } catch {
-                    Log.write(string: "Couldn't remove .SplashBuddyFormDone", cat: "Preferences", level: .info)
+                    Log.write(string: "Couldn't remove \(self.formDoneURL.path)", cat: "Preferences", level: .info)
                 }
             }
         }
@@ -213,44 +193,45 @@ class Preferences {
 
     private func createSplashBuddyTmpIfNeeded() {
         var YES: ObjCBool = true
-        if !FileManager.default.fileExists(atPath: "/private/tmp/SplashBuddy/", isDirectory: &YES) {
+        if !FileManager.default.fileExists(atPath: self.temporaryFolderURL.path, isDirectory: &YES) {
             do {
-                try FileManager.default.createDirectory(atPath: "/private/tmp/SplashBuddy",
+                try FileManager.default.createDirectory(at: self.temporaryFolderURL,
                                                         withIntermediateDirectories: false,
                                                         attributes: [
                                                             .groupOwnerAccountID: 20,
                                                             .posixPermissions: 0o777
                     ])
             } catch {
-                Log.write(string: "Cannot create /private/tmp/SplashBuddy/",
+                Log.write(string: "Cannot create \(self.temporaryFolderURL.path)",
                           cat: "Preferences",
                           level: .error)
-                fatalError("Cannot create /private/tmp/SplashBuddy/")
+                fatalError("Cannot create \(self.temporaryFolderURL.path)")
             }
         }
     }
 
     private func checkTagFile(named: TagFile) -> Bool {
-        return FileManager.default.fileExists(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue))
+        return FileManager.default.fileExists(atPath: self.temporaryFolderURL.appendingPathComponent(named.rawValue).path)
     }
 
     private func createOrDeleteTagFile(named: TagFile, create: Bool) {
         createSplashBuddyTmpIfNeeded()
 
+        let filePath = self.temporaryFolderURL.appendingPathComponent(named.rawValue).path
         if create == true {
-            if FileManager.default.createFile(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue),
+            if FileManager.default.createFile(atPath: filePath,
                                               contents: nil,
                                               attributes: [
                                                 .groupOwnerAccountID: 20,
                                                 .posixPermissions: 0o777
                 ]) {
-                Log.write(string: "Created .".appending(named.rawValue),
+                Log.write(string: "Created \(filePath)",
                           cat: "Preferences",
                           level: .info)
             } else {
-                Log.write(string: "Couldn't create .".appending(named.rawValue), cat: "Preferences", level: .error)
+                Log.write(string: "Couldn't create \(filePath)", cat: "Preferences", level: .error)
                 do {
-                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                    try FileManager.default.removeItem(atPath: self.formDoneURL.path)
                 } catch {
 
                 }
@@ -258,9 +239,9 @@ class Preferences {
 
         } else {
             do {
-                try FileManager.default.removeItem(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue))
+                try FileManager.default.removeItem(atPath: filePath)
             } catch {
-                Log.write(string: "Couldn't remove .".appending(named.rawValue), cat: "Preferences", level: .info)
+                Log.write(string: "Couldn't remove \(filePath)", cat: "Preferences", level: .info)
             }
         }
     }

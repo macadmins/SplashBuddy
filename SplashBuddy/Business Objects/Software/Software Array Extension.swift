@@ -39,8 +39,8 @@ extension Array where Element: Software {
      *
      * If similar element exists, modifies it. Otherwise adds a new element.
      **/
-    mutating func modify(from line: String) {
-        guard let software = Software(from: line) else {
+    mutating func modify(from line: String, with regexes: [Software.SoftwareStatus: NSRegularExpression?]) {
+        guard let software = Software(from: line, with: regexes) else {
             return // we don't care
         }
 

@@ -50,21 +50,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = "EnterpriseConnect"
 
-        XCTAssertEqual(Software(from: input)!.packageName, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.packageName, output)
     }
 
     func testRegexInstallingPackage_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = "1.5.3"
 
-        XCTAssertEqual(Software(from: input)!.packageVersion, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.packageVersion, output)
     }
 
     func testRegexInstallingPackage_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
         let output = Software.SoftwareStatus.installing.rawValue
 
-        XCTAssertEqual(Software(from: input)!.status.rawValue, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.status.rawValue, output)
     }
 
     // Packages Successfully Installed
@@ -72,21 +72,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = "EnterpriseConnect"
 
-        XCTAssertEqual(Software(from: input)!.packageName, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.packageName, output)
     }
 
     func testRegexSuccessfullyInstalledPackage_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = "1.5.3"
 
-        XCTAssertEqual(Software(from: input)!.packageVersion, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.packageVersion, output)
     }
 
     func testRegexSuccessfullyInstalledPackage_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
         let output = Software.SoftwareStatus.success.rawValue
 
-        XCTAssertEqual(Software(from: input)!.status.rawValue, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.status.rawValue, output)
     }
 
     // Failed Packages
@@ -94,21 +94,21 @@ class CasperSplashTests: XCTestCase {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = "EnterpriseConnect"
 
-        XCTAssertEqual(Software(from: input)!.packageName, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.packageName, output)
     }
 
     func testRegexFailedInstall_Version() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = "1.5.3"
 
-        XCTAssertEqual(Software(from: input)!.packageVersion, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.packageVersion, output)
     }
 
     func testRegexFailedInstall_Status() {
         let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
         let output = Software.SoftwareStatus.failed.rawValue
 
-        XCTAssertEqual(Software(from: input)!.status.rawValue, output)
+        XCTAssertEqual(Software(from: input, with: initJAMFRegex())!.status.rawValue, output)
     }
 
     func testReadFromFile_NonExistentFile() {

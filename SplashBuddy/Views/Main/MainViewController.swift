@@ -202,13 +202,13 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         // Setup the initial state of objects
         self.setupInstalling()
 
-        // Display Alert if /var/log/jamf.log doesn't exist
-        guard Preferences.sharedInstance.logFileHandle != nil else {
+        // Display Alert if an insider got an error doesn't exist
+        if Preferences.sharedInstance.insiderError {
             let alert = NSAlert()
 
             alert.alertStyle = .critical
-            alert.messageText = "Jamf is not installed correctly"
-            alert.informativeText = "/var/log/jamf.log is missing"
+            alert.messageText = Preferences.sharedInstance.insiderErrorMessage
+            alert.informativeText = Preferences.sharedInstance.insiderErrorInfo
             alert.addButton(withTitle: "Quit")
             alert.beginSheetModal(for: self.view.window!) { (_) in
                 self.pressedContinueButton(self)
