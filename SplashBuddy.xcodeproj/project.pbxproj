@@ -29,12 +29,12 @@
 		479DD87F1F914667001796B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 479DD8811F914667001796B1 /* InfoPlist.strings */; };
 		47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A218191F04F0BC00FD3EDC /* MainWindow.swift */; };
 		47AA7B141E68AD8E005BBF48 /* SplashBuddy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47AA7B161E68AD8E005BBF48 /* SplashBuddy.storyboard */; };
-		47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198A91E6561AB0055CC85 /* Software Array Extension.swift */; };
 		47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */; };
 		47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADF31E682C9200356D11 /* SoftwareArray.swift */; };
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
 		D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */; };
 		ED525EBB20907D4700BF776B /* NSLocalizedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */; };
+		F827233E21845F0200E52B3F /* Software Array Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827233D21845F0200E52B3F /* Software Array Extension.swift */; };
 		F88973BF218427E90050FFCE /* InstallerInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88973BE218427E90050FFCE /* InstallerInsider.swift */; };
 		F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6DD2183B177008A1773 /* Constants.swift */; };
 		F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */; };
@@ -123,7 +123,6 @@
 		47A218191F04F0BC00FD3EDC /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
 		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashBuddy.storyboard; sourceTree = "<group>"; };
-		47B198A91E6561AB0055CC85 /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController_Actions.swift; sourceTree = "<group>"; };
 		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		EDA78DAD20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA78DAE20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
+		F827233D21845F0200E52B3F /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
 		F88973BE218427E90050FFCE /* InstallerInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerInsider.swift; sourceTree = "<group>"; };
 		F8A1E6DD2183B177008A1773 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAMFInsider.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				089D294E1D50F1D800E58C6D /* Software.swift */,
-				47B198A91E6561AB0055CC85 /* Software Array Extension.swift */,
+				F827233D21845F0200E52B3F /* Software Array Extension.swift */,
 				08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */,
 				47CFADF31E682C9200356D11 /* SoftwareArray.swift */,
 			);
@@ -544,6 +544,7 @@
 				47390F481F2B64C9009EA94C /* ContinueAction.swift in Sources */,
 				089D29211D50D12200E58C6D /* AppDelegate.swift in Sources */,
 				81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */,
+				F827233E21845F0200E52B3F /* Software Array Extension.swift in Sources */,
 				ED525EBB20907D4700BF776B /* NSLocalizedStringExtensions.swift in Sources */,
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
@@ -552,7 +553,6 @@
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */,
 				F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */,
-				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
 				47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */,

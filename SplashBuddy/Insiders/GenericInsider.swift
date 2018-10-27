@@ -77,7 +77,10 @@ class GenericInsider: InsiderProtocol {
                         do {
                             if let status = try lineChecker.check(line: String(line)) {
                                 DispatchQueue.main.async {
-                                    SoftwareArray.sharedInstance.softwareByNames[name]?.status = status
+                                    if let software = SoftwareArray.sharedInstance.softwareByNames[name] {
+                                        software.status = status
+                                        SoftwareArray.sharedInstance.array.updateInfo(for: software)
+                                    }
                                 }
                             }
                         } catch {

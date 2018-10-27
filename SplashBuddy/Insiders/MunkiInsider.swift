@@ -16,45 +16,17 @@
 
 import Foundation
 
-func initMunkiRegex() throws -> [Software.SoftwareStatus: [NSRegularExpression]] {
-    
-    let re_options = NSRegularExpression.Options.anchorsMatchLines
-    
-    // Installing
-    let re_installing: [NSRegularExpression]
-    
-    try re_installing = [NSRegularExpression(
-        pattern: "(?<=Installing )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg...$",
-        options: re_options
-    )]
-    
-    // Failure
-    let re_failure: [NSRegularExpression]
-    
-    try re_failure = [NSRegularExpression(
-        pattern: "(?<=Installation failed. The installer reported: installer: Package name is )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*)$",
-        options: re_options
-    )]
-    
-    // Success
-    let re_success: [NSRegularExpression]
-    
-    try re_success = [NSRegularExpression(
-        pattern: "(?<=Successfully installed )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg",
-        options: re_options
-    )]
-    
-    return [
-        .success: re_success,
-        .failed: re_failure,
-        .installing: re_installing
-    ]
-}
-
 class MunkiInsider : GenericInsider {
     class MunkiLineChecker: InsiderLineChecker {
         func check(line: String) throws -> Software.SoftwareStatus? {
-            assertionFailure()
+            if line.contains(" Installing ") {
+                return Software.SoftwareStatus.installing
+            } else if line.contains(" Install of ") && line.contains("was successful.") {
+                return Software.SoftwareStatus.success
+            } else if line.contains("failed") {
+                return Software.SoftwareStatus.failed
+            }
+            
             return nil
         }
     }
