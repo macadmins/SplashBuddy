@@ -198,26 +198,14 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                                                selector: #selector(MainViewController.allSuccess),
                                                name: SoftwareArray.StateNotification.allSuccess.notification,
                                                object: nil)
+        
+        // Setup insider error observer
+        Preferences.sharedInstance.addObserver(self, forKeyPath: "insiderError", options: [.new], context: nil)
     }
 
     override func viewDidAppear() {
         // Setup the initial state of objects
         self.setupInstalling()
-
-        // Display Alert if an insider got an error doesn't exist
-        if Preferences.sharedInstance.insiderError {
-            let alert = NSAlert()
-
-            alert.alertStyle = .critical
-            alert.messageText = Preferences.sharedInstance.insiderErrorMessage
-            alert.informativeText = Preferences.sharedInstance.insiderErrorInfo
-            alert.addButton(withTitle: "Quit")
-            alert.beginSheetModal(for: self.view.window!) { (_) in
-                self.pressedContinueButton(self)
-            }
-
-            return
-        }
 
         // Display the html file
         if Preferences.sharedInstance.form != nil && !Preferences.sharedInstance.formDone {
@@ -287,6 +275,31 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             Log.write(string: "DONE: Form Javascript Evaluation", cat: "UI", level: .debug)
             Log.write(string: "Form complete, writing to .SplashBuddyFormDone", cat: "UI", level: .debug)
             Preferences.sharedInstance.formDone = true
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "insiderError" {
+            checkForInsiderError()
+        }
+    }
+    
+    func checkForInsiderError() {
+        // The async after a second is here only to handle the case where the error flag is changed before the error messages are set.
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            guard let window = self.view.window else { return }
+            
+            if Preferences.sharedInstance.insiderError {
+                let alert = NSAlert()
+                
+                alert.alertStyle = .critical
+                alert.messageText = Preferences.sharedInstance.insiderErrorMessage
+                alert.informativeText = Preferences.sharedInstance.insiderErrorInfo
+                alert.addButton(withTitle: "Quit")
+                alert.beginSheetModal(for: window) { (_) in
+                    self.pressedContinueButton(self)
+                }
+            }
         }
     }
 }

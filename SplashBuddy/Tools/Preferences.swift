@@ -19,7 +19,7 @@ import Cocoa
 /**
  Preferences() keeps the relevant preferences
  */
-class Preferences {
+class Preferences: NSObject {
 
     static let sharedInstance = Preferences()
     internal var logFileHandle: FileHandle?
@@ -31,7 +31,7 @@ class Preferences {
     internal let setupDoneURL = (FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?.appendingPathComponent(Constants.SetupDone))!
     internal let formDoneURL = (FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?.appendingPathComponent(Constants.FormDone))!
 
-    public var insiderError: Bool = false
+    @objc dynamic var insiderError: Bool = false
     public var insiderErrorMessage: String = ""
     public var insiderErrorInfo: String = ""
     
@@ -103,7 +103,14 @@ class Preferences {
     func runInsiders() {
         for insider in insiders {
             DispatchQueue.global(qos: .background).async {
-                insider.run()
+                do {
+                    try insider.run()
+                } catch {
+                    self.insiderError = true
+                    self.insiderErrorMessage = "Error running \(String(describing:type(of:insider))) insider"
+                    self.insiderErrorInfo = "\(error.localizedDescription)"
+                    Log.write(string: "Error running \(String(describing:type(of:insider))) insider: \(error.localizedDescription)", cat: "Preferences", level: .error)
+                }
             }
         }
     }
