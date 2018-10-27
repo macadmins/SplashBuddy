@@ -16,7 +16,7 @@ It allows you to:
 - Provide status on the software that is currently being installed
 - Display important information
 
-It currently supports Jamf Pro. You're welcome to [contribute](https://github.com/Shufflepuck/SplashBuddy/blob/master/CONTRIBUTING.md) to the project. Every little helps.
+It currently supports Jamf Pro, Munki and install.log (VPP) as source of informations. You're welcome to [contribute](https://github.com/Shufflepuck/SplashBuddy/blob/master/CONTRIBUTING.md) to the project. Every little helps.
 
 ## In action
 
