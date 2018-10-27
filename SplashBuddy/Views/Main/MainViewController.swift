@@ -215,7 +215,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
             DispatchQueue.main.async {
                 self.sendButton.isHidden = false
-                self.continueButton.isHidden = true
             }
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
             Log.write(string: "Injecting Javascript.", cat: "UserInput", level: .debug)
@@ -223,9 +222,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         } else if let html = Preferences.sharedInstance.html {
             if Preferences.sharedInstance.formDone {
                 Log.write(string: "Form already completed.", cat: "UserInput", level: .debug)
-            }
-            DispatchQueue.main.async {
-                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
 
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -263,7 +259,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
             DispatchQueue.main.async {
                 self.sendButton.isHidden = true
-                self.continueButton.isHidden = false
 
                 if let html = Preferences.sharedInstance.html {
                     self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)

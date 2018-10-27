@@ -29,12 +29,13 @@ extension MainViewController {
         indeterminateProgressIndicator.startAnimation(self)
         indeterminateProgressIndicator.isHidden = false
 
-        statusLabel.isHidden = false
+        statusLabel.isHidden = true
         statusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
 
         self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
 
         self.continueButton.isEnabled = false
+        self.continueButton.isHidden = true
     }
 
     /// reset the status label to "We are preparing your Mac…"
@@ -51,12 +52,14 @@ extension MainViewController {
         }
         statusLabel.textColor = .red
         statusLabel.stringValue = error
+        statusLabel.isHidden = false
     }
 
     /// all critical software is installed
     @objc func canContinue() {
         Preferences.sharedInstance.criticalDone = true
         self.continueButton.isEnabled = true
+        self.continueButton.isHidden = false
     }
 
     /// all software is installed (failed or success)

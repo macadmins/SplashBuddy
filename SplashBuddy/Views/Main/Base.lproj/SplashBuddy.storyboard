@@ -11,7 +11,7 @@
         <scene sceneID="zkc-0l-Upw">
             <objects>
                 <windowController storyboardIdentifier="mainWindow" id="UoU-0S-EqW" customClass="MainWindowController" customModule="SplashBuddy" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOE-dw-mkn" customClass="MainWindow" customModule="SplashBuddy" customModuleProvider="target">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="eOE-dw-mkn" customClass="MainWindow" customModule="SplashBuddy" customModuleProvider="target">
                         <rect key="contentRect" x="294" y="313" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                         <connections>
@@ -118,6 +118,9 @@
                                                                                         </imageView>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9D-nO-L12">
                                                                                             <rect key="frame" x="21" y="2" width="72" height="17"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="17" id="6v8-Wv-bbl"/>
+                                                                                            </constraints>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="description" id="lnB-mt-lsP">
                                                                                                 <font key="font" metaFont="systemLight" size="13"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -162,7 +165,7 @@
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <nil key="backgroundColor"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </clipView>
                                                         <edgeInsets key="contentInsets" left="5" right="0.0" top="10" bottom="60"/>
                                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="6y1-ZO-fX2" customClass="TransparentScroller" customModule="SplashBuddy" customModuleProvider="target">
@@ -207,14 +210,11 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="9z5-8K-Bsy">
                                         <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
                                         <subviews>
-                                            <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="sheet" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VIc-9A-62o">
-                                                <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
-                                            </visualEffectView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qF2-Zf-dqr">
-                                                <rect key="frame" x="119" y="10" width="562" height="41"/>
+                                                <rect key="frame" x="119" y="22" width="562" height="16"/>
                                                 <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huH-bF-pmn">
-                                                        <rect key="frame" x="-2" y="24" width="566" height="17"/>
+                                                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huH-bF-pmn">
+                                                        <rect key="frame" x="-2" y="-1" width="566" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="gAE-fA-iyd">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -255,12 +255,8 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="k7a-CL-x2G" firstAttribute="centerY" secondItem="qF2-Zf-dqr" secondAttribute="centerY" id="6fB-7w-od0"/>
-                                            <constraint firstItem="VIc-9A-62o" firstAttribute="top" secondItem="9z5-8K-Bsy" secondAttribute="top" id="772-5A-yjz"/>
-                                            <constraint firstAttribute="trailing" secondItem="VIc-9A-62o" secondAttribute="trailing" id="Ajh-xI-dKG"/>
                                             <constraint firstAttribute="height" constant="60" id="G1R-Mw-wo0"/>
                                             <constraint firstItem="k7a-CL-x2G" firstAttribute="leading" secondItem="qF2-Zf-dqr" secondAttribute="trailing" priority="250" id="UZ0-4U-iXj"/>
-                                            <constraint firstItem="VIc-9A-62o" firstAttribute="leading" secondItem="9z5-8K-Bsy" secondAttribute="leading" id="gUx-2D-75H"/>
-                                            <constraint firstAttribute="bottom" secondItem="VIc-9A-62o" secondAttribute="bottom" id="vA5-hZ-TV8"/>
                                             <constraint firstAttribute="trailing" secondItem="k7a-CL-x2G" secondAttribute="trailing" constant="20" id="xFh-zM-Upc"/>
                                             <constraint firstItem="qF2-Zf-dqr" firstAttribute="centerY" secondItem="9z5-8K-Bsy" secondAttribute="centerY" id="zdN-Lt-BJZ"/>
                                             <constraint firstItem="qF2-Zf-dqr" firstAttribute="centerX" secondItem="9z5-8K-Bsy" secondAttribute="centerX" id="zmx-9x-TaU"/>
