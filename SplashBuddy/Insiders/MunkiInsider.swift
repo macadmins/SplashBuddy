@@ -23,7 +23,7 @@ class MunkiInsider : GenericInsider {
                 return Software.SoftwareStatus.installing
             } else if line.contains(" Install of ") && line.contains("was successful.") {
                 return Software.SoftwareStatus.success
-            } else if line.contains("failed") {
+            } else if line.lowercased().contains("failed") {
                 return Software.SoftwareStatus.failed
             }
             
