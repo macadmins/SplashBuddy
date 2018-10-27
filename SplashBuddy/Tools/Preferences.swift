@@ -267,7 +267,7 @@ class Preferences {
                 }
             }
 
-        } else {
+        } else if FileManager.default.fileExists(atPath: filePath) {
             do {
                 try FileManager.default.removeItem(atPath: filePath)
             } catch {
