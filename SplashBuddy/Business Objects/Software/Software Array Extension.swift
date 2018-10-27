@@ -36,23 +36,4 @@ extension Array where Element: Software {
         }
     }
 
-    /**
-     * Modify SoftwareArray from a line (String)
-     *
-     * If similar element exists, modifies it. Otherwise adds a new element.
-     **/
-    mutating func modify(from line: String, with regexes: [Software.SoftwareStatus: NSRegularExpression?]) {
-        guard let software = Software(from: line, with: regexes) else {
-            return // we don't care
-        }
-
-        if let index = self.index(where: {$0.packageName == software.packageName}) {
-            self[index].status = software.status
-            self[index].packageVersion = software.packageVersion
-        } else {
-            if let element = software as? Element {
-                self.append(element)
-            }
-        }
-    }
 }
