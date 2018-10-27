@@ -57,7 +57,7 @@ class GenericInsider {
             for line in string.split(separator: "\n") {
                 if let software = Software(from: String(line), with: self.regexes()) {
                     DispatchQueue.main.async {
-                        SoftwareArray.sharedInstance.array.modify(with: software)
+                        SoftwareArray.sharedInstance.array.updateInfo(for: software)
                     }
                 }
             }

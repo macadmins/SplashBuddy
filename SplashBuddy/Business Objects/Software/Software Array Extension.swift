@@ -19,19 +19,18 @@ import Foundation
 extension Array where Element: Software {
 
     /**
-     * Modify SoftwareArray from Software
+     * Update SoftwareArray from Software
      *
-     * If similar element exists, modifies it. Otherwise adds a new element.
+     * If similar element exists, update it.
+     * Otherwise do nothing, we wont create undeclared and unecessary software
      **/
-    mutating func modify(with software: Software) {
-        // If Software already exists, replace status and package version
+    mutating func updateInfo(for software: Software) {
+        // If Software already exists, update status and package version
 
         if let index = self.index(where: {$0.packageNames == software.packageNames}) {
             self[index].status = software.status
-            self[index].packageVersion = software.packageVersion
-        } else {
-            if let element = software as? Element {
-                self.append(element)
+            if let version = software.packageVersion {
+                self[index].packageVersion = version
             }
         }
     }
