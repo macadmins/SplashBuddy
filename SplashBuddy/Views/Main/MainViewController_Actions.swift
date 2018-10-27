@@ -29,7 +29,7 @@ extension MainViewController {
         self.sideBarView.isHidden = true
         self.bottomView.isHidden = true
         
-        if !Preferences.sharedInstance.hideSidebar {
+        if Preferences.sharedInstance.hideSidebar {
             self.activeProgressIndicator = self.bottomProgressIndicator
             self.activeStatusLabel = self.bottomStatusLabel
             self.activeContinueButton = self.bottomContinueButton

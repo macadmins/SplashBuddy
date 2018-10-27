@@ -52,7 +52,7 @@ class Software: NSObject {
     
     override var description: String {
         
-        return "<\(String(describing: type(of:self))): displayName=\(self.displayName), status=\(self.status.rawValue), canContinue=\(self.canContinue)>"
+        return "<\(String(describing: type(of:self))): displayName=\(String(describing: self.displayName)), status=\(self.status.rawValue), canContinue=\(self.canContinue)>"
     }
 
     /**
