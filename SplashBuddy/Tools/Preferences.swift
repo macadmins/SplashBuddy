@@ -152,7 +152,7 @@ class Preferences: NSObject {
     //-----------------------------------------------------------------------------------
 
     /// set to `true` to hide sidebar
-    public var sidebar: Bool {
+    public var hideSidebar: Bool {
         return self.userDefaults.bool(forKey: "hideSidebar")
     }
 

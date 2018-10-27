@@ -123,15 +123,25 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             JSON.stringify(sb());
         """
 
-    @IBOutlet var webView: WKWebView!
-    @IBOutlet var softwareTableView: NSTableView!
-    @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
-    @IBOutlet weak var continueButton: NSButton!
-    @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet var mainView: NSView!
-    @IBOutlet weak var statusView: NSView!
-    @IBOutlet weak var sidebarView: NSView!
+    
+    @IBOutlet var webView: WKWebView!
+    
+    @IBOutlet weak var sideBarView: NSView!
+    @IBOutlet weak var sideBarProgressIndicator: NSProgressIndicator!
+    @IBOutlet weak var sideBarContinueButton: NSButton!
+    @IBOutlet weak var sideBarStatusLabel: NSTextField!
+    
+    @IBOutlet weak var bottomView: NSView!
+    @IBOutlet weak var bottomProgressIndicator: NSProgressIndicator!
+    @IBOutlet weak var bottomContinueButton: NSButton!
+    @IBOutlet weak var bottomStatusLabel: NSTextField!
 
+    weak var activeView: NSView!
+    weak var activeProgressIndicator: NSProgressIndicator!
+    weak var activeContinueButton: NSButton!
+    weak var activeStatusLabel: NSTextField!
+    
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
 
@@ -168,9 +178,12 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
         // Setup the web view
         self.webView.layer?.isOpaque = true
+        
+        // Setup the initial state of objects
+        self.setupInstalling()
 
         // Setup the Continue Button
-        self.continueButton.title = Preferences.sharedInstance.continueAction.localizedName
+        self.activeContinueButton.title = Preferences.sharedInstance.continueAction.localizedName
 
         // Setup the Notifications
 
@@ -204,9 +217,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     }
 
     override func viewDidAppear() {
-        // Setup the initial state of objects
-        self.setupInstalling()
-
         // Display the html file
         if Preferences.sharedInstance.form != nil && !Preferences.sharedInstance.formDone {
             guard let form = Preferences.sharedInstance.form else {

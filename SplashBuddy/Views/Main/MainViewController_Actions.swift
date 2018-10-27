@@ -26,21 +26,38 @@ extension MainViewController {
 
     /// Set the initial state of the view
     func setupInstalling() {
-        indeterminateProgressIndicator.startAnimation(self)
-        indeterminateProgressIndicator.isHidden = false
+        self.sideBarView.isHidden = true
+        self.bottomView.isHidden = true
+        
+        if !Preferences.sharedInstance.hideSidebar {
+            self.activeProgressIndicator = self.bottomProgressIndicator
+            self.activeStatusLabel = self.bottomStatusLabel
+            self.activeContinueButton = self.bottomContinueButton
+            self.activeView = self.bottomView
+            self.sideBarView.removeFromSuperview()
+        } else {
+            self.activeProgressIndicator = self.sideBarProgressIndicator
+            self.activeStatusLabel = self.sideBarStatusLabel
+            self.activeContinueButton = self.sideBarContinueButton
+            self.activeView = self.sideBarView
+            self.bottomView.removeFromSuperview()
+        }
+        
+        self.activeProgressIndicator.startAnimation(self)
+        self.activeProgressIndicator.isHidden = false
+        
+        self.activeStatusLabel.isHidden = true
+        self.activeStatusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
 
-        statusLabel.isHidden = true
-        statusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
-
-        self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
-
-        self.continueButton.isEnabled = false
-        self.continueButton.isHidden = true
+        self.activeContinueButton.isEnabled = false
+        self.activeContinueButton.isHidden = true
+        
+        self.activeView.isHidden = false
     }
 
     /// reset the status label to "We are preparing your Mac…"
     @objc func resetStatusLabel() {
-        statusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
+        activeStatusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
     }
 
     /// sets the status label to display an error
@@ -50,26 +67,26 @@ extension MainViewController {
         guard let error = SoftwareArray.sharedInstance.localizedErrorStatus else {
             return
         }
-        statusLabel.textColor = .red
-        statusLabel.stringValue = error
-        statusLabel.isHidden = false
+        activeStatusLabel.textColor = .red
+        activeStatusLabel.stringValue = error
+        activeStatusLabel.isHidden = false
     }
 
     /// all critical software is installed
     @objc func canContinue() {
         Preferences.sharedInstance.criticalDone = true
-        self.continueButton.isEnabled = true
-        self.continueButton.isHidden = false
+        self.activeContinueButton.isEnabled = true
+        self.activeContinueButton.isHidden = false
     }
 
     /// all software is installed (failed or success)
     @objc func doneInstalling() {
         Preferences.sharedInstance.allInstalled = true
-        indeterminateProgressIndicator.stopAnimation(self)
-        indeterminateProgressIndicator.isHidden = true
+        activeProgressIndicator.stopAnimation(self)
+        activeProgressIndicator.isHidden = true
 
         if Preferences.sharedInstance.labMode {
-            self.sidebarView.isHidden = true
+            self.activeView.isHidden = true
             if let labComplete = Preferences.sharedInstance.labComplete {
                 self.webView.loadFileURL(labComplete, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
             } else {
@@ -82,7 +99,7 @@ extension MainViewController {
     /// all software is sucessfully installed
     @objc func allSuccess() {
         Preferences.sharedInstance.allSuccessfullyInstalled = true
-        statusLabel.textColor = .labelColor
-        statusLabel.stringValue = Preferences.sharedInstance.continueAction.localizedSuccessStatus
+        activeStatusLabel.textColor = .labelColor
+        activeStatusLabel.stringValue = Preferences.sharedInstance.continueAction.localizedSuccessStatus
     }
 }
