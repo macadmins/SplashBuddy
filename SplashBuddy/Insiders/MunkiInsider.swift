@@ -16,45 +16,33 @@
 
 import Foundation
 
-func initMunkiRegex() -> [Software.SoftwareStatus: NSRegularExpression?] {
+func initMunkiRegex() throws -> [Software.SoftwareStatus: [NSRegularExpression]] {
     
     let re_options = NSRegularExpression.Options.anchorsMatchLines
     
     // Installing
-    let re_installing: NSRegularExpression?
+    let re_installing: [NSRegularExpression]
     
-    do {
-        try re_installing = NSRegularExpression(
-            pattern: "(?<=Installing )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg...$",
-            options: re_options
-        )
-    } catch {
-        re_installing = nil
-    }
+    try re_installing = [NSRegularExpression(
+        pattern: "(?<=Installing )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg...$",
+        options: re_options
+    )]
     
     // Failure
-    let re_failure: NSRegularExpression?
+    let re_failure: [NSRegularExpression]
     
-    do {
-        try re_failure = NSRegularExpression(
-            pattern: "(?<=Installation failed. The installer reported: installer: Package name is )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*)$",
-            options: re_options
-        )
-    } catch {
-        re_failure = nil
-    }
+    try re_failure = [NSRegularExpression(
+        pattern: "(?<=Installation failed. The installer reported: installer: Package name is )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*)$",
+        options: re_options
+    )]
     
     // Success
-    let re_success: NSRegularExpression?
+    let re_success: [NSRegularExpression]
     
-    do {
-        try re_success = NSRegularExpression(
-            pattern: "(?<=Successfully installed )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg",
-            options: re_options
-        )
-    } catch {
-        re_success = nil
-    }
+    try re_success = [NSRegularExpression(
+        pattern: "(?<=Successfully installed )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg",
+        options: re_options
+    )]
     
     return [
         .success: re_success,
@@ -69,7 +57,7 @@ class MunkiInsider : GenericInsider {
         self.init(userDefaults: userDefaults, withLogPath: munkiLogPath)
     }
     
-    override func regexes() -> [Software.SoftwareStatus: NSRegularExpression?] {
-        return initMunkiRegex()
+    override func regexes() throws -> [Software.SoftwareStatus: [NSRegularExpression]] {
+        return try initMunkiRegex()
     }
 }

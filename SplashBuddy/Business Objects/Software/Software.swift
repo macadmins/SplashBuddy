@@ -113,21 +113,22 @@ class Software: NSObject {
      - parameter canContinue: if set to false, the Software will block the "Continue" button until installed
      - parameter displayToUser: set to True to display in GUI
      */
-    convenience init?(from line: String, with regexes: [Software.SoftwareStatus: NSRegularExpression?]) {
+    convenience init?(from line: String, with regexes: [Software.SoftwareStatus: [NSRegularExpression]]) {
 
         var name: String?
         var version: String?
         var status: SoftwareStatus?
 
-        for (regexStatus, regex) in regexes {
+        for (regexStatus, subRegexes) in regexes {
             status = regexStatus
-
-            let matches = regex!.matches(in: line, options: [], range: NSRange(location: 0, length: line.count))
-
-            if !matches.isEmpty {
-                name = (line as NSString).substring(with: matches[0].range(at: 1))
-                version = (line as NSString).substring(with: matches[0].range(at: 2))
-                break
+            for regex in subRegexes {
+                let matches = regex.matches(in: line, options: [], range: NSRange(location: 0, length: line.count))
+                
+                if !matches.isEmpty {
+                    name = (line as NSString).substring(with: matches[0].range(at: 1))
+                    version = (line as NSString).substring(with: matches[0].range(at: 2))
+                    break
+                }
             }
         }
 

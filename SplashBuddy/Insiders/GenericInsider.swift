@@ -17,7 +17,7 @@
 import Foundation
 
 protocol InsiderProtocol {
-    func run()
+    func run() throws
 }
 
 class GenericInsider: InsiderProtocol {
@@ -45,11 +45,13 @@ class GenericInsider: InsiderProtocol {
         self.init(userDefaults: userDefaults, withLogPath: "")
     }
     
-    func run() {
+    func run() throws {
         guard let logFileHandle = self.logFileHandle else {
             Log.write(string: "Cannot check logFileHandle", cat: "Preferences", level: .error)
             return
         }
+        
+        let regexes = try self.regexes()
         
         logFileHandle.readabilityHandler = { fileHandle in
             let data = fileHandle.readDataToEndOfFile()
@@ -59,7 +61,7 @@ class GenericInsider: InsiderProtocol {
             }
             
             for line in string.split(separator: "\n") {
-                if let software = Software(from: String(line), with: self.regexes()) {
+                if let software = Software(from: String(line), with: regexes) {
                     DispatchQueue.main.async {
                         SoftwareArray.sharedInstance.array.updateInfo(for: software)
                     }
@@ -68,7 +70,7 @@ class GenericInsider: InsiderProtocol {
         }
     }
     
-    func regexes() -> [Software.SoftwareStatus: NSRegularExpression?] {
-        return [Software.SoftwareStatus: NSRegularExpression?]()
+    func regexes() throws -> [Software.SoftwareStatus: [NSRegularExpression]] {
+        return [Software.SoftwareStatus: [NSRegularExpression]]()
     }
 }
