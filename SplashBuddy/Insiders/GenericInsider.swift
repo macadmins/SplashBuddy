@@ -34,7 +34,7 @@ class GenericInsider: InsiderProtocol {
         do {
             self.logFileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: logPath, isDirectory: false))
         } catch {
-            Log.write(string: "Cannot read \(logPath)",
+            Log.write(string: "Cannot read \(logPath), error: \(error)",
                 cat: "Preferences",
                 level: .error)
             self.logFileHandle = nil
