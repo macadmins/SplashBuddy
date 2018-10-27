@@ -34,6 +34,9 @@
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
 		D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */; };
 		ED525EBB20907D4700BF776B /* NSLocalizedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */; };
+		F8272340218505CC00E52B3F /* GeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827233F218505CC00E52B3F /* GeneralTests.swift */; };
+		F82723422185073700E52B3F /* InstallerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82723412185073700E52B3F /* InstallerTests.swift */; };
+		F82723442185080000E52B3F /* MunkiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82723432185080000E52B3F /* MunkiTests.swift */; };
 		F88973BF218427E90050FFCE /* InstallerInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88973BE218427E90050FFCE /* InstallerInsider.swift */; };
 		F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6DD2183B177008A1773 /* Constants.swift */; };
 		F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */; };
@@ -134,6 +137,9 @@
 		EDA78DAD20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA78DAE20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
+		F827233F218505CC00E52B3F /* GeneralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTests.swift; sourceTree = "<group>"; };
+		F82723412185073700E52B3F /* InstallerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerTests.swift; sourceTree = "<group>"; };
+		F82723432185080000E52B3F /* MunkiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunkiTests.swift; sourceTree = "<group>"; };
 		F88973BE218427E90050FFCE /* InstallerInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerInsider.swift; sourceTree = "<group>"; };
 		F8A1E6DD2183B177008A1773 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAMFInsider.swift; sourceTree = "<group>"; };
@@ -202,11 +208,14 @@
 		089D292F1D50D12200E58C6D /* SplashBuddyTests */ = {
 			isa = PBXGroup;
 			children = (
+				F827233F218505CC00E52B3F /* GeneralTests.swift */,
 				089D29301D50D12200E58C6D /* CasperSplashTests.swift */,
+				F82723412185073700E52B3F /* InstallerTests.swift */,
+				F82723432185080000E52B3F /* MunkiTests.swift */,
+				47647E7D1E698F3C009D535B /* PreferencesTests.swift */,
 				089D29321D50D12200E58C6D /* Info.plist */,
 				089D29491D50D14C00E58C6D /* .travis.yml */,
 				089D29521D51D50700E58C6D /* jamf_1.txt */,
-				47647E7D1E698F3C009D535B /* PreferencesTests.swift */,
 			);
 			path = SplashBuddyTests;
 			sourceTree = "<group>";
@@ -561,6 +570,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82723422185073700E52B3F /* InstallerTests.swift in Sources */,
+				F8272340218505CC00E52B3F /* GeneralTests.swift in Sources */,
+				F82723442185080000E52B3F /* MunkiTests.swift in Sources */,
 				47647E7E1E698F3C009D535B /* PreferencesTests.swift in Sources */,
 				089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */,
 			);
@@ -738,7 +750,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 35AXSC32YT;
+				DEVELOPMENT_TEAM = QGS2L9578J;
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -759,7 +771,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 35AXSC32YT;
+				DEVELOPMENT_TEAM = QGS2L9578J;
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

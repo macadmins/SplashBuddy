@@ -17,54 +17,54 @@
 import XCTest
 @testable import SplashBuddy
 
-class CasperSplashTests: XCTestCase {
-
+class MunkiTests: XCTestCase {
+    
     var appDelegate: AppDelegate!
     var testUserDefaults: UserDefaults!
     var testPrefs: Preferences!
     var casperSplashController: MainWindowController!
     var casperSplashMainController: MainViewController!
-
+    
     override func setUp() {
         super.setUp()
         appDelegate = AppDelegate()
-
+        
         // Global Default UserDefaults
         testUserDefaults = UserDefaults.init(suiteName: "testing")
-
+        
         let path = Bundle(for: type(of: self)).bundlePath + "/Contents/Resources"
         testUserDefaults!.set(path, forKey: "assetPath")
     }
-
+    
     override func tearDown() {
         super.tearDown()
-
+        
         testUserDefaults.removeSuite(named: "testing")
         testUserDefaults = nil
         SoftwareArray.sharedInstance.array.removeAll()
     }
-
+    
     // Packages Installing
     func testStatusWhenInstallationStart() throws {
-        let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installing EnterpriseConnect-1.5.3.pkg..."
+        let input = "Oct 27 2018 00:57:20 +0200 Installing Oracle Java 8 from oraclejava8-1.8.181.13.pkg"
         let output = Software.SoftwareStatus.installing
-
-        XCTAssertEqual(try JAMFInsider.JAMFLineChecker().check(line: input), output)
+        
+        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
     }
-
+    
     // Packages Successfully Installed
     func testStatusWhenInstallationSucceed() throws {
-        let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Successfully installed EnterpriseConnect-1.5.3.pkg."
+        let input = "Oct 27 2018 00:57:27 +0200 Install of oraclejava8-1.8.181.13.pkg was successful."
         let output = Software.SoftwareStatus.success
-
-        XCTAssertEqual(try JAMFInsider.JAMFLineChecker().check(line: input), output)
+        
+        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
     }
-
+    
     // Failed Packages
     func testStatusWhenInstallationFailed() throws {
-        let input = "Wed Mar 16 13:31:20 François's Mac mini jamf[2874]: Installation failed. The installer reported: installer: Package name is EnterpriseConnect-1.5.3"
+        let input = "" // Failed
         let output = Software.SoftwareStatus.failed
-
-        XCTAssertEqual(try JAMFInsider.JAMFLineChecker().check(line: input), output)
+        
+        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
     }
 }
