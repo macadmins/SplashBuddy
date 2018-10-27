@@ -27,6 +27,8 @@ import Cocoa
  
  */
 
+infix operator ~=
+
 class Software: NSObject {
 
     /**
@@ -40,7 +42,7 @@ class Software: NSObject {
         case pending = 3
     }
 
-    @objc dynamic var packageName: String
+    @objc dynamic var packageNames: [String]
     @objc dynamic var packageVersion: String?
     @objc dynamic var status: SoftwareStatus
     @objc dynamic var icon: NSImage?
@@ -63,7 +65,7 @@ class Software: NSObject {
      - parameter displayToUser: set to True to display in GUI
      */
 
-    init(packageName: String,
+    init(packageNames: [String],
          version: String? = nil,
          status: SoftwareStatus = .pending,
          iconPath: String? = nil,
@@ -72,7 +74,7 @@ class Software: NSObject {
          canContinue: Bool = true,
          displayToUser: Bool = false) {
 
-        self.packageName = packageName
+        self.packageNames = packageNames
         self.packageVersion = version
         self.status = status
         self.canContinue = canContinue
@@ -85,6 +87,17 @@ class Software: NSObject {
         } else {
             self.icon = NSImage(named: NSImage.Name.folder)
         }
+    }
+    
+    convenience init(packageName: String,
+                     version: String? = nil,
+                     status: SoftwareStatus = .pending,
+                     iconPath: String? = nil,
+                     displayName: String? = nil,
+                     description: String? = nil,
+                     canContinue: Bool = true,
+                     displayToUser: Bool = false) {
+        self.init(packageNames: [packageName], version: version, status: status, iconPath: iconPath, displayName: displayName, description: description, canContinue: canContinue, displayToUser: displayToUser)
     }
 
     /**
@@ -119,14 +132,22 @@ class Software: NSObject {
         }
 
         if let packageName = name, let packageVersion = version, let packageStatus = status {
-            self.init(packageName: packageName, version: packageVersion, status: packageStatus)
+            self.init(packageNames: [packageName], version: packageVersion, status: packageStatus)
         } else {
             return nil
         }
     }
-
-}
-
-func == (lhs: Software, rhs: Software) -> Bool {
-    return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
+    
+    static func ==(lhs: Software, rhs: Software) -> Bool {
+        return lhs.packageNames == rhs.packageNames && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
+    }
+    
+    static func ~=(lhs: Software, rhs: Software) -> Bool {
+        for name in rhs.packageNames {
+            if lhs.packageNames.contains(name) {
+                return true
+            }
+        }
+        return false
+    }
 }

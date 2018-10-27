@@ -26,7 +26,7 @@ extension Array where Element: Software {
     mutating func modify(with software: Software) {
         // If Software already exists, replace status and package version
 
-        if let index = self.index(where: {$0.packageName == software.packageName}) {
+        if let index = self.index(where: {$0.packageNames == software.packageNames}) {
             self[index].status = software.status
             self[index].packageVersion = software.packageVersion
         } else {

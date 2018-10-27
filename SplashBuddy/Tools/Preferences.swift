@@ -325,7 +325,15 @@ class Preferences {
     //-----------------------------------------------------------------------------------
 
     func extractSoftware(from dict: NSDictionary) -> Software? {
-        guard let name = dict["packageName"] as? String else {
+        var names: [String]?
+        
+        if let name = dict["packageName"] as? String {
+            names = [name]
+        } else if let listOfNames = dict["packageName"] as? [String] {
+            names = listOfNames
+        }
+        
+        guard let listOfNames = names else {
             Log.write(string: "Error reading name from an application in io.fti.SplashBuddy",
                       cat: "Preferences",
                       level: .error)
@@ -333,28 +341,28 @@ class Preferences {
         }
 
         guard let displayName: String = dict["displayName"] as? String else {
-            Log.write(string: "Error reading displayName from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading displayName from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
         }
 
         guard let description: String = dict["description"] as? String else {
-            Log.write(string: "Error reading description from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading description from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
         }
 
         guard let iconRelativePath: String = dict["iconRelativePath"] as? String else {
-            Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading iconRelativePath from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
         }
 
         guard let canContinueBool: Bool = getBool(from: dict["canContinue"]) else {
-            Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading canContinueBool from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
@@ -362,7 +370,7 @@ class Preferences {
 
         let iconPath = self.assetPath.appendingPathComponent(iconRelativePath).path
 
-        return Software(packageName: name,
+        return Software(packageNames: listOfNames,
                         version: nil,
                         status: .pending,
                         iconPath: iconPath,

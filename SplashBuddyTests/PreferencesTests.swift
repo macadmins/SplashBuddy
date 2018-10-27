@@ -117,7 +117,7 @@ class PreferencesTests: XCTestCase {
 
         try! testPrefs.getPreferencesApplications()
 
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageNames, ["Enterprise Connect"])
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
@@ -145,7 +145,7 @@ class PreferencesTests: XCTestCase {
 
         try! testPrefs.getPreferencesApplications()
 
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageNames, ["Enterprise Connect"])
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
@@ -179,7 +179,7 @@ class PreferencesTests: XCTestCase {
 
         try! testPrefs.getPreferencesApplications()
 
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageNames, ["Enterprise Connect"])
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
@@ -189,7 +189,7 @@ class PreferencesTests: XCTestCase {
 
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.displayName, "Druva")
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.desc, "Backup")
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.packageName, "DruvaEndPoint")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.packageNames, ["DruvaEndPoint"])
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.last!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.canContinue, true)
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.status, Software.SoftwareStatus.pending)
@@ -222,7 +222,7 @@ class PreferencesTests: XCTestCase {
         let result = testPrefs.extractSoftware(from: nsDict)!
         let testPath = "\(self.assetPath)/ec_32x32.png"
 
-        XCTAssertEqual(result.packageName, "Enterprise Connect")
+        XCTAssertEqual(result.packageNames, ["Enterprise Connect"])
         XCTAssertNil(result.packageVersion)
         XCTAssertEqual(result.status, Software.SoftwareStatus.pending)
         XCTAssertEqual(result.icon!.tiffRepresentation, NSImage(byReferencingFile: testPath)!.tiffRepresentation)
