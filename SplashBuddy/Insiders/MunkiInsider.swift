@@ -52,12 +52,19 @@ func initMunkiRegex() throws -> [Software.SoftwareStatus: [NSRegularExpression]]
 }
 
 class MunkiInsider : GenericInsider {
+    class MunkiLineChecker: InsiderLineChecker {
+        func check(line: String) throws -> Software.SoftwareStatus? {
+            assertionFailure()
+            return nil
+        }
+    }
+    
     convenience init(userDefaults: UserDefaults = UserDefaults.standard) {
         let munkiLogPath = userDefaults.string(forKey: Constants.Testing.MunkiLog) ?? Constants.Defaults.MunkiLogPath
         self.init(userDefaults: userDefaults, withLogPath: munkiLogPath)
     }
     
-    override func regexes() throws -> [Software.SoftwareStatus: [NSRegularExpression]] {
-        return try initMunkiRegex()
+    override func lineChecker() throws -> InsiderLineChecker {
+        return MunkiLineChecker()
     }
 }

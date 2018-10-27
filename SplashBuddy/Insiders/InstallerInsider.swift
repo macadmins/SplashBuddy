@@ -52,12 +52,19 @@ func initInstallerRegex() throws -> [Software.SoftwareStatus: [NSRegularExpressi
 }
 
 class InstallerInsider : GenericInsider {
+    class InstallerLineChecker: InsiderLineChecker {
+        func check(line: String) throws -> Software.SoftwareStatus? {
+            assertionFailure()
+            return nil
+        }
+    }
+    
     convenience init(userDefaults: UserDefaults = UserDefaults.standard) {
         let installerLogPath = userDefaults.string(forKey: Constants.Testing.InstallerLog) ?? Constants.Defaults.InstallerLogPath
         self.init(userDefaults: userDefaults, withLogPath: installerLogPath)
     }
     
-    override func regexes() throws -> [Software.SoftwareStatus: [NSRegularExpression]] {
-        return try initInstallerRegex()
+    override func lineChecker() throws -> InsiderLineChecker {
+        return InstallerLineChecker()
     }
 }

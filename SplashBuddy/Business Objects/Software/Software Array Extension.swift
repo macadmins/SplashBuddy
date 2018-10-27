@@ -29,9 +29,6 @@ extension Array where Element: Software {
 
         if let index = self.index(where: {$0.packageNames == software.packageNames}) {
             self[index].status = software.status
-            if let version = software.packageVersion {
-                self[index].packageVersion = version
-            }
         }
     }
 

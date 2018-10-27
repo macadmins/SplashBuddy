@@ -20,11 +20,22 @@ protocol InsiderProtocol {
     func run() throws
 }
 
+protocol InsiderLineChecker {
+    func check(line: String) throws -> Software.SoftwareStatus?
+}
+
 class GenericInsider: InsiderProtocol {
     internal let userDefaults: UserDefaults
-    let logFileHandle: FileHandle?
     
+    let logFileHandle: FileHandle?
     let logPath: String
+    
+    class GenericLineChecker: InsiderLineChecker {
+        func check(line: String) throws -> Software.SoftwareStatus? {
+            assertionFailure("You must implement your own GenericLineChecker")
+            return nil
+        }
+    }
     
     init(userDefaults: UserDefaults, withLogPath logPath: String) {
         self.userDefaults = userDefaults
@@ -51,7 +62,7 @@ class GenericInsider: InsiderProtocol {
             return
         }
         
-        let regexes = try self.regexes()
+        let lineChecker = try self.lineChecker()
         
         logFileHandle.readabilityHandler = { fileHandle in
             let data = fileHandle.readDataToEndOfFile()
@@ -61,16 +72,27 @@ class GenericInsider: InsiderProtocol {
             }
             
             for line in string.split(separator: "\n") {
-                if let software = Software(from: String(line), with: regexes) {
-                    DispatchQueue.main.async {
-                        SoftwareArray.sharedInstance.array.updateInfo(for: software)
+                for name in SoftwareArray.sharedInstance.softwareByNames.keys {
+                    if line.contains(name) {
+                        do {
+                            if let status = try lineChecker.check(line: String(line)) {
+                                DispatchQueue.main.async {
+                                    SoftwareArray.sharedInstance.softwareByNames[name]?.status = status
+                                }
+                            }
+                        } catch {
+                            Preferences.sharedInstance.insiderErrorMessage = "Line check failure"
+                            Preferences.sharedInstance.insiderErrorInfo = "\(error.localizedDescription)"
+                            Preferences.sharedInstance.insiderError = true
+                            break
+                        }
                     }
                 }
             }
         }
     }
     
-    func regexes() throws -> [Software.SoftwareStatus: [NSRegularExpression]] {
-        return [Software.SoftwareStatus: [NSRegularExpression]]()
+    func lineChecker() throws -> InsiderLineChecker {
+        return GenericLineChecker()
     }
 }

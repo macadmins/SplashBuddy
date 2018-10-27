@@ -395,7 +395,6 @@ class Preferences: NSObject {
         let iconPath = self.assetPath.appendingPathComponent(iconRelativePath).path
 
         return Software(packageNames: listOfNames,
-                        version: nil,
                         status: .pending,
                         iconPath: iconPath,
                         displayName: displayName,

@@ -223,7 +223,6 @@ class PreferencesTests: XCTestCase {
         let testPath = "\(self.assetPath)/ec_32x32.png"
 
         XCTAssertEqual(result.packageNames, ["Enterprise Connect"])
-        XCTAssertNil(result.packageVersion)
         XCTAssertEqual(result.status, Software.SoftwareStatus.pending)
         XCTAssertEqual(result.icon!.tiffRepresentation, NSImage(byReferencingFile: testPath)!.tiffRepresentation)
         XCTAssertEqual(result.displayName, "Enterprise Connect")

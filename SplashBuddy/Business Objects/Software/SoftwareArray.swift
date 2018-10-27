@@ -22,9 +22,18 @@ class SoftwareArray: NSObject {
 
     @objc dynamic var array = [Software]() {
         didSet {
+            var updatedSoftwareByNames = [String: Software]()
+            for software in array {
+                for name in software.packageNames {
+                    updatedSoftwareByNames[name] = software
+                }
+            }
+            self.softwareByNames = updatedSoftwareByNames
             self.checkSoftwareStatus()
         }
     }
+    
+    var softwareByNames = [String: Software]()
 
     enum StateNotification: String {
 

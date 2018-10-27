@@ -43,7 +43,6 @@ class Software: NSObject {
     }
 
     @objc dynamic var packageNames: [String]
-    @objc dynamic var packageVersion: String?
     @objc dynamic var status: SoftwareStatus
     @objc dynamic var icon: NSImage?
     @objc dynamic var displayName: String?
@@ -66,7 +65,6 @@ class Software: NSObject {
      */
 
     init(packageNames: [String],
-         version: String? = nil,
          status: SoftwareStatus = .pending,
          iconPath: String? = nil,
          displayName: String? = nil,
@@ -75,7 +73,6 @@ class Software: NSObject {
          displayToUser: Bool = false) {
 
         self.packageNames = packageNames
-        self.packageVersion = version
         self.status = status
         self.canContinue = canContinue
         self.displayToUser = displayToUser
@@ -90,57 +87,17 @@ class Software: NSObject {
     }
     
     convenience init(packageName: String,
-                     version: String? = nil,
                      status: SoftwareStatus = .pending,
                      iconPath: String? = nil,
                      displayName: String? = nil,
                      description: String? = nil,
                      canContinue: Bool = true,
                      displayToUser: Bool = false) {
-        self.init(packageNames: [packageName], version: version, status: status, iconPath: iconPath, displayName: displayName, description: description, canContinue: canContinue, displayToUser: displayToUser)
-    }
-
-    /**
-     Initializes a Software Object from a String
-     
-     - note: Only packageName is required to parse, displayName, description and displayToUser will have to be set later to properly show it on the GUI.
-     
-     - parameter packageName: *packageName*-packageVersion.pkg
-     - parameter version: Optional
-     - parameter iconPath: Optional
-     - parameter displayName: Name displayed to user
-     - parameter description: Second line underneath name
-     - parameter canContinue: if set to false, the Software will block the "Continue" button until installed
-     - parameter displayToUser: set to True to display in GUI
-     */
-    convenience init?(from line: String, with regexes: [Software.SoftwareStatus: [NSRegularExpression]]) {
-
-        var name: String?
-        var version: String?
-        var status: SoftwareStatus?
-
-        for (regexStatus, subRegexes) in regexes {
-            status = regexStatus
-            for regex in subRegexes {
-                let matches = regex.matches(in: line, options: [], range: NSRange(location: 0, length: line.count))
-                
-                if !matches.isEmpty {
-                    name = (line as NSString).substring(with: matches[0].range(at: 1))
-                    version = (line as NSString).substring(with: matches[0].range(at: 2))
-                    break
-                }
-            }
-        }
-
-        if let packageName = name, let packageVersion = version, let packageStatus = status {
-            self.init(packageNames: [packageName], version: packageVersion, status: packageStatus)
-        } else {
-            return nil
-        }
+        self.init(packageNames: [packageName], status: status, iconPath: iconPath, displayName: displayName, description: description, canContinue: canContinue, displayToUser: displayToUser)
     }
     
     static func ==(lhs: Software, rhs: Software) -> Bool {
-        return lhs.packageNames == rhs.packageNames && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
+        return lhs.packageNames == rhs.packageNames && lhs.status == rhs.status
     }
     
     static func ~=(lhs: Software, rhs: Software) -> Bool {
