@@ -72,22 +72,20 @@ class GenericInsider: InsiderProtocol {
             }
             
             for line in string.split(separator: "\n") {
-                for name in SoftwareArray.sharedInstance.softwareByNames.keys {
-                    if line.contains(name) {
-                        do {
-                            if let status = try lineChecker.check(line: String(line)) {
-                                DispatchQueue.main.async {
-                                    if let software = SoftwareArray.sharedInstance.softwareByNames[name] {
-                                        software.status = status
-                                        SoftwareArray.sharedInstance.array.updateInfo(for: software)
-                                    }
+                SoftwareArray.sharedInstance.iterate() { (software) in
+                    for name in software.packageNames {
+                        if line.contains(name) {
+                            do {
+                                if let status = try lineChecker.check(line: String(line)) {
+                                    software.status = status
+                                    SoftwareArray.sharedInstance.updateInfo(for: software)
                                 }
+                            } catch {
+                                Preferences.sharedInstance.insiderErrorMessage = "Line check failure"
+                                Preferences.sharedInstance.insiderErrorInfo = "\(error.localizedDescription)"
+                                Preferences.sharedInstance.insiderError = true
+                                break
                             }
-                        } catch {
-                            Preferences.sharedInstance.insiderErrorMessage = "Line check failure"
-                            Preferences.sharedInstance.insiderErrorInfo = "\(error.localizedDescription)"
-                            Preferences.sharedInstance.insiderError = true
-                            break
                         }
                     }
                 }

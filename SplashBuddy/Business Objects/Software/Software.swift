@@ -49,6 +49,11 @@ class Software: NSObject {
     @objc dynamic var desc: String?
     @objc dynamic var canContinue: Bool
     @objc dynamic var displayToUser: Bool
+    
+    override var description: String {
+        
+        return "<\(String(describing: type(of:self))): displayName=\(self.displayName), status=\(self.status.rawValue), canContinue=\(self.canContinue)>"
+    }
 
     /**
      Manually initializes a Software Object

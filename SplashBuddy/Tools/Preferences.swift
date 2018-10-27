@@ -444,7 +444,7 @@ class Preferences: NSObject {
                 throw Preferences.Errors.malformedApplication
             }
             if let software = extractSoftware(from: application) {
-                SoftwareArray.sharedInstance.array.append(software)
+                SoftwareArray.sharedInstance.append(software: software)
             }
         }
 

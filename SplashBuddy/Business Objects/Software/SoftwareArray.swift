@@ -19,27 +19,37 @@ import Cocoa
 class SoftwareArray: NSObject {
 
     static let sharedInstance = SoftwareArray()
+    let serialQueue = DispatchQueue(label: "SoftwareArray")
 
-    @objc dynamic var array = [Software]() {
-        didSet {
+    @objc dynamic var array = [Software]()
+    
+    func updateInfo(for software: Software) {
+        if let index = array.index(where: {$0.packageNames == software.packageNames}) {
+            serialQueue.sync {
+                self.array[index].status = software.status
+                self.checkSoftwareStatus()
+            }
+        }
+    }
+    
+    func append(software: Software) {
+        serialQueue.sync {
+            self.array.append(software)
             self.checkSoftwareStatus()
         }
     }
     
-    var softwareByNames: [String: Software] {
-        get {
-            var updatedSoftwareByNames = [String: Software]()
-            for software in array {
-                for name in software.packageNames {
-                    updatedSoftwareByNames[name] = software
+    func iterate(operation: @escaping (Software) -> Void) {
+        serialQueue.sync {
+            for software in self.array {
+                DispatchQueue.main.async {
+                    operation(software)
                 }
             }
-            return updatedSoftwareByNames
         }
     }
 
     enum StateNotification: String {
-
         /// An error was detected (even if software is not in `applicationArray`)
         case errorWhileInstalling = "ErrorWhileInstalling"
 
@@ -84,17 +94,25 @@ class SoftwareArray: NSObject {
     }
 
     internal func failedSoftwareArray(_ array: [Software] = SoftwareArray.sharedInstance.array) -> [Software] {
-        return array.filter({ $0.status == .failed })
+        var localArray = [Software]()
+        serialQueue.sync {
+            localArray = array.filter({ $0.status == .failed })
+        }
+        return localArray
     }
 
     internal func canContinue(_ array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
         guard Preferences.sharedInstance.doneParsingPlist == true else {
             return false
         }
-
-        let criticalSoftwareArray = array.filter({ $0.canContinue == false })
-
-        return criticalSoftwareArray.filter({ $0.status == .success }).count == criticalSoftwareArray.count
+        
+        var result = false
+        serialQueue.sync {
+            let criticalSoftwareArray = array.filter({ $0.canContinue == false })
+            
+            result = criticalSoftwareArray.filter({ $0.status == .success }).count == criticalSoftwareArray.count
+        }
+        return result
     }
 
     internal func allDone(_ array: [Software] = SoftwareArray.sharedInstance.array) -> Bool {
@@ -106,26 +124,28 @@ class SoftwareArray: NSObject {
 
     /// Check SoftwareArray and send the relevant notifications
     func checkSoftwareStatus() {
-        if self.canContinue() {
-            NotificationCenter.default.post(name: SoftwareArray.StateNotification.canContinue.notification, object: nil)
-        }
-
-        if self.allDone() {
-            NotificationCenter.default.post(name: SoftwareArray.StateNotification.doneInstalling.notification, object: nil)
-
-            if self.failedSoftwareArray().isEmpty {
-                NotificationCenter.default.post(name: SoftwareArray.StateNotification.allSuccess.notification, object: nil)
-                return
+        DispatchQueue.main.async {
+            if self.canContinue() {
+                NotificationCenter.default.post(name: SoftwareArray.StateNotification.canContinue.notification, object: nil)
             }
+            
+            if self.allDone() {
+                NotificationCenter.default.post(name: SoftwareArray.StateNotification.doneInstalling.notification, object: nil)
+                
+                if self.failedSoftwareArray().isEmpty {
+                    NotificationCenter.default.post(name: SoftwareArray.StateNotification.allSuccess.notification, object: nil)
+                    return
+                }
+            }
+            
+            var notificationName: NSNotification.Name
+            if !self.failedSoftwareArray().isEmpty {
+                notificationName = SoftwareArray.StateNotification.errorWhileInstalling.notification
+            } else {
+                notificationName = SoftwareArray.StateNotification.processing.notification
+            }
+            
+            NotificationCenter.default.post(name: notificationName, object: nil)
         }
-
-        var notificationName: NSNotification.Name
-        if !self.failedSoftwareArray().isEmpty {
-            notificationName = SoftwareArray.StateNotification.errorWhileInstalling.notification
-        } else {
-            notificationName = SoftwareArray.StateNotification.processing.notification
-        }
-
-        NotificationCenter.default.post(name: notificationName, object: nil)
     }
 }
