@@ -35,7 +35,7 @@ class Preferences {
     public var insiderErrorMessage: String = ""
     public var insiderErrorInfo: String = ""
     
-    internal var insiders = [AnyObject]()
+    internal var insiders = [InsiderProtocol]()
     //-----------------------------------------------------------------------------------
     // MARK: - INIT
     //-----------------------------------------------------------------------------------
@@ -53,35 +53,43 @@ class Preferences {
         
         var hasOneInsiderOrMore = false
         
+        // Load the JAMF Insider
         if self.userDefaults.bool(forKey: Constants.Insiders.JAMF) {
             hasOneInsiderOrMore = true
-            DispatchQueue.global(qos: .background).async {
-                let insider = JAMFInsider(userDefaults: self.userDefaults)
-                guard insider.logFileHandle != nil else {
-                    self.insiderError = true
-                    self.insiderErrorMessage = "Jamf is not installed correctly"
-                    self.insiderErrorInfo = "/var/log/jamf.log is missing"
-                    return
-                }
-                insider.run()
-                self.insiders.append(insider)
+            let insider = JAMFInsider(userDefaults: self.userDefaults)
+            guard insider.logFileHandle != nil else {
+                self.insiderError = true
+                self.insiderErrorMessage = "Jamf is not installed correctly"
+                self.insiderErrorInfo = "/var/log/jamf.log is missing"
+                return
             }
+            self.insiders.append(insider)
         }
         
-        
+        // Load the Munki Insider
         if self.userDefaults.bool(forKey: Constants.Insiders.Munki) {
             hasOneInsiderOrMore = true
-            DispatchQueue.global(qos: .background).async {
-                let insider = MunkiInsider(userDefaults: self.userDefaults)
-                guard insider.logFileHandle != nil else {
-                    self.insiderError = true
-                    self.insiderErrorMessage = "Munki is not installed correctly"
-                    self.insiderErrorInfo = "/Library/Managed Installs/Logs/ManagedSoftwareUpdate.log is missing"
-                    return
-                }
-                insider.run()
-                self.insiders.append(insider)
+            let insider = MunkiInsider(userDefaults: self.userDefaults)
+            guard insider.logFileHandle != nil else {
+                self.insiderError = true
+                self.insiderErrorMessage = "Munki is not installed correctly"
+                self.insiderErrorInfo = "/Library/Managed Installs/Logs/ManagedSoftwareUpdate.log is missing"
+                return
             }
+            self.insiders.append(insider)
+        }
+        
+        // Load the Installer Insider
+        if self.userDefaults.bool(forKey: Constants.Insiders.Installer) {
+            hasOneInsiderOrMore = true
+            let insider = InstallerInsider(userDefaults: self.userDefaults)
+            guard insider.logFileHandle != nil else {
+                self.insiderError = true
+                self.insiderErrorMessage = "Unexpected system state"
+                self.insiderErrorInfo = "/var/log/install.log is missing"
+                return
+            }
+            self.insiders.append(insider)
         }
         
         if !hasOneInsiderOrMore {
@@ -89,6 +97,14 @@ class Preferences {
             self.insiderErrorMessage = "No insiders setup"
             self.insiderErrorInfo = "You need to enable at least one insider to make this tool useful"
             return
+        }
+    }
+    
+    func runInsiders() {
+        for insider in insiders {
+            DispatchQueue.global(qos: .background).async {
+                insider.run()
+            }
         }
     }
 
@@ -248,6 +264,7 @@ class Preferences {
         createSplashBuddyTmpIfNeeded()
 
         let filePath = self.temporaryFolderURL.appendingPathComponent(named.rawValue).path
+        
         if create == true {
             if FileManager.default.createFile(atPath: filePath,
                                               contents: nil,

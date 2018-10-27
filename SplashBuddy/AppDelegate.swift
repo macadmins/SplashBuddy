@@ -85,6 +85,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Preferences.sharedInstance.allSuccessfullyInstalled = false
         Preferences.sharedInstance.criticalDone = false
         Preferences.sharedInstance.errorWhileInstalling = false
+        
+        Preferences.sharedInstance.runInsiders()
     }
 
     @IBAction func quitAndSetSBDone(_ sender: Any) {

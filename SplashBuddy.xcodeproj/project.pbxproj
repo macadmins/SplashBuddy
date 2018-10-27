@@ -17,7 +17,6 @@
 		089D29231D50D12200E58C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 089D29221D50D12200E58C6D /* Assets.xcassets */; };
 		089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29301D50D12200E58C6D /* CasperSplashTests.swift */; };
 		089D294A1D50D14C00E58C6D /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 089D29491D50D14C00E58C6D /* .travis.yml */; };
-		089D294D1D50F04900E58C6D /* Regexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294C1D50F04900E58C6D /* Regexes.swift */; };
 		089D294F1D50F1D800E58C6D /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294E1D50F1D800E58C6D /* Software.swift */; };
 		089D29531D51D50700E58C6D /* jamf_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 089D29521D51D50700E58C6D /* jamf_1.txt */; };
 		08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC4F7C1D5222BD00CAB019 /* Preferences.swift */; };
@@ -36,6 +35,7 @@
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
 		D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */; };
 		ED525EBB20907D4700BF776B /* NSLocalizedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */; };
+		F88973BF218427E90050FFCE /* InstallerInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88973BE218427E90050FFCE /* InstallerInsider.swift */; };
 		F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6DD2183B177008A1773 /* Constants.swift */; };
 		F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */; };
 		F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */; };
@@ -81,7 +81,6 @@
 		089D29301D50D12200E58C6D /* CasperSplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashTests.swift; sourceTree = "<group>"; };
 		089D29321D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		089D29491D50D14C00E58C6D /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
-		089D294C1D50F04900E58C6D /* Regexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regexes.swift; sourceTree = "<group>"; };
 		089D294E1D50F1D800E58C6D /* Software.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
 		089D29521D51D50700E58C6D /* jamf_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jamf_1.txt; sourceTree = "<group>"; };
 		08AC4F761D520A3200CAB019 /* ec_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ec_32x32.png; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		EDA78DAD20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA78DAE20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
+		F88973BE218427E90050FFCE /* InstallerInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerInsider.swift; sourceTree = "<group>"; };
 		F8A1E6DD2183B177008A1773 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAMFInsider.swift; sourceTree = "<group>"; };
 		F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunkiInsider.swift; sourceTree = "<group>"; };
@@ -363,7 +363,6 @@
 		D9894FEC1F1CE7E800DF7F42 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				089D294C1D50F04900E58C6D /* Regexes.swift */,
 				08AC4F7C1D5222BD00CAB019 /* Preferences.swift */,
 				81D9D7301E69ABE4008ED3F5 /* Log.swift */,
 				47390F471F2B64C9009EA94C /* ContinueAction.swift */,
@@ -394,6 +393,7 @@
 				F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */,
 				F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */,
 				F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */,
+				F88973BE218427E90050FFCE /* InstallerInsider.swift */,
 			);
 			path = Insiders;
 			sourceTree = "<group>";
@@ -548,13 +548,13 @@
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */,
+				F88973BF218427E90050FFCE /* InstallerInsider.swift in Sources */,
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */,
 				F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */,
 				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
 				47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
-				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
 				F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */,
 				F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */,
 				F8A1E6F32183CDFD008A1773 /* GenericInsider.swift in Sources */,

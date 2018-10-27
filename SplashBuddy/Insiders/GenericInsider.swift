@@ -16,7 +16,11 @@
 
 import Foundation
 
-class GenericInsider {
+protocol InsiderProtocol {
+    func run()
+}
+
+class GenericInsider: InsiderProtocol {
     internal let userDefaults: UserDefaults
     let logFileHandle: FileHandle?
     
