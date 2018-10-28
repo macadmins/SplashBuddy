@@ -75,17 +75,17 @@ class SoftwareArray: NSObject {
 
     /// Returns a localized error or nil if no error
     var localizedErrorStatus: String? {
-        let _failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
+        let failedSoftwareArray = SoftwareArray.sharedInstance.failedSoftwareArray()
 
-        if _failedSoftwareArray.count == 1 {
+        if failedSoftwareArray.count == 1 {
 
-            if let failedDisplayName = _failedSoftwareArray[0].displayName {
+            if let failedDisplayName = failedSoftwareArray[0].displayName {
                 return String.localizedStringWithFormat(NSLocalizedString("error.failed_specific_app_install"), failedDisplayName)
 
             } else {
                 return NSLocalizedString("error.failed_unknown_app_install")
             }
-        } else if _failedSoftwareArray.count > 1 {
+        } else if failedSoftwareArray.count > 1 {
             return NSLocalizedString("error.failed_multiple_app_install")
 
         } else {
