@@ -62,7 +62,7 @@ class MunkiTests: XCTestCase {
     
     // Failed Packages
     func testStatusWhenInstallationFailed() throws {
-        let input = "" // Failed
+        let input = "Oct 28 2018 09:45:56 +0100  The install failed (The Installer encountered an error that caused the installation to fail. Contact the software manufacturer for assistance.)"
         let output = Software.SoftwareStatus.failed
         
         XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
