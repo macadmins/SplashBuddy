@@ -12,47 +12,47 @@ import Foundation
 
 func initRegex() -> [Software.SoftwareStatus: NSRegularExpression?] {
 
-    let re_options = NSRegularExpression.Options.anchorsMatchLines
+    let reOptions = NSRegularExpression.Options.anchorsMatchLines
 
     // Installing
-    let re_installing: NSRegularExpression?
+    let reInstalling: NSRegularExpression?
 
     do {
-        try re_installing = NSRegularExpression(
+        try reInstalling = NSRegularExpression(
             pattern: "(?<=Installing )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg...$",
-            options: re_options
+            options: reOptions
         )
     } catch {
-        re_installing = nil
+        reInstalling = nil
     }
 
     // Failure
-    let re_failure: NSRegularExpression?
+    let reFailure: NSRegularExpression?
 
     do {
-        try re_failure = NSRegularExpression(
+        try reFailure = NSRegularExpression(
             pattern: "(?<=Installation failed. The installer reported: installer: Package name is )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*)$",
-            options: re_options
+            options: reOptions
         )
     } catch {
-        re_failure = nil
+        reFailure = nil
     }
 
     // Success
-    let re_success: NSRegularExpression?
+    let reSuccess: NSRegularExpression?
 
     do {
-        try re_success = NSRegularExpression(
+        try reSuccess = NSRegularExpression(
             pattern: "(?<=Successfully installed )([a-zA-Z0-9._ ]*)-([a-zA-Z0-9._]*).pkg",
-            options: re_options
+            options: reOptions
         )
     } catch {
-        re_success = nil
+        reSuccess = nil
     }
 
     return [
-        .success: re_success,
-        .failed: re_failure,
-        .installing: re_installing
+        .success: reSuccess,
+        .failed: reFailure,
+        .installing: reInstalling
     ]
 }
