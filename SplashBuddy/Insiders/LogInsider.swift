@@ -24,7 +24,7 @@ protocol InsiderLineChecker {
     func check(line: String) throws -> Software.SoftwareStatus?
 }
 
-class GenericInsider: InsiderProtocol {
+class LogInsider: InsiderProtocol {
     internal let userDefaults: UserDefaults
     
     let logFileHandle: FileHandle?

@@ -16,7 +16,7 @@
 
 import Foundation
 
-class JAMFInsider : GenericInsider {
+class JAMFInsider : LogInsider {
     class JAMFLineChecker: InsiderLineChecker {
         func check(line: String) throws -> Software.SoftwareStatus? {            
             if (line.contains(" Installing ")) {

@@ -42,7 +42,7 @@
 		F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6DD2183B177008A1773 /* Constants.swift */; };
 		F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */; };
 		F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */; };
-		F8A1E6F32183CDFD008A1773 /* GenericInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */; };
+		F8A1E6F32183CDFD008A1773 /* LogInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6F22183CDFD008A1773 /* LogInsider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +146,7 @@
 		F8A1E6DD2183B177008A1773 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAMFInsider.swift; sourceTree = "<group>"; };
 		F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunkiInsider.swift; sourceTree = "<group>"; };
-		F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericInsider.swift; sourceTree = "<group>"; };
+		F8A1E6F22183CDFD008A1773 /* LogInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInsider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,7 +398,7 @@
 		F8A1E6DF2183B18E008A1773 /* Insiders */ = {
 			isa = PBXGroup;
 			children = (
-				F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */,
+				F8A1E6F22183CDFD008A1773 /* LogInsider.swift */,
 				F8036BD62189B45F00F47414 /* FileEventInsider.swift */,
 				F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */,
 				F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */,
@@ -548,7 +548,7 @@
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
 				F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */,
 				F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */,
-				F8A1E6F32183CDFD008A1773 /* GenericInsider.swift in Sources */,
+				F8A1E6F32183CDFD008A1773 /* LogInsider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

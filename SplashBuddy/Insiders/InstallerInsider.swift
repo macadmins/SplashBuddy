@@ -16,7 +16,7 @@
 
 import Foundation
 
-class InstallerInsider : GenericInsider {
+class InstallerInsider : LogInsider {
     class InstallerLineChecker: InsiderLineChecker {
         func check(line: String) throws -> Software.SoftwareStatus? {
             if (line.contains("PackageKit: Extracting file")) {
