@@ -16,27 +16,44 @@
 
 import Foundation
 
-class MunkiInsider : GenericInsider {
-    class MunkiLineChecker: InsiderLineChecker {
-        func check(line: String) throws -> Software.SoftwareStatus? {
-            if line.contains(" Installing ") {
-                return Software.SoftwareStatus.installing
-            } else if line.contains(" Install of ") && line.contains("was successful.") {
-                return Software.SoftwareStatus.success
-            } else if line.lowercased().contains("failed") {
-                return Software.SoftwareStatus.failed
-            }
-            
-            return nil
-        }
-    }
-    
+class MunkiInsider: FileEventInsider {
+
     convenience init(userDefaults: UserDefaults = UserDefaults.standard) {
-        let munkiLogPath = userDefaults.string(forKey: Constants.Testing.MunkiLog) ?? Constants.Defaults.MunkiLogPath
-        self.init(userDefaults: userDefaults, withLogPath: munkiLogPath)
+        let reportPath = userDefaults.string(forKey: Constants.Testing.MunkiReport) ?? Constants.Defaults.MunkiReportPath
+        self.init(userDefaults: userDefaults, withEventerPath: reportPath)
     }
     
-    override func lineChecker() throws -> InsiderLineChecker {
-        return MunkiLineChecker()
+    override func handleEvent() {
+        guard let munkiReport = NSDictionary(contentsOfFile: eventerPath) else {
+            return
+        }
+        
+        if let itemsToInstall = munkiReport.object(forKey: "ItemsToInstall") as? [NSDictionary] {
+            for itemToInstall in itemsToInstall {
+                if let itemName = itemToInstall.object(forKey: "name") as? String {
+                    let software = Software(packageName: itemName)
+                    software.status = .installing
+                    SoftwareArray.sharedInstance.updateInfo(for: software)
+                }
+            }
+        }
+        
+        if let installResults = munkiReport.object(forKey: "InstallResults") as? [NSDictionary] {
+            for installResult in installResults {
+                if let itemName = installResult.object(forKey: "name") as? String, let installStatus = installResult.object(forKey: "status") as? Int {
+                    let software = Software(packageName: itemName)
+                    software.status = installStatus == 0 ? .installing : .failed
+                    SoftwareArray.sharedInstance.updateInfo(for: software)
+                }
+            }
+        }
+        
+        if let installedItems = munkiReport.object(forKey: "InstalledItems") as? [String] {
+            for installedItem in installedItems {
+                let software = Software(packageName: installedItem)
+                software.status = .success
+                SoftwareArray.sharedInstance.updateInfo(for: software)
+            }
+        }
     }
 }

@@ -24,10 +24,16 @@ class SoftwareArray: NSObject {
     @objc dynamic var array = [Software]()
     
     func updateInfo(for software: Software) {
-        if let index = array.index(where: {$0.packageNames == software.packageNames}) {
-            serialQueue.sync {
-                self.array[index].status = software.status
-                self.checkSoftwareStatus()
+        if let index = array.index(where: {
+            let set1 = Set($0.packageNames)
+            let set2 = Set(software.packageNames)
+            return set1.intersection(set2).count > 0
+        }) {
+            if self.array[index].status.rawValue < software.status.rawValue {
+                serialQueue.sync {
+                    self.array[index].status = software.status
+                    self.checkSoftwareStatus()
+                }
             }
         }
     }

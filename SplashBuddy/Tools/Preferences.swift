@@ -70,12 +70,6 @@ class Preferences: NSObject {
         if self.userDefaults.bool(forKey: Constants.Insiders.Munki) {
             hasOneInsiderOrMore = true
             let insider = MunkiInsider(userDefaults: self.userDefaults)
-            guard insider.logFileHandle != nil else {
-                self.insiderError = true
-                self.insiderErrorMessage = "Munki is not installed correctly"
-                self.insiderErrorInfo = "/Library/Managed Installs/Logs/ManagedSoftwareUpdate.log is missing"
-                return
-            }
             self.insiders.append(insider)
         }
         

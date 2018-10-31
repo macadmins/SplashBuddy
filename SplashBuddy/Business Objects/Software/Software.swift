@@ -36,10 +36,10 @@ class Software: NSObject {
      Default is .pending, other cases will be set while parsing the log
      */
     @objc enum SoftwareStatus: Int {
-        case installing = 0
-        case success = 1
-        case failed = 2
-        case pending = 3
+        case pending
+        case installing
+        case success
+        case failed
     }
 
     @objc dynamic var packageNames: [String]

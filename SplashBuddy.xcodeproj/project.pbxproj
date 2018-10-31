@@ -34,6 +34,7 @@
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
 		D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */; };
 		ED525EBB20907D4700BF776B /* NSLocalizedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */; };
+		F8036BD72189B45F00F47414 /* FileEventInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8036BD62189B45F00F47414 /* FileEventInsider.swift */; };
 		F8272340218505CC00E52B3F /* GeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827233F218505CC00E52B3F /* GeneralTests.swift */; };
 		F82723422185073700E52B3F /* InstallerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82723412185073700E52B3F /* InstallerTests.swift */; };
 		F82723442185080000E52B3F /* MunkiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82723432185080000E52B3F /* MunkiTests.swift */; };
@@ -137,6 +138,7 @@
 		EDA78DAD20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA78DAE20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
+		F8036BD62189B45F00F47414 /* FileEventInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEventInsider.swift; sourceTree = "<group>"; };
 		F827233F218505CC00E52B3F /* GeneralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTests.swift; sourceTree = "<group>"; };
 		F82723412185073700E52B3F /* InstallerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerTests.swift; sourceTree = "<group>"; };
 		F82723432185080000E52B3F /* MunkiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunkiTests.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A1E6F22183CDFD008A1773 /* GenericInsider.swift */,
+				F8036BD62189B45F00F47414 /* FileEventInsider.swift */,
 				F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */,
 				F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */,
 				F88973BE218427E90050FFCE /* InstallerInsider.swift */,
@@ -536,6 +539,7 @@
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */,
+				F8036BD72189B45F00F47414 /* FileEventInsider.swift in Sources */,
 				F88973BF218427E90050FFCE /* InstallerInsider.swift in Sources */,
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */,

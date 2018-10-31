@@ -41,7 +41,6 @@ class GenericInsider: InsiderProtocol {
         self.userDefaults = userDefaults
         self.logPath = logPath
         
-        // TSTJamfLog is meant for unit testing only.
         do {
             self.logFileHandle = try FileHandle(forReadingFrom: URL(fileURLWithPath: logPath, isDirectory: false))
         } catch {
