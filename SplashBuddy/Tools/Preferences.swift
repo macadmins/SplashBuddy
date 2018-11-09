@@ -1,7 +1,4 @@
 //
-//  Preferences.swift
-//  SplashBuddy
-//
 //  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
 //
 
