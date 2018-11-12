@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UoU-0S-EqW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -263,6 +263,17 @@
                                                     <action selector="pressedContinueButton:" target="qDQ-T9-zeE" id="9Xr-ag-cvQ"/>
                                                 </connections>
                                             </button>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4m-zM-Jaj">
+                                                <rect key="frame" x="691" y="12" width="95" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vqU-df-Ghd">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="sendButton2:" target="qDQ-T9-zeE" id="p1A-AX-aPL"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="k7a-CL-x2G" firstAttribute="centerY" secondItem="qF2-Zf-dqr" secondAttribute="centerY" id="6fB-7w-od0"/>
@@ -311,6 +322,8 @@
                         <outlet property="continueButton" destination="k7a-CL-x2G" id="7B2-Pa-6MA"/>
                         <outlet property="indeterminateProgressIndicator" destination="Are-bh-n7c" id="Y6v-o2-1td"/>
                         <outlet property="mainView" destination="VI7-LS-rJR" id="kli-bF-0SB"/>
+                        <outlet property="sendButton" destination="G4m-zM-Jaj" id="qpD-R6-PWi"/>
+                        <outlet property="sendButton2" destination="G4m-zM-Jaj" id="aKI-Cz-q35"/>
                         <outlet property="sidebarView" destination="lkr-Fa-FkH" id="G6V-YO-w7K"/>
                         <outlet property="statusLabel" destination="huH-bF-pmn" id="iYg-8d-2PX"/>
                         <outlet property="statusView" destination="9z5-8K-Bsy" id="Dvb-uX-9FO"/>

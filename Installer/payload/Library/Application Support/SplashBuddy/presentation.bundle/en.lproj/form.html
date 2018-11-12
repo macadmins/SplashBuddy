@@ -1,0 +1,84 @@
+<html>
+<head>
+  <script src="Base.lproj/jquery-3.2.1.min.js" ></script>
+  <script src="Base.lproj/popper.js"></script>
+  <script src="Base.lproj/bootstrap.min.js" ></script>
+  <scrpt src="Base.lproj/form.js" ></script>
+  <link rel="stylesheet" type="text/css" href="Base.lproj/bootstrap.min.css">
+  <!--<link rel="stylesheet" type="text/css" href="form.css">-->
+	<script>
+	  var aUserKey = "";
+	  var usernameKey = "";
+	  document.getElementById('username').setAttribute('sbReq','')
+	  document.getElementById("filevaultPW").setAttribute('sbReq','')
+	  
+function askForUser() {
+	var checkBox = document.getElementById("assignUser");
+	var text = document.getElementById("hiddenGroup");
+	var text2 = document.getElementById("hiddenGroup2");
+	if (checkBox.checked == true){
+		text.style.display = "block";
+		text2.style.display = "block";
+
+		document.getElementById('username').setAttribute('sbReq','true')
+	}else{
+		text.style.display = "none";
+		text2.style.display = "none";
+		document.getElementById('username').setAttribute('sbReq','')
+	}
+}
+	</script>
+
+</head>
+<body style="background-image: url(../common/Backdrop5.png)" onload="askForUser()">
+
+<div class='top-message'>
+ 	Please fill out the form below, <br>then click <strong>Submit Data</strong>.
+	<div class='sub-title'>
+		All fields marked with * are required.
+	</div>
+</div>
+  <div class='container-fluid'>
+    <form>
+      <div class='row'>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='compName'>Computer Name*</label>
+            <input type='text' class='form-control' id='compName' name='compName' aria-describedby='compNameHelp' placeholder='D123456' sbReq='true'/>
+            <small id='compNameHelp' class='form-text text-muted'>Usually found on the top lid of your computer.</small>
+          </div>
+        </div>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='aUser'>Assign to a user?</label><br>
+            <input type='checkbox' id='assignUser' name='assignUser' onclick="askForUser()" value="assigned" checked/>
+            <small id='assignUserHelp' class='form-text text-muted'>If checked, you will be asked for the username.</small>
+          </div>
+	  </div>
+      </div>
+      <div class='row'>
+        <div class='col' id="hiddenGroup" style="display:none;">
+          <div class='form-group' id="userGroup">
+            <label for='username'>Username*</label>
+            <input type='text' class='form-control' id='username' name='username' aria-describedby='usernameHelp' placeholder='j.smith' />
+            <small id='usernameHelp' class='form-text text-muted'>This is the primary user of this machine.</small>
+          </div>
+        </div>
+	  	<div class='col' id="hiddenGroup2" style="display:none;">
+		  <div class='form-group' id="fvGroup">
+			<label for='filevaultPW'>FileVault Password*</label>
+			<input type='text' class='form-control' id='filevaultPW' name='filevaultPW' aria-describedby='filevaultPWHelp' onblur="test()"/>
+			<small id='filevaultPWHelp' class='form-text text-muted'>Must be 15 characters, include 1 capital, 1 lowercase, 1 number, 1 special character and not include 3 or more sequential characters.</small>
+		  </div>
+		</div>
+      </div>
+		<input type="button" id="buttonToValidate" value="Check" onClick="test()" />
+		<span id="result" />
+    </form>
+  </div>
+  <br />
+  <br />
+  <br />
+</body>
+
+</html>

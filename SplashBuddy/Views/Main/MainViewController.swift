@@ -134,7 +134,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     """
 
     internal func formEnterKey() {
-        self.evalForm(self.sendButton)
+        self.evalForm(self.sendButton2)
     }
 
     override func awakeFromNib() {
@@ -195,7 +195,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         // Display Alert if /var/log/jamf.log doesn't exist
         guard Preferences.sharedInstance.logFileHandle != nil else {
             let alert = NSAlert()
-
+            self.sendButton2.isHidden = true
             alert.alertStyle = .critical
             alert.messageText = "Jamf is not installed correctly"
             alert.informativeText = "/var/log/jamf.log is missing"
@@ -214,7 +214,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             }
 
             DispatchQueue.main.async {
-                self.sendButton.isHidden = false
+                self.sendButton2.isHidden = false
                 self.continueButton.isHidden = true
             }
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -222,6 +222,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             self.webView.evaluateJavaScript(self.enterKeyJS, completionHandler: nil)
         } else if let html = Preferences.sharedInstance.html {
             if Preferences.sharedInstance.formDone {
+                self.sendButton2.isHidden = true
                 Log.write(string: "Form already completed.", cat: "UserInput", level: .debug)
             }
             DispatchQueue.main.async {
@@ -234,10 +235,62 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         }
     }
 
-    @IBOutlet weak var sendButton: NSButton!
+    func errorReadingResults(missingData: String){
+        let alert = NSAlert()
+        alert.messageText = "Missing Data"
+        alert.informativeText = "The field is still missing the \(missingData). Please try again."
+        alert.runModal()
+    }
+    @IBOutlet weak var sendButton2: NSButton!
+    @IBAction func sendButton2(_ sender: Any) {
+        webView.evaluateJavaScript(evaluationJavascript) { (data: Any?, error: Error?) in
+            if error != nil {
+                self.errorReadingResults(missingData: "stuff")
+                Log.write(string: "Error getting User Input", cat: "UserInput", level: .error)
+                return
+            }
+            
+            guard let jsonString = data as? String else {
+                Log.write(string: "Cannot read User Input data", cat: "UserInput", level: .error)
+                return
+            }
+            
+            guard let jsonData = jsonString.data(using: .utf8) else {
+                Log.write(string: "Cannot cast User Input to data", cat: "UserInput", level: .error)
+                return
+            }
+            
+            guard let obj = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? NSDictionary else {
+                return
+            }
+            
+            for item in obj {
+                Log.write(string: "Writing value to \(item.key) with value of \(item.value)", cat: "UserInput", level: .debug)
+                FileManager.default.createFile(atPath: "\(item.key).txt", contents: (item.value as? String ?? "").data(using: .utf8), attributes: nil)
+            }
+            
+            DispatchQueue.main.async {
+                self.sendButton2.isHidden = true
+                self.continueButton.isHidden = false
+                
+                if let html = Preferences.sharedInstance.html {
+                    self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+                } else {
+                    self.webView.loadHTMLString(NSLocalizedString("error.create_missing_bundle"), baseURL: nil)
+                }
+            }
+            
+            Log.write(string: "DONE: Form Javascript Evaluation", cat: "UI", level: .debug)
+            Log.write(string: "Form complete, writing to .SplashBuddyFormDone", cat: "UI", level: .debug)
+            Preferences.sharedInstance.formDone = true
+        }
+    }
+    
+    
     @IBAction func evalForm(_ sender: Any) {
         webView.evaluateJavaScript(evaluationJavascript) { (data: Any?, error: Error?) in
             if error != nil {
+                
                 Log.write(string: "Error getting User Input", cat: "UserInput", level: .error)
                 return
             }
@@ -262,7 +315,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             }
 
             DispatchQueue.main.async {
-                self.sendButton.isHidden = true
+                self.sendButton2.isHidden = true
                 self.continueButton.isHidden = false
 
                 if let html = Preferences.sharedInstance.html {

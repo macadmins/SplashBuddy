@@ -37,6 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                       backing: .buffered,
                                       defer: true)
                 window.backgroundColor = .white
+                window.canBecomeVisibleWithoutLogin = true
                 window.contentView = view
                 window.makeKeyAndOrderFront(self)
                 window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)) - 1)
