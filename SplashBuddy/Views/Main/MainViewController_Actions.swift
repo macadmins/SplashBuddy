@@ -20,9 +20,9 @@ extension MainViewController {
         statusLabel.isHidden = false
         statusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
 
-        self.sidebarView.isHidden = Preferences.sharedInstance.sidebar
+        sidebarView.isHidden = Preferences.sharedInstance.sidebar
 
-        self.continueButton.isEnabled = false
+        continueButton.isEnabled = false
     }
 
     /// reset the status label to "We are preparing your Mac…"

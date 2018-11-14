@@ -32,3 +32,5 @@
 "btn.quit" = "Quitter";
 /* Variation of the Continue button. */
 "btn.logout" = "Fermer la session";
+/* Variation of the Continue button. */
+"btn.send" = "Envoyer";
