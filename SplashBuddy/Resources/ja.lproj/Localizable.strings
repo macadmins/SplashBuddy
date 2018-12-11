@@ -32,3 +32,5 @@
 "btn.quit" = "終了";
 /* Variation of the Continue button. */
 "btn.logout" = "ログアウト";
+/* Variation of the Continue button. */
+"btn.send" = "送信";

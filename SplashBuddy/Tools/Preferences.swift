@@ -19,7 +19,7 @@ class Preferences {
     // MARK: - INIT
     //-----------------------------------------------------------------------------------
 
-    init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
+    private init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = nsUserDefaults
 
         // Do not change asset path (see comment on var assetPath: URL below)
@@ -148,7 +148,11 @@ class Preferences {
     }
 
     public var form: URL? {
-        return self.assetBundle?.url(forResource: "form", withExtension: "html")
+        guard let bundle = assetBundle else {
+            return nil
+        }
+
+        return bundle.url(forResource: "form", withExtension: "html")
     }
 
     //-----------------------------------------------------------------------------------

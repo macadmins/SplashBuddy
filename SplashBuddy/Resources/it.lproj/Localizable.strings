@@ -32,3 +32,5 @@
 "btn.quit" = "Esci";
 /* Variation of the Continue button. */
 "btn.logout" = "Disconnettersi";
+/* Variation of the Continue button. */
+"btn.send" = "Inviare";
