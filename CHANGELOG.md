@@ -2,8 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com) and this project adheres to [Semantic Versioning](http://semver.org).
+
+## [1.3.2]
+
+### Fixed
+
+* Fixed the startup crash when using the User Input feature [[#108](https://github.com/Shufflepuck/SplashBuddy/issues/108)]
 
 ## [1.3.1]
 

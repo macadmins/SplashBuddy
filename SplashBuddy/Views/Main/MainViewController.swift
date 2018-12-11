@@ -112,7 +112,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         """
 
     @IBOutlet var webView: WKWebView!
-    @IBOutlet var softwareTableView: NSTableView!
+    @IBOutlet var stackView: NSStackView!
     @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var continueButton: NSButton!
     @IBOutlet weak var statusLabel: NSTextField!
@@ -120,13 +120,15 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     @IBOutlet weak var statusView: NSView!
     @IBOutlet weak var sidebarView: NSView!
 
+    var sendButton = NSButton(title: NSLocalizedString("btn.send"), target: self, action: nil)
+
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
 
     private let enterKeyJS = """
     window.onload = function() {
-        document.body.onkeydown = function(e){
-            if ( e.keyCode == "13" ) {
+        document.body.onkeydown = function(e) {
+            if (e.keyCode == "13") {
                 window.location.href = "formdone://";
             }
         }
@@ -134,34 +136,28 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     """
 
     internal func formEnterKey() {
-        self.evalForm(self.sendButton)
+        evalForm(sendButton)
     }
 
     override func awakeFromNib() {
         // https://developer.apple.com/library/content/qa/qa1871/_index.html
 
-        if self.representedObject == nil {
-            self.representedObject = SoftwareArray.sharedInstance
+        if representedObject == nil {
+            representedObject = SoftwareArray.sharedInstance
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupViews()
+        setupLayout()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        // Setup the view
-        self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
-        self.mainView.layer?.cornerRadius = 10
-        self.mainView.layer?.shadowRadius = 2
-        self.mainView.layer?.borderWidth = 0.2
-
-        // Setup the web view
-        self.webView.layer?.isOpaque = true
-
-        // Setup the Continue Button
-        self.continueButton.title = Preferences.sharedInstance.continueAction.localizedName
-
         // Setup the Notifications
-
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(MainViewController.errorWhileInstalling),
                                                name: SoftwareArray.StateNotification.errorWhileInstalling.notification,
@@ -190,18 +186,20 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
     override func viewDidAppear() {
         // Setup the initial state of objects
-        self.setupInstalling()
+        setupInstalling()
 
         // Display Alert if /var/log/jamf.log doesn't exist
         guard Preferences.sharedInstance.logFileHandle != nil else {
-            let alert = NSAlert()
+            if let currentWindow = self.view.window {
+                let alert = NSAlert()
 
-            alert.alertStyle = .critical
-            alert.messageText = "Jamf is not installed correctly"
-            alert.informativeText = "/var/log/jamf.log is missing"
-            alert.addButton(withTitle: "Quit")
-            alert.beginSheetModal(for: self.view.window!) { (_) in
-                self.pressedContinueButton(self)
+                alert.alertStyle = .critical
+                alert.messageText = "Jamf is not installed correctly"
+                alert.informativeText = "/var/log/jamf.log is missing"
+                alert.addButton(withTitle: "Quit")
+                alert.beginSheetModal(for: currentWindow) { [unowned self] _ in
+                    self.pressedContinueButton(self)
+                }
             }
 
             return
@@ -213,28 +211,62 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                 return
             }
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 self.sendButton.isHidden = false
                 self.continueButton.isHidden = true
             }
-            self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+
+            webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+
             Log.write(string: "Injecting Javascript.", cat: "UserInput", level: .debug)
-            self.webView.evaluateJavaScript(self.enterKeyJS, completionHandler: nil)
+
+            webView.evaluateJavaScript(self.enterKeyJS, completionHandler: nil)
         } else if let html = Preferences.sharedInstance.html {
             if Preferences.sharedInstance.formDone {
                 Log.write(string: "Form already completed.", cat: "UserInput", level: .debug)
             }
-            DispatchQueue.main.async {
+
+            DispatchQueue.main.async { [unowned self] in
                 self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
 
-            self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+            webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
         } else {
-            self.webView.loadHTMLString(NSLocalizedString("error.create_missing_bundle"), baseURL: nil)
+            webView.loadHTMLString(NSLocalizedString("error.create_missing_bundle"), baseURL: nil)
         }
     }
 
-    @IBOutlet weak var sendButton: NSButton!
+    // MARK: - Functions
+
+    func setupViews() {
+        // Main view
+        mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+        mainView.layer?.cornerRadius = 10
+        mainView.layer?.shadowRadius = 2
+        mainView.layer?.borderWidth = 0.2
+
+        // Web view
+        webView.layer?.isOpaque = true
+
+        // Continue Button
+        continueButton.title = Preferences.sharedInstance.continueAction.localizedName
+
+        // Send button
+        sendButton.isHidden = true
+        sendButton.action = #selector(evalForm)
+        view.addSubview(sendButton)
+    }
+
+    func setupLayout() {
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            sendButton.leadingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            sendButton.centerYAnchor.constraint(equalTo: stackView.centerYAnchor)
+        ])
+    }
+
     @IBAction func evalForm(_ sender: Any) {
         webView.evaluateJavaScript(evaluationJavascript) { (data: Any?, error: Error?) in
             if error != nil {
@@ -261,7 +293,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                 FileManager.default.createFile(atPath: "\(item.key).txt", contents: (item.value as? String ?? "").data(using: .utf8), attributes: nil)
             }
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 self.sendButton.isHidden = true
                 self.continueButton.isHidden = false
 
