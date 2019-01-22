@@ -120,13 +120,14 @@ struct ContinueButton {
                     return
                 }
 
-                if NSWorkspace.shared.launchApplication(applicationPath) {
-                    Log.write(string: "Successfully launched application \(applicationPath)", cat: "ContinueButton", level: .info)
-                    NSApplication.shared.terminate(self)
-                } else {
-                    NSApplication.shared.terminate(self)
-                    Log.write(string: "Couldn't launch application \(applicationPath)", cat: "ContinueButton", level: .error)
+                Log.write(string: "Launching application \(applicationPath)", cat: "ContinueButton", level: .info)
+                
+                // Trying to fix #112 as we suspect launchApplication(_) may never return
+                DispatchQueue.global(qos: .userInitiated).async {
+                    _ = NSWorkspace.shared.launchApplication(applicationPath)
                 }
+                
+                NSApplication.shared.terminate(self)
             }
         }
     }
