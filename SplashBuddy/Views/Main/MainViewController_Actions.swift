@@ -26,33 +26,29 @@ extension MainViewController {
 
     /// Set the initial state of the view
     func setupInstalling() {
-        self.sideBarView.isHidden = true
-        self.bottomView.isHidden = true
+//        self.sideBarView.isHidden = true
+//        self.bottomView.isHidden = true
         
         if Preferences.sharedInstance.hideSidebar {
-            self.activeProgressIndicator = self.bottomProgressIndicator
-            self.activeStatusLabel = self.bottomStatusLabel
-            self.activeContinueButton = self.bottomContinueButton
-            self.activeView = self.bottomView
-            self.sideBarView.removeFromSuperview()
+//            self.activeProgressIndicator = self.bottomProgressIndicator
+//            self.activeStatusLabel = self.bottomStatusLabel
+//            self.activeContinueButton = self.bottomContinueButton
+//            self.activeView = self.bottomView
+            self.sideBarView.isHidden = true
         } else {
-            self.activeProgressIndicator = self.sideBarProgressIndicator
-            self.activeStatusLabel = self.sideBarStatusLabel
-            self.activeContinueButton = self.sideBarContinueButton
-            self.activeView = self.sideBarView
-            self.bottomView.removeFromSuperview()
+            self.sideBarProgressIndicator?.startAnimation(self)
+            self.sideBarProgressIndicator?.isHidden = false
+            
+            self.activeStatusLabel.isHidden = false
+            self.activeStatusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
+            
+            self.sideBarContinueButton.isEnabled = false
+            self.sideBarContinueButton.isHidden = true
         }
         
-        self.activeProgressIndicator.startAnimation(self)
-        self.activeProgressIndicator.isHidden = false
         
-        self.activeStatusLabel.isHidden = true
-        self.activeStatusLabel.stringValue = NSLocalizedString("actions.preparing_your_mac")
-
-        self.activeContinueButton.isEnabled = false
-        self.activeContinueButton.isHidden = true
         
-        self.activeView.isHidden = false
+//        self.activeView.isHidden = false
     }
 
     /// reset the status label to "We are preparing your Mac…"
@@ -75,18 +71,19 @@ extension MainViewController {
     /// all critical software is installed
     @objc func canContinue() {
         Preferences.sharedInstance.criticalDone = true
-        self.activeContinueButton.isEnabled = true
-        self.activeContinueButton.isHidden = false
+        self.sideBarContinueButton.isEnabled = true
+        self.sideBarContinueButton.isHidden = false
     }
 
     /// all software is installed (failed or success)
     @objc func doneInstalling() {
         Preferences.sharedInstance.allInstalled = true
-        activeProgressIndicator.stopAnimation(self)
-        activeProgressIndicator.isHidden = true
+        sideBarProgressIndicator.stopAnimation(self)
+        sideBarProgressIndicator.isHidden = true
 
         if Preferences.sharedInstance.labMode {
-            self.activeView.isHidden = true
+//            self.activeView.isHidden = true
+            self.sideBarView.isHidden = true
             if let labComplete = Preferences.sharedInstance.labComplete {
                 self.webView.loadFileURL(labComplete, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
             } else {

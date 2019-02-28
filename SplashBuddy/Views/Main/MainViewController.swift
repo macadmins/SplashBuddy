@@ -127,20 +127,21 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     
     @IBOutlet var webView: WKWebView!
     
-    @IBOutlet weak var sideBarView: NSView!
+//    @IBOutlet weak var sideBarView: NSView!
     @IBOutlet weak var sideBarProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var sideBarContinueButton: NSButton!
-    @IBOutlet weak var sideBarStatusLabel: NSTextField!
+    @IBOutlet weak var activeStatusLabel: NSTextField!
+    @IBOutlet weak var sideBarView: NSVisualEffectView!
     
-    @IBOutlet weak var bottomView: NSView!
-    @IBOutlet weak var bottomProgressIndicator: NSProgressIndicator!
-    @IBOutlet weak var bottomContinueButton: NSButton!
-    @IBOutlet weak var bottomStatusLabel: NSTextField!
+//    @IBOutlet weak var bottomView: NSView!
+//    @IBOutlet weak var bottomProgressIndicator: NSProgressIndicator!
+//    @IBOutlet weak var bottomContinueButton: NSButton!
+//    @IBOutlet weak var bottomStatusLabel: NSTextField!
 
-    weak var activeView: NSView!
-    weak var activeProgressIndicator: NSProgressIndicator!
-    weak var activeContinueButton: NSButton!
-    weak var activeStatusLabel: NSTextField!
+//    weak var activeView: NSView!
+//    weak var activeProgressIndicator: NSProgressIndicator!
+//    weak var activeContinueButton: NSButton!
+//    weak var activeStatusLabel: NSTextField!
     
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
@@ -183,7 +184,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         self.setupInstalling()
 
         // Setup the Continue Button
-        self.activeContinueButton.title = Preferences.sharedInstance.continueAction.localizedName
+        self.sideBarContinueButton.title = Preferences.sharedInstance.continueAction.localizedName
 
         // Setup the Notifications
 
