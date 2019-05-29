@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [1.3.3]
+
+### Fixed
+
+* Fixed SB hanging out upon clicking on Continue button [[#112](https://github.com/Shufflepuck/SplashBuddy/issues/112)]
+
 ## [1.3.2]
 
 ### Fixed

@@ -3,7 +3,7 @@
 #  test_postinstall_failed.sh
 #  SplashBuddy
 #
-#  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
+#  Copyright © 2018-present Amaris Technologies GmbH. All rights reserved.
 
 echo "Failed..."
 exit 1
