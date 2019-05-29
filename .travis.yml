@@ -1,28 +1,26 @@
 language: objective-c
-osx_image: xcode9.1
+osx_image: xcode10.2
 xcode_project: SplashBuddy.xcodeproj
 xcode_scheme: SplashBuddy
 xcode_sdk: macosx10.13
+
 matrix:
   include:
   - xcode_sdk: macosx10.13
   - xcode_sdk: macosx10.12
-script:
-- set -o pipefail
-- xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy
-after_success:
-- bash <(curl -s https://codecov.io/bash)
+
 notifications:
   slack:
     secure: Uqxr0LOztaoqdqZeopy20hqQEC3sglDW47xd6MuBADwDRxWHApgzDg2o0bJHGyKpGl4y6v/Yz3RSkuD3JnKkPG1+of95bmqJ0r2Qg0yitylRTr7TjVdbNLY+Z2e6VrPcyGi/SQltOaOmJ9daW9GE/MoR5Be3xgMFmfJslFCjImwlXJvz3VZ6PVxClpmfiLYDFg1lUvZ3sJAqGqaRe06n0/Jzdhr8VpfnUOVOjPK7sP3CWqMhL2Qq4WJUYxdNuHle1pD3aSQsnT1/H231zPPqCAR/wnJ88Nu6nnEIW7aI4C0p/uRvSJ0FHghtAMngdz1jifkC/YRfDtp3ICD937B4wq4h3XE9OQcfrFVHJU0C/b7O1izRu1vlq2zoxeG7DWyN7hk/UOldbgP58qowFxlYcY1llMyQXpzJp1PNPnX6vCfWKm4gw4tjUJxGs2tRv7IiFf4P2StVDiISq2B98EDxShi1hD8J7xJUq/CbQ9c4fGFtlW/J3VZGZsPyZ5/eVyDLqqH2c9fDMPBEB2TBNUelGBHhKkvcGefs74PU9XCDn/4mpiz6gqD0o98M7++uds/N4NkQyAh9hEosYsuhesawyh/Ma1k75anDwA/4uvulPOx0fyCCf2nWQihVndSDNkhWSDvDqRFR8YPjfzLDEv8hJyx8xmfdQaf4NitGqibzrQg=
 slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_280089750dac_key -iv $encrypted_280089750dac_iv
-  -in Assets/Mac-Developer-20180129.p12.enc -out Assets/Mac-Developer-20180129.p12
-  -d
+- gem install xcpretty
+- echo $MAC_DEVELOPER_CERTIFICATE | base64 --decode > ./Assets/Certificate.p12
 - "./.travis.import_identity.sh"
-env:
-  global:
-    secure: FzKTuSMe7KHjDt/oYuSj4qyo6E+jPrVHbtpDjA/jCRTJHoapdY6LfEKSu6MvCUKZ7u5b3YqqJveIfbnPJnZDoMxLLfNd+SJfHCLlgnpmvgN4tFOrIbfbkHcqn2Ae3BGEzMTGg8fvDZQLMn5MlMM/5+oUWSHX9xGBsDW5g2USZnt7L8GmjuBoJ88fFono2btSTbQUDc159Ji0LBDlXmEvGXDiTWmAsCHXVQPGTVDDQ+EeFVBbm+n/FCKdrsRGRn03RXXFuphx6QHjFlgfSCBSQxPTjHXYUqrAAQXZw5igU6K4Xtc+c+dk/iWpbbx40g9LJCWxLRSSdGnu+uFthsgMqmdKqmqOL9k+EpuhA76cGrXLr4VNfhP+8aNd2roGhO/yFauoYS711TEA8M7zQ3oSYzgcdGWV0MF8g8AfQ4TMyZxSP2wDJ0ZpEyRtOeNAGEeE9yCMR8UNLVa6GE9MM70ToAg0p7e6Tcyp2uXepgZdHD1G/oI0Rg6oeltrgOb+/wD3nLN0ZKBd5fxXlX0mNH7Pr7rybhqu2jTDUGMZ2CehcL9OlRENHL81rZD5R2n5HZ20METs4ockpJt4dfKsj+ivGNw2TEiBuvVKdx2m2V5Yd+uA9pHFCI1Sc9VL6TN8OXOEBuoqMHNxNqYSepgudEA3iPsoGXeohaXU+ImnN/czR20=
-dd:
-  secure: qzE6u6esDKQhnqTDObVPWm8yVEWut/SaymexwkAfF0oi4PmE7dJq67iTwitJO2qpIwQelQafTFs+NlFVhUIwDO8NO5JEO7f5YubezSFWyCVOzPfiQD+f2f+V7gxZQTNazyc73vtDQ6V/n8FCFAifXYAtII2YxKdcL+nK+sW+UJRNwqo7+J/l4QknadZD22WouskE4nu5972j9ZgFlaYgIRScpkSYt6BEmIH77ohP66YrpC+5uIegNxOORQCx59y5oODW4u4zkP3HOjR6m03DKRroIjDYD63z9/F4/APu9AM5c5vYdiiEt9I5A1jC8LCLsFdZOWjtJFducKnB7bNN4dC6UmxeTu2LY7klEM7R/12kP9W+sCcf0zxY3UYPYSz5R+ANajXLLriMpKoR1mDAfQE4RjuAyI4UClm6Bt0FH+S2OWXkjJ5Ruv3Hv3MaEGedGRmFRU27ADfiM0PZ+UzW73ML68nqawLxSo9CimFPPbUeuvzHpVcBoveNLJiYJeWFuaYgtycoLFYzNlhZpRBeGw1dVT1vm7TwR6xmaeJ5hNP6ul34SWKizzAQKstCaeVt9dyH0Z3DPXHuBDVysXt4GmG2GZSqCyxaiiR5+joY3i5sisDtIZ1fMEWzJPnWybWHeM46F1Ic2qwNIBn0vM5gdawfalNYg5ftfznk9DbfoKE=
+
+script:
+- set -o pipefail && xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy | xcpretty
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
