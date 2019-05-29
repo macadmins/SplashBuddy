@@ -16,7 +16,7 @@ slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W
 
 before_install:
 - gem install xcpretty
-- echo $DEVELOPER_ID_CERTIFICATE | base64 --decode > ./Assets/Certificate.p12
+- echo $MAC_DEVELOPER_CERTIFICATE | base64 --decode > ./Assets/Certificate.p12
 - "./.travis.import_identity.sh"
 
 script:
