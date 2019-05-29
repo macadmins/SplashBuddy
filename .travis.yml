@@ -9,18 +9,18 @@ matrix:
   - xcode_sdk: macosx10.13
   - xcode_sdk: macosx10.12
 
-script:
-- set -o pipefail
-- xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy
-
-after_success:
-- bash <(curl -s https://codecov.io/bash)
-
 notifications:
   slack:
     secure: Uqxr0LOztaoqdqZeopy20hqQEC3sglDW47xd6MuBADwDRxWHApgzDg2o0bJHGyKpGl4y6v/Yz3RSkuD3JnKkPG1+of95bmqJ0r2Qg0yitylRTr7TjVdbNLY+Z2e6VrPcyGi/SQltOaOmJ9daW9GE/MoR5Be3xgMFmfJslFCjImwlXJvz3VZ6PVxClpmfiLYDFg1lUvZ3sJAqGqaRe06n0/Jzdhr8VpfnUOVOjPK7sP3CWqMhL2Qq4WJUYxdNuHle1pD3aSQsnT1/H231zPPqCAR/wnJ88Nu6nnEIW7aI4C0p/uRvSJ0FHghtAMngdz1jifkC/YRfDtp3ICD937B4wq4h3XE9OQcfrFVHJU0C/b7O1izRu1vlq2zoxeG7DWyN7hk/UOldbgP58qowFxlYcY1llMyQXpzJp1PNPnX6vCfWKm4gw4tjUJxGs2tRv7IiFf4P2StVDiISq2B98EDxShi1hD8J7xJUq/CbQ9c4fGFtlW/J3VZGZsPyZ5/eVyDLqqH2c9fDMPBEB2TBNUelGBHhKkvcGefs74PU9XCDn/4mpiz6gqD0o98M7++uds/N4NkQyAh9hEosYsuhesawyh/Ma1k75anDwA/4uvulPOx0fyCCf2nWQihVndSDNkhWSDvDqRFR8YPjfzLDEv8hJyx8xmfdQaf4NitGqibzrQg=
 slack: macadmins:Q5jgs97J5c9fqvubb1Kk301W
 
 before_install:
+- gem install xcpretty
 - echo $DEVELOPER_ID_CERTIFICATE | base64 --decode > ./Assets/Certificate.p12
 - "./.travis.import_identity.sh"
+
+script:
+- set -o pipefail && xcodebuild build test -project SplashBuddy.xcodeproj -scheme SplashBuddy | xcpretty
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
