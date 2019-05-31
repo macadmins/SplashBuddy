@@ -298,14 +298,6 @@
                             <constraint firstItem="SdF-5b-Pla" firstAttribute="top" secondItem="VI7-LS-rJR" secondAttribute="top" id="f0G-pr-kb9"/>
                             <constraint firstAttribute="bottom" secondItem="SdF-5b-Pla" secondAttribute="bottom" id="mSG-zm-sdE"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                <integer key="value" value="4"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="k7a-CL-x2G" id="7B2-Pa-6MA"/>

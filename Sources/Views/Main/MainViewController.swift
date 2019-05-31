@@ -190,7 +190,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
         // Display Alert if /var/log/jamf.log doesn't exist
         guard Preferences.sharedInstance.logFileHandle != nil else {
-            if let currentWindow = self.view.window {
+            if let currentWindow = view.window {
                 let alert = NSAlert()
 
                 alert.alertStyle = .critical
@@ -211,9 +211,11 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                 return
             }
 
-            DispatchQueue.main.async { [unowned self] in
-                self.sendButton.isHidden = false
-                self.continueButton.isHidden = true
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+
+                strongSelf.sendButton.isHidden = false
+                strongSelf.continueButton.isHidden = true
             }
 
             webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -226,8 +228,10 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                 Log.write(string: "Form already completed.", cat: "UserInput", level: .debug)
             }
 
-            DispatchQueue.main.async { [unowned self] in
-                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+
+                strongSelf.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
 
             webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -268,7 +272,9 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     }
 
     @IBAction func evalForm(_ sender: Any) {
-        webView.evaluateJavaScript(evaluationJavascript) { (data: Any?, error: Error?) in
+        webView.evaluateJavaScript(evaluationJavascript) { [weak self] (data: Any?, error: Error?) in
+            guard let strongSelf = self else { return }
+
             if error != nil {
                 Log.write(string: "Error getting User Input", cat: "UserInput", level: .error)
                 return
@@ -293,14 +299,14 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                 FileManager.default.createFile(atPath: "\(item.key).txt", contents: (item.value as? String ?? "").data(using: .utf8), attributes: nil)
             }
 
-            DispatchQueue.main.async { [unowned self] in
-                self.sendButton.isHidden = true
-                self.continueButton.isHidden = false
+            DispatchQueue.main.async {
+                strongSelf.sendButton.isHidden = true
+                strongSelf.continueButton.isHidden = false
 
                 if let html = Preferences.sharedInstance.html {
-                    self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
+                    strongSelf.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
                 } else {
-                    self.webView.loadHTMLString(NSLocalizedString("error.create_missing_bundle"), baseURL: nil)
+                    strongSelf.webView.loadHTMLString(NSLocalizedString("error.create_missing_bundle"), baseURL: nil)
                 }
             }
 
