@@ -38,6 +38,7 @@
 		ED797C93229E6C8A00505E8C /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED797C92229E6C8A00505E8C /* Tools.swift */; };
 		ED797C95229E6EFB00505E8C /* ToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED797C94229E6EFB00505E8C /* ToolsTests.swift */; };
 		ED797C99229E6FCF00505E8C /* SoftwareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED797C98229E6FCF00505E8C /* SoftwareTests.swift */; };
+		EDA7F21922A1628300C41354 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA7F21822A1628300C41354 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		EDA78DAD20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA78DAE20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
+		EDA7F21822A1628300C41354 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA7F21922A1628300C41354 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +164,7 @@
 				089D291F1D50D12200E58C6D /* Sources */,
 				08AC4F751D520A3200CAB019 /* SplashBuddyTestAssets */,
 				089D292F1D50D12200E58C6D /* Tests */,
+				EDA7F21722A1628300C41354 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -396,6 +400,14 @@
 				ED797C94229E6EFB00505E8C /* ToolsTests.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		EDA7F21722A1628300C41354 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDA7F21822A1628300C41354 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -773,6 +785,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Configurations/SplashBuddyTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
