@@ -157,7 +157,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     """
 
     internal func formEnterKey() {
-        self.evalForm(self.sendButton)
+        self.evalForm(self.sendButton!)
     }
 
     override func awakeFromNib() {

@@ -87,7 +87,7 @@ class Software: NSObject {
         if let iconPath = iconPath {
             self.icon = NSImage(contentsOfFile: iconPath)
         } else {
-            self.icon = NSImage(named: NSImage.Name.folder)
+            self.icon = NSImage(named: NSImage.folderName)
         }
     }
     

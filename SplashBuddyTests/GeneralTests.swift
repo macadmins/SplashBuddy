@@ -50,15 +50,15 @@ class GeneralTests: XCTestCase {
     }
     
     func testLoadingValidIcon()  {
-        let path = Bundle(for: type(of: self)).pathForImageResource(NSImage.Name(rawValue: "ec_32x32.png"))
+        let path = Bundle(for: type(of: self)).pathForImageResource("ec_32x32.png")
         let icon = Software(packageName: "EC", status: .installing, iconPath: path).icon
         XCTAssert(type(of: icon!) == type(of: NSImage()))
     }
     
     func testLoadingInvalidIcon() {
-        let path = Bundle(for: type(of: self)).pathForImageResource(NSImage.Name(rawValue: "nonexistent"))
+        let path = Bundle(for: type(of: self)).pathForImageResource("nonexistent")
         
-        XCTAssertEqual(Software(packageName: "EC", status: .installing, iconPath: path).icon, NSImage(named: NSImage.Name.folder))
+        XCTAssertEqual(Software(packageName: "EC", status: .installing, iconPath: path).icon, NSImage(named: NSImage.folderName))
     }
     
     func testToContinueWithMandatorySoftwareCorrectlyInstalled() {

@@ -24,7 +24,7 @@ class SoftwareArray: NSObject {
     @objc dynamic var array = [Software]()
     
     func updateInfo(for software: Software) {
-        if let index = array.index(where: {
+        if let index = array.firstIndex(where: {
             let set1 = Set($0.packageNames)
             let set2 = Set(software.packageNames)
             return set1.intersection(set2).count > 0
