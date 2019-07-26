@@ -172,10 +172,12 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         super.viewWillAppear()
 
         // Setup the view
-        self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
-        self.mainView.layer?.cornerRadius = 10
-        self.mainView.layer?.shadowRadius = 2
-        self.mainView.layer?.borderWidth = 0.2
+        if Preferences.sharedInstance.background {
+            self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+            self.mainView.layer?.cornerRadius = 10
+            self.mainView.layer?.shadowRadius = 2
+            self.mainView.layer?.borderWidth = 0.2
+        }
 
         // Setup the web view
         self.webView.layer?.isOpaque = true
