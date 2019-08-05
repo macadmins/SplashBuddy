@@ -1,14 +1,13 @@
 # SplashBuddy
 
 [![Build Status](https://travis-ci.org/Shufflepuck/SplashBuddy.svg?branch=master)](https://travis-ci.org/Shufflepuck/SplashBuddy)
-![Swift](https://img.shields.io/badge/Swift-4.0-brightgreen.svg)
-![macOS](https://img.shields.io/badge/macOS-10.12.6-brightgreen.svg)
-![macOS](https://img.shields.io/badge/macOS-10.13-brightgreen.svg)
+![Swift](https://img.shields.io/badge/Swift-5.0-brightgreen.svg)
+![macOS](https://img.shields.io/badge/macOS-10.12+-brightgreen.svg)
 
-![Version](https://img.shields.io/badge/Version-1.2.1-lightgrey.svg)
+![Version](https://img.shields.io/badge/Version-1.3.3-lightgrey.svg)
 ![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)
 
-SplashBuddy goal is to provide an *elegant* and *secure* onboarding process for Mac users using [DEP](https://www.apple.com/business/dep/).
+SplashBuddy goal is to provide an *elegant* and *secure* onboarding process for Mac users using [DEP](https://www.apple.com/business/dep).
 
 It allows you to:
 
@@ -22,7 +21,7 @@ It currently supports Jamf Pro. You're welcome to [contribute](https://github.co
 
 ![SplashBuddy](Assets/secrid_splashbuddy.jpeg)
 
-Here's a video of the SplashBuddy (v1.0) running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained/): [Link](https://cultureamp.wistia.com/medias/8gpvhpwgn4).
+Here's a video of the SplashBuddy (v1.0) running at Culture Amp that was presented during [Macbrained](http://smithjw.me/2017/03/24/Onboarding-talk-at-Macbrained): [Link](https://cultureamp.wistia.com/medias/8gpvhpwgn4).
 
 ## Quick Start
 
