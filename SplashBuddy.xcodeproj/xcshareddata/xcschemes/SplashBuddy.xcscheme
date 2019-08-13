@@ -26,17 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "089D291C1D50D12200E58C6D"
-            BuildableName = "SplashBuddy.app"
-            BlueprintName = "SplashBuddy"
-            ReferencedContainer = "container:SplashBuddy.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      codeCoverageEnabled = "YES"
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -49,6 +40,17 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "089D291C1D50D12200E58C6D"
+            BuildableName = "SplashBuddy.app"
+            BlueprintName = "SplashBuddy"
+            ReferencedContainer = "container:SplashBuddy.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -94,6 +96,8 @@
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
