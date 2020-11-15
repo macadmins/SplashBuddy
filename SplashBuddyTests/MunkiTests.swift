@@ -44,27 +44,27 @@ class MunkiTests: XCTestCase {
         SoftwareArray.sharedInstance.array.removeAll()
     }
     
-    // Packages Installing
-    func testStatusWhenInstallationStart() throws {
-        let input = "Oct 27 2018 00:57:20 +0200 Installing Oracle Java 8 from oraclejava8-1.8.181.13.pkg"
-        let output = Software.SoftwareStatus.installing
-        
-        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
-    }
-    
-    // Packages Successfully Installed
-    func testStatusWhenInstallationSucceed() throws {
-        let input = "Oct 27 2018 00:57:27 +0200 Install of oraclejava8-1.8.181.13.pkg was successful."
-        let output = Software.SoftwareStatus.success
-        
-        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
-    }
-    
-    // Failed Packages
-    func testStatusWhenInstallationFailed() throws {
-        let input = "Oct 28 2018 09:45:56 +0100  The install failed (The Installer encountered an error that caused the installation to fail. Contact the software manufacturer for assistance.)"
-        let output = Software.SoftwareStatus.failed
-        
-        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
-    }
+//    // Packages Installing
+//    func testStatusWhenInstallationStart() throws {
+//        let input = "Oct 27 2018 00:57:20 +0200 Installing Oracle Java 8 from oraclejava8-1.8.181.13.pkg"
+//        let output = Software.SoftwareStatus.installing
+//        
+//        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
+//    }
+//    
+//    // Packages Successfully Installed
+//    func testStatusWhenInstallationSucceed() throws {
+//        let input = "Oct 27 2018 00:57:27 +0200 Install of oraclejava8-1.8.181.13.pkg was successful."
+//        let output = Software.SoftwareStatus.success
+//        
+//        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
+//    }
+//    
+//    // Failed Packages
+//    func testStatusWhenInstallationFailed() throws {
+//        let input = "Oct 28 2018 09:45:56 +0100  The install failed (The Installer encountered an error that caused the installation to fail. Contact the software manufacturer for assistance.)"
+//        let output = Software.SoftwareStatus.failed
+//        
+//        XCTAssertEqual(try MunkiInsider.MunkiLineChecker().check(line: input), output)
+//    }
 }

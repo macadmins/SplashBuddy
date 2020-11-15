@@ -20,6 +20,7 @@ import WebKit
 class MainWindowController: NSWindowController {
 
     override func windowDidLoad() {
+        
         super.windowDidLoad()
 
         // Display Front Window
@@ -30,9 +31,15 @@ class MainWindowController: NSWindowController {
 
         if Preferences.sharedInstance.background {
             window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
+            window.styleMask = [.fullSizeContentView]
+            
+        } else {
+            window.styleMask = [.resizable, .titled]
+            window.center()
         }
 
         window.isOpaque = false
         window.backgroundColor = NSColor.clear
+        
     }
 }

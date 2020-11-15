@@ -20,11 +20,18 @@ class SoftwareArray: NSObject {
 
     static let sharedInstance = SoftwareArray()
     let serialQueue = DispatchQueue(label: "SoftwareArray")
+    
+    override init() {
+        super.init()
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            self.checkSoftwareStatus()
+        }
+    }
 
     @objc dynamic var array = [Software]()
     
     func updateInfo(for software: Software) {
-        if let index = array.index(where: {
+        if let index = array.firstIndex(where: {
             let set1 = Set($0.packageNames)
             let set2 = Set(software.packageNames)
             return set1.intersection(set2).count > 0
@@ -50,8 +57,11 @@ class SoftwareArray: NSObject {
             for software in self.array {
                 DispatchQueue.main.async {
                     operation(software)
+                    #warning("To change")
                 }
             }
+            
+            self.checkSoftwareStatus()
         }
     }
 
@@ -128,7 +138,7 @@ class SoftwareArray: NSObject {
             .count == displayedSoftwareArray.count
     }
 
-    /// Check SoftwareArray and send the relevant notifications
+    /// Check SoftwareArray and send the relevant n1otifications
     func checkSoftwareStatus() {
         DispatchQueue.main.async {
             if self.canContinue() {
