@@ -32,3 +32,5 @@
 "btn.quit" = "Quitter";
 /* Variation of the Continue button. */
 "btn.logout" = "Fermer la session";
+/* Send button, used to "send" the form. */
+"btn.form.send" = "Envoyer";

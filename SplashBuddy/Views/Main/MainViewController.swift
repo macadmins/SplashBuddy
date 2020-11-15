@@ -127,22 +127,14 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     
     @IBOutlet var webView: WKWebView!
     
-//    @IBOutlet weak var sideBarView: NSView!
     @IBOutlet weak var sideBarProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var sideBarContinueButton: NSButton!
     @IBOutlet weak var activeStatusLabel: NSTextField!
     @IBOutlet weak var sideBarView: NSVisualEffectView!
     
-//    @IBOutlet weak var bottomView: NSView!
-//    @IBOutlet weak var bottomProgressIndicator: NSProgressIndicator!
-//    @IBOutlet weak var bottomContinueButton: NSButton!
-//    @IBOutlet weak var bottomStatusLabel: NSTextField!
+    // Form
+    @IBOutlet weak var sideBarSendButton: NSButton!
 
-//    weak var activeView: NSView!
-//    weak var activeProgressIndicator: NSProgressIndicator!
-//    weak var activeContinueButton: NSButton!
-//    weak var activeStatusLabel: NSTextField!
-    
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
 
@@ -157,7 +149,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     """
 
     internal func formEnterKey() {
-        self.evalForm(self.sendButton!)
+        self.evalForm(self)
     }
 
     override func awakeFromNib() {
@@ -187,6 +179,10 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
         // Setup the Continue Button
         self.sideBarContinueButton.title = Preferences.sharedInstance.continueAction.localizedName
+        
+        // Setup the Send Button
+        self.sideBarSendButton.title = NSLocalizedString("btn.form.send")
+        self.sideBarSendButton.isHidden = true
 
         // Setup the Notifications
 
@@ -225,10 +221,11 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             guard let form = Preferences.sharedInstance.form else {
                 return
             }
-
-            DispatchQueue.main.async {
-                self.sendButton.isHidden = false
-            }
+            
+            // Show the Send Button
+            self.sideBarSendButton.isHidden = false
+            self.sideBarSendButton.isEnabled = true
+            
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
             Log.write(string: "Injecting Javascript.", cat: "UserInput", level: .debug)
             self.webView.evaluateJavaScript(self.enterKeyJS, completionHandler: nil)
@@ -243,11 +240,10 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         }
     }
 
-    @IBOutlet weak var sendButton: NSButton!
-    @IBAction func evalForm(_ sender: Any) {
+    @IBAction func evalForm(_ sender: Any?) {
         webView.evaluateJavaScript(evaluationJavascript) { (data: Any?, error: Error?) in
             if error != nil {
-                Log.write(string: "Error getting User Input", cat: "UserInput", level: .error)
+                Log.write(string: "Error getting User Input (\(error!.localizedDescription))", cat: "UserInput", level: .error)
                 return
             }
 
@@ -271,7 +267,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             }
 
             DispatchQueue.main.async {
-                self.sendButton.isHidden = true
+                self.sideBarSendButton.isHidden = true
 
                 if let html = Preferences.sharedInstance.html {
                     self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
