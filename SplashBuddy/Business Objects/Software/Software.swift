@@ -1,9 +1,18 @@
-//
-//  Software.swift
-//  SplashBuddy
-//
-//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
-//
+// SplashBuddy
+
+/*
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
 
 import Cocoa
 
@@ -18,6 +27,8 @@ import Cocoa
  
  */
 
+infix operator ~=
+
 class Software: NSObject {
 
     /**
@@ -25,20 +36,24 @@ class Software: NSObject {
      Default is .pending, other cases will be set while parsing the log
      */
     @objc enum SoftwareStatus: Int {
-        case installing = 0
-        case success = 1
-        case failed = 2
-        case pending = 3
+        case pending
+        case installing
+        case success
+        case failed
     }
 
-    @objc dynamic var packageName: String
-    @objc dynamic var packageVersion: String?
+    @objc dynamic var packageNames: [String]
     @objc dynamic var status: SoftwareStatus
     @objc dynamic var icon: NSImage?
     @objc dynamic var displayName: String?
     @objc dynamic var desc: String?
     @objc dynamic var canContinue: Bool
     @objc dynamic var displayToUser: Bool
+    
+    override var description: String {
+        
+        return "<\(String(describing: type(of:self))): displayName=\(String(describing: self.displayName)), status=\(self.status.rawValue), canContinue=\(self.canContinue)>"
+    }
 
     /**
      Manually initializes a Software Object
@@ -54,8 +69,7 @@ class Software: NSObject {
      - parameter displayToUser: set to True to display in GUI
      */
 
-    init(packageName: String,
-         version: String? = nil,
+    init(packageNames: [String],
          status: SoftwareStatus = .pending,
          iconPath: String? = nil,
          displayName: String? = nil,
@@ -63,8 +77,7 @@ class Software: NSObject {
          canContinue: Bool = true,
          displayToUser: Bool = false) {
 
-        self.packageName = packageName
-        self.packageVersion = version
+        self.packageNames = packageNames
         self.status = status
         self.canContinue = canContinue
         self.displayToUser = displayToUser
@@ -74,50 +87,30 @@ class Software: NSObject {
         if let iconPath = iconPath {
             self.icon = NSImage(contentsOfFile: iconPath)
         } else {
-            self.icon = NSImage(named: NSImage.Name.folder)
+            self.icon = NSImage(named: NSImage.folderName)
         }
     }
-
-    /**
-     Initializes a Software Object from a String
-     
-     - note: Only packageName is required to parse, displayName, description and displayToUser will have to be set later to properly show it on the GUI.
-     
-     - parameter packageName: *packageName*-packageVersion.pkg
-     - parameter version: Optional
-     - parameter iconPath: Optional
-     - parameter displayName: Name displayed to user
-     - parameter description: Second line underneath name
-     - parameter canContinue: if set to false, the Software will block the "Continue" button until installed
-     - parameter displayToUser: set to True to display in GUI
-     */
-    convenience init?(from line: String) {
-
-        var name: String?
-        var version: String?
-        var status: SoftwareStatus?
-
-        for (regexStatus, regex) in initRegex() {
-            status = regexStatus
-
-            let matches = regex!.matches(in: line, options: [], range: NSRange(location: 0, length: line.count))
-
-            if !matches.isEmpty {
-                name = (line as NSString).substring(with: matches[0].range(at: 1))
-                version = (line as NSString).substring(with: matches[0].range(at: 2))
-                break
+    
+    convenience init(packageName: String,
+                     status: SoftwareStatus = .pending,
+                     iconPath: String? = nil,
+                     displayName: String? = nil,
+                     description: String? = nil,
+                     canContinue: Bool = true,
+                     displayToUser: Bool = false) {
+        self.init(packageNames: [packageName], status: status, iconPath: iconPath, displayName: displayName, description: description, canContinue: canContinue, displayToUser: displayToUser)
+    }
+    
+    static func ==(lhs: Software, rhs: Software) -> Bool {
+        return lhs.packageNames == rhs.packageNames && lhs.status == rhs.status
+    }
+    
+    static func ~=(lhs: Software, rhs: Software) -> Bool {
+        for name in rhs.packageNames {
+            if lhs.packageNames.contains(name) {
+                return true
             }
         }
-
-        if let packageName = name, let packageVersion = version, let packageStatus = status {
-            self.init(packageName: packageName, version: packageVersion, status: packageStatus)
-        } else {
-            return nil
-        }
+        return false
     }
-
-}
-
-func == (lhs: Software, rhs: Software) -> Bool {
-    return lhs.packageName == rhs.packageName && lhs.packageVersion == rhs.packageVersion && lhs.status == rhs.status
 }

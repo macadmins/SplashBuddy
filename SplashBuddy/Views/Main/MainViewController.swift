@@ -1,6 +1,18 @@
-//
-//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
-//
+// SplashBuddy
+
+/*
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
 
 import Cocoa
 import WebKit
@@ -111,15 +123,26 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             JSON.stringify(sb());
         """
 
-    @IBOutlet var webView: WKWebView!
-    @IBOutlet var softwareTableView: NSTableView!
-    @IBOutlet weak var indeterminateProgressIndicator: NSProgressIndicator!
-    @IBOutlet weak var continueButton: NSButton!
-    @IBOutlet weak var statusLabel: NSTextField!
     @IBOutlet var mainView: NSView!
-    @IBOutlet weak var statusView: NSView!
-    @IBOutlet weak var sidebarView: NSView!
+    
+    @IBOutlet var webView: WKWebView!
+    
+//    @IBOutlet weak var sideBarView: NSView!
+    @IBOutlet weak var sideBarProgressIndicator: NSProgressIndicator!
+    @IBOutlet weak var sideBarContinueButton: NSButton!
+    @IBOutlet weak var activeStatusLabel: NSTextField!
+    @IBOutlet weak var sideBarView: NSVisualEffectView!
+    
+//    @IBOutlet weak var bottomView: NSView!
+//    @IBOutlet weak var bottomProgressIndicator: NSProgressIndicator!
+//    @IBOutlet weak var bottomContinueButton: NSButton!
+//    @IBOutlet weak var bottomStatusLabel: NSTextField!
 
+//    weak var activeView: NSView!
+//    weak var activeProgressIndicator: NSProgressIndicator!
+//    weak var activeContinueButton: NSButton!
+//    weak var activeStatusLabel: NSTextField!
+    
     // Predicate used by Storyboard to filter which software to display
     @objc let predicate = NSPredicate(format: "displayToUser = true")
 
@@ -134,7 +157,7 @@ class MainViewController: NSViewController, NSTableViewDataSource {
     """
 
     internal func formEnterKey() {
-        self.evalForm(self.sendButton)
+        self.evalForm(self.sendButton!)
     }
 
     override func awakeFromNib() {
@@ -149,16 +172,21 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         super.viewWillAppear()
 
         // Setup the view
-        self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
-        self.mainView.layer?.cornerRadius = 10
-        self.mainView.layer?.shadowRadius = 2
-        self.mainView.layer?.borderWidth = 0.2
+        if Preferences.sharedInstance.background {
+            self.mainView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+            self.mainView.layer?.cornerRadius = 10
+            self.mainView.layer?.shadowRadius = 2
+            self.mainView.layer?.borderWidth = 0.2
+        }
 
         // Setup the web view
         self.webView.layer?.isOpaque = true
+        
+        // Setup the initial state of objects
+        self.setupInstalling()
 
         // Setup the Continue Button
-        self.continueButton.title = Preferences.sharedInstance.continueAction.localizedName
+        self.sideBarContinueButton.title = Preferences.sharedInstance.continueAction.localizedName
 
         // Setup the Notifications
 
@@ -186,27 +214,12 @@ class MainViewController: NSViewController, NSTableViewDataSource {
                                                selector: #selector(MainViewController.allSuccess),
                                                name: SoftwareArray.StateNotification.allSuccess.notification,
                                                object: nil)
+        
+        // Setup insider error observer
+        Preferences.sharedInstance.addObserver(self, forKeyPath: "insiderError", options: [.new], context: nil)
     }
 
     override func viewDidAppear() {
-        // Setup the initial state of objects
-        self.setupInstalling()
-
-        // Display Alert if /var/log/jamf.log doesn't exist
-        guard Preferences.sharedInstance.logFileHandle != nil else {
-            let alert = NSAlert()
-
-            alert.alertStyle = .critical
-            alert.messageText = "Jamf is not installed correctly"
-            alert.informativeText = "/var/log/jamf.log is missing"
-            alert.addButton(withTitle: "Quit")
-            alert.beginSheetModal(for: self.view.window!) { (_) in
-                self.pressedContinueButton(self)
-            }
-
-            return
-        }
-
         // Display the html file
         if Preferences.sharedInstance.form != nil && !Preferences.sharedInstance.formDone {
             guard let form = Preferences.sharedInstance.form else {
@@ -215,7 +228,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
             DispatchQueue.main.async {
                 self.sendButton.isHidden = false
-                self.continueButton.isHidden = true
             }
             self.webView.loadFileURL(form, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
             Log.write(string: "Injecting Javascript.", cat: "UserInput", level: .debug)
@@ -223,9 +235,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
         } else if let html = Preferences.sharedInstance.html {
             if Preferences.sharedInstance.formDone {
                 Log.write(string: "Form already completed.", cat: "UserInput", level: .debug)
-            }
-            DispatchQueue.main.async {
-                self.continueButton.isHidden = Preferences.sharedInstance.continueAction.isHidden
             }
 
             self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -263,7 +272,6 @@ class MainViewController: NSViewController, NSTableViewDataSource {
 
             DispatchQueue.main.async {
                 self.sendButton.isHidden = true
-                self.continueButton.isHidden = false
 
                 if let html = Preferences.sharedInstance.html {
                     self.webView.loadFileURL(html, allowingReadAccessTo: Preferences.sharedInstance.assetPath)
@@ -275,6 +283,31 @@ class MainViewController: NSViewController, NSTableViewDataSource {
             Log.write(string: "DONE: Form Javascript Evaluation", cat: "UI", level: .debug)
             Log.write(string: "Form complete, writing to .SplashBuddyFormDone", cat: "UI", level: .debug)
             Preferences.sharedInstance.formDone = true
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "insiderError" {
+            checkForInsiderError()
+        }
+    }
+    
+    func checkForInsiderError() {
+        // The async after a second is here only to handle the case where the error flag is changed before the error messages are set.
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            guard let window = self.view.window else { return }
+            
+            if Preferences.sharedInstance.insiderError {
+                let alert = NSAlert()
+                
+                alert.alertStyle = .critical
+                alert.messageText = Preferences.sharedInstance.insiderErrorMessage
+                alert.informativeText = Preferences.sharedInstance.insiderErrorInfo
+                alert.addButton(withTitle: "Quit")
+                alert.beginSheetModal(for: window) { (_) in
+                    self.pressedContinueButton(self)
+                }
+            }
         }
     }
 }

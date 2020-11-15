@@ -17,7 +17,6 @@
 		089D29231D50D12200E58C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 089D29221D50D12200E58C6D /* Assets.xcassets */; };
 		089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D29301D50D12200E58C6D /* CasperSplashTests.swift */; };
 		089D294A1D50D14C00E58C6D /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 089D29491D50D14C00E58C6D /* .travis.yml */; };
-		089D294D1D50F04900E58C6D /* Regexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294C1D50F04900E58C6D /* Regexes.swift */; };
 		089D294F1D50F1D800E58C6D /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D294E1D50F1D800E58C6D /* Software.swift */; };
 		089D29531D51D50700E58C6D /* jamf_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 089D29521D51D50700E58C6D /* jamf_1.txt */; };
 		08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AC4F7C1D5222BD00CAB019 /* Preferences.swift */; };
@@ -30,12 +29,21 @@
 		479DD87F1F914667001796B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 479DD8811F914667001796B1 /* InfoPlist.strings */; };
 		47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A218191F04F0BC00FD3EDC /* MainWindow.swift */; };
 		47AA7B141E68AD8E005BBF48 /* SplashBuddy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47AA7B161E68AD8E005BBF48 /* SplashBuddy.storyboard */; };
-		47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B198A91E6561AB0055CC85 /* Software Array Extension.swift */; };
 		47CFADED1E680D8400356D11 /* MainViewController_Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */; };
 		47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CFADF31E682C9200356D11 /* SoftwareArray.swift */; };
 		81D9D7311E69ABE4008ED3F5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D9D7301E69ABE4008ED3F5 /* Log.swift */; };
+		AD33DC7822EB8739000080E8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD33DC7722EB8739000080E8 /* WebKit.framework */; };
 		D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */; };
 		ED525EBB20907D4700BF776B /* NSLocalizedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */; };
+		F8036BD72189B45F00F47414 /* FileEventInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8036BD62189B45F00F47414 /* FileEventInsider.swift */; };
+		F8272340218505CC00E52B3F /* GeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827233F218505CC00E52B3F /* GeneralTests.swift */; };
+		F82723422185073700E52B3F /* InstallerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82723412185073700E52B3F /* InstallerTests.swift */; };
+		F82723442185080000E52B3F /* MunkiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82723432185080000E52B3F /* MunkiTests.swift */; };
+		F88973BF218427E90050FFCE /* InstallerInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88973BE218427E90050FFCE /* InstallerInsider.swift */; };
+		F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6DD2183B177008A1773 /* Constants.swift */; };
+		F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */; };
+		F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */; };
+		F8A1E6F32183CDFD008A1773 /* LogInsider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1E6F22183CDFD008A1773 /* LogInsider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +85,6 @@
 		089D29301D50D12200E58C6D /* CasperSplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasperSplashTests.swift; sourceTree = "<group>"; };
 		089D29321D50D12200E58C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		089D29491D50D14C00E58C6D /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
-		089D294C1D50F04900E58C6D /* Regexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regexes.swift; sourceTree = "<group>"; };
 		089D294E1D50F1D800E58C6D /* Software.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
 		089D29521D51D50700E58C6D /* jamf_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jamf_1.txt; sourceTree = "<group>"; };
 		08AC4F761D520A3200CAB019 /* ec_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ec_32x32.png; sourceTree = "<group>"; };
@@ -120,11 +127,11 @@
 		47A218191F04F0BC00FD3EDC /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
 		47AA7B191E68AE3C005BBF48 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
 		47AA7B1A1E68AF46005BBF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashBuddy.storyboard; sourceTree = "<group>"; };
-		47B198A91E6561AB0055CC85 /* Software Array Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Software Array Extension.swift"; sourceTree = "<group>"; };
 		47CFADEA1E680BF900356D11 /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController_Actions.swift; sourceTree = "<group>"; };
 		47CFADF31E682C9200356D11 /* SoftwareArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftwareArray.swift; sourceTree = "<group>"; };
 		81D9D7301E69ABE4008ED3F5 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		AD33DC7722EB8739000080E8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		D9894FE51F1CDC8800DF7F42 /* TransparentScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentScroller.swift; sourceTree = "<group>"; };
 		ED525EBA20907D4700BF776B /* NSLocalizedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLocalizedStringExtensions.swift; sourceTree = "<group>"; };
 		ED8518B320EDFAA5004D9F52 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
@@ -133,6 +140,15 @@
 		EDA78DAD20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA78DAE20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EDA78DAF20A03D2D00BBA14E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SplashBuddy.strings; sourceTree = "<group>"; };
+		F8036BD62189B45F00F47414 /* FileEventInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEventInsider.swift; sourceTree = "<group>"; };
+		F827233F218505CC00E52B3F /* GeneralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTests.swift; sourceTree = "<group>"; };
+		F82723412185073700E52B3F /* InstallerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerTests.swift; sourceTree = "<group>"; };
+		F82723432185080000E52B3F /* MunkiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunkiTests.swift; sourceTree = "<group>"; };
+		F88973BE218427E90050FFCE /* InstallerInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerInsider.swift; sourceTree = "<group>"; };
+		F8A1E6DD2183B177008A1773 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JAMFInsider.swift; sourceTree = "<group>"; };
+		F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunkiInsider.swift; sourceTree = "<group>"; };
+		F8A1E6F22183CDFD008A1773 /* LogInsider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInsider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD33DC7822EB8739000080E8 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +183,7 @@
 				08AC4F751D520A3200CAB019 /* SplashBuddyTestAssets */,
 				089D292F1D50D12200E58C6D /* SplashBuddyTests */,
 				089D291E1D50D12200E58C6D /* Products */,
+				AD33DC7622EB8739000080E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,8 +200,10 @@
 			isa = PBXGroup;
 			children = (
 				089D29201D50D12200E58C6D /* AppDelegate.swift */,
+				F8A1E6DD2183B177008A1773 /* Constants.swift */,
 				D9894FE71F1CE4F100DF7F42 /* Business Objects */,
 				ED525EB920907D2F00BF776B /* Extensions */,
+				F8A1E6DF2183B18E008A1773 /* Insiders */,
 				D9894FE91F1CE56700DF7F42 /* Resources */,
 				D9894FEC1F1CE7E800DF7F42 /* Tools */,
 				47CFADE91E68049600356D11 /* Views */,
@@ -194,11 +214,14 @@
 		089D292F1D50D12200E58C6D /* SplashBuddyTests */ = {
 			isa = PBXGroup;
 			children = (
+				F827233F218505CC00E52B3F /* GeneralTests.swift */,
 				089D29301D50D12200E58C6D /* CasperSplashTests.swift */,
+				F82723412185073700E52B3F /* InstallerTests.swift */,
+				F82723432185080000E52B3F /* MunkiTests.swift */,
+				47647E7D1E698F3C009D535B /* PreferencesTests.swift */,
 				089D29321D50D12200E58C6D /* Info.plist */,
 				089D29491D50D14C00E58C6D /* .travis.yml */,
 				089D29521D51D50700E58C6D /* jamf_1.txt */,
-				47647E7D1E698F3C009D535B /* PreferencesTests.swift */,
 			);
 			path = SplashBuddyTests;
 			sourceTree = "<group>";
@@ -304,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				089D294E1D50F1D800E58C6D /* Software.swift */,
-				47B198A91E6561AB0055CC85 /* Software Array Extension.swift */,
 				08DAA4941D54D5430027E650 /* SoftwareStatusValueTransformer.swift */,
 				47CFADF31E682C9200356D11 /* SoftwareArray.swift */,
 			);
@@ -320,6 +342,14 @@
 				47CFADEC1E680D8400356D11 /* MainViewController_Actions.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		AD33DC7622EB8739000080E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD33DC7722EB8739000080E8 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D9894FE41F1CDC4D00DF7F42 /* Controls */ = {
@@ -353,7 +383,6 @@
 		D9894FEC1F1CE7E800DF7F42 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				089D294C1D50F04900E58C6D /* Regexes.swift */,
 				08AC4F7C1D5222BD00CAB019 /* Preferences.swift */,
 				81D9D7301E69ABE4008ED3F5 /* Log.swift */,
 				47390F471F2B64C9009EA94C /* ContinueAction.swift */,
@@ -378,6 +407,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F8A1E6DF2183B18E008A1773 /* Insiders */ = {
+			isa = PBXGroup;
+			children = (
+				F8A1E6F22183CDFD008A1773 /* LogInsider.swift */,
+				F8036BD62189B45F00F47414 /* FileEventInsider.swift */,
+				F8A1E6E02183B18E008A1773 /* JAMFInsider.swift */,
+				F8A1E6E22183CB3F008A1773 /* MunkiInsider.swift */,
+				F88973BE218427E90050FFCE /* InstallerInsider.swift */,
+			);
+			path = Insiders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -388,7 +429,6 @@
 				089D29191D50D12200E58C6D /* Sources */,
 				089D291A1D50D12200E58C6D /* Frameworks */,
 				089D291B1D50D12200E58C6D /* Resources */,
-				ED9E81AF2012341B000D8632 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -425,13 +465,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Amaris Technologies GmbH";
 				TargetAttributes = {
 					089D291C1D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						LastSwiftMigration = 1100;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -440,14 +480,14 @@
 					};
 					089D292B1D50D12200E58C6D = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1100;
 						TestTargetID = 089D291C1D50D12200E58C6D;
 					};
 				};
 			};
 			buildConfigurationList = 089D29181D50D12200E58C6D /* Build configuration list for PBXProject "SplashBuddy" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -495,23 +535,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		ED9E81AF2012341B000D8632 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		089D29191D50D12200E58C6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -528,12 +551,16 @@
 				08AC4F7D1D5222BD00CAB019 /* Preferences.swift in Sources */,
 				47CFADF41E682C9200356D11 /* SoftwareArray.swift in Sources */,
 				086F87BB1D5397AE002AA791 /* WKWebViewNavigationDelegate.swift in Sources */,
+				F8036BD72189B45F00F47414 /* FileEventInsider.swift in Sources */,
+				F88973BF218427E90050FFCE /* InstallerInsider.swift in Sources */,
 				08EC78AC1DE72326007960A4 /* MainViewController.swift in Sources */,
 				D9894FE61F1CDC8800DF7F42 /* TransparentScroller.swift in Sources */,
-				47B198AA1E6561AB0055CC85 /* Software Array Extension.swift in Sources */,
+				F8A1E6E12183B18E008A1773 /* JAMFInsider.swift in Sources */,
 				47A2181A1F04F0BC00FD3EDC /* MainWindow.swift in Sources */,
 				08DAA4951D54D5430027E650 /* SoftwareStatusValueTransformer.swift in Sources */,
-				089D294D1D50F04900E58C6D /* Regexes.swift in Sources */,
+				F8A1E6DE2183B177008A1773 /* Constants.swift in Sources */,
+				F8A1E6E32183CB3F008A1773 /* MunkiInsider.swift in Sources */,
+				F8A1E6F32183CDFD008A1773 /* LogInsider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +568,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82723422185073700E52B3F /* InstallerTests.swift in Sources */,
+				F8272340218505CC00E52B3F /* GeneralTests.swift in Sources */,
+				F82723442185080000E52B3F /* MunkiTests.swift in Sources */,
 				47647E7E1E698F3C009D535B /* PreferencesTests.swift in Sources */,
 				089D29311D50D12200E58C6D /* CasperSplashTests.swift in Sources */,
 			);
@@ -618,14 +648,17 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -673,14 +706,17 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -712,9 +748,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SplashBuddy/Resources/SplashBuddy.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5G89W3T34F;
+				DEVELOPMENT_TEAM = 35AXSC32YT;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -723,7 +760,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -732,10 +769,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SplashBuddy/Resources/SplashBuddy.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5G89W3T34F;
+				DEVELOPMENT_TEAM = 35AXSC32YT;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SplashBuddy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -744,7 +782,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -758,7 +796,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.fti.SplashBuddyTestsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplashBuddy.app/Contents/MacOS/SplashBuddy";
 			};
 			name = Debug;
@@ -774,7 +812,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplashBuddy.app/Contents/MacOS/SplashBuddy";
 			};
 			name = Release;

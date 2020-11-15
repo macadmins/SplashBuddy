@@ -1,9 +1,18 @@
-//
-//  PreferencesTests.swift
-//  SplashBuddy
-//
-//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
-//
+// SplashBuddy
+
+/*
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
 
 import XCTest
 @testable import SplashBuddy
@@ -108,7 +117,7 @@ class PreferencesTests: XCTestCase {
 
         try! testPrefs.getPreferencesApplications()
 
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageNames, ["Enterprise Connect"])
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
@@ -136,7 +145,7 @@ class PreferencesTests: XCTestCase {
 
         try! testPrefs.getPreferencesApplications()
 
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageNames, ["Enterprise Connect"])
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
@@ -170,7 +179,7 @@ class PreferencesTests: XCTestCase {
 
         try! testPrefs.getPreferencesApplications()
 
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageName, "Enterprise Connect")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.packageNames, ["Enterprise Connect"])
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.status, Software.SoftwareStatus.pending)
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.first!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.first!.displayName, "Enterprise Connect")
@@ -180,7 +189,7 @@ class PreferencesTests: XCTestCase {
 
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.displayName, "Druva")
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.desc, "Backup")
-        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.packageName, "DruvaEndPoint")
+        XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.packageNames, ["DruvaEndPoint"])
         XCTAssert(type(of: SoftwareArray.sharedInstance.array.last!.icon!) == type(of: NSImage()))
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.canContinue, true)
         XCTAssertEqual(SoftwareArray.sharedInstance.array.last!.status, Software.SoftwareStatus.pending)
@@ -213,8 +222,7 @@ class PreferencesTests: XCTestCase {
         let result = testPrefs.extractSoftware(from: nsDict)!
         let testPath = "\(self.assetPath)/ec_32x32.png"
 
-        XCTAssertEqual(result.packageName, "Enterprise Connect")
-        XCTAssertNil(result.packageVersion)
+        XCTAssertEqual(result.packageNames, ["Enterprise Connect"])
         XCTAssertEqual(result.status, Software.SoftwareStatus.pending)
         XCTAssertEqual(result.icon!.tiffRepresentation, NSImage(byReferencingFile: testPath)!.tiffRepresentation)
         XCTAssertEqual(result.displayName, "Enterprise Connect")

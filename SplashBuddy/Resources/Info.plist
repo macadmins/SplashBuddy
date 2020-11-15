@@ -19,13 +19,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.0</string>
+	<string>1.3.1</string>
 	<key>CFBundleVersion</key>
-	<string>25</string>
+	<string>29</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016-2018 Amaris Technologies GmbH. All rights reserved.</string>
+	<string>A MacAdmins Community product</string>
 	<key>NSMainStoryboardFile</key>
 	<string>SplashBuddy</string>
 	<key>NSPrincipalClass</key>

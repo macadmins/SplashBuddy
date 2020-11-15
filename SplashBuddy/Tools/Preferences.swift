@@ -1,74 +1,111 @@
-//
-//  Copyright © 2018 Amaris Technologies GmbH. All rights reserved.
-//
+// SplashBuddy
+
+/*
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
 
 import Cocoa
 
 /**
  Preferences() keeps the relevant preferences
  */
-class Preferences {
+class Preferences: NSObject {
 
     static let sharedInstance = Preferences()
     internal var logFileHandle: FileHandle?
     public var doneParsingPlist: Bool = false
 
     internal let userDefaults: UserDefaults
+    
+    internal let temporaryFolderURL = FileManager.default.temporaryDirectory.appendingPathComponent(Constants.AppName, isDirectory: true)
+    internal let setupDoneURL = (FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?.appendingPathComponent(Constants.SetupDone))!
+    internal let formDoneURL = (FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first?.appendingPathComponent(Constants.FormDone))!
 
+    @objc dynamic var insiderError: Bool = false
+    public var insiderErrorMessage: String = ""
+    public var insiderErrorInfo: String = ""
+    
+    internal var insiders = [InsiderProtocol]()
     //-----------------------------------------------------------------------------------
     // MARK: - INIT
     //-----------------------------------------------------------------------------------
 
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
         self.userDefaults = nsUserDefaults
-
+        
         // Do not change asset path (see comment on var assetPath: URL below)
         // TSTAssetPath is meant for unit testing only.
-        if let assetPath = self.userDefaults.string(forKey: "TSTAssetPath") {
+        if let assetPath = self.userDefaults.string(forKey: Constants.Testing.Asset) {
             self.assetPath = URL(fileURLWithPath: assetPath, isDirectory: true)
         } else {
-            self.assetPath = URL(fileURLWithPath: "/Library/Application Support/SplashBuddy", isDirectory: true)
+            self.assetPath = (FileManager.default.urls(for: .applicationSupportDirectory, in: .localDomainMask).first?.appendingPathComponent(Constants.AppName, isDirectory: true))!
         }
-
-        // TSTJamfLog is meant for unit testing only.
-        if let jamfLogPath: String = self.userDefaults.string(forKey: "TSTJamfLog") {
-            self.logFileHandle = self.getFileHandle(from: jamfLogPath)
-        } else {
-            self.logFileHandle = self.getFileHandle()
-        }
-
-        // Start parsing the log file
-
-        guard let logFileHandle = self.logFileHandle else {
-            Log.write(string: "Cannot check logFileHandle", cat: "Preferences", level: .error)
-            return
-        }
-
-        logFileHandle.readabilityHandler = { fileHandle in
-            let data = fileHandle.readDataToEndOfFile()
-
-            guard let string = String(data: data, encoding: .utf8) else {
+        
+        var hasOneInsiderOrMore = false
+        
+        // Load the JAMF Insider
+        if self.userDefaults.bool(forKey: Constants.Insiders.JAMF) {
+            hasOneInsiderOrMore = true
+            let insider = JAMFInsider(userDefaults: self.userDefaults)
+            guard insider.logFileHandle != nil else {
+                self.insiderError = true
+                self.insiderErrorMessage = "Jamf is not installed correctly"
+                self.insiderErrorInfo = "/var/log/jamf.log is missing"
                 return
             }
-
-            for line in string.split(separator: "\n") {
-                if let software = Software(from: String(line)) {
-                    DispatchQueue.main.async {
-                        SoftwareArray.sharedInstance.array.modify(with: software)
-                    }
-                }
+            self.insiders.append(insider)
+        }
+        
+        // Load the Munki Insider
+        if self.userDefaults.bool(forKey: Constants.Insiders.Munki) {
+            hasOneInsiderOrMore = true
+            let insider = MunkiInsider(userDefaults: self.userDefaults)
+            self.insiders.append(insider)
+        }
+        
+        // Load the Installer Insider
+        if self.userDefaults.bool(forKey: Constants.Insiders.Installer) {
+            hasOneInsiderOrMore = true
+            let insider = InstallerInsider(userDefaults: self.userDefaults)
+            guard insider.logFileHandle != nil else {
+                self.insiderError = true
+                self.insiderErrorMessage = "Unexpected system state"
+                self.insiderErrorInfo = "/var/log/install.log is missing"
+                return
             }
+            self.insiders.append(insider)
+        }
+        
+        if !hasOneInsiderOrMore {
+            self.insiderError = true
+            self.insiderErrorMessage = "No insiders setup"
+            self.insiderErrorInfo = "You need to enable at least one insider to make this tool useful"
+            return
         }
     }
-
-    internal func getFileHandle(from file: String = "/var/log/jamf.log") -> FileHandle? {
-        do {
-            return try FileHandle(forReadingFrom: URL(fileURLWithPath: file, isDirectory: false))
-        } catch {
-            Log.write(string: "Cannot read \(file)",
-                cat: "Preferences",
-                level: .error)
-            return nil
+    
+    func runInsiders() {
+        for insider in insiders {
+            DispatchQueue.global(qos: .background).async {
+                do {
+                    try insider.run()
+                } catch {
+                    self.insiderError = true
+                    self.insiderErrorMessage = "Error running \(String(describing:type(of:insider))) insider"
+                    self.insiderErrorInfo = "\(error.localizedDescription)"
+                    Log.write(string: "Error running \(String(describing:type(of:insider))) insider: \(error.localizedDescription)", cat: "Preferences", level: .error)
+                }
+            }
         }
     }
 
@@ -109,7 +146,7 @@ class Preferences {
     //-----------------------------------------------------------------------------------
 
     /// set to `true` to hide sidebar
-    public var sidebar: Bool {
+    public var hideSidebar: Bool {
         return self.userDefaults.bool(forKey: "hideSidebar")
     }
 
@@ -158,17 +195,17 @@ class Preferences {
     /// All softwares are installed
     var setupDone: Bool {
         get {
-            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyDone")
+            return FileManager.default.fileExists(atPath: self.setupDoneURL.path)
         }
 
         set(myValue) {
             if myValue == true {
-                FileManager.default.createFile(atPath: "Library/.SplashBuddyDone", contents: nil, attributes: nil)
+                FileManager.default.createFile(atPath: self.setupDoneURL.path, contents: nil, attributes: nil)
             } else {
                 do {
-                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyDone")
+                    try FileManager.default.removeItem(atPath: self.setupDoneURL.path)
                 } catch {
-                    Log.write(string: "Couldn't remove .SplashBuddyDone",
+                    Log.write(string: "Couldn't remove \(self.setupDoneURL.path))",
                               cat: "Preferences",
                               level: .info)
                 }
@@ -178,17 +215,17 @@ class Preferences {
 
     var formDone: Bool {
         get {
-            return FileManager.default.fileExists(atPath: "Library/.SplashBuddyFormDone")
+            return FileManager.default.fileExists(atPath: self.formDoneURL.path)
         }
 
         set(myValue) {
             if myValue == true {
-                FileManager.default.createFile(atPath: "Library/.SplashBuddyFormDone", contents: nil, attributes: nil)
+                FileManager.default.createFile(atPath: self.formDoneURL.path, contents: nil, attributes: nil)
             } else {
                 do {
-                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                    try FileManager.default.removeItem(atPath: self.formDoneURL.path)
                 } catch {
-                    Log.write(string: "Couldn't remove .SplashBuddyFormDone", cat: "Preferences", level: .info)
+                    Log.write(string: "Couldn't remove \(self.formDoneURL.path)", cat: "Preferences", level: .info)
                 }
             }
         }
@@ -203,54 +240,56 @@ class Preferences {
 
     private func createSplashBuddyTmpIfNeeded() {
         var YES: ObjCBool = true
-        if !FileManager.default.fileExists(atPath: "/private/tmp/SplashBuddy/", isDirectory: &YES) {
+        if !FileManager.default.fileExists(atPath: self.temporaryFolderURL.path, isDirectory: &YES) {
             do {
-                try FileManager.default.createDirectory(atPath: "/private/tmp/SplashBuddy",
+                try FileManager.default.createDirectory(at: self.temporaryFolderURL,
                                                         withIntermediateDirectories: false,
                                                         attributes: [
                                                             .groupOwnerAccountID: 20,
                                                             .posixPermissions: 0o777
                     ])
             } catch {
-                Log.write(string: "Cannot create /private/tmp/SplashBuddy/",
+                Log.write(string: "Cannot create \(self.temporaryFolderURL.path)",
                           cat: "Preferences",
                           level: .error)
-                fatalError("Cannot create /private/tmp/SplashBuddy/")
+                fatalError("Cannot create \(self.temporaryFolderURL.path)")
             }
         }
     }
 
     private func checkTagFile(named: TagFile) -> Bool {
-        return FileManager.default.fileExists(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue))
+        return FileManager.default.fileExists(atPath: self.temporaryFolderURL.appendingPathComponent(named.rawValue).path)
     }
 
     private func createOrDeleteTagFile(named: TagFile, create: Bool) {
         createSplashBuddyTmpIfNeeded()
 
+        let filePath = self.temporaryFolderURL.appendingPathComponent(named.rawValue).path
+        
         if create == true {
-            if FileManager.default.createFile(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue),
+            if FileManager.default.createFile(atPath: filePath,
                                               contents: nil,
                                               attributes: [
                                                 .groupOwnerAccountID: 20,
                                                 .posixPermissions: 0o777
                 ]) {
-                Log.write(string: "Created .".appending(named.rawValue),
+                Log.write(string: "Created \(filePath)",
                           cat: "Preferences",
                           level: .info)
             } else {
-                Log.write(string: "Couldn't create .".appending(named.rawValue), cat: "Preferences", level: .error)
+                Log.write(string: "Couldn't create \(filePath)", cat: "Preferences", level: .error)
                 do {
-                    try FileManager.default.removeItem(atPath: "Library/.SplashBuddyFormDone")
+                    try FileManager.default.removeItem(atPath: self.formDoneURL.path)
                 } catch {
 
                 }
             }
 
-        } else {
+        } else if FileManager.default.fileExists(atPath: filePath) {
             do {
-                try FileManager.default.removeItem(atPath: "/private/tmp/SplashBuddy/.".appending(named.rawValue))
+                try FileManager.default.removeItem(atPath: filePath)
             } catch {
-                Log.write(string: "Couldn't remove .".appending(named.rawValue), cat: "Preferences", level: .info)
+                Log.write(string: "Couldn't remove \(filePath)", cat: "Preferences", level: .info)
             }
         }
     }
@@ -304,7 +343,15 @@ class Preferences {
     //-----------------------------------------------------------------------------------
 
     func extractSoftware(from dict: NSDictionary) -> Software? {
-        guard let name = dict["packageName"] as? String else {
+        var names: [String]?
+        
+        if let name = dict["packageName"] as? String {
+            names = [name]
+        } else if let listOfNames = dict["packageName"] as? [String] {
+            names = listOfNames
+        }
+        
+        guard let listOfNames = names else {
             Log.write(string: "Error reading name from an application in io.fti.SplashBuddy",
                       cat: "Preferences",
                       level: .error)
@@ -312,28 +359,28 @@ class Preferences {
         }
 
         guard let displayName: String = dict["displayName"] as? String else {
-            Log.write(string: "Error reading displayName from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading displayName from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
         }
 
         guard let description: String = dict["description"] as? String else {
-            Log.write(string: "Error reading description from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading description from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
         }
 
         guard let iconRelativePath: String = dict["iconRelativePath"] as? String else {
-            Log.write(string: "Error reading iconRelativePath from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading iconRelativePath from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
         }
 
         guard let canContinueBool: Bool = getBool(from: dict["canContinue"]) else {
-            Log.write(string: "Error reading canContinueBool from application \(name) in io.fti.SplashBuddy",
+            Log.write(string: "Error reading canContinueBool from application \(listOfNames) in io.fti.SplashBuddy",
                 cat: "Preferences",
                 level: .error)
             return nil
@@ -341,8 +388,7 @@ class Preferences {
 
         let iconPath = self.assetPath.appendingPathComponent(iconRelativePath).path
 
-        return Software(packageName: name,
-                        version: nil,
+        return Software(packageNames: listOfNames,
                         status: .pending,
                         iconPath: iconPath,
                         displayName: displayName,
@@ -392,7 +438,7 @@ class Preferences {
                 throw Preferences.Errors.malformedApplication
             }
             if let software = extractSoftware(from: application) {
-                SoftwareArray.sharedInstance.array.append(software)
+                SoftwareArray.sharedInstance.append(software: software)
             }
         }
 
