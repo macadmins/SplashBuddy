@@ -1,12 +1,34 @@
-#!/bin/bash
+#!/bin/zsh
 
-loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");'`
-loggedInUID=`id -u ${loggedInUser}`
+function start_splashbuddy {
+    # Get the currently logged in user
+    LOGGEDINUSER=$(echo 'show State:/Users/ConsoleUser' | scutil | awk '/Name / { print $3 }')
+    /usr/bin/logger "SplashBuddy - Logged in user is: ${LOGGEDINUSER}"
+    
+    if [[ ! -z "${LOGGEDINUSER}" ]] && [[ "${LOGGEDINUSER}" != "loginwindow" ]] && [[ "${LOGGEDINUSER}" != "_mbsetupuser" ]]; then
+        loggedInUID=$(id -u ${LOGGEDINUSER})
+        
+        # Start SplashBuddy
+        launchctl bootstrap gui/${loggedInUID} /Library/LaunchAgents/io.fti.SplashBuddy.launch.plist
+        bootstrapExitCode=$?
+        
+        
+        if [[ ${bootstrapExitCode} -ne 0 ]]; then
+            /usr/bin/logger "SplashBuddy - bootstrap agent exited with: ${bootstrapExitCode}"
+            exit ${bootstrapExitCode}
+        fi
+    fi
+}
 
-if [[ ${loggedInUID} -gt 500 ]]; then
-	echo "Launching SplashBuddy for user ${loggedInUID}…"
-	sudo -u \#${loggedInUID} launchctl enable gui/${loggedInUID}/io.fti.SplashBuddy.launch
-	sudo -u \#${loggedInUID} launchctl bootstrap gui/${loggedInUID}/ /Library/LaunchAgents/io.fti.SplashBuddy.launch.plist
-	sudo -u \#${loggedInUID} launchctl kickstart gui/${loggedInUID}/io.fti.SplashBuddy.launch
+start_splashbuddy
+​
+# Check if we're installing on the root volume
+if [[ "$3" = "/" ]]; then
+    
+    load_or_restart_agent
+    
+else
+    /usr/bin/logger "SplashBuddy - Installing on external volume -- skipping script"
 fi
-
+​
+exit 0
