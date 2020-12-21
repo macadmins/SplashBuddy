@@ -8,10 +8,11 @@
 
 
 loggedInUser=$(/usr/bin/python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+homeDir=$(/usr/bin/dscl . read /Users/${loggedInUser} NFSHomeDirectory | /usr/bin/awk '{print $2}')
 
 
 app="/Library/Application Support/SplashBuddy/SplashBuddy.app"
-doneFile="/Users/${loggedInUser}/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone"
+doneFile="${homeDir}/Library/Containers/io.fti.SplashBuddy/Data/Library/.SplashBuddyDone"
 
 # Check if:
 # - SplashBuddy is not already running
