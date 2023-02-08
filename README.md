@@ -1,3 +1,6 @@
+
+# Splash buddy has been archived and will not be receiving updates in the future. For similar projects or products, see [DEPNotify](https://gitlab.com/Mactroll/DEPNotify) or [Octory](https://octory.io/).
+
 # SplashBuddy
 
 [![Build Status](https://travis-ci.org/Shufflepuck/SplashBuddy.svg?branch=master)](https://travis-ci.org/Shufflepuck/SplashBuddy)
